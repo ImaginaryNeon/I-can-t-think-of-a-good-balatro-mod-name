@@ -1,9 +1,9 @@
 {
     "id": "balanwondertro",
-    "name": "TEST",
+    "name": "Machine, turn back now.",
     "author": ["ImaginaryNeon"],
-    "description": "A bunch of random bullshit I put together",
+    "description": "The layers of this palace are not for your kind.",
     "prefix": "neonmod",
     "main_file": "main.lua",
-    "version": "0.0.0",
+    "version": "0.0.0"
 }
