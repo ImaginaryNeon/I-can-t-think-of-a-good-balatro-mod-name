@@ -9,10 +9,10 @@ SMODS.Joker{
         extra = {
             chips = 500,
             mult = -5
-        }
+    }
     },
     rarity = 1,
-    cost = 3,
+    cost = 2,
     loc_vars = function(self, info_queue, card)
         return{
             vars = {
@@ -21,7 +21,7 @@ SMODS.Joker{
             }
         }
     end,
-    calculate = function (self, card, context)
+    calculate = function(self, card, context)
         if context.joker_main then
             return{
                 chips = card.ability.extra.chips,
@@ -29,4 +29,4 @@ SMODS.Joker{
             }
         end
     end
-}
+    }
