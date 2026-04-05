@@ -3,7 +3,7 @@ This is a Balatro mod made by a guy with a bunch of dumb ideas and no idea how t
 Requires [Lovely](https://github.com/ethangreen-dev/lovely-injector), which I hope I grabbed the right link for.
 
 Contains:
-- 5 Jokers (One of which doesn't work currently, have fun!)
+- 5 Jokers (One of which doesn't work currently, due to my ineptitude)
 - 1 new Boss Blind
 - A third line to help this list not seem as shallow as it is.
 
