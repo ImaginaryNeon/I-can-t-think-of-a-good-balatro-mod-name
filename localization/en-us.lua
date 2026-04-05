@@ -18,9 +18,9 @@ return {
                 }
             },
             j_neonmod_IDFKMAN = {
-                name = 'Testy McTestingson',
+                name = 'Testy McTestingson', -- No idea what to name this lol
                 text = {
-                    'Makes packs in shop act as if they were Jumbo'
+                    'Forces packs in shop to be Spectral'
                 }
             },
             j_neonmod_joyconl = {
