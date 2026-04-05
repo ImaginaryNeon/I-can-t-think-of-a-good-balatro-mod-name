@@ -1,9 +1,14 @@
 {
     "id": "balanwondertro",
-    "name": "This is a cry for help",
-    "author": ["ImaginaryNeon (Hi I found a guide on youtube but this is crashing for some fucking reason help help help)"],
-    "description": "The layers of this palace are not for your kind.",
+    "name": "Peter, the horse is here.",
+    "author": [
+        "ImaginaryNeon"
+    ],
+    "description": "The product of free will and absurd amounts of trial and error.",
     "prefix": "neonmod",
     "main_file": "main.lua",
-    "version": "0.0.0"
+    "icon_path": "Logo.png",
+    "version": "1.0.0",
+    "badge_colour": "2b3969",
+    "badge_text_colour": "ffff00"
 }

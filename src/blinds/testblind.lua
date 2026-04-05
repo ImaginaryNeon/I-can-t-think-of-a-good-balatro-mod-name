@@ -1,4 +1,4 @@
-SMODS.Blind{
+SMODS.Blind {
     key = 'fleshprison',
     atlas = 'bossbattle',
     pos = {
@@ -6,32 +6,30 @@ SMODS.Blind{
         y = 0
     },
     config = {
- 	extra = {
- 		xmult = 0.9,
- 	},
-    boss = true,
-    min = 3,
-    boss_colour = HEX('f0fcfe'),
-    loc_vars = function(self, info_queue, card)
-        return{
-            vars = {
-                card.ability.extra.xmult
-            }
-        }
+        extra = {
+            xmult = 0.9,
+        },
+    },
+    boss = { min = 1, max = 10 },
+    boss_colour = HEX('701814'),
+    loc_vars = function(self)
+        return { vars = { self.config.extra.xmult } }
     end,
     calculate = function(self, blind, context)
-    if context.cardarea == G.play and context.main_scoring then
-    return{
-                xmult = blind.ability.extra.xmult,
-                message = 'Decayed!',
-            }
+        if not blind.disabled then
+            if context.post_trigger then
+                return {
+                    xmult = blind.effect.extra.xmult,
+                    message = 'Decayed!',
+                    card = context.blueprint_card or context.other_card or blind,
+                }
+            end
+            if context.cardarea == G.play and context.main_scoring then
+                return {
+                    xmult = blind.effect.extra.xmult,
+                    message = 'Decayed!',
+                }
+            end
+        end
     end
-    if context.post_joker then
-    return{
-                xmult = blind.ability.extra.xmult,
-                message = 'Decayed!',
-            }
-    end
-end,
- }
 }

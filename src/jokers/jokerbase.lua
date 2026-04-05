@@ -1,4 +1,4 @@
-SMODS.Joker{
+SMODS.Joker {
     key = 'testobjectpleaseignore',
     atlas = 'jonklers',
     pos = {
@@ -7,14 +7,14 @@ SMODS.Joker{
     },
     config = {
         extra = {
-            chips = 500,
+            chips = 200,
             mult = -5
-    }
+        }
     },
     rarity = 1,
     cost = 2,
     loc_vars = function(self, info_queue, card)
-        return{
+        return {
             vars = {
                 card.ability.extra.chips,
                 card.ability.extra.mult
@@ -23,10 +23,10 @@ SMODS.Joker{
     end,
     calculate = function(self, card, context)
         if context.joker_main then
-            return{
+            return {
                 chips = card.ability.extra.chips,
                 mult = card.ability.extra.mult,
             }
         end
     end
-    }
+}
