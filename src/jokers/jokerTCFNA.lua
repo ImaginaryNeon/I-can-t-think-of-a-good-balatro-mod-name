@@ -6,8 +6,8 @@ SMODS.Joker {
     pos = { x = 0, y = 1 },
     config = {
         extra = {
-            Emult = 1,
-            Emult_mod = 0.002,
+            emult = 1,
+            emult_mod = 0.002,
         },
     },
     loc_vars = function(self, info_queue, card)
@@ -34,11 +34,11 @@ SMODS.Joker {
                 min_count = min_count + 0.5
                 if enhanced_count >= min_count then
                     return {
-                        Emult = 1 + card.ability.extra.Emult_mod * enhanced_count,
+                        emult = 1 + card.ability.extra.emult_mod * enhanced_count,
                     }
                 else
                     return {
-                        Emult = 1,
+                        emult = 1,
                     }
                 end
             end
