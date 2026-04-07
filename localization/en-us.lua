@@ -80,6 +80,20 @@ return {
                     "{s:0.5,C:inactive,u:inactive}RULE # 187{}{s:0.5,C:inactive}EXPLAINS homosexuality mathematically,",
                     "{s:0.5,C:inactive}using modifier G @ 11.",
                 },
+            },
+            j_neonmod_licensetomaim = {
+                name = 'License to Maim',
+                text = {
+                    'When Boss Blind selected, has a',
+                    '{C:green}#2# in #3#{} chance to {C:dark_edition}invert{} its effects'
+                }
+            },
+            j_neonmod_dangeresque = {
+                name = 'Dangeresque, Too?',
+                text = {
+                    'Sell this card during a {C:attention}Boss Blind{}',
+                    'for a {C:green}#2# in #3#{} chance to earn {C:money}$#1#{}'
+                }
             }
         },
         Blind = {
