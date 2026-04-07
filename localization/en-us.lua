@@ -85,7 +85,7 @@ return {
                 name = 'License to Maim',
                 text = {
                     'When Boss Blind selected, has a',
-                    '{C:green}#2# in #3#{} chance to {C:dark_edition}invert{} its effects'
+                    '{C:green}#1# in #2#{} chance to {C:dark_edition}invert{} its effects'
                 }
             },
             j_neonmod_dangeresque = {
