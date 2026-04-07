@@ -20,7 +20,8 @@ return {
             j_neonmod_IDFKMAN = {
                 name = 'Testy McTestingson', -- No idea what to name this lol
                 text = {
-                    'Forces packs in shop to be Spectral'
+                    'Forces packs in shop to be {C:spectral}Spectral{}',
+                    '{C:inactive}(Currently does not work}'
                 }
             },
             j_neonmod_joyconl = {
@@ -45,7 +46,7 @@ return {
                     "and {C:spectral}Seal{} in your full deck if at least {C:attention}half{} of the cards in your",
                     "full deck have an {C:enhanced}Enhancement{}, {C:edition}Edition{}, and {C:spectral}Seal{}",
                     "{C:inactive}(Currently {C:attention}#3#{C:inactive} out of {C:attention}#4#{C:inactive})",
-                    "{C:inactive}(Currently {X:mult,C:white} ^#1# {} Mult)",
+                    "{C:inactive}(Currently {X:mult,C:white} ^#1# {}{C:inactive} Mult)",
                 },
             },
             j_neonmod_marksman = {
@@ -59,11 +60,26 @@ return {
             j_neonmod_marksmancoin = {
                 name = 'Marksman Coin',
                 text = {
-                    'Retriggers scored cards {C:attention}#1#{} time',
+                    'Retriggers the first scoring card {C:attention}#1#{} time',
                     'for every {C:money}$#2#{} you have',
-                    '{C:green}#3# in #4#{} chance to break at end of round',
+                    'Has a {C:green}#4# in #5#{} chance to break at end of round',
                     '{C:inactive}(Currently {C:attention}#3#{}{C:inactive} retriggers)'
                 }
+            },
+            j_neonmod_hybrid = {
+                name = '{C:attention}H{C:gold}Y{C:green}B{C:planet}R{C:common}I{C:spectral}D{}',
+                text = {
+                    "Gains {X:mult,C:white} X#1# {} Mult at end of Ante for each other Joker",
+                    "that {C:attention}did not trigger{} during the Ante",
+                    "{C:inactive}(Currently {X:mult,C:white} X#2# {} Mult)",
+                    "{s:0.5,C:inactive}{u:inactive,C:blue}DISCLAIMER{}{s:0.5,C:inactive}: {u:inactive,C:blue}WARNING{}{s:0.5,C:inactive}: RULE # 196 is{u:inactive,C:blue}X-rated{}{s:0.5,5:inactive} in that to",
+                    "{s:0.5,C:inactive}calculate L, use X = {u:inactive,C:blue}[(C2/10)^2]{}{s:0.5,C:inactive}, which is for",
+                    "{s:0.5,C:inactive}mature audience only @ or above age of 20, but most",
+                    "{s:0.5,C:inactive}90% of this rpg is for all ages, though maybe NOT",
+                    "{s:0.5,C:inactive,u:inactive}RULE # 193{}{s:0.5,C:inactive}which is {u:inactive}NOT{}{s:0.5,C:inactive} meant to be read by kids, and",
+                    "{s:0.5,C:inactive,u:inactive}RULE # 187{}{s:0.5,C:inactive}EXPLAINS homosexuality mathematically,",
+                    "{s:0.5,C:inactive}using modifier G @ 11.",
+                },
             }
         },
         Blind = {
