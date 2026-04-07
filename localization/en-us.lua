@@ -41,10 +41,11 @@ return {
             j_neonmod_tcfna = {
                 name = 'The Campaign for North Africa: The Desert War 1940-43',
                 text = {
-                    "Gains {X:mult,C:white} ^#2# {} Mult per {C:enhancement}Enhanced{} card in your full deck",
-                    "if at least half of the cards in your full deck are {C:enhancement}Enhanced{}",
-                    "{C:inactive}(Currently {C:attention}#3#{C:inactive} out of {C:attention}#4# {C:inactive}){}",
-                    "{C:inactive}(Currently {X:mult,C:white} ^#1# {}{C:inactive} Mult)",
+                    "Gains {X:mult,C:white} ^#2# {} Mult per card with an {C:enhanced}Enhancement{}, {C:edition}Edition{},",
+                    "and {C:spectral}Seal{} in your full deck if at least {C:attention}half{} of the cards in your",
+                    "full deck have an {C:enhanced}Enhancement{}, {C:edition}Edition{}, and {C:spectral}Seal{}",
+                    "{C:inactive}(Currently {C:attention}#3#{C:inactive} out of {C:attention}#4#{C:inactive})",
+                    "{C:inactive}(Currently {X:mult,C:white} ^#1# {} Mult)",
                 },
             },
             j_neonmod_marksman = {
@@ -52,6 +53,15 @@ return {
                 text = {
                     'Retriggers scored cards {C:attention}#1#{} time',
                     'for every {C:money}$#2#{} you have',
+                    '{C:inactive}(Currently {C:attention}#3#{}{C:inactive} retriggers)'
+                }
+            },
+            j_neonmod_marksmancoin = {
+                name = 'Marksman Coin',
+                text = {
+                    'Retriggers scored cards {C:attention}#1#{} time',
+                    'for every {C:money}$#2#{} you have',
+                    '{C:green}#3# in #4#{} chance to break at end of round',
                     '{C:inactive}(Currently {C:attention}#3#{}{C:inactive} retriggers)'
                 }
             }
