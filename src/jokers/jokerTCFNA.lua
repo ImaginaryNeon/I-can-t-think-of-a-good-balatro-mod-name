@@ -22,6 +22,7 @@ SMODS.Joker {
                 min_count = min_count + 0.5
             end
         end
+    return { vars = { card.ability.extra.emult, card.ability.extra.emult_mod, enhanced_count, min_count } }
     end,
     calculate = function(self, card, context)
         if context.joker_main then
