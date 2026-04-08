@@ -2,7 +2,7 @@ SMODS.Joker {
     key = "tcfna",
     atlas = 'jonklers',
     rarity = "cry_epic",
-    cost = 10,
+    cost = 9,
     pos = { x = 0, y = 1 },
     config = {
         extra = {
@@ -32,9 +32,19 @@ SMODS.Joker {
                     enhanced_count = enhanced_count + 1
                 end
                 min_count = min_count + 0.5
+                SMODS.scale_card(
+                    {
+                        ref_table = card.ability.extra,
+                        ref_value = "emult",
+                        scalar_value = "emult_mod",
+                        operation = function(ref_table, ref_value, initial, scalar_value)
+                            ref_table[ref_value] = initial + (scalar_value * enhanced_count)
+                        end
+                    }
+                )
                 if enhanced_count >= min_count then
                     return {
-                        emult = 1 + card.ability.extra.emult_mod * enhanced_count,
+                        emult = card.ability.extra.emult
                     }
                 end
             end
