@@ -10,7 +10,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.dollars, numerator, denominator } }
     end,
     calculate = function(self, card, context)
-        if context.selling_self and context.beat_boss == true then
+        if context.selling_self and G.GAME.blind.boss then
             if SMODS.pseudorandom_probability(card, 'neonmod_dangeresque', 1, card.ability.extra.odds) then
                 return {
                     dollars = card.ability.extra.dollars,

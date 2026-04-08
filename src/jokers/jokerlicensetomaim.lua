@@ -6,7 +6,8 @@ SMODS.Joker {
     rarity = 3,
     cost = 7,
     loc_vars = function(self, info_queue, card)
-        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'neonmod_licensetomaim')
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds,
+            'neonmod_licensetomaim')
         return { vars = { numerator, denominator } }
     end,
     calculate = function(self, card, context)
@@ -17,12 +18,21 @@ SMODS.Joker {
                         G.E_MANAGER:add_event(Event({
                             func = function()
                                 G.GAME.blind:disable()
+                                play_sound('timpani')
+                                delay(0.4)
+                                return true
+                            end
+                        }
+                        ))
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
                                 G.GAME.blind:disable()
                                 play_sound('timpani')
                                 delay(0.4)
                                 return true
                             end
-                        }))
+                        }
+                        ))
                         SMODS.calculate_effect({ message = 'Boss Inverted!' }, card)
                         return true
                     end
