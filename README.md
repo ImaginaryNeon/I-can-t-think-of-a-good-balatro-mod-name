@@ -12,4 +12,4 @@ To-do:
 - Make the _real_ Wiimote joker
 - Think of an actually clever name for this damn thing
 - Drink Kroger's entire supply of root beer so I can lock the fuck in
-- Think of more bullshit to add (i.e. Jarate, more than 1 boss blind, etc. etc.)
+- Add more bullshit
