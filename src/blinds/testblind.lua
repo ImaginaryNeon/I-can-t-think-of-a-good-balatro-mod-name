@@ -10,7 +10,7 @@ SMODS.Blind {
             xmult = 0.9,
         },
     },
-    boss = { min = 1, max = 10 },
+    boss = { min = 2, max = 10 },
     boss_colour = HEX('701814'),
     loc_vars = function(self)
         return { vars = { self.config.extra.xmult } }
