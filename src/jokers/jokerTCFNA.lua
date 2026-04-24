@@ -21,6 +21,11 @@ SMODS.Joker {
                 min_count = min_count + 0.5
             end
         end
+        if enhanced_count >= min_count then
+            card.ability.extra.emult = 1 + (enhanced_count * card.ability.extra.emult_mod)
+        else
+            card.ability.extra.emult = 1
+        end
         return { vars = { card.ability.extra.emult, card.ability.extra.emult_mod, enhanced_count, min_count } }
     end,
     calculate = function(self, card, context)
@@ -32,21 +37,16 @@ SMODS.Joker {
                     enhanced_count = enhanced_count + 1
                 end
                 min_count = min_count + 0.5
-                SMODS.scale_card(
-                    {
-                        ref_table = card.ability.extra,
-                        ref_value = "emult",
-                        scalar_value = "emult_mod",
-                        operation = function(ref_table, ref_value, initial, scalar_value)
-                            ref_table[ref_value] = initial + (scalar_value * enhanced_count)
-                        end
-                    }
-                )
                 if enhanced_count >= min_count then
-                    return {
-                        emult = card.ability.extra.emult
-                    }
+                    card.ability.extra.emult = 1 + (enhanced_count * card.ability.extra.emult_mod)
+                else
+                    card.ability.extra.emult = 1
                 end
+            end
+            if enhanced_count >= min_count then
+                return {
+                    emult = card.ability.extra.emult
+                }
             end
         end
     end,
