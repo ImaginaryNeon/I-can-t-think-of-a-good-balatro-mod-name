@@ -94,7 +94,31 @@ return {
                     'Sell this card during a {C:attention}Boss Blind{}',
                     'for a {C:green}#2# in #3#{} chance to earn {C:money}$#1#{}'
                 }
-            }
+            },
+            j_neonmod_fraudfirst = {
+                name = 'Hurtbreak Wonderland',
+                text = {
+                    'If first hand of round is a single',
+                    'Editionless {C:attention}8{} or {C:attention}Ace{}',
+                    'give it a random {C:dark_edition}Edition{}'
+                }
+            },
+            j_neonmod_fraudsecond = {
+                name = 'Through the Mirror',
+                text = {
+                    'If first hand of round is a single',
+                    '{C:attention}8{} or {C:attention}2{}',
+                    'create #1# copies of it'
+                }
+            },
+            j_neonmod_fraudthird = {
+                name = 'Disintegration Loop',
+                text = {
+                    'Played {C:attention}8{} and {C:attention}3{} cards',
+                    'have a {C:green}#4# in #5#{} chance to create',
+                    'a {C:dark_edition}Negative{} {C:planet}Planet{} when scored.'
+                }
+            },
         },
         Blind = {
             bl_neonmod_fleshprison = {
