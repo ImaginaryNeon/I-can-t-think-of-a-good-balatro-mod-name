@@ -1,4 +1,4 @@
-SMODS.Joker{
+SMODS.Joker {
     key = 'portalradio',
     atlas = 'jonklers',
     pos = {
@@ -10,10 +10,10 @@ SMODS.Joker{
             repetitions = 2,
         }
     },
-    rarity = 1,
+    rarity = 2,
     cost = 6, -- because fuck you
     loc_vars = function(self, info_queue, card)
-        return{
+        return {
             vars = {
                 card.ability.extra.repetitions
             }
