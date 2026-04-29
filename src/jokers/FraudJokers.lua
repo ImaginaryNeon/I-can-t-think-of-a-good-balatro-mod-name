@@ -1,4 +1,130 @@
 SMODS.Joker {
+    key = "fraudfirst",
+    blueprint_compat = true,
+    rarity = 3,
+    cost = 8,
+    atlas = "jonklers",
+    pos = { x = 4, y = 2 },
+    config = { extra = { copies = 2 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.copies } }
+    end,
+    calculate = function(self, card, context)
+        if context.first_hand_drawn and not context.blueprint then
+            local eval = function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end
+            juice_card_until(card, eval, true)
+        end
+        if context.before and G.GAME.current_round.hands_played == 0 and #context.full_hand == 1 then
+			local valid_id = false
+			for i = 1, #context.full_hand do
+				if context.full_hand[i]:get_id() == 14 and context.full_hand[i].edition == nil then
+					valid_id = true
+				elseif context.full_hand[i]:get_id() == 8 and context.full_hand[i].edition == nil then
+					valid_id = true
+				end
+			end
+			if valid_id then
+				G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.4,
+                    func = function()
+                    local edition = SMODS.poll_edition { key = "hurtbreak_wonderland", guaranteed = true, no_negative = true } --, options = { 'e_polychrome', 'e_holo', 'e_foil' }
+                    local hurtbreak_card = G.playing_card
+                    hurtbreak_card:set_edition(edition, true)
+                    card:juice_up(0.3, 0.5)
+                return true
+            end
+        }))
+
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        card_copied:start_materialize()
+                        return true
+                    end
+                }))
+                return {
+                message = localize('k_copied_ex'),
+                colour = G.C.CHIPS,
+                func = function() -- This is for timing purposes, it runs after the message
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            SMODS.calculate_context({ playing_card_added = true, cards = { card_copied } })
+                            return true
+                        end
+                    }))
+                end
+                }
+            end      
+        end
+    end
+}
+SMODS.Joker {
+    key = "fraudsecond",
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 8,
+    atlas = "jonklers",
+    pos = { x = 5, y = 2 },
+    config = { extra = { copies = 2 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.copies } }
+    end,
+    calculate = function(self, card, context)
+        if context.first_hand_drawn and not context.blueprint then
+            local eval = function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end
+            juice_card_until(card, eval, true)
+        end
+        if context.before and G.GAME.current_round.hands_played == 0 and #context.full_hand == 1 then
+			local valid_id = false
+			if context.full_hand[i]:get_id() == 2 then
+				valid_id = true
+			elseif context.full_hand[i]:get_id() == 8 then
+				valid_id = true
+			end
+			if valid_id then
+				G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+                local card_copied = copy_card(context.full_hand[1], nil, nil, G.playing_card)
+                card_copied:add_to_deck()
+                G.deck.config.card_limit = G.deck.config.card_limit + 1
+                table.insert(G.playing_cards, card_copied)
+                G.hand:emplace(card_copied)
+                card_copied.states.visible = nil
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        card_copied:start_materialize()
+                        return true
+                    end
+                }))
+                local card_copied2 = copy_card(context.full_hand[1], nil, nil, G.playing_card)
+                card_copied2:add_to_deck()
+                G.deck.config.card_limit = G.deck.config.card_limit + 1
+                table.insert(G.playing_cards, card_copied2)
+                G.hand:emplace(card_copied2)
+                card_copied2.states.visible = nil
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        card_copied2:start_materialize()
+                        return true
+                    end
+                }))
+                return {
+                message = localize('k_copied_ex'),
+                colour = G.C.CHIPS,
+                func = function() -- This is for timing purposes, it runs after the message
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            SMODS.calculate_context({ playing_card_added = true, cards = { card_copied, card_copied2 } })
+                            return true
+                        end
+                    }))
+                end
+                }
+            end      
+        end
+    end
+}
+SMODS.Joker {
     key = "fraudthird",
     blueprint_compat = true,
     rarity = 3,
