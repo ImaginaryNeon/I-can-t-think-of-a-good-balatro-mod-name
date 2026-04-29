@@ -99,7 +99,15 @@ return {
                 name = 'Hurtbreak Wonderland',
                 text = {
                     'If first hand of round is a single',
-                    '{C:attention}8{} or {C:attention}Ace{}',
+                    'Editionless {C:attention}8{} or {C:attention}Ace{}',
+                    'give it a random {C:dark_edition}Edition{}'
+                }
+            },
+            j_neonmod_fraudsecond = {
+                name = 'Through the Mirror',
+                text = {
+                    'If first hand of round is a single',
+                    '{C:attention}8{} or {C:attention}2{}',
                     'create #1# copies of it'
                 }
             },
