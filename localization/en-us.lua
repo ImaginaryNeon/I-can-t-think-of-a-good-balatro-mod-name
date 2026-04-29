@@ -98,7 +98,7 @@ return {
             j_neonmod_fraudfirst = {
                 name = 'Hurtbreak Wonderland',
                 text = {
-                    'If first hand of round is a single',
+                    'If played hand is a single,',
                     'Editionless {C:attention}8{} or {C:attention}Ace{}',
                     'give it a random {C:dark_edition}Edition{}'
                 }
@@ -106,8 +106,8 @@ return {
             j_neonmod_fraudsecond = {
                 name = 'Through the Mirror',
                 text = {
-                    'If first hand of round is a single',
-                    '{C:attention}8{} or {C:attention}2{}',
+                    'If first hand of round is',
+                    'a single {C:attention}8{} or {C:attention}2{},',
                     'create #1# copies of it'
                 }
             },
@@ -115,10 +115,18 @@ return {
                 name = 'Disintegration Loop',
                 text = {
                     'Played {C:attention}8{} and {C:attention}3{} cards',
-                    'have a {C:green}#4# in #5#{} chance to create',
-                    'a {C:dark_edition}Negative{} {C:planet}Planet{} when scored.'
+                    'have a {C:green}#1# in #2#{} chance to create',
+                    'a {C:dark_edition}Negative{} {C:planet}Planet{} when scored'
                 }
             },
+            --[[            j_neonmod_fraudclinax = {
+                name = 'Final Flight',
+                text = {
+                    'Each scored {C:attention}8{} and {C:attention}4{}',
+                    'gives {X:chips,C:white}X#1#{} Chips and {X:mult,C:white}X#2#{} Mult,',
+                    '{C:green}#3# in #4#{}'
+                }
+            } --]]
         },
         Blind = {
             bl_neonmod_fleshprison = {
