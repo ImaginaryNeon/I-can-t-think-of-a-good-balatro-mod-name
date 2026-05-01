@@ -148,3 +148,37 @@ SMODS.Joker {
         end
     end
 }
+SMODS.Joker {
+    key = "fraudclimax",
+    blueprint_compat = true,
+    rarity = 3,
+    cost = 8,
+    atlas = "jonklers",
+    pos = { x = 0, y = 3 },
+    config = { extra = { xchips = 1, xchip_mod = 0.4, odds = 8 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'finalflight')
+        return { vars = { card.ability.extra.xchips, card.ability.extra.xchip_mod, numerator, denominator } }
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and (context.other_card:get_id() == 8 or context.other_card:get_id() == 4) and not context.blueprint then
+            -- See note about SMODS Scaling Manipulation on the wiki
+            card.ability.extra.xchips = card.ability.extra.xchips + card.ability.extra.xchip_mod
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.CHIPS,
+                message_card = card
+            }
+        end
+        if context.cardarea == G.play and (context.destroy_card:get_id() == 8 or context.destroy_card:get_id() == 4) and SMODS.pseudorandom_probability(card, 'finalflight', 1, card.ability.extra.odds) then
+            return { remove = true }
+        end
+        if context.joker_main then
+            return {
+                xchips = card.ability.extra.xchips
+            }
+        end
+    end
+}
+
+
