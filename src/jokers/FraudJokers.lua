@@ -116,7 +116,7 @@ SMODS.Joker {
     cost = 8,
     atlas = "jonklers",
     pos = { x = 3, y = 2 },
-    config = { extra = { odds = 5 } },
+    config = { extra = { odds = 3 } },
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'fraudthird')
         return { vars = { numerator, denominator } }
@@ -129,13 +129,13 @@ SMODS.Joker {
                     extra = {
                         message = '+1 Planet',
                         message_card = card,
-                        func = function() -- This is for timing purposes, everything here runs after the message
+                        func = function()
                             G.E_MANAGER:add_event(Event({
                                 func = (function()
                                     SMODS.add_card {
                                         set = 'Planet',
                                         edition = 'e_negative',
-                                        key_append = 'fraudthird' -- Optional, useful for manipulating the random seed and checking the source of the creation in `in_pool`.
+                                        key_append = 'fraudthird'
                                     }
                                     G.GAME.consumeable_buffer = 0
                                     return true
@@ -162,7 +162,6 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and (context.other_card:get_id() == 8 or context.other_card:get_id() == 4) and not context.blueprint then
-            -- See note about SMODS Scaling Manipulation on the wiki
             card.ability.extra.xchips = card.ability.extra.xchips + card.ability.extra.xchip_mod
             return {
                 message = localize('k_upgrade_ex'),
