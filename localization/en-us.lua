@@ -119,14 +119,16 @@ return {
                     'a {C:dark_edition}Negative{} {C:planet}Planet{} when scored'
                 }
             },
-            --[[            j_neonmod_fraudclinax = {
+            j_neonmod_fraudclimax = {
                 name = 'Final Flight',
                 text = {
-                    'Each scored {C:attention}8{} and {C:attention}4{}',
-                    'gives {X:chips,C:white}X#1#{} Chips and {X:mult,C:white}X#2#{} Mult,',
-                    '{C:green}#3# in #4#{}'
+                    'This Joker gains {X:chips,C:white}X#2#{} Chips for','
+                    'each scored {C:attention}8{} and {C:attention}4{},',
+                    'Played {C:attention}8{}s and {C:attention}4{}s have',
+                    'a {C:green}#3# in #4#{} chance to break when scored.'
+                    '{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips){}'
                 }
-            } --]]
+            }
         },
         Blind = {
             bl_neonmod_fleshprison = {
