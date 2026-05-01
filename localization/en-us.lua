@@ -122,11 +122,22 @@ return {
             j_neonmod_fraudclimax = {
                 name = 'Final Flight',
                 text = {
-                    'This Joker gains {X:chips,C:white}X#2#{} Chips for','
+                    'This Joker gains {X:chips,C:white}X#2#{} Chips for',
                     'each scored {C:attention}8{} and {C:attention}4{},',
                     'Played {C:attention}8{}s and {C:attention}4{}s have',
-                    'a {C:green}#3# in #4#{} chance to break when scored.'
+                    'a {C:green}#3# in #4#{} chance to break when scored.',
                     '{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips){}'
+                }
+            },
+            j_neonmod_redtape = {
+                name = 'Red-Tape Recorder',
+                text = {
+                    "Decrease the level of the",
+                    "first {C:attention}discarded{} poker hand",
+                    "each round and add its",
+                    "Chips and Mult to this",
+                    "Joker's Chips and mult",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#1#{C:inactive} Mult){}"
                 }
             }
         },
