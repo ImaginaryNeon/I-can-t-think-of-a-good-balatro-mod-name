@@ -137,7 +137,7 @@ return {
                     "each round and add its",
                     "Chips and Mult to this",
                     "Joker's Chips and mult",
-                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#1#{C:inactive} Mult){}"
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#2#{C:inactive} Mult){}"
                 }
             }
         },

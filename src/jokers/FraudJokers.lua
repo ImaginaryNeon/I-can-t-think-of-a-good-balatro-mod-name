@@ -155,7 +155,7 @@ SMODS.Joker {
     cost = 8,
     atlas = "jonklers",
     pos = { x = 0, y = 3 },
-    config = { extra = { xchips = 1, xchip_mod = 0.4, odds = 8 } },
+    config = { extra = { xchips = 1, xchip_mod = 0.2, odds = 4 } },
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'finalflight')
         return { vars = { card.ability.extra.xchips, card.ability.extra.xchip_mod, numerator, denominator } }
@@ -169,8 +169,10 @@ SMODS.Joker {
                 message_card = card
             }
         end
-        if context.cardarea == G.play and (context.destroy_card:get_id() == 8 or context.destroy_card:get_id() == 4) and SMODS.pseudorandom_probability(card, 'finalflight', 1, card.ability.extra.odds) then
-            return { remove = true }
+        if context.destroy_card then
+            if context.cardarea == G.play and (context.destroy_card:get_id() == 8 or context.destroy_card:get_id() == 4) and SMODS.pseudorandom_probability(card, 'finalflight', 1, card.ability.extra.odds) then
+                return { remove = true }
+            end
         end
         if context.joker_main then
             return {
@@ -179,5 +181,3 @@ SMODS.Joker {
         end
     end
 }
-
-
