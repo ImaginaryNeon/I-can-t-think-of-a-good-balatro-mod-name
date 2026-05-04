@@ -139,6 +139,14 @@ return {
                     "Joker's Chips and mult",
                     "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#2#{C:inactive} Mult){}"
                 }
+            },
+            j_neonmod_passport = {
+                name = 'Passport',
+                text = {
+                    "First played {C:attention}face card{} adds",
+                    "its {C:attention}rank{} to this Joker's Chips",
+                    "when scored",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips){}"
             }
         },
         Blind = {
