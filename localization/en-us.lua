@@ -136,7 +136,18 @@ return {
                     "first {C:attention}discarded{} poker hand",
                     "each round and add its",
                     "Chips and Mult to this",
-                    "Joker's Chips and mult",
+                    "Joker's Chips and Mult",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#2#{C:inactive} Mult){}"
+                }
+            },
+            j_neonmod_redtapeunbound = {
+                name = 'Unbound Red-Tape Recorder',
+                text = {
+                    "Decrease the level of each",
+                    "{C:attention}discarded{} poker hand and",
+                    "add its Chips and Mult to",
+                    "this Joker's Chips and Mult",
+                    "{C:inactive}(Can reduce hand levels below 1){}"
                     "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#2#{C:inactive} Mult){}"
                 }
             },
