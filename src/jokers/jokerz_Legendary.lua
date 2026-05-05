@@ -7,7 +7,9 @@ SMODS.Joker {
     soul_pos = { x = 4, y = 3 },
     config = {
         extra = {
-            xmult = 1.5,
+            xmult_base = 1,
+            xmult = 1,
+            xmult_gain = 0.1,
             suit = "None",
             color = G.C.UI.TEXT_DARK
         },
@@ -56,6 +58,7 @@ SMODS.Joker {
             else
                 card.ability.extra.suit = "None"
             end
+            card.ability.extra.xmult = card.ability.extra.xmult_base + (card.ability.extra.xmult_gain * highest_count)
         end
         if card.ability.extra.suit = "Hearts" then
             card.ability.extra.color = G.C.SUITS.Hearts
@@ -71,7 +74,7 @@ SMODS.Joker {
             card.ability.extra.color = G.C.UI.TEXT_DARK
         end
         return {
-            vars = { card.ability.extra.xmult, card.ability.extra.suit },
+            vars = { card.ability.extra.xmult_base, card.ability.extra.xmult, card.ability.extra.xmult_gain, card.ability.extra.suit },
             colours = { card.ability.extra.color }
     end,
     calculate = function(self, card, context)
@@ -119,6 +122,7 @@ SMODS.Joker {
             else
                 card.ability.extra.suit = "None"
             end
+                card.ability.extra.xmult = card.ability.extra.xmult_base + (card.ability.extra.xmult_gain * highest_count)
             --}
             if card.ability.extra.suit = "Other" then
                 if not context.other_card:is_suit("Hearts") and not context.other_card:is_suit("Diamonds") and not 
