@@ -179,5 +179,10 @@ return {
                 }
             }
         }
+    },
+    misc = {
+        challenge_names = {
+            c_neonmod_rewound = "Rewound",
+        }
     }
 }
