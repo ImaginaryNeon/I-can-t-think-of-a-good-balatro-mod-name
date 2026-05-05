@@ -71,7 +71,7 @@ SMODS.Joker {
             card.ability.extra.color = G.C.UI.TEXT_DARK
         end
         return {
-            vars = { card.ability.extra.xmult, card.ability.extra.suit, enhanced_count, min_count },
+            vars = { card.ability.extra.xmult, card.ability.extra.suit },
             colours = { card.ability.extra.color }
     end,
     calculate = function(self, card, context)
