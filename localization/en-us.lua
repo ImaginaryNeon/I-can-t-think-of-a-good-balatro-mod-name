@@ -147,6 +147,16 @@ return {
                     "its {C:attention}rank{} to this Joker's Chips",
                     "when scored",
                     "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips){}"
+            },
+            j_neonmod_legendary_mii = {
+                name = 'Aw man',
+                text = {
+                    'Played cards of the most',
+                    '{C:attention}prevalent{} suit in your',
+                    '{C:attention}full deck{} give {X:mult,C:white}X#1#{} Mult',
+                    'when scored',
+                    '{C:inactive}(Currently {V:1}#2#{C:inactive})'
+                }
             }
         },
         Blind = {
