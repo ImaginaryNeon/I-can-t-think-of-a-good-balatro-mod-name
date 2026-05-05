@@ -151,11 +151,11 @@ return {
             j_neonmod_legendary_mii = {
                 name = 'Aw man',
                 text = {
-                    'Played cards of the most',
-                    '{C:attention}prevalent{} suit in your',
-                    '{C:attention}full deck{} give {X:mult,C:white}X#1#{} Mult',
-                    'when scored',
-                    '{C:inactive}(Currently {V:1}#2#{C:inactive})'
+                    'Played cards of the most {C:attention}prevalent{} suit',
+                    'in the {C:attention}full deck{} give {X:mult,C:white}X#1#{} Mult',
+                    'when scored, plus {X:mult,C:white}X#3#{} Mult per card',
+                    'of that suit in the full deck',
+                    '{C:inactive}(Currently {X:mult,C:white}X#2#{} Mult for {V:1}#4#{C:inactive})'
                 }
             }
         },
