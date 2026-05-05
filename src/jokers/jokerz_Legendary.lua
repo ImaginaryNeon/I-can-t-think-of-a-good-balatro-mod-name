@@ -58,7 +58,6 @@ SMODS.Joker {
             else
                 card.ability.extra.suit = "None"
             end
-            card.ability.extra.xmult = card.ability.extra.xmult_base + (card.ability.extra.xmult_gain * highest_count)
         end
         if card.ability.extra.suit = "Hearts" then
             card.ability.extra.color = G.C.SUITS.Hearts
@@ -73,6 +72,7 @@ SMODS.Joker {
         elseif card.ability.extra.suit = "None" then
             card.ability.extra.color = G.C.UI.TEXT_DARK
         end
+        card.ability.extra.xmult = card.ability.extra.xmult_base + (card.ability.extra.xmult_gain * highest_count)
         return {
             vars = { card.ability.extra.xmult_base, card.ability.extra.xmult, card.ability.extra.xmult_gain, card.ability.extra.suit },
             colours = { card.ability.extra.color }
