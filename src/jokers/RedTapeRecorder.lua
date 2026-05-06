@@ -67,7 +67,8 @@ SMODS.Joker {
                 mult = card.ability.extra.mult
             }
         end
-    end
+    end,
+    in_pool = function(self, args) return false end
 }
 SMODS.Challenge {
     key = "rewound",
