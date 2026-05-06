@@ -14,14 +14,6 @@ SMODS.Atlas { -- Blinds
     py = 34
 }
 
-SMODS.Atlas { -- Mannpower Blinds
-    key = 'mannpowerblind',
-    path = 'mannpower.png',
-    atlas_table = 'ANIMATION_ATLAS',
-    frames = 21,
-    px = 34,
-    py = 34
-}
 
 --#endregion
 
@@ -37,11 +29,6 @@ for _, file in ipairs(blind_src) do
     assert(SMODS.load_file("src/blinds/" .. file))()
 end
 
-local mannpower_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/mannpower")
-for _, file in ipairs(mannpower_src) do
-    assert(SMODS.load_file("src/mannpower/" .. file))()
-end
-
 SMODS.current_mod.optional_features = function()
     return {
         post_trigger = true,
@@ -49,7 +36,8 @@ SMODS.current_mod.optional_features = function()
         cardareas = {
             discard = true,
             deck = true
-        }
+        },
+        object_weights = true
     }
 end
 --#endregion

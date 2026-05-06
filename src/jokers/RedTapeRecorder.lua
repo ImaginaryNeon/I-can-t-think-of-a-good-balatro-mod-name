@@ -73,7 +73,7 @@ SMODS.Challenge {
     key = "rewound",
     restrictions = {
         banned_cards = {
-            
+
         },
         banned_other = {},
     },
@@ -82,7 +82,7 @@ SMODS.Challenge {
     },
     deck = {
         type = "Challenge Deck",
-        seal = 'Blue',
+        -- seal = 'Blue',
         cards = {
             { s = 'C', r = 'A', g = 'Blue' },
             { s = 'D', r = 'A', g = 'Blue' },

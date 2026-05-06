@@ -147,7 +147,7 @@ return {
                     "{C:attention}discarded{} poker hand and",
                     "add its Chips and Mult to",
                     "this Joker's Chips and Mult",
-                    "{C:inactive}(Can reduce hand levels below 1){}"
+                    "{C:inactive}(Can reduce hand levels below 1){}",
                     "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#2#{C:inactive} Mult){}"
                 }
             },
@@ -158,6 +158,7 @@ return {
                     "its {C:attention}rank{} to this Joker's Chips",
                     "when scored",
                     "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips){}"
+                },
             },
             j_neonmod_legendary_mii = {
                 name = 'Aw man',
@@ -166,7 +167,7 @@ return {
                     'in the {C:attention}full deck{} give {X:mult,C:white}X#1#{} Mult',
                     'when scored, plus {X:mult,C:white}X#3#{} Mult per card',
                     'of that suit in the full deck',
-                    '{C:inactive}(Currently {X:mult,C:white}X#2#{} Mult for {V:1}#4#{C:inactive})'
+                    '{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult for {V:1}#4#{C:inactive})'
                 }
             }
         },
@@ -182,7 +183,8 @@ return {
     },
     misc = {
         challenge_names = {
-            c_neonmod_rewound = "Rewound",
+            c_neonmod_rewound = "Rewound"
         }
     }
+
 }
