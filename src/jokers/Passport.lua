@@ -6,11 +6,9 @@ SMODS.Joker {
     atlas = "jonklers",
     pos = { x = 1, y = 2 },
     pixel_size = { w = 71, h = 65 },
-    config = { extra = { chips = 0, --chip_mod = 3 
-    } },
+    config = { extra = { chips = 0, chip_mod = 12 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.chips --, card.ability.extra.chip_mod 
-      } }
+        return { vars = { card.ability.extra.chips, card.ability.extra.chip_mod } }
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and context.other_card:is_face() then
@@ -22,7 +20,7 @@ SMODS.Joker {
                 end
             end
             if is_first_face then
-                card.ability.extra.chips = card.ability.extra.chips + to_number(context.other_card:get_id())
+                card.ability.extra.chips = card.ability.extra.chips + card.ability.chip_mod
                 return {
                     message = localize('k_upgrade_ex'),
                     colour = G.C.CHIPS,
