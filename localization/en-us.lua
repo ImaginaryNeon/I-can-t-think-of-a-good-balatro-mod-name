@@ -108,7 +108,7 @@ return {
                 text = {
                     'If first hand of round is',
                     'a single {C:attention}8{} or {C:attention}2{},',
-                    'create #1# copies of it'
+                    'create a copy of it when scored'
                 }
             },
             j_neonmod_fraudthird = {
@@ -122,11 +122,11 @@ return {
             j_neonmod_fraudclimax = {
                 name = 'Final Flight',
                 text = {
-                    'This Joker gains {X:chips,C:white}X#2#{} Chips for',
+                    'This Joker gains {X:mult,C:white}X#2#{} Mult for',
                     'each scored {C:attention}8{} and {C:attention}4{},',
                     'Played {C:attention}8{}s and {C:attention}4{}s have',
                     'a {C:green}#3# in #4#{} chance to break when scored.',
-                    '{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips){}'
+                    '{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult){}'
                 }
             },
             j_neonmod_redtape = {

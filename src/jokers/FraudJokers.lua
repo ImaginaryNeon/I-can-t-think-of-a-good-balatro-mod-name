@@ -47,10 +47,6 @@ SMODS.Joker {
     cost = 8,
     atlas = "jonklers",
     pos = { x = 5, y = 2 },
-    config = { extra = { copies = 2 } },
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.copies } }
-    end,
     calculate = function(self, card, context)
         if context.first_hand_drawn and not context.blueprint then
             local eval = function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end
@@ -81,25 +77,13 @@ SMODS.Joker {
                         return true
                     end
                 }))
-                local card_copied2 = copy_card(context.full_hand[1], nil, nil, G.playing_card)
-                card_copied2:add_to_deck()
-                G.deck.config.card_limit = G.deck.config.card_limit + 1
-                table.insert(G.playing_cards, card_copied2)
-                G.hand:emplace(card_copied2)
-                card_copied2.states.visible = nil
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        card_copied2:start_materialize()
-                        return true
-                    end
-                }))
                 return {
                     message = localize('k_copied_ex'),
                     colour = G.C.CHIPS,
                     func = function()
                         G.E_MANAGER:add_event(Event({
                             func = function()
-                                SMODS.calculate_context({ playing_card_added = true, cards = { card_copied, card_copied2 } })
+                                SMODS.calculate_context({ playing_card_added = true, cards = { card_copied } })
                                 return true
                             end
                         }))
@@ -155,17 +139,17 @@ SMODS.Joker {
     cost = 8,
     atlas = "jonklers",
     pos = { x = 0, y = 3 },
-    config = { extra = { xchips = 1, xchip_mod = 0.2, odds = 4 } },
+    config = { extra = { xmult = 1, xmult_mod = 0.2, odds = 4 } },
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'finalflight')
-        return { vars = { card.ability.extra.xchips, card.ability.extra.xchip_mod, numerator, denominator } }
+        return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod, numerator, denominator } }
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and (context.other_card:get_id() == 8 or context.other_card:get_id() == 4) and not context.blueprint then
-            card.ability.extra.xchips = card.ability.extra.xchips + card.ability.extra.xchip_mod
+            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
             return {
                 message = localize('k_upgrade_ex'),
-                colour = G.C.CHIPS,
+                colour = G.C.MULT,
                 message_card = card
             }
         end
@@ -176,7 +160,7 @@ SMODS.Joker {
         end
         if context.joker_main then
             return {
-                xchips = card.ability.extra.xchips
+                xmult = card.ability.extra.xmult
             }
         end
     end
