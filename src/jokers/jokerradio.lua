@@ -7,11 +7,11 @@ SMODS.Joker {
     },
     config = {
         extra = {
-            repetitions = 2,
+            repetitions = 1,
         }
     },
-    rarity = 2,
-    cost = 6, -- because fuck you
+    rarity = 1,
+    cost = 5,
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
