@@ -154,10 +154,10 @@ return {
             j_neonmod_passport = {
                 name = 'Passport',
                 text = {
-                    "First played {C:attention}face card{} adds",
-                    "its {C:attention}rank{} to this Joker's Chips",
-                    "when scored",
-                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips){}"
+                    "This Joker gains {C:chips}+#2#{} Chips",
+                    "when the first played",
+                    "{C:attention}face card{} is scored",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"
                 },
             },
             j_neonmod_legendary_mii = {
