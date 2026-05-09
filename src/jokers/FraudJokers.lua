@@ -1,38 +1,30 @@
 SMODS.Joker {
     key = "fraudfirst",
     blueprint_compat = true,
-    rarity = 3,
-    cost = 8,
+    rarity = 2,
+    cost = 6,
     atlas = "jonklers",
     pos = { x = 4, y = 2 },
-    config = { extra = { copies = 2 } },
+    config = { extra = { max = 1 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.copies } }
+        return { vars = { card.ability.extra.max } }
     end,
     calculate = function(self, card, context)
-        if context.before and #context.full_hand == 1 then
-            local valid_id = false
-            for i = 1, #context.full_hand do
-                if context.full_hand[i]:get_id() == 14 and context.full_hand[i].edition == nil then
-                    valid_id = true
-                elseif context.full_hand[i]:get_id() == 8 and context.full_hand[i].edition == nil then
-                    valid_id = true
+        if context.before and #context.full_hand <= card.ability.extra.max and G.GAME.current_round.hands_played <= 0 and not context.blueprint then
+            for i, scored_card in ipairs(context.scoring_hand) do
+                if (scored_card:get_id() == 14 or scored_card:get_id() == 8) and scored_card.edition == nil then
+                    --valid_id = true
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.4,
+                        func = function()
+                            local edition = SMODS.poll_edition { key = "hurtbreak_wonderland", guaranteed = true, no_negative = true } --, options = { 'e_polychrome', 'e_holo', 'e_foil' }
+                            scored_card:set_edition(edition, true)
+                            scored_card:juice_up(0.3, 0.5)
+                            return true
+                        end
+                    }))
                 end
-            end
-            if valid_id then
-                G.playing_card = (G.playing_card and G.playing_card + 1) or 1
-                G.E_MANAGER:add_event(Event({
-                    trigger = 'after',
-                    delay = 0.4,
-                    func = function()
-                        local edition = SMODS.poll_edition { key = "hurtbreak_wonderland", guaranteed = true, no_negative = true } --, options = { 'e_polychrome', 'e_holo', 'e_foil' }
-                        local card_copied = context.full_hand[1]
-                        card_copied:set_edition(edition, true)
-                        card:juice_up(0.3, 0.5)
-                        return true
-                    end
-                }))
-                return true
             end
         end
     end
@@ -52,9 +44,9 @@ SMODS.Joker {
         if context.individual and context.cardarea == G.play and G.GAME.current_round.hands_played <= 0 and #context.full_hand == 1 then
             local valid_id = false
             for i = 1, #context.full_hand do
-                if context.full_hand[i]:get_id() == 2 and context.full_hand[i].edition == nil then
+                if context.full_hand[i]:get_id() == 2 then
                     valid_id = true
-                elseif context.full_hand[i]:get_id() == 8 and context.full_hand[i].edition == nil then
+                elseif context.full_hand[i]:get_id() == 8 then
                     valid_id = true
                 end
             end
@@ -66,7 +58,6 @@ SMODS.Joker {
                 table.insert(G.playing_cards, card_copied)
                 G.hand:emplace(card_copied)
                 card_copied.states.visible = nil
-
                 G.E_MANAGER:add_event(Event({
                     func = function()
                         card_copied:start_materialize()
@@ -110,17 +101,17 @@ SMODS.Joker {
                         message = '+1 Planet',
                         message_card = card,
                         func = function()
-                            G.E_MANAGER:add_event(Event({
-                                func = (function()
-                                    SMODS.add_card {
-                                        set = 'Planet',
-                                        edition = 'e_negative',
-                                        key_append = 'fraudthird'
-                                    }
-                                    G.GAME.consumeable_buffer = 0
-                                    return true
-                                end)
-                            }))
+                            --G.E_MANAGER:add_event(Event({
+                            --func = (function()
+                            SMODS.add_card {
+                                set = 'Planet',
+                                edition = 'e_negative',
+                                key_append = 'fraudthird'
+                            }
+                            G.GAME.consumeable_buffer = 0
+                            return true
+                            --end)
+                            --}))
                         end
                     },
                 }
@@ -161,3 +152,35 @@ SMODS.Joker {
         end
     end
 }
+--[[SMODS.Joker {
+    key = "sampletext",
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 7,
+    atlas = "jonklers",
+    pos = { x = 2, y = 3 },
+    config = { extra = { max = 1 } },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_gold
+    end,
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+            for i, scored_card in ipairs(context.scoring_hand) do
+                if (scored_card:get_id() == 14 or scored_card:get_id() == 8) and scored_card.edition == nil then
+                    --valid_id = true
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.4,
+                        func = function()
+                            local edition = SMODS.poll_edition { key = "hurtbreak_wonderland", guaranteed = true, no_negative = true } --, options = { 'e_polychrome', 'e_holo', 'e_foil' }
+                            scored_card:set_edition(edition, true)
+                            scored_card:juice_up(0.3, 0.5)
+                            return true
+                        end
+                    }))
+                end
+            end
+        end
+    end
+}
+--]]

@@ -98,9 +98,10 @@ return {
             j_neonmod_fraudfirst = {
                 name = 'Hurtbreak Wonderland',
                 text = {
-                    'If played hand is a single,',
-                    'Editionless {C:attention}8{} or {C:attention}Ace{}',
-                    'give it a random {C:dark_edition}Edition{}'
+                    'If first played hand of round',
+                    'contains {C:attention}#1#{} or fewer cards,',
+                    'scored {C:attention}8{} or {C:attention}Ace{} cards',
+                    'become a random {C:dark_edition}Edition{}'
                 }
             },
             j_neonmod_fraudsecond = {
@@ -168,6 +169,16 @@ return {
                     'when scored, plus {X:mult,C:white}X#3#{} Mult per card',
                     'of that suit in the full deck',
                     '{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult for {V:1}#4#{C:inactive})'
+                }
+            },
+            j_neonmod_sampletext = {
+                name = 'Sample Text',
+                text = {
+                    'This Joker is used when',
+                    'I need to test if something',
+                    'works without messing with',
+                    'another Joker',
+                    '{C:inactive}(Currently Hurtbreak Wonderland){}'
                 }
             }
         },
