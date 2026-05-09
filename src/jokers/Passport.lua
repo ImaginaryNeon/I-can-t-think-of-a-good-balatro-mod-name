@@ -20,12 +20,12 @@ SMODS.Joker {
                 end
             end
             if is_first_face then
-                card.ability.extra.chips = card.ability.extra.chips + card.ability.chip_mod
+                card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
                 return {
                     message = localize('k_upgrade_ex'),
                     colour = G.C.CHIPS,
                     message_card = card
-                 }
+                }
             end
         end
         if context.joker_main then

@@ -32,10 +32,7 @@ SMODS.Joker {
                         return true
                     end
                 }))
-                return {
-                    message = 'ΛΟΓΟΣ!',
-                    colour = G.C.CHIPS,
-                }
+                return true
             end
         end
     end
@@ -52,7 +49,7 @@ SMODS.Joker {
             local eval = function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end
             juice_card_until(card, eval, true)
         end
-        if context.individual and context.cardarea == G.play and G.GAME.current_round.hands_played == 1 and #context.full_hand == 1 then
+        if context.individual and context.cardarea == G.play and G.GAME.current_round.hands_played <= 0 and #context.full_hand == 1 then
             local valid_id = false
             for i = 1, #context.full_hand do
                 if context.full_hand[i]:get_id() == 2 and context.full_hand[i].edition == nil then
@@ -64,7 +61,6 @@ SMODS.Joker {
             if valid_id then
                 G.playing_card = (G.playing_card and G.playing_card + 1) or 1
                 local card_copied = copy_card(context.full_hand[1], nil, nil, G.playing_card)
-
                 card_copied:add_to_deck()
                 G.deck.config.card_limit = G.deck.config.card_limit + 1
                 table.insert(G.playing_cards, card_copied)
@@ -139,7 +135,7 @@ SMODS.Joker {
     cost = 8,
     atlas = "jonklers",
     pos = { x = 0, y = 3 },
-    config = { extra = { xmult = 1, xmult_mod = 0.2, odds = 4 } },
+    config = { extra = { xmult = 1, xmult_mod = 0.1, odds = 4 } },
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'finalflight')
         return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod, numerator, denominator } }

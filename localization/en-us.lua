@@ -13,7 +13,7 @@ return {
             j_neonmod_portalradio = {
                 name = 'Portal Radio',
                 text = {
-                    'Retriggers each played {C:attention}8{}, {C:attention}5{}, and {C:attention}2{} {C:attention}#1#{} additional times',
+                    'Retriggers each played {C:attention}8{}, {C:attention}5{}, and {C:attention}2{} {C:attention}#1#{} additional time',
                     '{s=0.8}{C:inactive,E:1}You\'re listening to the missive of an adequate wordsmith.{}'
                 }
             },
@@ -106,8 +106,8 @@ return {
             j_neonmod_fraudsecond = {
                 name = 'Through the Mirror',
                 text = {
-                    'If first hand of round is',
-                    'a single {C:attention}8{} or {C:attention}2{},',
+                    'If first played hand of round is a',
+                    'single {C:attention}8{} or {C:attention}2{},',
                     'create a copy of it when scored'
                 }
             },
