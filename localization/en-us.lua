@@ -71,7 +71,7 @@ return {
                 text = {
                     "Gains {X:mult,C:white} X#1# {} Mult at end of Ante for each other Joker",
                     "that {C:attention}did not trigger{} during the Ante",
-                    "{C:inactive}(Currently {X:mult,C:white} X#2# {} Mult)",
+                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
                     "{s:0.7,C:inactive}{s:0.7,u:inactive,C:blue}DISCLAIMER{}{s:0.7,C:inactive}: {s:0.7,u:inactive,C:blue}WARNING{}{s:0.7,C:inactive}: RULE #3# 196 is{s:0.7,u:inactive,C:blue}X-rated{}{s:0.7,C:inactive} in that to",
                     "{s:0.7,C:inactive}calculate L, use X = {s:0.7,u:inactive,C:blue}[(C2/10)^2]{}{s:0.7,C:inactive}, which is for",
                     "{s:0.7,C:inactive}mature audience only @ or above age of 20, but most",
