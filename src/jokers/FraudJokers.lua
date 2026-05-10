@@ -10,20 +10,24 @@ SMODS.Joker {
         return { vars = { card.ability.extra.max } }
     end,
     calculate = function(self, card, context)
+        if context.first_hand_drawn and not context.blueprint then
+            local eval = function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end
+            juice_card_until(card, eval, true)
+        end
         if context.before and #context.full_hand <= card.ability.extra.max and G.GAME.current_round.hands_played <= 0 and not context.blueprint then
             for i, scored_card in ipairs(context.scoring_hand) do
-                if (scored_card:get_id() == 14 or scored_card:get_id() == 8) and scored_card.edition == nil then
+                if (context.scoring_hand[i]:get_id() == 14 or context.scoring_hand[i]:get_id() == 8) and context.scoring_hand[i].edition == nil then
                     --valid_id = true
-                    G.E_MANAGER:add_event(Event({
-                        trigger = 'after',
-                        delay = 0.4,
-                        func = function()
-                            local edition = SMODS.poll_edition { key = "hurtbreak_wonderland", guaranteed = true, no_negative = true } --, options = { 'e_polychrome', 'e_holo', 'e_foil' }
-                            scored_card:set_edition(edition, true)
-                            scored_card:juice_up(0.3, 0.5)
-                            return true
-                        end
-                    }))
+                    --G.E_MANAGER:add_event(Event({
+                    --  trigger = 'after',
+                    -- delay = 0.4,
+                    --func = function()
+                    local edition = SMODS.poll_edition { key = "hurtbreak_wonderland", guaranteed = true, no_negative = true } --, options = { 'e_polychrome', 'e_holo', 'e_foil' }
+                    context.scoring_hand[i]:set_edition(edition, true)
+                    context.scoring_hand[i]:juice_up(0.3, 0.5)
+                    return true
+                    --end
+                    --}))
                 end
             end
         end
