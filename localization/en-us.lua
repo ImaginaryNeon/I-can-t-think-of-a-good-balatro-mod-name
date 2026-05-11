@@ -171,6 +171,21 @@ return {
                     '{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult for {V:1}#4#{C:inactive})'
                 }
             },
+            j_neonmod_kingambit = {
+                name = "Leader's Crest",
+                text = {
+                    "This Joker gains {X:mult,C:white} X#1# {} Mult",
+                    "when a playing card",
+                    "or Joker is destroyed",
+                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+                    "{C:inactive, s=0.7}A shard of what appears to be an old blade of some sort.",
+                    "{C:inactive, s=0.7}It is held only by Bisharp that head up a group of Pawniard."
+                },
+--[[                unlock = {
+                    "{E:1,s:1.3}?????",
+                },
+--]]
+            },
             j_neonmod_sampletext = {
                 name = 'Sample Text',
                 text = {
