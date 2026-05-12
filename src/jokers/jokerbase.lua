@@ -58,7 +58,7 @@ SMODS.Joker {
                 local obj_key = other_joker.config.center.key
                 local obj_set = other_joker.ability.set
                 tarname = localize { type = 'name_text', set = obj_set, key = obj_key }
-                tardesc = localize { type = 'name_text', set = obj_set, key = obj_key } -- find a way to turn a desc table into a string. Maybe to_string(G.localization.descriptions[self.set][self.key] = desc_target)?
+                tardesc = table.concat(localize({type = 'raw_descriptions', key = key, set = 'Joker', vars = {}}), ' ')
                 card.ability.mult = (string.len(tarname) or 0) * card.ability.multper
                 card.ability.chips = (string.len(tardesc) or 0) * card.ability.chipsper
             end
@@ -77,7 +77,7 @@ SMODS.Joker {
             local obj_key = other_joker.config.center.key
             local obj_set = other_joker.ability.set
             tarname = localize { type = 'name_text', set = obj_set, key = obj_key }
-            tardesc = localize { type = 'name_text', set = obj_set, key = obj_key } -- find a way to turn a desc table into a string. Maybe to_string(G.localization.descriptions[self.set][self.key] = desc_target)?
+            tardesc = table.concat(localize({type = 'raw_descriptions', key = key, set = 'Joker', vars = {}}), ' ') -- thanks eggymari
             card.ability.mult = (string.len(tarname) or 0) * card.ability.multper
             card.ability.chips = (string.len(tardesc) or 0) * card.ability.chipsper
         end
