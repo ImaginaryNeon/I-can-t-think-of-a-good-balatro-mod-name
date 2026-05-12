@@ -21,7 +21,7 @@ return {
                 name = 'Testy McTestingson', -- No idea what to name this lol
                 text = {
                     'Forces packs in shop to be {C:spectral}Spectral{}',
-                    '{C:inactive}(Currently does not work}'
+                    '{C:inactive}(Currently does not work)'
                 }
             },
             j_neonmod_joyconl = {
@@ -185,6 +185,16 @@ return {
                     "{E:1,s:1.3}?????",
                 },
 --]]
+            },
+            j_neonmod_loremipsum = {
+                name = 'Lorem Ipsum',
+                text = {
+                    "Gives {C:mult}+#1#{} Mult per letter in",
+                    "the Joker to the right's {C:attention}name{}, and",
+                    "{C:chips}+#1#{} Chip per character",
+                    "in that Joker's {C:attention}description{}",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult and {C:mult}+#1#{C:inactive} Chips)"
+                }
             },
             j_neonmod_sampletext = {
                 name = 'Sample Text',
