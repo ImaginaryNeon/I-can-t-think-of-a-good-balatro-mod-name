@@ -48,7 +48,7 @@ if CardSleeves then
             return { key = key, vars = vars }
         end,
         calculate = function(self, sleeve, context)
-            if self.get_current_deck_key() = "b_neonmod_moodydeck" then
+            if self.get_current_deck_key() == "b_neonmod_moodydeck" then
                 if context.before or context.pre_discard then
         		    local raising_hand = pseudorandom_element(G.handlist, "You have to chase a pseudorandom on the run!")
        			    local falling_hand = pseudorandom_element(G.handlist, 'Just follow my moves, and sneak around...')
