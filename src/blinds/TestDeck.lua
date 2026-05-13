@@ -54,10 +54,10 @@ if CardSleeves then
     CardSleeves.Sleeve {
         key = "moodysleve",
         name = "Moody Sleve",
-        atlas = "deck",
-        pos = { x = 1, y = 0 },
-        unlocked = false,
-        unlock_condition = { deck = "b_mannpower_manndeck", stake = "stake_blue" },
+        atlas = "Sleeve",
+        pos = { x = 0, y = 0 },
+        --        unlocked = false,
+        --        unlock_condition = { deck = "b_mannpower_manndeck", stake = "stake_blue" },
         loc_vars = function(self)
             local key, vars
             if self.get_current_deck_key() == "b_mannpower_manndeck" then
