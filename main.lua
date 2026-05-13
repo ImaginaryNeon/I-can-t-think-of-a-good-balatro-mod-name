@@ -16,7 +16,7 @@ SMODS.Atlas { -- Blinds
 
 SMODS.Atlas { -- Deck
     key = 'deck',
-    path = 'deck.png',
+    path = 'Deck.png',
     px = 71,
     py = 95
 }
