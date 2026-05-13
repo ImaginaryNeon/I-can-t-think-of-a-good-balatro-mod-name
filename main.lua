@@ -14,6 +14,19 @@ SMODS.Atlas { -- Blinds
     py = 34
 }
 
+SMODS.Atlas { -- Deck
+    key = 'deck',
+    path = 'deck.png',
+    px = 71,
+    py = 95
+}
+
+SMODS.Atlas { -- Sleeve
+    key = "sleeveatlas",
+    path = "Sleeve.png",
+    px = 73,
+    py = 95
+}
 
 --#endregion
 
