@@ -38,7 +38,7 @@ SMODS.Joker {
     cost = 5,
     pos = { x = 3, y = 1 },
     display_size = { w = 71 * 1.2, h = 71 * 1.2 },
-    config = { extra = { fee = 5, xmult_gain = 0.1, xmult = 1, } },
+    config = { extra = { fee = 5, xmult_gain = 0.15, xmult = 1, } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.fee, card.ability.extra.xmult_gain, card.ability.extra.xmult } }
     end,
