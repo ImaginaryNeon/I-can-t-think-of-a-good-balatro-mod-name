@@ -24,6 +24,16 @@ return {
                     '{C:inactive}(Currently does not work)'
                 }
             },
+            j_neonmod_stupendium = {
+                name = 'Stupendi-Joker',
+                text = {
+                    "Increase values of {C:attention}Joker{} to the right",
+					"by {C:attention}#1#{} at end of round",
+                    '{C:inactive}(Does not upgrade other Stupendi-Jokers)',
+                    '{s=0.8}{C:inactive,E:1}You must be pretty dumb for thinking some is enough,{}',
+                    '{s=0.8}{C:inactive,E:1}When you can add another one and make the number go up{}'
+                }
+            },
             j_neonmod_joyconl = {
                 name = 'JoyCon (L)',
                 text = {
