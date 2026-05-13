@@ -181,7 +181,7 @@ return {
                     "{C:inactive, s=0.7}A shard of what appears to be an old blade of some sort.",
                     "{C:inactive, s=0.7}It is held only by Bisharp that head up a group of Pawniard."
                 },
---[[                unlock = {
+                --[[                unlock = {
                     "{E:1,s:1.3}?????",
                 },
 --]]
@@ -215,6 +215,37 @@ return {
                     'x0.9 Mult when triggered'
                 }
             }
+        },
+        Back = {
+            b_neonmod_moodydeck = {
+                name = 'Moody Deck',
+                text = {
+                    "At the start of each Boss Blind,",
+                    "{C:attention}increase{} the level of a random hand by 2,",
+                    "and {C:red}decrease{} the level of a random hand by 1"
+                },
+                unlock = {
+                    "why are you even",
+                    "{C:attention}spawning{} enemies here"
+                }
+            }
+        },
+        Sleeve = {
+            sleeve_neonmod_moodysleeve = {
+                name = "Moody Sleeve",
+                text = {
+                    "After defeating each {C:attention}Boss Blind{},",
+                    "open a {C:attention}Mannpower Pack{}"
+                },
+            },
+            sleeve_neonmod_moodysleeve_alt = {
+                name = "Moody Sleeve",
+                text = {
+                    "When playing a hand,",
+                    "{C:attention}increase{} the level of a random hand by 2,",
+                    "and {C:red}decrease{} the level of a random hand by 1"
+                },
+            },
         }
     },
     misc = {
