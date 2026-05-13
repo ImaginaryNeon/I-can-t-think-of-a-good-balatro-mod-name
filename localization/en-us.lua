@@ -130,6 +130,16 @@ return {
                     '{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult){}'
                 }
             },
+            j_neonmod_redbaron = {
+                name = 'Red Baron Pizza',
+                text = {
+                    'At the end of each Ante, {C:attention}spends{} {C:money}$#1#{}',
+                    'as many times as possible using {C:attention}half{} of your money,',
+                    'gaining {X:mult,C:white}X#2#{} Mult per {C:money}$#1#{} spent',
+                    '{C:inactive}Has spent {C:money}$#4#{}'.
+                    '{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)'
+                }
+            },
             j_neonmod_redtape = {
                 name = 'Red-Tape Recorder',
                 text = {
