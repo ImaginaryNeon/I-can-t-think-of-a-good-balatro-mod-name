@@ -52,36 +52,40 @@ SMODS.Joker {
             local tarname = nil
             local tardesc = nil
             for i = 1, #G.jokers.cards do
-                if G.jokers.cards[i] == card then other_joker = G.jokers.cards[i + 1] end
-            end
-            if not other_joker == nil then
-                local obj_key = other_joker.config.center.key
-                local obj_set = other_joker.ability.set
-                tarname = localize { type = 'name_text', set = obj_set, key = obj_key }
-                tardesc = table.concat(localize({type = 'raw_descriptions', key = obj_key, set = obj_set, vars = {}}), ' ')
-                card.ability.mult = (string.len(tarname) or 0) * card.ability.multper
-                card.ability.chips = (string.len(tardesc) or 0) * card.ability.chipsper
+                if G.jokers.cards[i] == card then
+					if i < #G.jokers.cards then
+                        other_joker = G.jokers.cards[i + 1]
+                        local obj_key = other_joker.config.center.key
+                        local obj_set = other_joker.ability.set
+                        tarname = localize { type = 'name_text', set = obj_set, key = obj_key }
+                        tardesc = table.concat(localize({type = 'raw_descriptions', key = obj_key, set = obj_set, vars = {}}), ' ')
+                        card.ability.mult = (string.len(tarname) or 0) * card.ability.multper
+                        card.ability.chips = (string.len(tardesc) or 0) * card.ability.chipsper
+                    end
+                end
             end
         end
-        return { vars = { card.ability.multper, card.ability.mult, card.ability.chipsper, card.ability.chips } --, string.len(card.ability.current) * card.ability.amt}
+        return { vars = { card.ability.multper, card.ability.mult, card.ability.chipsper, card.ability.chips } --, string.len(card.ability.current) * card.ability.amxt}
         }
     end,
     calculate = function(self, card, context)
-        local other_joker = nil
-        local tarname = nil
-        local tardesc = nil
-        for i = 1, #G.jokers.cards do
-            if G.jokers.cards[i] == card then other_joker = G.jokers.cards[i + 1] end
-        end
-        if not other_joker == nil then
-            local obj_key = other_joker.config.center.key
-            local obj_set = other_joker.ability.set
-            tarname = localize { type = 'name_text', set = obj_set, key = obj_key }
-            tardesc = table.concat(localize({type = 'raw_descriptions', key = obj_key, set = obj_set, vars = {}}), ' ') -- thanks eggymari
-            card.ability.mult = (string.len(tarname) or 0) * card.ability.multper
-            card.ability.chips = (string.len(tardesc) or 0) * card.ability.chipsper
-        end
         if context.joker_main then
+            local other_joker = nil
+            local tarname = nil
+            local tardesc = nil
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+			    	if i < #G.jokers.cards then
+                        other_joker = G.jokers.cards[i + 1]
+                        local obj_key = other_joker.config.center.key
+                        local obj_set = other_joker.ability.set
+                        tarname = localize { type = 'name_text', set = obj_set, key = obj_key }
+                        tardesc = table.concat(localize({type = 'raw_descriptions', key = obj_key, set = obj_set, vars = {}}), ' ') -- thanks eggymari
+                        card.ability.mult = (string.len(tarname) or 0) * card.ability.multper
+                        card.ability.chips = (string.len(tardesc) or 0) * card.ability.chipsper
+                    end
+                end
+            end
             return {
                 chips = card.ability.extra.chips,
                 mult = card.ability.extra.mult,
