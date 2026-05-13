@@ -38,15 +38,16 @@ SMODS.Joker {
     cost = 5,
     pos = { x = 3, y = 1 },
     display_size = { w = 71 * 1.2, h = 71 * 1.2 },
-    config = { extra = { fee = 5, xmult_gain = 0.15, xmult = 1, } },
+    config = { extra = { fee = 5, xmult_gain = 0.15, xmult = 1, total_spent = 0 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.fee, card.ability.extra.xmult_gain, card.ability.extra.xmult } }
+        return { vars = { card.ability.extra.fee, card.ability.extra.xmult_gain, card.ability.extra.xmult, card.ability.extra.total_spent } }
     end,
     calculate = function(self, card, context)
         if context.ante_change and context.ante_end then
             if G.GAME.dollars >= 2*card.ability.extra.fee then
                 local numberofredbaronpizzastopurchase = math.floor(G.GAME.dollars / (2*card.ability.extra.fee))
                 card.ability.extra.xmult = card.ability.extra.xmult + numberofredbaronpizzastopurchase * card.ability.extra.xmult_gain
+                card.ability.extra.total_spent = card.ability.extra.total_spent + numberofredbaronpizzastopurchase * card.ability.extra.fee
                 return {
                     money = -(numberofredbaronpizzastopurchase * card.ability.extra.fee)
                     message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } }
