@@ -220,9 +220,10 @@ return {
             b_neonmod_moodydeck = {
                 name = 'Moody Deck',
                 text = {
-                    "At the start of each Boss Blind,",
-                    "{C:attention}increase{} the level of a random hand by 2,",
-                    "and {C:red}decrease{} the level of a random hand by 1"
+                    "At the start of each Blind,",
+                    "{C:attention}increase{} the level of a random hand by {C:attention}2{},",
+                    "and {C:red}decrease{} the level of a random hand by {C:attention}1{}",
+                    "{C:inactive}(Can decrease hand levels below 1){}"
                 },
                 unlock = {
                     "why are you even",
@@ -234,16 +235,19 @@ return {
             sleeve_neonmod_moodysleeve = {
                 name = "Moody Sleeve",
                 text = {
-                    "After defeating each {C:attention}Boss Blind{},",
-                    "open a {C:attention}Mannpower Pack{}"
+                    "At the start of each Blind,",
+                    "{C:attention}increase{} the level of a random hand by {C:attention}2{},",
+                    "and {C:red}decrease{} the level of a random hand by {C:attention}1{}",
+                    "{C:inactive}(Can decrease hand levels below 1){}"
                 },
             },
             sleeve_neonmod_moodysleeve_alt = {
                 name = "Moody Sleeve",
                 text = {
-                    "When playing a hand,",
-                    "{C:attention}increase{} the level of a random hand by 2,",
-                    "and {C:red}decrease{} the level of a random hand by 1"
+                    "When playing or discarding a hand,",
+                    "{C:attention}increase{} the level of a random hand by {C:attention}2{},",
+                    "and {C:red}decrease{} the level of a random hand by {C:attention}1{}",
+                    "{C:inactive}(Can decrease hand levels below 1){}"
                 },
             },
         }
