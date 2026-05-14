@@ -144,10 +144,12 @@ return {
                 name = 'Red Baron Pizza',
                 text = {
                     'At the end of each Ante, {C:attention}spends{} {C:money}$#1#{}',
-                    'as many times as possible using {C:attention}half{} of your money,',
-                    'gaining {X:mult,C:white}X#2#{} Mult per {C:money}$#1#{} spent',
-                    '{C:inactive}Has spent {C:money}$#4#{}',
-                    '{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)'
+                    'as many times as possible using',
+                    '{C:attention}half{} of your money.',
+                    'Gains {X:mult,C:white}X#2#{} Mult per {C:money}$#1#{} spent',
+                    'in this way.',
+                    '{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)',
+                    '{s:0.8,C:inactive}(Has spent {{s:0.8,C:money}$#4#{{s:0.8,C:inactive})'
                 }
             },
             j_neonmod_redtape = {
