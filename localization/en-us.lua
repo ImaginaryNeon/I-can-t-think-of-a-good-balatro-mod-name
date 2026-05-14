@@ -28,7 +28,7 @@ return {
                 name = 'Stupendi-Joker',
                 text = {
                     "Increase values of {C:attention}Joker{} to the right",
-					"by {C:attention}#1#{} at end of round",
+                    "by {C:attention}#1#{} at end of round",
                     '{C:inactive}(Does not upgrade other Stupendi-Jokers)',
                     '{s=0.8}{C:inactive,E:1}You must be pretty dumb for thinking some is enough,{}',
                     '{s=0.8}{C:inactive,E:1}When you can add another one and make the number go up{}'
@@ -146,7 +146,7 @@ return {
                     'At the end of each Ante, {C:attention}spends{} {C:money}$#1#{}',
                     'as many times as possible using {C:attention}half{} of your money,',
                     'gaining {X:mult,C:white}X#2#{} Mult per {C:money}$#1#{} spent',
-                    '{C:inactive}Has spent {C:money}$#4#{}'.
+                    '{C:inactive}Has spent {C:money}$#4#{}',
                     '{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)'
                 }
             },
@@ -209,11 +209,11 @@ return {
             j_neonmod_loremipsum = {
                 name = 'Lorem Ipsum',
                 text = {
-                    "Gives {C:mult}+#1#{} Mult per letter in",
+                    "Gives {C:mult}+#1#{} Mult per character in",
                     "the Joker to the right's {C:attention}name{}, and",
-                    "{C:chips}+#1#{} Chip per character",
+                    "{C:chips}+#3#{} Chip per character",
                     "in that Joker's {C:attention}description{}",
-                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult and {C:mult}+#1#{C:inactive} Chips)"
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult and {C:chips}+#4#{C:inactive} Chips)"
                 }
             },
             j_neonmod_sampletext = {
@@ -252,7 +252,7 @@ return {
             }
         },
         Sleeve = {
-            sleeve_neonmod_moodysleeve = {
+            sleeve_neonmod_moodysleve = {
                 name = "Moody Sleeve",
                 text = {
                     "At the start of each Blind,",
@@ -261,7 +261,7 @@ return {
                     "{C:inactive}(Can decrease hand levels below 1){}"
                 },
             },
-            sleeve_neonmod_moodysleeve_alt = {
+            sleeve_neonmod_moodysleve_alt = {
                 name = "Moody Sleeve",
                 text = {
                     "When playing or discarding a hand,",

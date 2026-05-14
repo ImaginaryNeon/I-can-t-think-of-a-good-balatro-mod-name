@@ -2,6 +2,7 @@ SMODS.Joker {
     key = "kingambit",
     rarity = 3,
     cost = 8,
+    atlas = 'jonklers',
     pos = { x = 3, y = 1 },
     config = { extra = { xmult_gain = 0.25, xmult = 1 } },
     loc_vars = function(self, info_queue, card)
@@ -34,9 +35,11 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = "redbaron",
+    atlas = 'jonklers',
     rarity = 3,
     cost = 5,
-    pos = { x = 3, y = 1 },
+    pos = { x = 2, y = 2 },
+    pixel_size = { w = 71, h = 71 },
     display_size = { w = 71 * 1.2, h = 71 * 1.2 },
     config = { extra = { fee = 5, xmult_gain = 0.15, xmult = 1, total_spent = 0 } },
     loc_vars = function(self, info_queue, card)
@@ -44,12 +47,14 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.ante_change and context.ante_end then
-            if G.GAME.dollars >= 2*card.ability.extra.fee then
-                local numberofredbaronpizzastopurchase = math.floor(G.GAME.dollars / (2*card.ability.extra.fee))
-                card.ability.extra.xmult = card.ability.extra.xmult + numberofredbaronpizzastopurchase * card.ability.extra.xmult_gain
-                card.ability.extra.total_spent = card.ability.extra.total_spent + numberofredbaronpizzastopurchase * card.ability.extra.fee
+            if G.GAME.dollars >= 2 * card.ability.extra.fee then
+                local numberofredbaronpizzastopurchase = math.floor(G.GAME.dollars / (2 * card.ability.extra.fee))
+                card.ability.extra.xmult = card.ability.extra.xmult +
+                    numberofredbaronpizzastopurchase * card.ability.extra.xmult_gain
+                card.ability.extra.total_spent = card.ability.extra.total_spent +
+                    numberofredbaronpizzastopurchase * card.ability.extra.fee
                 return {
-                    money = -(numberofredbaronpizzastopurchase * card.ability.extra.fee)
+                    money = -(numberofredbaronpizzastopurchase * card.ability.extra.fee),
                     message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } }
                 }
             end
