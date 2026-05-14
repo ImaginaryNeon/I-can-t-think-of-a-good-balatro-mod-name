@@ -66,3 +66,67 @@ SMODS.Joker {
         end
     end,
 }
+
+SMODS.Joker {
+    key = "dark_fountain",
+    atlas = 'jonklers',
+    rarity = 3,
+    cost = 20,
+    pos = { x = 2, y = 4 },
+    config = { extra = { test = 1 } },
+    loc_vars = function(self, info_queue, card)
+        local modspool = {}
+        local validmodcount = validmodcount or 0
+        for k, v in pairs(G.P_CENTER_POOLS.Joker) do
+            if v.mod and not next(SMODS.find_card(v)) then
+                local found = false
+                for k2, v2 in pairs(modspool) do
+                    if v2 == v.mod.id then 
+                        found = true 
+                    end
+                end
+                if found == false then
+                    table.insert(modspool, v.mod.id)
+                    validmodcount = validmodcount + 1 
+                end
+            end
+        end
+        return { vars = { validmodcount } }
+    end,
+    calculate = function(self, card, context)
+        if context.ante_change and context.ante_end then
+            local modspool = {}
+            local pooltocollect = {}
+            local validmodcount = validmodcount or 0
+            for k, v in pairs(G.P_CENTER_POOLS.Joker) do
+                if v.mod and not next(SMODS.find_card(v)) then
+                    local found = false
+                    for k2, v2 in pairs(modspool) do
+                        if v2 == v.mod.id then 
+                            found = true
+                        end
+                    end
+                    if found == false then
+                        table.insert(modspool, v.mod.id)
+                        validmodcount = validmodcount + 1
+                    end
+                end
+            end
+    -- Get a random joker from each mod
+            for k, v in pairs(modspool) do
+                local thismodlist = {}
+                local thismodjkrcount = 0
+                for k2, v2 in pairs(G.P_CENTER_POOLS.Joker) do
+                if v2.mod == v and not next(SMODS.find_card(v2)) then
+                        table.insert(thismodlist, v2.key)
+                        thismodjkrcount = thismodjkrcount + 1
+                    end
+                end
+                if thismodjkrcount > 0 then
+                    local randed_joker_for_this_mod = pseudorandom_element(thismodlist, "The Shattering Circle, or: A Charade of Shadeless Ones and Zeroes Rearranged ad Nihilum".. G.GAME.round_resets.ante)
+                    SMODS.add_card { key = randed_joker_for_this_mod, edition = 'e_negative' }
+                end
+            end
+        end
+    end,
+}
