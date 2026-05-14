@@ -105,9 +105,9 @@ SMODS.Joker {
 			for i = 1, #G.jokers.cards do
 				if G.jokers.cards[i] == card then
 					if i < #G.jokers.cards then
-						if not Card.no(G.jokers.cards[i + 1], "immutable", true) and not G.jokers.cards[i + 1].config.center.key == j_neonmod_stupendium then
+						if not Card.no(G.jokers.cards[i + 1], "immutable", true) and not G.jokers.cards[i + 1].config.center.key == "j_neonmod_stupendium" then
 							check = true
-							Cryptid.manipulate(G.jokers.cards[i + 1], { value = card.ability.extra.increase, type = "+" }) -- the one change I made to this chunk of the joker lol
+							Neonmod.modify_joker_values(G.jokers.cards[i + 1], {['+'] = 1})
 						end
 					end
 				end
