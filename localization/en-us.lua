@@ -116,7 +116,8 @@ return {
                 name = 'Iron Curtain',
                 text = {
                     'During {C:attention}Boss Blinds{},',
-                    'scored cards give {X:mult,C:white}X#1#{} Mult'
+                    'scored cards give {X:mult,C:white}X#1#{} Mult',
+                    '{C:inactive}(Will break in {C:attention}#2#{C:inactive} triggers){}'
                 }
             },
             j_neonmod_timepiece = {
