@@ -26,10 +26,17 @@ return {
             },
             j_neonmod_stupendium = {
                 name = 'Stupendi-Joker',
-                text = {
+                --[[text = {
                     "Increase values of {C:attention}Joker{} to the right",
                     "by {C:attention}#1#{} at end of round",
                     '{C:inactive}(Does not upgrade other Stupendi-Jokers)',
+                    '{s=0.8}{C:inactive,E:1}You must be pretty dumb for thinking some is enough,{}',
+                    '{s=0.8}{C:inactive,E:1}When you can add another one and make the number go up{}'
+                }]]
+                text = {
+                    "Gains {C:chips}+#1#{} Chips when",
+                    "any playing card is {C:attention}scored{}",
+                    '{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)',
                     '{s=0.8}{C:inactive,E:1}You must be pretty dumb for thinking some is enough,{}',
                     '{s=0.8}{C:inactive,E:1}When you can add another one and make the number go up{}'
                 }
@@ -103,6 +110,22 @@ return {
                 text = {
                     'Sell this card during a {C:attention}Boss Blind{}',
                     'for a {C:green}#2# in #3#{} chance to earn {C:money}$#1#{}'
+                }
+            },
+            j_neonmod_ironcurtain = {
+                name = 'Iron Curtain',
+                text = {
+                    'During {C:attention}Boss Blinds{},',
+                    'scored cards give {X:mult,C:white}X#1#{} Mult'
+                }
+            },
+            j_neonmod_timepiece = {
+                name = "Enthusiast's Timepiece",
+                text = {
+                    "{X:mult,C:white}X#2#{} Mult,",
+                    "loses {X:mult,C:white} X#3# {} Mult",
+                    "per {C:attention}second{}, resets",
+                    "when {C:attention}Boss Blind{} is defeated"
                 }
             },
             j_neonmod_fraudfirst = {
@@ -198,7 +221,8 @@ return {
                 text = {
                     "When Boss Blind defeated,",
                     "creates a random {C:dark_edition}Negative{} Joker",
-                    "from every {C:attention}mod{} containing Jokers.",
+                    "from every {C:attention}mod{} containing Jokers",
+                    "and {C:red}self-destructs{}",
                     '{C:inactive}(Currently #1# valid mods){}'
                 }
             },
