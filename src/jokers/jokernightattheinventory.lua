@@ -72,8 +72,8 @@ SMODS.Joker {
 SMODS.Joker {
     key = 'ironcurtain',
     atlas = 'jonklers',
-    pos = { x = 3, y = 3 },
-    soul_pos = { x = 4, y = 3 },
+    pos = { x = 2, y = 4 },
+    soul_pos = { x = 3, y = 4 },
     config = { extra = { xmult = 1.25, count = 50 } },
     rarity = 3,
     cost = 8,
