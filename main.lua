@@ -59,8 +59,9 @@ SMODS.current_mod.optional_features = function()
     }
 end
 --#endregion
+Neonmod = SMODS.current_mod
 
-local Neonmod.joker_value_exclusions = {
+Neonmod.joker_value_exclusions = {
     x_mult = 1,
     x_chips = 1,
     xmult = 1,
@@ -84,7 +85,7 @@ function Neonmod.perform_operations(val1, op, val2)
         if op == '*' then return val1 * val2 end
         if op == '/' then return val1 / val2 end
         if op == '%' then return val1 % val2 end
---        if op == '^' then return val1 ^ val2 end
+        --        if op == '^' then return val1 ^ val2 end
     elseif type(val1) == 'number' and type(val2) == 'table' then
         local final = val1
         for _, v in ipairs(val2) do
@@ -99,9 +100,9 @@ function Neonmod.modify_joker_values(card, modifytbl, exclusions, ignoreimmutabl
     -- local cardwasindeck = card.added_to_deck
     -- if not nodeckeffects and cardwasindeck then card:remove_from_deck(true) end
     exclusions = exclusions or Neonmod.joker_value_exclusions
-    local ops = {'=', '+', '-', '*', '/', '%'}--, '^'}
+    local ops = { '=', '+', '-', '*', '/', '%' } --, '^'}
     local function modify_value(ref_table, ref_value, isdirectlyinability)
-		local value = ref_table[ref_value]
+        local value = ref_table[ref_value]
         if type(value) == 'table' and (ignoreimmutable or ref_value ~= 'immutable') and (not isdirectlyinability or exclusions[ref_value] ~= true) then
             for k in pairs(value) do
                 modify_value(value, k)
@@ -118,7 +119,7 @@ function Neonmod.modify_joker_values(card, modifytbl, exclusions, ignoreimmutabl
     for k in pairs(card.ability) do
         modify_value(card.ability, k, true)
     end
---[[    local probmod = card.ability.soe_probability_modifier or {}
+    --[[    local probmod = card.ability.soe_probability_modifier or {}
     for _, v in ipairs(ops) do
         if modifytbl[v] then
             probmod[v] = probmod[v] or {}

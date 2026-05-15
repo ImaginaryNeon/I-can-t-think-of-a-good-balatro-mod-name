@@ -193,13 +193,13 @@ return {
                     '{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult for {V:1}#4#{C:inactive})'
                 }
             },
-            j_neonmod_fountain = {
+            j_neonmod_dark_fountain = {
                 name = 'Dark Fountain',
                 text = {
                     "When Boss Blind defeated,",
                     "creates a random {C:dark_edition}Negative{} Joker",
-                    "from every {C:attention}mod{} containing Jokers."
-                    '{C:inactive}(#1# valid mods){}'
+                    "from every {C:attention}mod{} containing Jokers.",
+                    '{C:inactive}(Currently #1# valid mods){}'
                 }
             },
             j_neonmod_kingambit = {
