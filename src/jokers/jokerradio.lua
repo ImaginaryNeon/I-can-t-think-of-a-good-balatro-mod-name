@@ -32,7 +32,7 @@ SMODS.Joker {
 	end
 }
 
-if Cryptid then -- 99.9% of this was shamelessly stolen from Cryptid
+--[[if Cryptid then -- 99.9% of this was shamelessly stolen from Cryptid
 	SMODS.Joker {
 		key = 'stupendium',
 		atlas = 'jonklers',
@@ -125,4 +125,4 @@ if Cryptid then -- 99.9% of this was shamelessly stolen from Cryptid
 			end
 		end,
 	}
-end
+end--]]
