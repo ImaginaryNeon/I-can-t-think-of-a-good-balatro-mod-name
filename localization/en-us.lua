@@ -115,9 +115,11 @@ return {
             j_neonmod_ironcurtain = {
                 name = 'Iron Curtain',
                 text = {
-                    'During {C:attention}Boss Blinds{},',
-                    'scored cards give {X:mult,C:white}X#1#{} Mult',
-                    '{C:inactive}(Will break in {C:attention}#2#{C:inactive} triggers){}'
+                    'Played {C:attention}face cards{} give {X:mult,C:white}X#1#{} Mult',
+                    'at the cost of 1 {C:attention}ammo{}.',
+                    'Sold Jokers give their {C:attention}sell value{}',
+                    'as ammo',
+                    '{C:inactive}(Ammo remaining: {C:attention}#2#{C:inactive}){}'
                 }
             },
             j_neonmod_timepiece = {

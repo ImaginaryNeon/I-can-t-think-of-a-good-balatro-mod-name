@@ -131,6 +131,7 @@ SMODS.Joker {
                     SMODS.add_card { key = randed_joker_for_this_mod, edition = 'e_negative' }
                 end
             end
+            SMODS.destroy_cards(card, nil, nil, true)
         end
     end,
 }

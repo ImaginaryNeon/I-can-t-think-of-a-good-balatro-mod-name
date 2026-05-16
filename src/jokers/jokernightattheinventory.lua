@@ -47,7 +47,7 @@ SMODS.Joker {
     key = 'dangeresque',
     atlas = 'jonklers',
     pos = { x = 2, y = 1 },
-    config = { extra = { odds = 4, dollars = 100 } },
+    config = { extra = { odds = 3, dollars = 100 } },
     rarity = 2,
     cost = 4,
     loc_vars = function(self, info_queue, card)
@@ -74,24 +74,37 @@ SMODS.Joker {
     atlas = 'jonklers',
     pos = { x = 2, y = 4 },
     soul_pos = { x = 3, y = 4 },
-    config = { extra = { xmult = 1.25, count = 50 } },
-    rarity = 3,
-    cost = 8,
+    config = { extra = { xmult = 1.4, ammo = 20 } },
+    rarity = 2,
+    cost = 6,
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.xmult, card.ability.extra.count } }
+        return { vars = { card.ability.extra.xmult, card.ability.extra.ammo } }
     end,
     calculate = function(self, card, context)
-        if (context.joker_main and G.GAME.blind.boss) then
-            card.ability.extra.count = card.ability.extra.count - 1
-            if card.ability.extra.count >= 0 then
-            return { xmult = card.ability.extra.xmult }
+        if context.selling_card and context.card.ability.set == 'Joker' and not context.blueprint then
+            card.ability.extra.ammo = card.ability.extra.ammo + context.card.sell_cost
+            return {
+                message = localize('k_upgrade_ex')
+            }
+        end
+        if context.individual and context.cardarea == G.play and context.other_card:is_face() then
+            card.ability.extra.ammo = card.ability.extra.ammo - 1
+            if card.ability.extra.ammo >= 0 then
+                return { xmult = card.ability.extra.xmult }
             else
                 SMODS.destroy_cards(card, nil, nil, true)
+                return {
+                    message = 'Out of ammo!'
+                }
             end
         end
+
         if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
-            if card.ability.extra.count <= 0 then
+            if card.ability.extra.ammo <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
+                return {
+                    message = 'Out of ammo!'
+                }
             end
         end
     end,
