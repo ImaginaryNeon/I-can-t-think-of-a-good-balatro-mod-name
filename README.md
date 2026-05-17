@@ -3,7 +3,7 @@ This is a Balatro mod made by a guy with a bunch of dumb ideas and no idea how t
 Requires [Lovely](https://github.com/ethangreen-dev/lovely-injector), Steammodded, and probably Amulet, for good measure.
 
 Contains:
-- 28 Jokers (One of which doesn't work currently, and will soon be reworked)
+- 23 Jokers (One of which doesn't work currently, and will soon be reworked)
 - 1 new Boss Blind
 - 1 Deck, plus an accompanying Sleeve, if CardSleeves is enabled.
 - A third line to help this list not seem as shallow as it is.
