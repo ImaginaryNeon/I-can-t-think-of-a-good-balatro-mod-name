@@ -67,7 +67,7 @@ SMODS.Joker {
     atlas = 'jonklers',
     pos = { x = 1, y = 1 },
     to_number = to_number or function(x) return x end,
-    config = { extra = { repetitions = 1, dollars = 12, odds = 3, } },
+    config = { extra = { repetitions = 1, dollars = 10, odds = 3, } },
     rarity = 2,
     cost = 6,
     loc_vars = function(self, info_queue, card)

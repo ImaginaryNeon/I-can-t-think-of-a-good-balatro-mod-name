@@ -37,7 +37,7 @@ SMODS.Joker {
     key = "fraudsecond",
     blueprint_compat = true,
     rarity = 2,
-    cost = 8,
+    cost = 6,
     atlas = "jonklers",
     pos = { x = 5, y = 2 },
     calculate = function(self, card, context)

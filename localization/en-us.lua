@@ -17,11 +17,14 @@ return {
                     '{s=0.8}{C:inactive,E:1}You\'re listening to the missive of an adequate wordsmith.{}'
                 }
             },
-            j_neonmod_IDFKMAN = {
-                name = 'Testy McTestingson', -- No idea what to name this lol
+            j_neonmod_Wiimote = {
+                name = 'Wii Remote', -- No idea what to name this lol
                 text = {
-                    'Forces packs in shop to be {C:spectral}Spectral{}',
-                    '{C:inactive}(Currently does not work)'
+                    'Gives {C:chips}Chips{} relative to the',
+                    '{C:attention}highest speed{} of your mouse',
+                    'over the last {C:attention}8 seconds{}',
+                    '{C:inactive}Current Speed: {C:attention}#2#{C:inactive}',
+                    '{C:inactive}({C:chips}+#1#{C:inactive} Chips)'
                 }
             },
             j_neonmod_stupendium = {
@@ -34,9 +37,9 @@ return {
                     '{s=0.8}{C:inactive,E:1}When you can add another one and make the number go up{}'
                 }]]
                 text = {
-                    "Gains {C:chips}+#1#{} Chips when",
-                    "any playing card is {C:attention}scored{}",
-                    '{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)',
+                    "Gains {C:chips}+#2#{} Chip when",
+                    "a playing card is {C:attention}scored{}",
+                    '{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)',
                     '{s=0.8}{C:inactive,E:1}You must be pretty dumb for thinking some is enough,{}',
                     '{s=0.8}{C:inactive,E:1}When you can add another one and make the number go up{}'
                 }
