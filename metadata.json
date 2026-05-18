@@ -11,4 +11,8 @@
     "version": "1.0.0",
     "badge_colour": "2b3969",
     "badge_text_colour": "ffff00"
+    "dependencies": [
+        "Steamodded (>=1.*~)",
+        "Amulet (>=3.*~)"
+    ]
 }
