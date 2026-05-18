@@ -150,7 +150,7 @@ SMODS.Joker {
         end
     end
 }
---[[SMODS.Joker {
+SMODS.Joker { -- commented out to avoid issues in the repo
     key = 'Wiimote',
     atlas = 'jonklers',
     pos = {
@@ -212,10 +212,6 @@ SMODS.Joker {
         print("speed = " .. math.floor(card.ability.extra.speed * 1000) / 1000)
         print("Max Speed = " .. math.floor(card.ability.extra.max_speed * 1000) / 1000)
         print("Chips = " .. math.floor(card.ability.extra.max_speed * card.ability.extra.mult))
-        --[[if not card.ability.extra.max_speed then
-            print("Recalibrating...")
-        end]]
---[[
     end,
     calculate = function(self, card, context)
         if context.before then
@@ -228,4 +224,3 @@ SMODS.Joker {
         end
     end
 }
-]]
