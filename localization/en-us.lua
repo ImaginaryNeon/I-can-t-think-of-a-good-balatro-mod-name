@@ -247,6 +247,13 @@ return {
                 },
 --]]
             },
+            j_neonmod_secret = {
+                name = 'Petrus Putridus',
+                text = {
+                    "{C:spades}Here's a little lesson in trickery."
+                }
+            },
+
             j_neonmod_loremipsum = {
                 name = 'Lorem Ipsum',
                 text = {
@@ -311,7 +318,10 @@ return {
                     "{C:inactive}(Can decrease hand levels below 1){}"
                 },
             },
-        }
+        } --,
+        --Other = {
+
+        --}
     },
     misc = {
         challenge_names = {

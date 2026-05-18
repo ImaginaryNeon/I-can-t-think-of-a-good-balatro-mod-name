@@ -128,7 +128,7 @@ SMODS.Joker {
                     local randed_joker_for_this_mod = pseudorandom_element(thismodlist,
                         "The Shattering Circle, or: A Charade of Shadeless Ones and Zeroes Rearranged ad Nihilum" ..
                         G.GAME.round_resets.ante)
-                    SMODS.add_card { key = randed_joker_for_this_mod, edition = 'e_negative' }
+                    SMODS.add_card { set = 'Joker', key = randed_joker_for_this_mod, edition = 'e_negative' }
                 end
             end
             SMODS.destroy_cards(card, nil, nil, true)
