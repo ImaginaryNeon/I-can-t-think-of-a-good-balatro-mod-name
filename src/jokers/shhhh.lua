@@ -195,17 +195,17 @@ if Cryptid then
                 end
                 if card.ability.extra.position == 24 or card.ability.extra.position == 28 or card.ability.extra.position == 31 or card.ability.extra.position == 35 or card.ability.extra.position == 39 then -- We are Number One!
                     card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+                    card.ability.extra.emult = card.ability.extra.emult + card.ability.extra.emult_gain
                     return {
                         xmult = card.ability.extra.xmult,
+                        emult = card.ability.extra.emult,
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.PURPLE,
                     }
                 end
-                if card.ability.extra.position == 24 or card.ability.extra.position == 28 or card.ability.extra.position == 31 or card.ability.extra.position == 35 or card.ability.extra.position == 39 then -- Hey!
-                    card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+                if card.ability.extra.position == 25 or card.ability.extra.position == 32 or (card.ability.extra.position >= 36 and card.ability.extra.position < 39) or card.ability.extra.position == 40 then -- Hey!
                     card.ability.extra.emult = card.ability.extra.emult + card.ability.extra.emult_gain
                     return {
-                        xmult = card.ability.extra.xmult,
                         emult = card.ability.extra.emult,
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.PURPLE,
@@ -215,7 +215,7 @@ if Cryptid then
                     card.ability.extra.position = 0
                     return {
                         emult = 5
-                        message = card.ability.extra.lines[41],
+                        message = "why are you even spawning enemies here",
                     }
                 end
             end
