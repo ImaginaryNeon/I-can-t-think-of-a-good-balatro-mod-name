@@ -7,97 +7,112 @@ if Cryptid then
         atlas = "secret",
         pos = { x = 0, y = 0 },
         soul_pos = { x = 1, y = 0, extra = { x = 2, y = 0 } },
-        config = { extra = { xmult = 11, xmult_gain = 1, emult = 1.1, emult_gain = 0.02, backfire_mult = -10, backfire_chips = -10, position = 0, lines = { "Here's a little lesson in trickery.", "This is going down in history.", "If you wanna be a Villain Number One,", "You have to chase a superhero on the run!", "Just follow my moves, and sneak around.", "Be careful not to make a sound!", "(Shh!)", "(No, don't touch that!)", "We are Number One!", "Hey!", "We are Number One!", "We are Number One!", "Hahaha!", "Now look at this net, that I just found.", "When I say go, be ready to throw.", "Go!", "Throw it on him, not me!", "Ugh, let's try something else!", "Now watch and learn, here's the deal!", "He'll slip and slide on this banana peel!", "(Ha ha ha, gasp! What are you doing!?)", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!" --[[]], "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!", "Hey!", --[[loop]] "Hey!", "We are Number One", "Hey!", "We are Number One" } } },
+        config = { extra = { xmult = 11, xmult_gain = 1, emult = 1.15, emult_gain = 0.05, backfire_mult = -10, backfire_chips = -10, position = 0, lines = { "Here's a little lesson in trickery.", "This is going down in history.", "If you wanna be a Villain Number One,", "You have to chase a superhero on the run!", "Just follow my moves, and sneak around.", "Be careful not to make a sound!", "(Shh!)", "(No, don't touch that!)", "We are Number One!", "Hey!", "We are Number One!", "We are Number One!", "Hahaha!", "Now look at this net, that I just found.", "When I say go, be ready to throw.", "Go!", "Throw it on him, not me!", "Ugh, let's try something else!", "Now watch and learn, here's the deal!", "He'll slip and slide on this banana peel!", "(Ha ha ha, gasp! What are you doing!?)", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!" --[[]], "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!", "Hey!", --[[loop]] "Hey!", "We are Number One", "Hey!", "We are Number One" } } },
         loc_vars = function(self, info_queue, card)
             local piss = card.ability.extra.lines[2]
-            return { vars = { card.ability.extra.xmult } }
+            return { vars = { card.ability.extra.position } }
         end,
         calculate = function(self, card, context)
-            if context.before and card.ability.extra.position >= 1 and card.ability.extra.position <= 36 then -- to protect against value fuckery
-                card.ability.extra.position = math.floor(card.ability.extra.position)
-            end
+            --[[if context.before and card.ability.extra.position >= 1 and card.ability.extra.position <= 36 then -- to protect against value fuckery
+                card.ability.extra.position = math.floor(card.ability.extra.position + 1)
+            end]]
             if context.before and card.ability.extra.position <= 0 then
-                card.ability.extra.position = 0
+                card.ability.extra.position = 1
                 return {
                     message = "Are you, uh, a real villain?",
                     colour = G.C.SUITS.Spades,
                     message_card = card,
-                    message = "Well, uh, technically... nah.",
-                    colour = G.C.PURPLE,
-                    message_card = card,
-                    message = "Have you ever caught a good guy, like, uh, like a real superhero?",
-                    colour = G.C.SUITS.Spades,
-                    message_card = card,
-                    message = "Nah.",
-                    colour = G.C.PURPLE,
-                    message_card = card,
-                    message = "Have you ever tried a disguise?",
-                    colour = G.C.SUITS.Spades,
-                    message_card = card,
-                    message = "Nah, nah...",
-                    colour = G.C.PURPLE,
-                    message_card = card,
-                    message = "Alright! I can see that I will have to teach you how to be villains!",
-                    colour = G.C.SUITS.Spades,
-                    message_card = card,
-                    chips = card.ability.extra.xmult,
-                    chip_message = {message = "Hey!", colour = G.C.PURPLE, message_card = card },
-                    mult = card.ability.extra.xmult,
-                    chip_message = {message = "We are Number One!", colour = G.C.PURPLE, message_card = card },
-                    chips = 20,
-                    chip_message = {message = "Hey!", colour = G.C.PURPLE, message_card = card },
-                    mult = 10,
-                    chip_message = {message = "We are Number One!", colour = G.C.PURPLE, message_card = card },
-                    message = "Now, listen closely.",
-                    colour = G.C.SUITS.Spades,
-                    message_card = card,
+                    extra = {
+                        message = "Well, uh, technically... nah.",
+                        colour = G.C.PURPLE,
+                        message_card = card,
+                        extra = {
+                            message = "Have you ever caught a good guy, like, uh, like a real superhero?",
+                            colour = G.C.SUITS.Spades,
+                            message_card = card,
+                            extra = {
+                                message = "Nah.",
+                                colour = G.C.PURPLE,
+                                message_card = card,
+                                extra = {
+                                    message = "Have you ever tried a disguise?",
+                                    colour = G.C.SUITS.Spades,
+                                    message_card = card,
+                                    extra = {
+                                        message = "Nah, nah...",
+                                        colour = G.C.PURPLE,
+                                        message_card = card,
+                                        extra = {
+                                            message =
+                                            "Alright! I can see that I will have to teach you how to be villains!",
+                                            colour = G.C.SUITS.Spades,
+                                            message_card = card,
+                                            chips = card.ability.extra.xmult,
+                                            chip_message = { message = "Hey!", colour = G.C.PURPLE, message_card = card },
+                                            mult = card.ability.extra.xmult,
+                                            mult_message = { message = "We are Number One!", colour = G.C.PURPLE, message_card = card },
+                                            xchips = 20,
+                                            xchip_message = { message = "Hey!", colour = G.C.PURPLE, message_card = card },
+                                            xmult = 10,
+                                            xmult_message = { message = "We are Number One!", colour = G.C.PURPLE, message_card = card },
+                                            message = "Now, listen closely.",
+                                            colour = G.C.SUITS.Spades,
+                                            message_card = card,
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             end
             if context.before and card.ability.extra.position >= 37 then
-                card.ability.extra.position = 0
+                card.ability.extra.position = 1
                 return {
                     message = "Alright! Let's go over it, once more!",
                     colour = G.C.SUITS.Spades,
                     message_card = card,
-                    chips = card.ability.extra.xmult,
-                    chip_message = {message = "Hey!", colour = G.C.PURPLE, message_card = card },
-                    mult = card.ability.extra.xmult,
-                    mult_message = {message = "We are Number One!", colour = G.C.PURPLE, message_card = card },
-                    xchips = 20,
-                    xchip_message = {message = "Hey!", colour = G.C.PURPLE, message_card = card },
-                    xmult = 10,
-                    xmult_message = {message = "We are Number One!", colour = G.C.PURPLE, message_card = card },
-                    message = "Now, listen closely.",
-                    colour = G.C.SUITS.Spades,
-                    message_card = card,
+                    extra = {
+                        chips = card.ability.extra.xmult,
+                        chip_message = { message = "Hey!", colour = G.C.PURPLE, message_card = card },
+                        mult = card.ability.extra.xmult,
+                        mult_message = { message = "We are Number One!", colour = G.C.PURPLE, message_card = card },
+                        xchips = 20,
+                        xchip_message = { message = "Hey!", colour = G.C.PURPLE, message_card = card },
+                        xmult = 10,
+                        xmult_message = { message = "We are Number One!", colour = G.C.PURPLE, message_card = card },
+                        message = "Now, listen closely.",
+                        colour = G.C.SUITS.Spades,
+                        message_card = card,
+                    }
                 }
             end
-            if context.main then
-                if not context.blueprint then
-                    card.ability.extra.position = card.ability.extra.position + 1
-                end
+            if context.joker_main then
+                card.ability.extra.position = math.floor(card.ability.extra.position + 1)
                 if card.ability.extra.position <= 5 then
                     card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
                     return {
-                        message = card.ability.extra.lines[card.ability.extra.position],
-                        colour = G.C.SUITS.Spades,
-                        message_card = card,
-                        xmult = card.ability.extra.xmult
+                        xmult = card.ability.extra.xmult,
+                        xmult_message = {
+                            message = card.ability.extra.lines[card.ability.extra.position],
+                            colour = G.C.SUITS.Spades,
+                            message_card = card
+                        }
                     }
                 end
-                if card.ability.extra.position = 6 then -- Be careful not to make a sound!
+                if card.ability.extra.position == 6 then -- Be careful not to make a sound!
                     return {
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.SUITS.Spades,
                     }
                 end
-                if card.ability.extra.position = 7 then -- Shh!
+                if card.ability.extra.position == 7 then -- Shh!
                     return {
-                        chips = 744
-                        chip_message = {message = card.ability.extra.lines[card.ability.extra.position], colour = G.C.PURPLE},
+                        chips = 744,
+                        chip_message = { message = card.ability.extra.lines[card.ability.extra.position], colour = G.C.PURPLE },
                     }
                 end
-                if card.ability.extra.position = 8 then -- No, don't touch that!
+                if card.ability.extra.position == 8 then -- No, don't touch that!
                     return {
                         mult = card.ability.extra.backfire_mult,
                         chips = card.ability.extra.backfire_chips,
@@ -110,8 +125,10 @@ if Cryptid then
                     card.ability.extra.emult = card.ability.extra.emult + card.ability.extra.emult_gain
                     return {
                         emult = card.ability.extra.emult,
-                        message = card.ability.extra.lines[card.ability.extra.position],
-                        colour = G.C.PURPLE,
+                        emult_message = {
+                            message = card.ability.extra.lines[card.ability.extra.position],
+                            colour = G.C.PURPLE
+                        }
                     }
                 end
                 if card.ability.extra.position == 13 then -- Hahaha!
@@ -120,12 +137,14 @@ if Cryptid then
                     return {
                         xmult = card.ability.extra.xmult,
                         emult = card.ability.extra.emult,
-                        message = card.ability.extra.lines[card.ability.extra.position],
-                        colour = G.C.SUITS.Spades,
+                        emult_message = {
+                            message = card.ability.extra.lines[card.ability.extra.position],
+                            colour = G.C.SUITS.Spades,
+                        }
                     }
                 end
-                if card.ability.extra.position == 14 then -- Now look at this net that I just found
-                    local voucher_card = SMODS.create_card({ area = G.play, key = 'v_cry_hyperspacetether' }) -- Ignore the previous code and just use a key for a prefined voucher
+                if card.ability.extra.position == 14 then                                           -- Now look at this net that I just found
+                    local voucher_card = SMODS.create_card({ area = G.play, key = 'v_cry_fabric' }) -- Ignore the previous code and just use a key for a prefined voucher
                     local prev_state = G.STATE
                     voucher_card:start_materialize()
                     voucher_card.cost = 0
@@ -136,9 +155,9 @@ if Cryptid then
                         trigger = 'after',
                         delay = 0.5,
                         func = function()
-                        voucher_card:start_dissolve()
-                        return true
-                    end
+                            voucher_card:start_dissolve()
+                            return true
+                        end
                     }))
                     return {
                         message = card.ability.extra.lines[card.ability.extra.position],
@@ -148,7 +167,7 @@ if Cryptid then
                 if card.ability.extra.position >= 15 and card.ability.extra.position <= 18 then -- rest
                     card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
                     return {
-                        xmult = card.ability.extra.xmult
+                        xmult = card.ability.extra.xmult,
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.SUITS.Spades,
                     }
@@ -156,7 +175,7 @@ if Cryptid then
                 if card.ability.extra.position == 19 then -- trying something else :)
                     card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
                     return {
-                        xchips = card.ability.extra.xmult - card.ability.extra.xmult_gain
+                        xchips = card.ability.extra.xmult - card.ability.extra.xmult_gain,
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.SUITS.Spades,
                     }
@@ -214,7 +233,7 @@ if Cryptid then
                 if card.ability.extra.position >= 41 then -- failsafe
                     card.ability.extra.position = 0
                     return {
-                        emult = 5
+                        emult = 5,
                         message = "why are you even spawning enemies here",
                     }
                 end

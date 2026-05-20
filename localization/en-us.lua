@@ -250,7 +250,8 @@ return {
             j_neonmod_secret = {
                 name = 'Petrus Putridus',
                 text = {
-                    "{C:spades}Here's a little lesson in trickery."
+                    "{C:spades}Here's a little lesson in trickery.",
+                    "{C:attention}#1#{}"
                 }
             },
 

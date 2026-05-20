@@ -98,7 +98,7 @@ end
 SMODS.Atlas { -- shh
     key = "secret",
     path = "boring_stuff.png",
-    px = 73,
+    px = 71,
     py = 95
 }
 
