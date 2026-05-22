@@ -41,7 +41,7 @@ else
         to_number = to_number or function(x) return x end,
         config = { extra = { repetitions = 1, dollars = 15 } },
         rarity = 3,
-        cost = 8,
+        cost = 10,
         loc_vars = function(self, info_queue, card)
             return {
                 vars = {
@@ -69,7 +69,7 @@ SMODS.Joker {
     to_number = to_number or function(x) return x end,
     config = { extra = { repetitions = 1, dollars = 10, odds = 3, } },
     rarity = 2,
-    cost = 10,
+    cost = 8,
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'neonmod_joyconr')
         return { vars = { card.ability.extra.repetitions, card.ability.extra.dollars, card.ability.extra.repetitions * math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars), numerator, denominator } }
