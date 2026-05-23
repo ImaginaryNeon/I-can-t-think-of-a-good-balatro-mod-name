@@ -250,8 +250,11 @@ return {
             j_neonmod_secret = {
                 name = 'Petrus Putridus',
                 text = {
+                    "Gives the {C:attention}rank{} of",
+                    "every second card held",
+                    "in hand as {X:mult,C:white}XMult{}",
                     "{C:spades}Here's a little lesson in trickery.",
-                    "{C:attention}#1#{}"
+                    "{s:0.8,C:inactive}(Current position: {s:0.8,C:attention}#1#{s:0.8,C:inactive})"
                 }
             },
 

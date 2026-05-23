@@ -163,8 +163,8 @@ SMODS.Joker { -- commented out to avoid issues in the repo
     loc_vars = function(self, info_queue, card)
         local chips = card.ability.extra.mult * card.ability.extra.max_speed
         local fastness = math.floor(card.ability.extra.max_speed * 100) / 100
-        if not fastness or not chips >= 0 then
-            return { vars = { "Recalibrating...", "Recalibrating..." } }
+        if not fastness or not (chips > 0) then
+            return { vars = { "0", "Recalibrating..." } }
         else
             return { vars = { chips, fastness } }
         end

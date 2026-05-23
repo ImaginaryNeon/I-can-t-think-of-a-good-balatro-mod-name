@@ -7,15 +7,12 @@ if Cryptid then
         atlas = "secret",
         pos = { x = 0, y = 0 },
         soul_pos = { x = 1, y = 0, extra = { x = 2, y = 0 } },
-        config = { extra = { xmult = 11, xmult_gain = 1, emult = 1.15, emult_gain = 0.05, backfire_mult = -10, backfire_chips = -10, position = 0, lines = { "Here's a little lesson in trickery.", "This is going down in history.", "If you wanna be a Villain Number One,", "You have to chase a superhero on the run!", "Just follow my moves, and sneak around.", "Be careful not to make a sound!", "(Shh!)", "(No, don't touch that!)", "We are Number One!", "Hey!", "We are Number One!", "We are Number One!", "Hahaha!", "Now look at this net, that I just found.", "When I say go, be ready to throw.", "Go!", "Throw it on him, not me!", "Ugh, let's try something else!", "Now watch and learn, here's the deal!", "He'll slip and slide on this banana peel!", "(Ha ha ha, gasp! What are you doing!?)", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!" --[[]], "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!", "Hey!", --[[loop]] "Hey!", "We are Number One", "Hey!", "We are Number One" } } },
+        config = { extra = { xmult = 11, xmult_gain = 1, backfire_mult = -10, backfire_chips = -10, position = 0, alternating = true, lines = { "Here's a little lesson in trickery.", "This is going down in history.", "If you wanna be a Villain Number One,", "You have to chase a superhero on the run!", "Just follow my moves, and sneak around.", "Be careful not to make a sound!", "(Shh!)", "(No, don't touch that!)", "We are Number One!", "Hey!", "We are Number One!", "We are Number One!", "Hahaha!", "Now look at this net, that I just found.", "When I say go, be ready to throw.", "Go!", "Throw it on him, not me!", "Ugh, let's try something else!", "Now watch and learn, here's the deal!", "He'll slip and slide on this banana peel!", "(Ha ha ha, gasp! What are you doing!?)", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!" --[[]], "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!", "Hey!", --[[loop]] "Hey!", "We are Number One", "Hey!", "We are Number One" } } },
         loc_vars = function(self, info_queue, card)
             local piss = card.ability.extra.lines[2]
             return { vars = { card.ability.extra.position } }
         end,
         calculate = function(self, card, context)
-            --[[if context.before and card.ability.extra.position >= 1 and card.ability.extra.position <= 36 then -- to protect against value fuckery
-                card.ability.extra.position = math.floor(card.ability.extra.position + 1)
-            end]]
             if context.individual and context.cardarea == G.play and context.other_card == context.scoring_hand[1] and card.ability.extra.position <= 0 then
                 card.ability.extra.position = 1
                 return {
@@ -55,9 +52,11 @@ if Cryptid then
                                             xchip_message = { message = "Hey!", colour = G.C.PURPLE, message_card = card },
                                             xmult = 10,
                                             xmult_message = { message = "We are Number One!", colour = G.C.PURPLE, message_card = card },
-                                            message = "Now, listen closely.",
-                                            colour = G.C.SUITS.Spades,
-                                            message_card = card,
+                                            extra = {
+                                                message = "Now, listen closely.",
+                                                colour = G.C.SUITS.Spades,
+                                                message_card = card,
+                                            }
                                         }
                                     }
                                 }
@@ -87,17 +86,36 @@ if Cryptid then
                     }
                 }
             end
+            if context.individual and context.cardarea == G.hand and not context.end_of_round then
+                if context.other_card == G.hand.cards[1] then
+                    card.ability.extra.alternating = false
+                end
+                if card.ability.extra.alternating == true then
+                    card.ability.extra.alternating = false
+                    if context.other_card.debuff then
+                        return {
+                            message = localize('k_debuffed'),
+                            colour = G.C.RED
+                        }
+                    else
+                        if not SMODS.has_no_rank(context.other_card) then
+                            return {
+                                xmult = context.other_card:get_id()
+                            }
+                        end
+                    end
+                else
+                    card.ability.extra.alternating = true
+                end
+            end
             if context.joker_main then
                 card.ability.extra.position = math.floor(card.ability.extra.position + 1)
                 if card.ability.extra.position <= 5 then
-                    card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
                     return {
-                        xmult = card.ability.extra.xmult,
-                        xmult_message = {
-                            message = card.ability.extra.lines[card.ability.extra.position],
-                            colour = G.C.SUITS.Spades,
-                            message_card = card
-                        }
+                        message = card.ability.extra.lines[card.ability.extra.position],
+                        colour = G.C.SUITS.Spades,
+                        message_card = card
+                        --}
                     }
                 end
                 if card.ability.extra.position == 6 then -- Be careful not to make a sound!
@@ -116,31 +134,22 @@ if Cryptid then
                     return {
                         mult = card.ability.extra.backfire_mult,
                         chips = card.ability.extra.backfire_chips,
-                        money = 5,
+                        --money = 5,
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.SUITS.Spades,
                     }
                 end
                 if card.ability.extra.position > 8 and card.ability.extra.position <= 12 then -- We are Number One!
-                    card.ability.extra.emult = card.ability.extra.emult + card.ability.extra.emult_gain
                     return {
-                        emult = card.ability.extra.emult,
-                        emult_message = {
-                            message = card.ability.extra.lines[card.ability.extra.position],
-                            colour = G.C.PURPLE
-                        }
+                        message = card.ability.extra.lines[card.ability.extra.position],
+                        colour = G.C.PURPLE
+                        --}
                     }
                 end
                 if card.ability.extra.position == 13 then -- Hahaha!
-                    card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
-                    card.ability.extra.emult = card.ability.extra.emult + card.ability.extra.emult_gain
                     return {
-                        xmult = card.ability.extra.xmult,
-                        emult = card.ability.extra.emult,
-                        emult_message = {
-                            message = card.ability.extra.lines[card.ability.extra.position],
-                            colour = G.C.SUITS.Spades,
-                        }
+                        message = card.ability.extra.lines[card.ability.extra.position],
+                        colour = G.C.SUITS.Spades,
                     }
                 end
                 if card.ability.extra.position == 14 then                                           -- Now look at this net that I just found
@@ -165,17 +174,13 @@ if Cryptid then
                     }
                 end
                 if card.ability.extra.position >= 15 and card.ability.extra.position <= 18 then -- rest
-                    card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
                     return {
-                        xmult = card.ability.extra.xmult,
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.SUITS.Spades,
                     }
                 end
                 if card.ability.extra.position == 19 then -- trying something else :)
-                    card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
                     return {
-                        xchips = card.ability.extra.xmult - card.ability.extra.xmult_gain,
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.SUITS.Spades,
                     }
@@ -205,27 +210,19 @@ if Cryptid then
                     }
                 end
                 if card.ability.extra.position == 22 or card.ability.extra.position == 23 or card.ability.extra.position == 26 or card.ability.extra.position == 27 or card.ability.extra.position == 29 or card.ability.extra.position == 30 or card.ability.extra.position == 33 or card.ability.extra.position == 34 then -- Ba-ba-biddly-ba-ba-ba-ba, ba-ba-ba-ba-ba-ba-ba
-                    card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
                     return {
-                        xmult = card.ability.extra.xmult,
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.PURPLE,
                     }
                 end
                 if card.ability.extra.position == 24 or card.ability.extra.position == 28 or card.ability.extra.position == 31 or card.ability.extra.position == 35 or card.ability.extra.position == 39 then -- We are Number One!
-                    card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
-                    card.ability.extra.emult = card.ability.extra.emult + card.ability.extra.emult_gain
                     return {
-                        xmult = card.ability.extra.xmult,
-                        emult = card.ability.extra.emult,
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.PURPLE,
                     }
                 end
                 if card.ability.extra.position == 25 or card.ability.extra.position == 32 or (card.ability.extra.position >= 36 and card.ability.extra.position < 39) or card.ability.extra.position == 40 then -- Hey!
-                    card.ability.extra.emult = card.ability.extra.emult + card.ability.extra.emult_gain
                     return {
-                        emult = card.ability.extra.emult,
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.PURPLE,
                     }
