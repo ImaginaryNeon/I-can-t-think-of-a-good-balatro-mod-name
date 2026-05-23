@@ -16,7 +16,7 @@ if Cryptid then
             --[[if context.before and card.ability.extra.position >= 1 and card.ability.extra.position <= 36 then -- to protect against value fuckery
                 card.ability.extra.position = math.floor(card.ability.extra.position + 1)
             end]]
-            if context.before and card.ability.extra.position <= 0 then
+            if context.individual and context.cardarea == G.play and context.other_card == context.scoring_hand[1] and card.ability.extra.position <= 0 then
                 card.ability.extra.position = 1
                 return {
                     message = "Are you, uh, a real villain?",
@@ -66,7 +66,7 @@ if Cryptid then
                     }
                 }
             end
-            if context.before and card.ability.extra.position >= 37 then
+            if context.individual and context.cardarea == G.play and context.other_card == context.scoring_hand[1] and card.ability.extra.position >= 37 then
                 card.ability.extra.position = 1
                 return {
                     message = "Alright! Let's go over it, once more!",
@@ -239,6 +239,6 @@ if Cryptid then
                 end
             end
         end,
-        in_pool = function(self, args) return false end
+        --        in_pool = function(self, args) return false end
     }
 end
