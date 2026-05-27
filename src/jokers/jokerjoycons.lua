@@ -202,7 +202,7 @@ SMODS.Joker { -- commented out to avoid issues in the repo
                 card.ability.extra.max_speed = card.ability.extra.speeds[value]
             end
         end
-        print("pos_X = " .. math.floor(G.CURSOR.T.x) .. ", pos_Y = " .. math.floor(G.CURSOR.T.y))
+        --[[print("pos_X = " .. math.floor(G.CURSOR.T.x) .. ", pos_Y = " .. math.floor(G.CURSOR.T.y))
         print("v_X = " ..
             math.floor(((G.CURSOR.T.x or 0) - (oldpos.x or 0)) / ((#card.ability.extra.positions_x or 20) - 1) * 100) /
             100 ..
@@ -211,10 +211,10 @@ SMODS.Joker { -- commented out to avoid issues in the repo
             100)
         print("speed = " .. math.floor(card.ability.extra.speed * 1000) / 1000)
         print("Max Speed = " .. math.floor(card.ability.extra.max_speed * 1000) / 1000)
-        print("Chips = " .. math.floor(card.ability.extra.max_speed * card.ability.extra.mult))
+        print("Chips = " .. math.floor(card.ability.extra.max_speed * card.ability.extra.mult))]]
     end,
     calculate = function(self, card, context)
-        if context.main then
+        if context.joker_main then
             card.ability.extra.speed_scoring = math.floor((card.ability.extra.max_speed or 0) * 100) / 100
             return {
                 chips = card.ability.extra.mult * card.ability.extra.speed_scoring
