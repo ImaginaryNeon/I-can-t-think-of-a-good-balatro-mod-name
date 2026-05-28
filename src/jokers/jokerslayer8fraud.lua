@@ -130,7 +130,7 @@ SMODS.Joker {
     cost = 8,
     atlas = "jonklers",
     pos = { x = 0, y = 3 },
-    config = { extra = { xmult = 1, xmult_mod = 0.1, odds = 4 } },
+    config = { extra = { xmult = 1, xmult_mod = 0.2, odds = 4 } },
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'finalflight')
         return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod, numerator, denominator } }
