@@ -2,7 +2,7 @@ SMODS.Joker {
     key = 'licensetomaim',
     atlas = 'jonklers',
     pos = { x = 2, y = 0 },
-    config = { extra = { odds = 4 } },
+    config = { extra = { odds = 3 } },
     rarity = 2,
     cost = 6,
     loc_vars = function(self, info_queue, card)
