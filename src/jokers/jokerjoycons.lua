@@ -150,15 +150,15 @@ SMODS.Joker {
         end
     end
 }
-SMODS.Joker { -- commented out to avoid issues in the repo
+SMODS.Joker { -- To-do: fix chip message
     key = 'Wiimote',
     atlas = 'jonklers',
     pos = {
         x = 3,
         y = 0
     },
-    rarity = 2,
-    cost = 8,
+    rarity = 1,
+    cost = 5,
     config = { extra = { timer = 0, positions_x = {}, positions_y = {}, speeds = {}, speed = 0, max_speed = 0, speed_scoring = 0, mult = 75 } },
     loc_vars = function(self, info_queue, card)
         local chips = card.ability.extra.mult * card.ability.extra.max_speed
