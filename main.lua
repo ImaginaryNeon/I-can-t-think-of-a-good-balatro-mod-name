@@ -95,6 +95,13 @@ function Neonmod.perform_operations(val1, op, val2)
     end
 end
 
+SMODS.Atlas { -- shh
+    key = "secret",
+    path = "boring_stuff.png",
+    px = 71,
+    py = 95
+}
+
 function Neonmod.modify_joker_values(card, modifytbl, exclusions, ignoreimmutable, nodeckeffects)
     if not card or not modifytbl or (card.config.center.immutable and not ignoreimmutable) then return end
     -- local cardwasindeck = card.added_to_deck

@@ -150,21 +150,21 @@ SMODS.Joker {
         end
     end
 }
---[[SMODS.Joker {
+SMODS.Joker { -- To-do: fix chip message
     key = 'Wiimote',
     atlas = 'jonklers',
     pos = {
         x = 3,
         y = 0
     },
-    rarity = 2,
-    cost = 8,
+    rarity = 1,
+    cost = 5,
     config = { extra = { timer = 0, positions_x = {}, positions_y = {}, speeds = {}, speed = 0, max_speed = 0, speed_scoring = 0, mult = 75 } },
     loc_vars = function(self, info_queue, card)
         local chips = card.ability.extra.mult * card.ability.extra.max_speed
         local fastness = math.floor(card.ability.extra.max_speed * 100) / 100
-        if not fastness or not chips then
-            return { vars = { "Recalibrating...", "Recalibrating..." } }
+        if not fastness or not (chips > 0) then
+            return { vars = { "0", "Recalibrating..." } }
         else
             return { vars = { chips, fastness } }
         end
@@ -202,7 +202,7 @@ SMODS.Joker {
                 card.ability.extra.max_speed = card.ability.extra.speeds[value]
             end
         end
-        print("pos_X = " .. math.floor(G.CURSOR.T.x) .. ", pos_Y = " .. math.floor(G.CURSOR.T.y))
+        --[[print("pos_X = " .. math.floor(G.CURSOR.T.x) .. ", pos_Y = " .. math.floor(G.CURSOR.T.y))
         print("v_X = " ..
             math.floor(((G.CURSOR.T.x or 0) - (oldpos.x or 0)) / ((#card.ability.extra.positions_x or 20) - 1) * 100) /
             100 ..
@@ -211,21 +211,14 @@ SMODS.Joker {
             100)
         print("speed = " .. math.floor(card.ability.extra.speed * 1000) / 1000)
         print("Max Speed = " .. math.floor(card.ability.extra.max_speed * 1000) / 1000)
-        print("Chips = " .. math.floor(card.ability.extra.max_speed * card.ability.extra.mult))
-        --[[if not card.ability.extra.max_speed then
-            print("Recalibrating...")
-        end]]
---[[
+        print("Chips = " .. math.floor(card.ability.extra.max_speed * card.ability.extra.mult))]]
     end,
     calculate = function(self, card, context)
-        if context.before then
-            card.ability.extra.speed_scoring = math.floor(card.ability.extra.max_speed * 100) / 100
-        end
-        if context.main then
+        if context.joker_main then
+            card.ability.extra.speed_scoring = math.floor((card.ability.extra.max_speed or 0) * 100) / 100
             return {
                 chips = card.ability.extra.mult * card.ability.extra.speed_scoring
             }
         end
     end
 }
-]]
