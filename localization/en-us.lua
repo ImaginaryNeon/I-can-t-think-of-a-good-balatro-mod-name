@@ -263,28 +263,6 @@ return {
             j_neonmod_secret = {
                 name = 'Petrus Putridus',
                 text = {
-<<<<<<< Updated upstream
-                    "Gains the {C:attention}rank{} of",
-                    "every second card held",
-                    "in hand as {B:1,C:white}X#3#{}",
-                    "{C:spades}Here's a little lesson in trickery.",
-                    "{C:inactive}(Currently {B:1,C:white}X#2#{C:inactive} #3#)",
-                    " ",
-                    "{s:0.8,C:inactive}May have different effects based on this{}",
-                    "{s:0.8,C:inactive}Joker's position within the song's lyrics{}",
-                    "{s:0.8,C:inactive}(Current position: {s:0.8,C:attention}#1#{s:0.8,C:inactive})"
-                }
-            },
-            j_neonmod_secret_old = {
-                name = 'Petrus Putridus (old)',
-                text = {
-                    "Gives the {C:attention}rank{} of",
-                    "every second card held",
-                    "in hand as {X:mult,C:white}XMult{}",
-                    "{C:spades}Here's a little lesson in trickery.",
-                    "{C:inactive}(Currently {s:0.8,C:attention}#1#{s:0.8,C:inactive})"
-                    "{s:0.8,C:inactive}(Current position: {s:0.8,C:attention}#1#{s:0.8,C:inactive})"
-=======
                     "Gains {C:attention}one-tenth{} of the",
                     "{C:attention}rank{} of every second card",
                     "held in hand as {X:dark_edition,C:white}^#3#{}",
@@ -292,7 +270,6 @@ return {
                     "{s:0.8,C:inactive}May have different effects",
                     "{s:0.8,C:inactive}based on the lyrics.",
                     "{s:0.8,C:inactive}(Current position: {s:0.8,C:spades}#1#{s:0.8,C:inactive})"
->>>>>>> Stashed changes
                 }
             },
             j_neonmod_loremipsum = {
