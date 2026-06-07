@@ -148,13 +148,8 @@ if Cryptid then
                 if card.ability.extra.position > 8 and card.ability.extra.position <= 12 then -- We are Number One!
                     return {
                         message = card.ability.extra.lines[card.ability.extra.position],
-<<<<<<< Updated upstream
-                        colour = G.C.PURPLE
-=======
                         colour = G.C.PURPLE,
                         emult = card.ability.extra.emult
-                        --}
->>>>>>> Stashed changes
                     }
                 end
                 if card.ability.extra.position == 13 then -- Hahaha!
@@ -258,4 +253,4 @@ if Cryptid then
         end,
         --        in_pool = function(self, args) return false end
     }
-]]
+end
