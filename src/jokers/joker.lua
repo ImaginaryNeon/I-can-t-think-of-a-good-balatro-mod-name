@@ -7,10 +7,11 @@ SMODS.Joker {
     },
     config = {
         extra = {
-            chips = 200,
-            mult = -5
+            chips = 150,
+            mult = -4
         }
     },
+    attributes = { 'chips', },
     rarity = 1,
     cost = 2,
     loc_vars = function(self, info_queue, card)
@@ -43,6 +44,7 @@ SMODS.Joker {
             repetitions = 1,
         }
     },
+    attributes = { 'retrigger', 'rank', 'two', 'five', 'eight' },
     rarity = 2,
     cost = 8,
     loc_vars = function(self, info_queue, card)
@@ -77,9 +79,10 @@ SMODS.Joker {
     config = { extra = {
         multper = 1,
         mult = 0,
-        chipsper = 1,
+        chipsper = 0.5,
         chips = 0, }
     },
+    attributes = { 'chips', 'mult', 'joker' },
     rarity = 1,
     cost = 5,
     loc_vars = function(self, info_queue, card)
@@ -140,6 +143,7 @@ SMODS.Joker {
         y = 3
     },
     config = { extra = { chips = 0, chip_gain = 1 } },
+    attributes = { 'chips', 'scaling' },
     rarity = 1,
     cost = 4,
     loc_vars = function(self, info_queue, card)

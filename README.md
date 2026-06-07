@@ -1,9 +1,13 @@
-This is a Balatro mod made by a guy with a bunch of dumb ideas and no idea how to execute them.
+This is a Balatro mod made by a guy with a bunch of dumb ideas and a vague idea of how to execute them.
 
+<<<<<<< Updated upstream
 Requires [Lovely](https://github.com/ethangreen-dev/lovely-injector), Steammodded, and Amulet.
+=======
+Requires [Lovely](https://github.com/ethangreen-dev/lovely-injector), [Steammodded](https://github.com/Steamodded/smods), and [Amulet](https://github.com/frostice482/amulet), for good measure.
+>>>>>>> Stashed changes
 
 Contains:
-- 23 Jokers (One of which doesn't work currently, and will soon be reworked)
+- A bunch of new Jokers
 - 1 new Boss Blind
 - 1 Deck, plus an accompanying Sleeve, if CardSleeves is enabled.
 

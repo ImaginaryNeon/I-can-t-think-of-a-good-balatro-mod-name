@@ -7,6 +7,7 @@ if Cryptid then
         atlas = "secret",
         pos = { x = 0, y = 0 },
         soul_pos = { x = 1, y = 0, extra = { x = 2, y = 0 } },
+<<<<<<< Updated upstream
         config = { extra = { xmult = 11, backfire_mult = -10, backfire_chips = -10, position = 0, alternating = true, lines = { "Here's a little lesson in trickery.", "This is going down in history.", "If you wanna be a Villain Number One,", "You have to chase a superhero on the run!", "Just follow my moves, and sneak around.", "Be careful not to make a sound!", "(Shh!)", "(No, don't touch that!)", "We are Number One!", "Hey!", "We are Number One!", "We are Number One!", "Hahaha!", "Now look at this net, that I just found.", "When I say go, be ready to throw.", "Go!", "Throw it on him, not me!", "Ugh, let's try something else!", "Now watch and learn, here's the deal!", "He'll slip and slide on this banana peel!", "(Ha ha ha, gasp! What are you doing!?)", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!", "Hey!", --[[loop]] "Hey!", "We are Number One", "Hey!", "We are Number One" } } },
         loc_vars = function(self, info_queue, card)
             local color = HEX('fe5f55')
@@ -282,9 +283,17 @@ SMODS.Joker {
         pos = { x = 0, y = 0 },
         soul_pos = { x = 1, y = 0, extra = { x = 2, y = 0 } },
         config = { extra = { xmult = 11, xmult_gain = 1, backfire_mult = -10, backfire_chips = -10, position = 0, alternating = true, lines = { "Here's a little lesson in trickery.", "This is going down in history.", "If you wanna be a Villain Number One,", "You have to chase a superhero on the run!", "Just follow my moves, and sneak around.", "Be careful not to make a sound!", "(Shh!)", "(No, don't touch that!)", "We are Number One!", "Hey!", "We are Number One!", "We are Number One!", "Hahaha!", "Now look at this net, that I just found.", "When I say go, be ready to throw.", "Go!", "Throw it on him, not me!", "Ugh, let's try something else!", "Now watch and learn, here's the deal!", "He'll slip and slide on this banana peel!", "(Ha ha ha, gasp! What are you doing!?)", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!", "Hey!", "Hey!", "We are Number One", "Hey!", "We are Number One" } } },
+=======
+        config = { extra = { emult = 1, backfire_mult = -10, backfire_chips = -50, position = 0, alternating = true, lines = { "Here's a little lesson in trickery.", "This is going down in history.", "If you wanna be a Villain Number One,", "You have to chase a superhero on the run!", "Just follow my moves, and sneak around.", "Be careful not to make a sound!", "(Shh!)", "(No, don't touch that!)", "We are Number One!", "Hey!", "We are Number One!", "We are Number One!", "Hahaha!", "Now look at this net, that I just found.", "When I say go, be ready to throw.", "Go!", "Throw it on him, not me!", "Ugh, let's try something else!", "Now watch and learn, here's the deal!", "He'll slip and slide on this banana peel!", "(Ha ha ha, gasp! What are you doing!?)", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!" --[[]], "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!", "Ba-ba-biddly-ba-ba-ba-ba,", "Ba-ba-ba-ba-ba-ba-ba!", "We are Number One!", "Hey!", "Hey!", --[[loop]] "Hey!", "We are Number One", "Hey!", "We are Number One" } }, immutable = { markiplier = 0.1 } },
+>>>>>>> Stashed changes
         loc_vars = function(self, info_queue, card)
-            local piss = card.ability.extra.lines[2]
-            return { vars = { card.ability.extra.position } }
+            local color = HEX('f96657')
+            local type = 'Mult'
+            if card.ability.extra.position == 18 or card.ability.extra.position == 19 then
+                color = HEX('4595fd')
+                type = 'Chips'
+            end
+            return { vars = { card.ability.extra.position, card.ability.extra.emult, type, colours = { color } } }
         end,
         calculate = function(self, card, context)
             if context.individual and context.cardarea == G.play and context.other_card == context.scoring_hand[1] and card.ability.extra.position <= 0 then
@@ -318,9 +327,9 @@ SMODS.Joker {
                                             "Alright! I can see that I will have to teach you how to be villains!",
                                             colour = G.C.SUITS.Spades,
                                             message_card = card,
-                                            chips = card.ability.extra.xmult,
+                                            chips = card.ability.extra.emult,
                                             chip_message = { message = "Hey!", colour = G.C.PURPLE, message_card = card },
-                                            mult = card.ability.extra.xmult,
+                                            mult = card.ability.extra.emult,
                                             mult_message = { message = "We are Number One!", colour = G.C.PURPLE, message_card = card },
                                             xchips = 20,
                                             xchip_message = { message = "Hey!", colour = G.C.PURPLE, message_card = card },
@@ -346,9 +355,9 @@ SMODS.Joker {
                     colour = G.C.SUITS.Spades,
                     message_card = card,
                     extra = {
-                        chips = card.ability.extra.xmult,
+                        chips = card.ability.extra.emult,
                         chip_message = { message = "Hey!", colour = G.C.PURPLE, message_card = card },
-                        mult = card.ability.extra.xmult,
+                        mult = card.ability.extra.emult,
                         mult_message = { message = "We are Number One!", colour = G.C.PURPLE, message_card = card },
                         xchips = 20,
                         xchip_message = { message = "Hey!", colour = G.C.PURPLE, message_card = card },
@@ -373,9 +382,8 @@ SMODS.Joker {
                         }
                     else
                         if not SMODS.has_no_rank(context.other_card) then
-                            return {
-                                xmult = context.other_card:get_id()
-                            }
+                            card.ability.extra.emult = card.ability.extra.emult +
+                                (card.ability.immutable.markiplier * context.other_card:get_id())
                         end
                     end
                 else
@@ -388,7 +396,8 @@ SMODS.Joker {
                     return {
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.SUITS.Spades,
-                        message_card = card
+                        message_card = card,
+                        emult = card.ability.extra.emult
                         --}
                     }
                 end
@@ -396,6 +405,7 @@ SMODS.Joker {
                     return {
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.SUITS.Spades,
+                        emult = card.ability.extra.emult
                     }
                 end
                 if card.ability.extra.position == 7 then -- Shh!
@@ -416,13 +426,20 @@ SMODS.Joker {
                 if card.ability.extra.position > 8 and card.ability.extra.position <= 12 then -- We are Number One!
                     return {
                         message = card.ability.extra.lines[card.ability.extra.position],
+<<<<<<< Updated upstream
                         colour = G.C.PURPLE
+=======
+                        colour = G.C.PURPLE,
+                        emult = card.ability.extra.emult
+                        --}
+>>>>>>> Stashed changes
                     }
                 end
                 if card.ability.extra.position == 13 then -- Hahaha!
                     return {
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.SUITS.Spades,
+                        emult = card.ability.extra.emult
                     }
                 end
                 if card.ability.extra.position == 14 then                                           -- Now look at this net that I just found
@@ -444,18 +461,21 @@ SMODS.Joker {
                     return {
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.SUITS.Spades,
+                        emult = card.ability.extra.emult
                     }
                 end
-                if card.ability.extra.position >= 15 and card.ability.extra.position <= 18 then -- rest
+                if card.ability.extra.position >= 15 and card.ability.extra.position <= 17 then -- rest
                     return {
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.SUITS.Spades,
+                        emult = card.ability.extra.emult
                     }
                 end
-                if card.ability.extra.position == 19 then -- trying something else :)
+                if card.ability.extra.position == 18 or card.ability.extra.position == 19 then -- trying something else :)
                     return {
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.SUITS.Spades,
+                        echips = card.ability.extra.emult
                     }
                 end
                 if card.ability.extra.position == 20 then -- He'll slip and slide on this banana peel!
@@ -480,24 +500,29 @@ SMODS.Joker {
                     end
                     return {
                         message = card.ability.extra.lines[card.ability.extra.position],
+                        colour = G.C.SUITS.Spades,
+                        emult = card.ability.extra.emult
                     }
                 end
                 if card.ability.extra.position == 22 or card.ability.extra.position == 23 or card.ability.extra.position == 26 or card.ability.extra.position == 27 or card.ability.extra.position == 29 or card.ability.extra.position == 30 or card.ability.extra.position == 33 or card.ability.extra.position == 34 then -- Ba-ba-biddly-ba-ba-ba-ba, ba-ba-ba-ba-ba-ba-ba
                     return {
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.PURPLE,
+                        emult = card.ability.extra.emult
                     }
                 end
                 if card.ability.extra.position == 24 or card.ability.extra.position == 28 or card.ability.extra.position == 31 or card.ability.extra.position == 35 or card.ability.extra.position == 39 then -- We are Number One!
                     return {
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.PURPLE,
+                        emult = card.ability.extra.emult
                     }
                 end
                 if card.ability.extra.position == 25 or card.ability.extra.position == 32 or (card.ability.extra.position >= 36 and card.ability.extra.position < 39) or card.ability.extra.position == 40 then -- Hey!
                     return {
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.PURPLE,
+                        emult = card.ability.extra.emult
                     }
                 end
                 if card.ability.extra.position >= 41 then -- failsafe

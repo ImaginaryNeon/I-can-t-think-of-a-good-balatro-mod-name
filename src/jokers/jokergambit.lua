@@ -41,12 +41,13 @@ SMODS.Joker {
     pos = { x = 2, y = 2 },
     pixel_size = { w = 71, h = 71 },
     display_size = { w = 71 * 1.2, h = 71 * 1.2 },
+    attributes = { 'xmult', 'scaling', 'economy', 'food' },
     config = { extra = { fee = 5, xmult_gain = 0.15, xmult = 1, total_spent = 0 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.fee, card.ability.extra.xmult_gain, card.ability.extra.xmult, card.ability.extra.total_spent } }
     end,
     calculate = function(self, card, context)
-        if context.ante_change and context.ante_end then
+        if context.ante_change and context.ante_end and not context.blueprint then
             if G.GAME.dollars >= 2 * card.ability.extra.fee then
                 local numberofredbaronpizzastopurchase = math.floor(G.GAME.dollars / (2 * card.ability.extra.fee))
                 card.ability.extra.xmult = card.ability.extra.xmult +
@@ -73,7 +74,8 @@ SMODS.Joker {
     rarity = 3,
     cost = 20,
     pos = { x = 1, y = 4 },
-    config = { extra = { test = 1 } },
+    config = { extra = { test = 2 } },
+    attributes = { 'xblindsize', 'generation' },
     loc_vars = function(self, info_queue, card)
         local modspool = {}
         local validmodcount = 0
@@ -91,9 +93,43 @@ SMODS.Joker {
                 end
             end
         end
-        return { vars = { validmodcount } }
+        card.ability.extra.test = validmodcount * 2
+        return { vars = { validmodcount, card.ability.extra.test } }
     end,
     calculate = function(self, card, context)
+        if context.setting_blind and not context.blueprint and context.blind.boss and not card.getting_sliced then
+            local validmodcount = 0
+            for k, v in pairs(G.P_CENTER_POOLS.Joker) do
+                if v.mod and not next(SMODS.find_card(v.key)) then
+                    local found = false
+                    for k2, v2 in pairs(modspool) do
+                        if v2 == v.mod.id then
+                            found = true
+                        end
+                    end
+                    if found == false then
+                        table.insert(modspool, v.mod.id)
+                        validmodcount = validmodcount + 1
+                    end
+                end
+            end
+            card.ability.extra.test = validmodcount * 2
+            G.GAME.blind.chips = G.GAME.blind.chips * card.ability.extra.test
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+            G.HUD_blind:recalculate()
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            play_sound("timpani")
+                            delay(0.4)
+                            return true
+                        end,
+                    }))
+                    return true
+                end,
+            }))
+        end
         if context.ante_change and context.ante_end then
             local modspool = {}
             local pooltocollect = {}

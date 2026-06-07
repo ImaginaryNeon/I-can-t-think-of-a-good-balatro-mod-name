@@ -114,6 +114,68 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
+    key = 'cheatcode',
+    atlas = 'jonklers',
+    pos = {
+        x = 5,
+        y = 4
+    },
+    rarity = 1,
+    cost = 4,
+    config = {
+        extra = {
+            chips = 0,
+            chipgain = 30,
+            suits = {}, instruments = true
+        }, immutable = { length = 4 }
+    },
+    loc_vars = function(self, info_queue, card)
+        local suits = G.GAME.current_round.neonmod_cheatcode_cards and
+            table.concat(G.GAME.current_round.neonmod_cheatcode_cards, ', ', 1, card.ability.immutable.length) or
+            "Lamp, Oil, Rope, Bombs"
+        return {
+            vars = { card.ability.extra.chipgain, card.ability.extra.chips, card.ability.immutable.length, suits },
+        }
+    end,
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint and not (#G.hand.cards < card.ability.immutable.length) then
+            local instrument = true
+            for i = 1, math.floor(math.min(#G.hand.cards, card.ability.immutable.length)) do
+                if G.hand.cards[i]:is_suit(G.GAME.current_round.neonmod_cheatcode_cards[i]) then
+                else
+                    instrument = false
+                end
+            end
+            if instrument == true then
+                card.ability.extra.chips = card.ability.extra.chipgain + card.ability.extra.chips
+                return {
+                    message = localize('k_upgrade_ex'),
+                    colour = G.C.CHIPS,
+                }
+            end
+        end
+        if context.joker_main then
+            return {
+                chips = card.ability.extra.chips
+            }
+        end
+    end
+}
+
+local function reset_neonmod_cheatcode()
+    G.GAME.current_round.neonmod_cheatcode_cards = G.GAME.current_round.neonmod_cheatcode_cards or
+        { 'Hearts', 'Diamonds', 'Spades', 'Clubs', 'Hearts', 'Diamonds', 'Spades', 'Clubs', 'Hearts', 'Spades' }
+    for i = 1, 10 do
+        local ancient_card = pseudorandom_element(SMODS.Suits, 'neonmod_konamicode' .. G.GAME.round_resets.ante)
+        G.GAME.current_round.neonmod_cheatcode_cards[i] = ancient_card.key
+    end
+end
+
+function SMODS.current_mod.reset_game_globals(run_start)
+    reset_neonmod_cheatcode()
+end
+
+SMODS.Joker {
     key = "passport",
     blueprint_compat = true,
     rarity = 1,
@@ -121,7 +183,7 @@ SMODS.Joker {
     atlas = "jonklers",
     pos = { x = 1, y = 2 },
     pixel_size = { w = 71, h = 65 },
-    config = { extra = { chips = 0, chip_mod = 12 } },
+    config = { extra = { chips = 0, chip_mod = 6 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chips, card.ability.extra.chip_mod } }
     end,

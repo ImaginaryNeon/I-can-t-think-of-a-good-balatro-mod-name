@@ -225,10 +225,13 @@ return {
             j_neonmod_dark_fountain = {
                 name = 'Dark Fountain',
                 text = {
+                    "{C:red}X#2#{} Boss Blind size",
                     "When Boss Blind defeated,",
                     "creates a random {C:dark_edition}Negative{} Joker",
                     "from every {C:attention}mod{} containing Jokers",
                     "and {C:red}self-destructs{}",
+                    "from every {C:attention}mod{} containing unowned",
+                    "Jokers and {C:red}self-destructs{}",
                     '{C:inactive}(Currently #1# valid mods){}'
                 }
             },
@@ -244,12 +247,25 @@ return {
                 },
                 --[[                unlock = {
                     "{E:1,s:1.3}?????",
-                },
---]]
+                }, --]]
             },
+
+            j_neonmod_cheatcode = {
+                name = 'Cheat Code',
+                text = {
+                    "This Joker gains {C:chips}+#1#{} Chips",
+                    "if the first {C:attention}#3#{} cards in hand",
+                    "follow the pattern listed below.",
+                    "{C:inactive}(#4#){}",
+                    "{C:inactive}(Pattern changes at end of round){}",
+                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
+                }
+            },
+
             j_neonmod_secret = {
                 name = 'Petrus Putridus',
                 text = {
+<<<<<<< Updated upstream
                     "Gains the {C:attention}rank{} of",
                     "every second card held",
                     "in hand as {B:1,C:white}X#3#{}",
@@ -270,6 +286,15 @@ return {
                     "{C:spades}Here's a little lesson in trickery.",
                     "{C:inactive}(Currently {s:0.8,C:attention}#1#{s:0.8,C:inactive})"
                     "{s:0.8,C:inactive}(Current position: {s:0.8,C:attention}#1#{s:0.8,C:inactive})"
+=======
+                    "Gains {C:attention}one-tenth{} of the",
+                    "{C:attention}rank{} of every second card",
+                    "held in hand as {X:dark_edition,C:white}^#3#{}",
+                    "{C:inactive}(Currently {X:dark_edition,C:white}^#2#{C:inactive} #3#)",
+                    "{s:0.8,C:inactive}May have different effects",
+                    "{s:0.8,C:inactive}based on the lyrics.",
+                    "{s:0.8,C:inactive}(Current position: {s:0.8,C:spades}#1#{s:0.8,C:inactive})"
+>>>>>>> Stashed changes
                 }
             },
             j_neonmod_loremipsum = {
