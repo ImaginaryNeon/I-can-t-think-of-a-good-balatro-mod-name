@@ -24,7 +24,8 @@ if Cryptid then
             }
         end,
         calculate = function(self, card, context)
-            if context.repetition and context.cardarea == G.play then
+            if context.repetition and context.cardarea == G.play and (to_number(card.ability.extra.repetitions *
+                    math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))) > 0 then
                 return {
                     repetitions = to_number(card.ability.extra.repetitions *
                         math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))
@@ -53,7 +54,8 @@ else
             }
         end,
         calculate = function(self, card, context)
-            if context.repetition and context.cardarea == G.play then
+            if context.repetition and context.cardarea == G.play and (to_number(card.ability.extra.repetitions *
+                    math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))) > 0 then
                 return {
                     repetitions = to_number(card.ability.extra.repetitions *
                         math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))
@@ -71,11 +73,13 @@ SMODS.Joker {
     rarity = 2,
     cost = 8,
     loc_vars = function(self, info_queue, card)
-        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'neonmod_joyconr')
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds,
+            'neonmod_marksmancoin')
         return { vars = { card.ability.extra.repetitions, card.ability.extra.dollars, card.ability.extra.repetitions * math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars), numerator, denominator } }
     end,
     calculate = function(self, card, context)
-        if context.repetition and context.cardarea == G.play and context.other_card == context.scoring_hand[1] then
+        if context.repetition and context.cardarea == G.play and context.other_card == context.scoring_hand[1] and (to_number(card.ability.extra.repetitions *
+                math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))) > 0 then
             return {
                 repetitions = to_number(card.ability.extra.repetitions *
                     math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))
