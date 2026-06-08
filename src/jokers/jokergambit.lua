@@ -74,8 +74,8 @@ SMODS.Joker {
     rarity = 3,
     cost = 20,
     pos = { x = 1, y = 4 },
-    config = { extra = { test = 2 } },
-    attributes = { 'xblindsize', 'generation' },
+    config = { extra = { test = 2, total_mods = 1 } },
+    attributes = { 'xblindsize', 'generation', 'joker' },
     loc_vars = function(self, info_queue, card)
         local modspool = {}
         local validmodcount = 0
@@ -94,11 +94,13 @@ SMODS.Joker {
             end
         end
         card.ability.extra.test = validmodcount * 2
+        card.ability.extra.total_mods = validmodcount
         return { vars = { validmodcount, card.ability.extra.test } }
     end,
     calculate = function(self, card, context)
         if context.setting_blind and not context.blueprint and context.blind.boss and not card.getting_sliced then
             local validmodcount = 0
+            local modspool = {}
             for k, v in pairs(G.P_CENTER_POOLS.Joker) do
                 if v.mod and not next(SMODS.find_card(v.key)) then
                     local found = false
@@ -114,6 +116,7 @@ SMODS.Joker {
                 end
             end
             card.ability.extra.test = validmodcount * 2
+            card.ability.extra.total_mods = validmodcount
             G.GAME.blind.chips = G.GAME.blind.chips * card.ability.extra.test
             G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
             G.HUD_blind:recalculate()
