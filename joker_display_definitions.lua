@@ -171,3 +171,51 @@ jd_def["j_neonmod_joyconr"] = { -- JoyCon (R)
         card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
     end
 }
+
+local to_number = to_number or function(x) return x end
+
+jd_def["j_neonmod_marksmancoin"] = { -- Marksman Coin
+    retrigger_function = function(playing_card, scoring_hand, held_in_hand, joker_card)
+        if held_in_hand then return 0 end
+        local first_card = scoring_hand and JokerDisplay.calculate_leftmost_card(scoring_hand)
+        return first_card and playing_card == first_card and
+            joker_card.ability.extra * JokerDisplay.calculate_joker_triggers(joker_card) or 0
+    end,
+    text = {
+        { ref_table = "card.joker_display_values", ref_value = "retriggercount", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.FILTER },
+    extra = {
+        {
+            { text = "(" },
+            { ref_table = "card.joker_display_values", ref_value = "odds" },
+            { text = ")" },
+        }
+    },
+    extra_config = { colour = G.C.GREEN, scale = 0.3 },
+    reminder_text = {
+        { text = "(First card)", },
+    },
+    calc_function = function(card)
+        local numerator, denominator = (G.GAME.probabilities.normal or 1), card.ability.extra.odds
+        if SMODS then numerator, denominator = SMODS.get_probability_vars(card, 1, denominator, 'neonmod_marksmancoin') end
+        card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
+        card.joker_display_values.retriggercount = to_number(card.ability.extra.repetitions *
+            math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))
+    end
+}
+
+jd_def["j_neonmod_marksman"] = { -- Marksman Gun
+    retrigger_function = function(playing_card, scoring_hand, held_in_hand, joker_card)
+        if held_in_hand then return 0 end
+        return JokerDisplay.in_scoring(playing_card, scoring_hand) and JokerDisplay.calculate_joker_triggers(joker_card)
+    end,
+    text = {
+        { ref_table = "card.joker_display_values", ref_value = "retriggercount", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.FILTER },
+    calc_function = function(card)
+        card.joker_display_values.retriggercount = to_number(card.ability.extra.repetitions *
+            math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))
+    end
+}
