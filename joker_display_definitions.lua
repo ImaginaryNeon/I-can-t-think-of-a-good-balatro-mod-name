@@ -142,3 +142,32 @@ jd_def["j_neonmod_tcfna"] = { -- The Campaign for North Africa: The Desert War, 
         end
     end
 }
+
+jd_def["j_neonmod_joyconl"] = { -- JoyCon (L)
+    text = {
+        { text = "+" },
+        { ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.CHIPS },
+}
+
+jd_def["j_neonmod_joyconr"] = { -- JoyCon (R)
+    text = {
+        { text = "+" },
+        { ref_table = "card.ability.extra", ref_value = "mult", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.MULT },
+    extra = {
+        {
+            { text = "(" },
+            { ref_table = "card.joker_display_values", ref_value = "odds" },
+            { text = ")" },
+        }
+    },
+    extra_config = { colour = G.C.GREEN, scale = 0.3 },
+    calc_function = function(card)
+        local numerator, denominator = (G.GAME.probabilities.normal or 1), card.ability.extra.odds
+        if SMODS then numerator, denominator = SMODS.get_probability_vars(card, 1, denominator, 'neonmod_joyconr') end
+        card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
+    end
+}

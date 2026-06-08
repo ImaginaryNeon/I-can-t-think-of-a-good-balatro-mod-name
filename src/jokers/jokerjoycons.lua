@@ -60,6 +60,13 @@ SMODS.Joker {
     pixel_size = { w = 24, h = 47 },
     rarity = 2,
     cost = 6,
+    config = {
+        extra = {
+            mult = 0,
+            change = 3,
+            odds = 50,
+        }
+    },
     loc_vars = function(self, info_queue, card)
         if card.area and card.area == G.jokers then
             local other_joker
@@ -70,19 +77,11 @@ SMODS.Joker {
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'neonmod_joyconr')
         return { vars = { card.ability.extra.mult, card.ability.extra.change, numerator, denominator } }
     end,
-    config = {
-        extra = {
-            mult = 0,
-            change = 3,
-            odds = 50,
-        }
-    },
     block_overrides = {
         value = true,  -- blocks modifications to the ref_value
         scalar = true, -- blocks modifications to the scalar_value
         message = true -- blocks modifications to the scaling_message
     },
-
     calculate = function(self, card, context)
         local other_joker = nil
         for i = 1, #G.jokers.cards do
