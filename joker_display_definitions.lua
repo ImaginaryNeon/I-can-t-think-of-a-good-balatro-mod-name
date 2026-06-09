@@ -219,3 +219,132 @@ jd_def["j_neonmod_marksman"] = { -- Marksman Gun
             math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))
     end
 }
+
+jd_def["j_neonmod_cheatcode"] = { -- Cheat Code
+    text = {
+        { text = "+" },
+        { ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.CHIPS },
+    reminder_text = {
+        { ref_table = "card.joker_display_values", ref_value = "suits", scale = 0.25, colour = G.C.WHITE }
+    },
+    calc_function = function(card)
+        card.joker_display_values.suits = G.GAME.current_round.neonmod_cheatcode_cards and
+            table.concat(G.GAME.current_round.neonmod_cheatcode_cards, ', ', 1, 4) or
+            "Lamp, Oil, Rope, Bombs"
+    end
+}
+
+jd_def["j_neonmod_passport"] = { -- Passport
+    text = {
+        { text = "+" },
+        { ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.CHIPS },
+}
+
+jd_def["j_neonmod_Wiimote"] = { -- Wiimote
+    text = {
+        { text = "+" },
+        { ref_table = "card.joker_display_values", ref_value = "chips", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.CHIPS },
+    calc_function = function(card)
+        card.joker_display_values.chips = card.ability.extra.mult * card.ability.extra.max_speed
+        if not card.joker_display_values.chips then
+            card.joker_display_values.chips = 0
+        else
+            if not (card.joker_display_values.chips > 0) then
+                card.joker_display_values.chips = 0
+            end
+        end
+    end
+}
+
+jd_def["j_neonmod_licensetomaim"] = { -- License to Maim
+    extra = {
+        {
+            { text = "(" },
+            { ref_table = "card.joker_display_values", ref_value = "odds" },
+            { text = ")" },
+        }
+    },
+    extra_config = { colour = G.C.GREEN },
+    calc_function = function(card)
+        local numerator, denominator = (G.GAME.probabilities.normal or 1), card.ability.extra.odds
+        if SMODS then numerator, denominator = SMODS.get_probability_vars(card, 1, denominator, 'neonmod_licensetomaim') end
+        card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
+    end
+}
+
+jd_def["j_neonmod_dangeresque"] = { -- Dangeresque, Too?
+    text = {
+        { text = "$" },
+        { ref_table = "card.ability.extra", ref_value = "dollars", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.MONEY },
+    extra = {
+        {
+            { text = "(" },
+            { ref_table = "card.joker_display_values", ref_value = "odds" },
+            { text = ")" },
+        }
+    },
+    extra_config = { colour = G.C.GREEN },
+    calc_function = function(card)
+        local numerator, denominator = (G.GAME.probabilities.normal or 1), card.ability.extra.odds
+        if SMODS then numerator, denominator = SMODS.get_probability_vars(card, 1, denominator, 'neonmod_dangeresque') end
+        card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
+    end
+}
+
+jd_def["j_neonmod_ironcurtain"] = { -- Iron Curtain
+    text = {
+        { ref_table = "card.joker_display_values", ref_value = "count", retrigger_type = "mult" },
+        { text = "x",                              scale = 0.35 },
+        {
+            border_nodes = {
+                { text = "X" },
+                { ref_table = "card.ability.extra", ref_value = "xmult" }
+            }
+        }
+    },
+    reminder_text = {
+        { text = "(" },
+        { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = G.C.ORANGE },
+        { text = ")" },
+    },
+    extra = {
+        {
+            { text = "(Ammo: " },
+            { ref_table = "card.ability.extra", ref_value = "ammo", colour = G.C.FILTER },
+            { text = ")" },
+        }
+    },
+    calc_function = function(card)
+        local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+        local count = 0
+        if text ~= 'Unknown' then
+            for _, scoring_card in pairs(scoring_hand) do
+                if scoring_card:is_face() then
+                    count = count +
+                        JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
+                end
+            end
+        end
+        card.joker_display_values.count = math.min(card.ability.extra.ammo, count)
+        card.joker_display_values.localized_text = localize("k_face_cards")
+    end
+}
+
+jd_def["j_neonmod_timepiece"] = { -- Enthusiast's Timepiece
+    text = {
+        {
+            border_nodes = {
+                { text = "X" },
+                { ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp" }
+            }
+        }
+    }
+}

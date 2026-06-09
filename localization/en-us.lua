@@ -18,11 +18,11 @@ return {
                 }
             },
             j_neonmod_Wiimote = {
-                name = 'Wii Remote', -- No idea what to name this lol
+                name = 'Wii Remote',
                 text = {
                     'Gives {C:chips}Chips{} relative to the',
                     '{C:attention}highest speed{} of your mouse',
-                    'over the last {C:attention}8 seconds{}',
+                    'over the last {C:attention}5 seconds{}',
                     '{C:inactive}Current Speed: {C:attention}#2#{C:inactive}',
                     '{C:inactive}({C:chips}+#1#{C:inactive} Chips)'
                 }
@@ -128,9 +128,9 @@ return {
             j_neonmod_timepiece = {
                 name = "Enthusiast's Timepiece",
                 text = {
-                    "{X:mult,C:white}X#2#{} Mult,",
-                    "loses {X:mult,C:white} X#3# {} Mult",
-                    "per {C:attention}second{}, resets",
+                    "{X:mult,C:white}X#1#{} Mult, loses",
+                    "{X:mult,C:white} X#2# {} Mult per {C:attention}second{} spent",
+                    "{C:attention}outside{} of a Blind, resets",
                     "when {C:attention}Boss Blind{} is defeated"
                 }
             },
@@ -252,7 +252,7 @@ return {
                 name = 'Cheat Code',
                 text = {
                     "This Joker gains {C:chips}+#1#{} Chips",
-                    "if the first {C:attention}#3#{} cards in hand",
+                    "if the first {C:attention}#3#{} cards held in hand",
                     "follow the pattern listed below.",
                     "{C:inactive}(#4#){}",
                     "{C:inactive}(Pattern changes at end of round){}",

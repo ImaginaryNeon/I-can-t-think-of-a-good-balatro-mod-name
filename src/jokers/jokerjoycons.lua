@@ -132,6 +132,7 @@ SMODS.Joker {
         local suits = G.GAME.current_round.neonmod_cheatcode_cards and
             table.concat(G.GAME.current_round.neonmod_cheatcode_cards, ', ', 1, card.ability.immutable.length) or
             "Lamp, Oil, Rope, Bombs"
+        card.ability.extra.suits = suits
         return {
             vars = { card.ability.extra.chipgain, card.ability.extra.chips, card.ability.immutable.length, suits },
         }

@@ -76,7 +76,7 @@ SMODS.Joker {
     soul_pos = { x = 3, y = 4 },
     config = { extra = { xmult = 1.4, ammo = 20 } },
     rarity = 2,
-    cost = 6,
+    cost = 7,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult, card.ability.extra.ammo } }
     end,
@@ -108,4 +108,40 @@ SMODS.Joker {
             end
         end
     end,
+}
+
+SMODS.Joker {
+    key = "timepiece",
+    rarity = 3,
+    cost = 7,
+    atlas = 'jonklers',
+    pos = { x = 0, y = 4 },
+    config = { extra = { xmult = 3, xmult_loss = 0.025, xmult_reset = 3, timer = 0 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_loss, card.ability.extra.xmult_reset } }
+    end,
+    update = function(self, card, dt)
+        if card.area == G.jokers and not G.GAME.blind.in_blind and not G.SETTINGS.paused then
+            card.ability.extra.timer = card.ability.extra.timer + G.real_dt
+            if card.ability.extra.timer >= 1 then
+                card.ability.extra.timer = 0
+                if card.ability.extra.xmult - card.ability.extra.xmult_loss <= 1 then
+                    SMODS.destroy_cards(card, nil, nil, true)
+                else
+                    card.ability.extra.xmult = card.ability.extra.xmult - card.ability.extra.xmult_loss
+                end
+            end
+        end
+    end,
+    calculate = function(self, card, context)
+        if context.ante_change and context.ante_end then
+            -- reset timer value
+            card.ability.extra.xmult = card.ability.extra.xmult_reset
+        end
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end
 }
