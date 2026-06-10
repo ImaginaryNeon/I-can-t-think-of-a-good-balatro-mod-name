@@ -19,7 +19,7 @@ jd_def["j_neonmod_portalradio"] = {
         return JokerDisplay.in_scoring(playing_card, scoring_hand) and
             (playing_card:get_id() == 8 or playing_card:get_id() == 5 or
                 playing_card:get_id() == 2) and
-            joker_card.ability.extra * JokerDisplay.calculate_joker_triggers(joker_card) or 0
+            joker_card.ability.extra.repetitions * JokerDisplay.calculate_joker_triggers(joker_card) or 0 -- this line?
     end
 }
 jd_def["j_neonmod_loremipsum"] = { -- Lorem Ipsum
@@ -179,7 +179,9 @@ jd_def["j_neonmod_marksmancoin"] = { -- Marksman Coin
         if held_in_hand then return 0 end
         local first_card = scoring_hand and JokerDisplay.calculate_leftmost_card(scoring_hand)
         return first_card and playing_card == first_card and
-            joker_card.ability.extra * JokerDisplay.calculate_joker_triggers(joker_card) or 0
+            ((joker_card.ability.extra.repetitions *
+                    math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / joker_card.ability.extra.dollars)) *
+                JokerDisplay.calculate_joker_triggers(joker_card)) or 0
     end,
     text = {
         { ref_table = "card.joker_display_values", ref_value = "retriggercount", retrigger_type = "mult" }
