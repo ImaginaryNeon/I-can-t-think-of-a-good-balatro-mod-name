@@ -276,8 +276,8 @@ return {
                 name = 'Lorem Ipsum',
                 text = {
                     "Gives {C:mult}+#1#{} Mult per character in",
-                    "the Joker to the right's {C:attention}name{}, and",
-                    "{C:chips}+#3#{} Chip per character",
+                    "the Joker to the right's {C:attention}name{},",
+                    "amd {C:chips}+#3#{} Chips per character",
                     "in that Joker's {C:attention}description{}",
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult and {C:chips}+#4#{C:inactive} Chips)"
                 }

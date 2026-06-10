@@ -116,7 +116,7 @@ SMODS.Joker {
     cost = 6,
     atlas = 'jonklers',
     pos = { x = 0, y = 4 },
-    config = { extra = { xmult = 2, xmult_loss = 0.01, xmult_reset = 3, timer = 0 } },
+    config = { extra = { xmult = 2.2, xmult_loss = 0.01, xmult_reset = 3, timer = 0 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_loss, card.ability.extra.xmult_reset } }
     end,
