@@ -147,11 +147,11 @@ SMODS.Joker {
                 end
             end
             if instrument == true then
-                card.ability.extra.chips = card.ability.extra.chipgain + card.ability.extra.chips
-                return {
-                    message = localize('k_upgrade_ex'),
-                    colour = G.C.CHIPS,
-                }
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = 'chips',
+                    scalar_value = 'chipgain',
+                })
             end
         end
         if context.joker_main then
@@ -197,12 +197,11 @@ SMODS.Joker {
                 end
             end
             if is_first_face then
-                card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_mod
-                return {
-                    message = localize('k_upgrade_ex'),
-                    colour = G.C.CHIPS,
-                    message_card = card
-                }
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = 'chips',
+                    scalar_value = 'chip_mod',
+                })
             end
         end
         if context.joker_main then

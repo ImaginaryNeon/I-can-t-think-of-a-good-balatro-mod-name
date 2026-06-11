@@ -210,7 +210,16 @@ jd_def["j_neonmod_marksmancoin"] = { -- Marksman Coin
 jd_def["j_neonmod_marksman"] = { -- Marksman Gun
     retrigger_function = function(playing_card, scoring_hand, held_in_hand, joker_card)
         if held_in_hand then return 0 end
-        return JokerDisplay.in_scoring(playing_card, scoring_hand) and JokerDisplay.calculate_joker_triggers(joker_card)
+        if Cryptid then
+            return JokerDisplay.in_scoring(playing_card, scoring_hand) and
+                JokerDisplay.calculate_joker_triggers(joker_card)
+        else
+            local first_card = scoring_hand and JokerDisplay.calculate_leftmost_card(scoring_hand)
+            return first_card and playing_card == first_card and
+                ((joker_card.ability.extra.repetitions *
+                        math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / joker_card.ability.extra.dollars)) *
+                    JokerDisplay.calculate_joker_triggers(joker_card)) or 0
+        end
     end,
     text = {
         { ref_table = "card.joker_display_values", ref_value = "retriggercount", retrigger_type = "mult" }
@@ -349,4 +358,15 @@ jd_def["j_neonmod_timepiece"] = { -- Enthusiast's Timepiece
             }
         }
     }
+}
+
+jd_def["j_neonmod_redtape"] = { -- Red-Tape
+    text = {
+        { text = "+",                       colour = G.C.CHIPS },
+        { ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult", colour = G.C.CHIPS, },
+    },
+    reminder_text = {
+        { text = "+",                       colour = G.C.MULT },
+        { ref_table = "card.ability.extra", ref_value = "mult", retrigger_type = "mult", colour = G.C.MULT, scale = 0.4 }
+    },
 }

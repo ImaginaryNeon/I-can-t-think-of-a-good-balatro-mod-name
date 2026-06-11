@@ -28,7 +28,11 @@ SMODS.Joker {
             -- code assumes all jokers are in G.jokers (optimal method to cover all possible joker cards omitted for brevity)
             for _, v in ipairs(G.jokers.cards) do
                 if v.ability.neonmod_triggered == nil then -- filters for Jokers that have not triggered this ante
-                    card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+                    SMODS.scale_card(card, {
+                        ref_table = card.ability.extra,
+                        ref_value = 'xmult',
+                        scalar_value = 'xmult_gain',
+                    })
                 end
                 v.ability.neonmod_triggered = nil
             end

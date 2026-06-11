@@ -79,7 +79,7 @@ SMODS.Joker {
     config = { extra = {
         multper = 1,
         mult = 0,
-        chipsper = 0.5,
+        chipsper = 0.75,
         chips = 0, }
     },
     attributes = { 'chips', 'mult', 'joker' },
@@ -168,18 +168,17 @@ SMODS.Joker {
     config = { extra = { chips = 0, chip_gain = 1 } },
     attributes = { 'chips', 'scaling' },
     rarity = 1,
-    cost = 4,
+    cost = 3,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chips, card.ability.extra.chip_gain } }
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
-            card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
-            return {
-                message = localize('k_upgrade_ex'),
-                colour = G.C.CHIPS,
-                message_card = card
-            }
+            SMODS.scale_card(card, {
+                ref_table = card.ability.extra,
+                ref_value = 'chips',
+                scalar_value = 'chip_gain',
+            })
         end
         if context.joker_main then
             return {
