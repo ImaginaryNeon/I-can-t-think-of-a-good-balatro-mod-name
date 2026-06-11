@@ -10,7 +10,7 @@ if Cryptid then
                 "set_cry_epic",
             },
         },
-        config = { extra = { repetitions = 1, dollars = 10 } },
+        config = { extra = { repetitions = 1, dollars = 15 } },
         rarity = "cry_epic",
         cost = 10,
         loc_vars = function(self, info_queue, card)
@@ -40,7 +40,7 @@ else
         pos = { x = 4, y = 1 },
         pixel_size = { w = 52, h = 95 },
         to_number = to_number or function(x) return x end,
-        config = { extra = { repetitions = 1, dollars = 15 } },
+        config = { extra = { repetitions = 1, dollars = 20 } },
         rarity = 3,
         cost = 10,
         loc_vars = function(self, info_queue, card)
@@ -54,7 +54,7 @@ else
             }
         end,
         calculate = function(self, card, context)
-            if context.repetition and context.cardarea == G.play and (to_number(card.ability.extra.repetitions *
+            if context.repetition and context.cardarea == G.play and context.other_card == context.scoring_hand[1] and (to_number(card.ability.extra.repetitions *
                     math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))) > 0 then
                 return {
                     repetitions = to_number(card.ability.extra.repetitions *

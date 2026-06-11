@@ -1,8 +1,8 @@
 SMODS.Joker {
     key = "redtape",
     atlas = 'jonklers',
-    rarity = 2,
-    cost = 6,
+    rarity = 3,
+    cost = 8,
     pos = { x = 1, y = 3 },
     config = {
         extra = {
