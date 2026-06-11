@@ -370,3 +370,14 @@ jd_def["j_neonmod_redtape"] = { -- Red-Tape
         { ref_table = "card.ability.extra", ref_value = "mult", retrigger_type = "mult", colour = G.C.MULT, scale = 0.4 }
     },
 }
+
+jd_def["j_neonmod_redtapeunbound"] = { -- Red-Tape (Unbound)
+    text = {
+        { text = "+",                       colour = G.C.CHIPS },
+        { ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult", colour = G.C.CHIPS, },
+    },
+    reminder_text = {
+        { text = "+",                       colour = G.C.MULT },
+        { ref_table = "card.ability.extra", ref_value = "mult", retrigger_type = "mult", colour = G.C.MULT, scale = 0.4 }
+    },
+}
