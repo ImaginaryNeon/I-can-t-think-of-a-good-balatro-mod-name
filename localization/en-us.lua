@@ -137,17 +137,17 @@ return {
             j_neonmod_fraudfirst = {
                 name = 'Hurtbreak Wonderland',
                 text = {
-                    'If first played hand of round',
-                    'contains {C:attention}#1#{} or fewer cards,',
-                    'scored {C:attention}8{} or {C:attention}Ace{} cards',
-                    'become a random {C:dark_edition}Edition{}'
+                    'If played hand is a',
+                    'single {C:attention}8{} or {C:attention}Ace{},',
+                    'give it a random',
+                    '{C:dark_edition}Edition{} before scoring'
                 }
             },
             j_neonmod_fraudsecond = {
                 name = 'Through the Mirror',
                 text = {
-                    'If first played hand of round is a',
-                    'single {C:attention}8{} or {C:attention}2{},',
+                    'If {C:attention}first hand{} of round',
+                    'is a single {C:attention}8{} or {C:attention}2{},',
                     'create a copy of it when scored'
                 }
             },

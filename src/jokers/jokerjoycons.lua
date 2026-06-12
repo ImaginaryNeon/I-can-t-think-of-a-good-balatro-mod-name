@@ -128,6 +128,7 @@ SMODS.Joker {
             suits = {}, instruments = true
         }, immutable = { length = 4 }
     },
+    blueprint_compat = true,
     loc_vars = function(self, info_queue, card)
         local suits = G.GAME.current_round.neonmod_cheatcode_cards and
             table.concat(G.GAME.current_round.neonmod_cheatcode_cards, ', ', 1, card.ability.immutable.length) or
@@ -188,7 +189,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.chips, card.ability.extra.chip_mod } }
     end,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play and context.other_card:is_face() then
+        if context.individual and context.cardarea == G.play and context.other_card:is_face() and not context.blueprint then
             local is_first_face = false
             for i = 1, #context.scoring_hand do
                 if context.scoring_hand[i]:is_face() then
@@ -218,6 +219,7 @@ SMODS.Joker { -- To-do: fix chip message
         x = 3,
         y = 0
     },
+    blueprint_compat = true,
     rarity = 1,
     cost = 5,
     config = { extra = { timer = 0, positions_x = {}, positions_y = {}, speeds = {}, speed = 0, max_speed = 0, speed_scoring = 0, mult = 75 } },

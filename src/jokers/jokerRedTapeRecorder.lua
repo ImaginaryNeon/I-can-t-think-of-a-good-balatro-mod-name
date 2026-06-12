@@ -4,6 +4,7 @@ SMODS.Joker {
     rarity = 3,
     cost = 8,
     pos = { x = 1, y = 3 },
+    blueprint_compat = true,
     config = {
         extra = {
             chips = 0,
@@ -14,7 +15,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.chips, card.ability.extra.mult } }
     end,
     calculate = function(self, card, context)
-        if context.pre_discard and G.GAME.current_round.discards_used <= 0 and not context.hook then
+        if context.pre_discard and G.GAME.current_round.discards_used <= 0 and not context.hook and not context.blueprint then
             local text, _ = G.FUNCS.get_poker_hand_info(G.hand.highlighted)
             if G.GAME.hands[text].level > 1 then
                 card.ability.extra.chips = card.ability.extra.chips + G.GAME.hands[text].chips -- or l_chips,
@@ -38,6 +39,7 @@ SMODS.Joker {
     key = "redtapeunbound",
     atlas = 'jonklers',
     no_collection = true,
+    blueprint_compat = true,
     rarity = 2,
     cost = 6,
     weight = 0,
@@ -52,7 +54,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.chips, card.ability.extra.mult } }
     end,
     calculate = function(self, card, context)
-        if context.pre_discard and not context.hook then
+        if context.pre_discard and not context.hook and not context.blueprint then
             local text, _ = G.FUNCS.get_poker_hand_info(G.hand.highlighted)
             card.ability.extra.chips = card.ability.extra.chips + G.GAME.hands[text].chips -- or l_chips,
             card.ability.extra.mult = card.ability.extra.mult + G.GAME.hands[text].mult    -- or l_mult,

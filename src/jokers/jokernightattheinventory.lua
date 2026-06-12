@@ -5,6 +5,7 @@ SMODS.Joker {
     config = { extra = { odds = 3 } },
     rarity = 2,
     cost = 6,
+    blueprint_compat = false,
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds,
             'neonmod_licensetomaim')
@@ -50,12 +51,13 @@ SMODS.Joker {
     config = { extra = { odds = 3, dollars = 100 } },
     rarity = 2,
     cost = 4,
+    blueprint_compat = false,
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'neonmod_dangeresque')
         return { vars = { card.ability.extra.dollars, numerator, denominator } }
     end,
     calculate = function(self, card, context)
-        if context.selling_self and G.GAME.blind.boss then
+        if context.selling_self and G.GAME.blind.boss and not context.blueprint then
             if SMODS.pseudorandom_probability(card, 'neonmod_dangeresque', 1, card.ability.extra.odds) then
                 return {
                     dollars = card.ability.extra.dollars,
@@ -75,6 +77,7 @@ SMODS.Joker {
     pos = { x = 2, y = 4 },
     soul_pos = { x = 3, y = 4 },
     config = { extra = { xmult = 1.4, ammo = 20 } },
+    blueprint_compat = true,
     rarity = 2,
     cost = 7,
     loc_vars = function(self, info_queue, card)
@@ -98,7 +101,6 @@ SMODS.Joker {
                 }
             end
         end
-
         if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
             if card.ability.extra.ammo <= 0 then
                 SMODS.destroy_cards(card, nil, nil, true)
@@ -115,6 +117,7 @@ SMODS.Joker {
     rarity = 2,
     cost = 6,
     atlas = 'jonklers',
+    blueprint_compat = true,
     pos = { x = 0, y = 4 },
     config = { extra = { xmult = 2.2, xmult_loss = 0.01, xmult_reset = 3, timer = 0 } },
     loc_vars = function(self, info_queue, card)

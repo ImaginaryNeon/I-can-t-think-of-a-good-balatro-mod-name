@@ -3,13 +3,14 @@ SMODS.Joker {
     rarity = 3,
     cost = 8,
     atlas = 'jonklers',
+    blueprint_compat = true,
     pos = { x = 3, y = 1 },
     config = { extra = { xmult_gain = 0.25, xmult = 1 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult_gain, card.ability.extra.xmult } }
     end,
     calculate = function(self, card, context)
-        if context.remove_playing_cards and not context.blueprint then
+        if context.remove_playing_cards and not context.blueprint and not context.retrigger_joker then
             local fallen_cards = 0
             for _, removed_card in ipairs(context.removed) do
                 fallen_cards = fallen_cards + 1
@@ -20,7 +21,7 @@ SMODS.Joker {
                 return { message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } } }
             end
         end
-        if context.joker_type_destroyed and not context.blueprint then
+        if context.joker_type_destroyed and not context.blueprint and not context.retrigger_joker then
             -- See note about SMODS Scaling Manipulation on the wiki
             card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
             return { message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } } }
@@ -38,6 +39,7 @@ SMODS.Joker {
     atlas = 'jonklers',
     rarity = 3,
     cost = 5,
+    blueprint_compat = true,
     pos = { x = 2, y = 2 },
     pixel_size = { w = 71, h = 71 },
     display_size = { w = 71 * 1.2, h = 71 * 1.2 },
@@ -74,6 +76,7 @@ SMODS.Joker {
     rarity = 3,
     cost = 20,
     pos = { x = 1, y = 4 },
+    blueprint_compat = false,
     config = { extra = { test = 2, total_mods = 1 } },
     attributes = { 'xblindsize', 'generation', 'joker' },
     loc_vars = function(self, info_queue, card)
@@ -133,7 +136,7 @@ SMODS.Joker {
                 end,
             }))
         end
-        if context.ante_change and context.ante_end then
+        if context.ante_change and context.ante_end and not context.blueprint then
             local modspool = {}
             local pooltocollect = {}
             local validmodcount = 0

@@ -11,9 +11,10 @@ SMODS.Joker {
             mult = -4
         }
     },
+    blueprint_compat = true,
     attributes = { 'chips', },
     rarity = 1,
-    cost = 2,
+    cost = 4,
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -44,6 +45,7 @@ SMODS.Joker {
             repetitions = 1,
         }
     },
+    blueprint_compat = true,
     attributes = { 'retrigger', 'rank', 'two', 'five', 'eight' },
     rarity = 2,
     cost = 8,
@@ -83,8 +85,9 @@ SMODS.Joker {
         chips = 0, }
     },
     attributes = { 'chips', 'mult', 'joker' },
+    blueprint_compat = true,
     rarity = 1,
-    cost = 5,
+    cost = 6,
     loc_vars = function(self, info_queue, card)
         if G.jokers then
             local other_joker = nil
@@ -116,7 +119,7 @@ SMODS.Joker {
                 local tardesc = nil
                 for i = 1, #G.jokers.cards do
                     if G.jokers.cards[i] == card then
-                        if i < #G.jokers.cards then
+                        if (i + 1) <= #G.jokers.cards then
                             other_joker = G.jokers.cards[i + 1]
                             local obj_key = other_joker.config.center.key
                             local obj_set = other_joker.ability.set
@@ -125,6 +128,9 @@ SMODS.Joker {
                                 localize({ type = 'raw_descriptions', key = obj_key, set = obj_set, vars = {} }), ' ')
                             card.ability.extra.mult = (string.len(tarname) or 0) * card.ability.extra.multper
                             card.ability.extra.chips = (string.len(tardesc) or 0) * card.ability.extra.chipsper
+                        else
+                            card.ability.extra.mult = 0
+                            card.ability.extra.chips = 0
                         end
                     end
                 end
@@ -138,22 +144,27 @@ SMODS.Joker {
             local tardesc = nil
             for i = 1, #G.jokers.cards do
                 if G.jokers.cards[i] == card then
-                    if i < #G.jokers.cards then
+                    if (i + 1) <= #G.jokers.cards then
                         other_joker = G.jokers.cards[i + 1]
                         local obj_key = other_joker.config.center.key
                         local obj_set = other_joker.ability.set
                         tarname = localize { type = 'name_text', set = obj_set, key = obj_key }
                         tardesc = table.concat(
-                            localize({ type = 'raw_descriptions', key = obj_key, set = obj_set, vars = {} }), ' ') -- thanks eggymari
+                            localize({ type = 'raw_descriptions', key = obj_key, set = obj_set, vars = {} }), ' ')
                         card.ability.extra.mult = (string.len(tarname) or 0) * card.ability.extra.multper
                         card.ability.extra.chips = (string.len(tardesc) or 0) * card.ability.extra.chipsper
+                    else
+                        card.ability.extra.mult = 0
+                        card.ability.extra.chips = 0
                     end
                 end
             end
-            return {
-                chips = card.ability.extra.chips,
-                mult = card.ability.extra.mult,
-            }
+            if card.ability.extra.mult > 0 or card.ability.extra.chips > 0 then
+                return {
+                    chips = card.ability.extra.chips,
+                    mult = card.ability.extra.mult,
+                }
+            end
         end
     end
 }
@@ -168,12 +179,13 @@ SMODS.Joker {
     config = { extra = { chips = 0, chip_gain = 1 } },
     attributes = { 'chips', 'scaling' },
     rarity = 1,
-    cost = 3,
+    cost = 4,
+    blueprint_compat = true,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chips, card.ability.extra.chip_gain } }
     end,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play then
+        if context.individual and context.cardarea == G.play and not context.blueprint then
             SMODS.scale_card(card, {
                 ref_table = card.ability.extra,
                 ref_value = 'chips',

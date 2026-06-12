@@ -1,12 +1,11 @@
 local isCryptid = SMODS.find_mod("Cryptid")[1]
 local isepic = isCryptid and "cry_epic" or 3
---local hybridpools = isCryptid and { ["Meme"] = true, } or {}
---if Cryptid then
+
 SMODS.Joker {
     key = "hybrid",
     atlas = 'jonklers',
     rarity = 3,
-    cost = 7,
+    cost = 8,
     pos = { x = 5, y = 1 },
     config = {
         extra = {
@@ -14,6 +13,7 @@ SMODS.Joker {
             xmult = 1
         }
     },
+    blueprint_compat = true,
     pools = { ["Meme"] = true, },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult_gain, card.ability.extra.xmult, '#' } }
@@ -49,7 +49,7 @@ SMODS.Joker {
     key = "tcfna",
     atlas = 'jonklers',
     rarity = isepic,
-    cost = 9,
+    cost = 10,
     pos = { x = 0, y = 1 },
     config = {
         extra = {
@@ -57,6 +57,7 @@ SMODS.Joker {
             emult_mod = 0.01
         },
     },
+    blueprint_compat = true,
     pools = { ["Meme"] = true, },
     loc_vars = function(self, info_queue, card)
         local enhanced_count = 0
