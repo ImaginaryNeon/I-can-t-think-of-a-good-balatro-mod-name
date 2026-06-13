@@ -2,12 +2,12 @@ SMODS.Joker {
     key = "fraudfirst",
     blueprint_compat = true,
     rarity = 2,
-    cost = 6,
+    cost = 8,
     atlas = "jonklers",
     pos = { x = 4, y = 2 },
     calculate = function(self, card, context)
-        if context.before and #context.full_hand == 1 and (context.scoring_hand[1]:get_id() == 14 or context.scoring_hand[1]:get_id() == 8) and not context.blueprint then -- the line that crashes
-            local edition = SMODS.poll_edition { key = "hurtbreak_wonderland", guaranteed = true, no_negative = true }                                                     --, options = { 'e_polychrome', 'e_holo', 'e_foil' }
+        if context.before and #context.full_hand == 1 and (context.scoring_hand[1]:get_id() == 14 or context.scoring_hand[1]:get_id() == 8) and (context.scoring_hand[1].edition == nil) and not context.blueprint then -- maybe Gradient isn't affecting it because it's in context.before?
+            local edition = SMODS.poll_edition { key = "hurtbreak_wonderland", guaranteed = true, no_negative = true }
             context.scoring_hand[1]:set_edition(edition, true)
             context.scoring_hand[1]:juice_up(0.3, 0.5)
             return true
@@ -113,16 +113,14 @@ SMODS.Joker {
                 ref_value = 'xmult',
                 scalar_value = 'xmult_mod',
             })
+            return {
+                xmult = card.ability.extra.xmult
+            }
         end
         if context.destroy_card then
             if context.cardarea == G.play and (context.destroy_card:get_id() == 8 or context.destroy_card:get_id() == 4) and SMODS.pseudorandom_probability(card, 'finalflight', 1, card.ability.extra.odds) then
                 return { remove = true }
             end
-        end
-        if context.joker_main then
-            return {
-                xmult = card.ability.extra.xmult
-            }
         end
     end
 }

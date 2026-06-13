@@ -137,8 +137,8 @@ return {
             j_neonmod_fraudfirst = {
                 name = 'Hurtbreak Wonderland',
                 text = {
-                    'If played hand is a',
-                    'single {C:attention}8{} or {C:attention}Ace{},',
+                    'If played hand is a single,',
+                    '{C:dark_edition}Editionless{} {C:attention}8{} or {C:attention}Ace{},',
                     'give it a random',
                     '{C:dark_edition}Edition{} before scoring'
                 }
@@ -148,7 +148,8 @@ return {
                 text = {
                     'If {C:attention}first hand{} of round',
                     'is a single {C:attention}8{} or {C:attention}2{},',
-                    'create a copy of it when scored'
+                    'create a copy of it',
+                    'when scored'
                 }
             },
             j_neonmod_fraudthird = {
@@ -162,11 +163,12 @@ return {
             j_neonmod_fraudclimax = {
                 name = 'Final Flight',
                 text = {
-                    'This Joker gains {X:mult,C:white}X#2#{} Mult for',
-                    'each scored {C:attention}8{} and {C:attention}4{},',
-                    'Played {C:attention}8{}s and {C:attention}4{}s have',
-                    'a {C:green}#3# in #4#{} chance to break when scored.',
-                    '{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult){}'
+                    'Played {C:attention}8{}s and {C:attention}4{}s',
+                    'give {X:mult,C:white}X#1#{} Mult, which',
+                    'increases by {X:mult,C:white}X#2#{} when',
+                    'an {C:attention}8{} or {C:attention}4{} scores',
+                    'Played {C:attention}8{}s and {C:attention}4{}s have a',
+                    '{C:green}#3# in #4#{} chance to break after scoring.',
                 }
             },
             j_neonmod_redbaron = {
@@ -263,9 +265,9 @@ return {
             j_neonmod_secret = {
                 name = 'Petrus Putridus',
                 text = {
-                    "Gains {C:attention}one-tenth{} of the",
-                    "{C:attention}rank{} of every second card",
-                    "held in hand as {X:dark_edition,C:white}^#3#{}",
+                    "Gains {C:attention}one-twentieth{} of",
+                    "the {C:attention}rank{} of every second",
+                    "card held in hand as {X:dark_edition,C:white}^#3#{}",
                     "{C:inactive}(Currently {X:dark_edition,C:white}^#2#{C:inactive} #3#)",
                     "{s:0.8,C:inactive}May have different effects",
                     "{s:0.8,C:inactive}based on the lyrics.",

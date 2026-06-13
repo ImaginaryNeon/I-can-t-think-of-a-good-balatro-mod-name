@@ -381,3 +381,95 @@ jd_def["j_neonmod_redtapeunbound"] = { -- Red-Tape (Unbound)
         { ref_table = "card.ability.extra", ref_value = "mult", retrigger_type = "mult", colour = G.C.MULT, scale = 0.4 }
     },
 }
+
+jd_def["j_neonmod_fraudsecond"] = { -- Through the Mirror
+    reminder_text = {
+        { text = "(" },
+        { ref_table = "card.joker_display_values", ref_value = "active_text" },
+        { text = ")" },
+    },
+    calc_function = function(card)
+        card.joker_display_values.is_active = G.GAME.current_round.hands_played == 0
+        card.joker_display_values.active_text = localize("jdis_" ..
+            (card.joker_display_values.is_active and "active" or "inactive"))
+    end,
+    style_function = function(card, text, reminder_text, extra)
+        if reminder_text and reminder_text.children and reminder_text.children[2] then
+            reminder_text.children[2].config.colour = card.joker_display_values.is_active and G.C.GREEN or
+                G.C.UI.TEXT_INACTIVE
+        end
+    end
+}
+
+jd_def["j_neonmod_fraudthird"] = { -- Disintegration Loop
+    text = {
+        { text = "+" },
+        { ref_table = "card.joker_display_values", ref_value = "count", retrigger_type = "mult" },
+    },
+    text_config = { colour = G.C.SECONDARY_SET.Planet },
+    extra = {
+        {
+            { text = "(" },
+            { ref_table = "card.joker_display_values", ref_value = "odds" },
+            { text = ")" },
+        }
+    },
+    extra_config = { colour = G.C.GREEN, scale = 0.3 },
+    calc_function = function(card)
+        local count = 0
+        local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+        if text ~= 'Unknown' then
+            for _, scoring_card in pairs(scoring_hand) do
+                if scoring_card:get_id() and (scoring_card:get_id() == 8 or scoring_card:get_id() == 3) then
+                    count = count +
+                        JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
+                end
+            end
+        end
+        card.joker_display_values.count = count
+        local numerator, denominator = (G.GAME.probabilities.normal or 1), card.ability.extra.odds
+        if SMODS then numerator, denominator = SMODS.get_probability_vars(card, 1, denominator, 'fraudthird') end
+        card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
+    end
+}
+
+jd_def["j_neonmod_fraudclimax"] = { -- Final Flight
+    text = {
+        { ref_table = "card.joker_display_values", ref_value = "count", retrigger_type = "mult" },
+        { text = "x",                              scale = 0.35 },
+        {
+            border_nodes = {
+                { text = "X" },
+                { ref_table = "card.ability.extra", ref_value = "xmult" }
+            }
+        }
+    },
+    reminder_text = {
+        { ref_table = "card.joker_display_values", ref_value = "localized_text" },
+    },
+    calc_function = function(card)
+        local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+        local count = 0
+        if text ~= 'Unknown' then
+            for _, scoring_card in pairs(scoring_hand) do
+                if scoring_card:get_id() and scoring_card:get_id() == 8 or scoring_card:get_id() == 4 then
+                    count = count +
+                        JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
+                end
+            end
+        end
+        card.joker_display_values.count = count
+        card.joker_display_values.localized_text = "(8,4)"
+    end
+}
+jd_def["j_neonmod_secret"] = { -- We Are Number One!
+    text = {
+        {
+            border_nodes = {
+                { text = "^" },
+                { ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp" }
+            }
+        },
+        border_colour = G.C.DARK_EDITION
+    }
+}
