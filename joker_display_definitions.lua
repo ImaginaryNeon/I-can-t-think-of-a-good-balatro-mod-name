@@ -462,12 +462,62 @@ jd_def["j_neonmod_fraudclimax"] = { -- Final Flight
         card.joker_display_values.localized_text = "(8,4)"
     end
 }
+
+jd_def["j_neonmod_legendary_mii"] = { -- The Idol
+    text = {
+        {
+            border_nodes = {
+                { text = "X" },
+                { ref_table = "card.joker_display_values", ref_value = "x_mult", retrigger_type = "exp" }
+            }
+        }
+    },
+    reminder_text = {
+        { text = "(" },
+        { ref_table = "card.joker_display_values", ref_value = "suit", colour = G.C.FILTER },
+        { text = ")" },
+    },
+    calc_function = function(card)
+        local countreal = 0
+        local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+        local suit, count = (card.ability.extra.suit or 'Spades'), 0
+        if text ~= 'Unknown' then
+            local suits = {}
+            for k, v in pairs(G.playing_cards) do
+                for kk, vv in pairs(SMODS.Suits) do
+                    if v:is_suit(vv.key) then
+                        suits[vv.key] = (suits[vv.key] or 0) + 1
+                    end
+                end
+            end
+            for k, v in pairs(suits) do
+                if v >= count and not (v == 0) then
+                    suit, count = k, v
+                end
+            end
+            for _, scoring_card in pairs(scoring_hand) do
+                if scoring_card:is_suit(suit) then
+                    countreal = countreal +
+                        JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
+                end
+            end
+        end
+        card.joker_display_values.x_mult = card.ability.extra.xmult ^ countreal
+        card.joker_display_values.suit = suit
+    end,
+    style_function = function(card, text, reminder_text, extra)
+        if reminder_text and reminder_text.children[2] then
+            reminder_text.children[2].config.colour = lighten(
+                (G.C.SUITS[card.joker_display_values.suit] or card.ability.extra.color), 0.35)
+        end
+    end
+}
 jd_def["j_neonmod_secret"] = { -- We Are Number One!
     text = {
         {
             border_nodes = {
                 { text = "^" },
-                { ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp" }
+                { ref_table = "card.ability.extra", ref_value = "emult", retrigger_type = "exp" }
             }
         },
         border_colour = G.C.DARK_EDITION

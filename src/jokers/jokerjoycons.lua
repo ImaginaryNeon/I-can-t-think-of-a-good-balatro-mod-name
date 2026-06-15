@@ -172,8 +172,45 @@ local function reset_neonmod_cheatcode()
     end
 end
 
+local function get_jokers_sorted_by_usage() -- thanks srockw
+    local jokers = {}
+    G.GAME.current_round.neonmod_min_uses = G.GAME.current_round.neonmod_min_uses or 0
+    for _, v in pairs(G.P_CENTER_POOLS.Joker) do
+        jokers[#jokers + 1] = {
+            key = v.key,
+            count = (G.PROFILES[G.SETTINGS.profile].joker_usage[v.key] or {}).count or 0
+        }
+    end
+    table.sort(jokers, function(a, b)
+        return a.count > b.count
+    end)
+    G.GAME.current_round.neonmod_min_uses = jokers[15].count
+    return jokers
+end
+
+local function piss_in_the_water_supply() -- based on prior function
+    local wings = {}
+    G.GAME.current_round.neonmod_bighandthing = G.GAME.current_round.neonmod_bighandthing or 0
+    --print("test start")
+    for _, v in pairs(SMODS.PokerHands) do
+        wings[#wings + 1] = {
+            key = v.key:gsub("%s+", ""), -- we need to kill john localthunk
+            count = (G.PROFILES[G.SETTINGS.profile].hand_usage[v.key:gsub("%s+", "")] or {}).count or 0,
+            name = localize(v.key, 'poker_hands'),
+        }
+    end
+    table.sort(wings, function(a, b)
+        return a.count > b.count
+    end)
+    G.GAME.current_round.neonmod_bighandthing = wings[1].name or "Go fuck yourself"
+    --print(wings)
+    return wings
+end
+
 function SMODS.current_mod.reset_game_globals(run_start)
     reset_neonmod_cheatcode()
+    get_jokers_sorted_by_usage()
+    piss_in_the_water_supply()
 end
 
 SMODS.Joker {

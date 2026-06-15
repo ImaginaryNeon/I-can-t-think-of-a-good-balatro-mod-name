@@ -22,7 +22,23 @@ SMODS.Joker {
         local other_count = 0
         local highest_count = 0
         if G.playing_cards then
-            for _, playing_card in ipairs(G.playing_cards) do
+            local suits = {}
+            for k, v in pairs(G.playing_cards) do
+                for kk, vv in pairs(SMODS.Suits) do
+                    if v:is_suit(vv.key) then
+                        suits[vv.key] = (suits[vv.key] or 0) + 1
+                    end
+                end
+            end
+            local suit, count = 'Spades', 0
+            for k, v in pairs(suits) do
+                if v >= count then
+                    suit, count = k, v
+                end
+            end
+            card.ability.extra.suit = suit
+            highest_count = count
+            --[[for _, playing_card in ipairs(G.playing_cards) do
                 if playing_card:is_suit("Hearts") then
                     heart_count = heart_count + 1
                 end
@@ -58,9 +74,9 @@ SMODS.Joker {
             else
                 card.ability.extra.suit = "Spades"
                 highest_count = spade_count
-            end
+            end]]
         end
-        if card.ability.extra.suit == "Hearts" then
+        --[[if card.ability.extra.suit == "Hearts" then
             card.ability.extra.color = G.C.SUITS.Hearts
         elseif card.ability.extra.suit == "Diamonds" then
             card.ability.extra.color = G.C.SUITS.Diamonds
@@ -71,6 +87,15 @@ SMODS.Joker {
         elseif card.ability.extra.suit == "Other" then
             card.ability.extra.color = HEX('cc38f3')
         elseif card.ability.extra.suit == "None" then
+            card.ability.extra.color = G.C.UI.TEXT_DARK
+        end]]
+        if not (card.ability.extra.suit == "None") then
+            if G.C.SUITS[card.ability.extra.suit] then
+                card.ability.extra.color = G.C.SUITS[card.ability.extra.suit]
+            else
+                card.ability.extra.color = HEX('1b2e53')
+            end
+        else
             card.ability.extra.color = G.C.UI.TEXT_DARK
         end
         card.ability.extra.xmult = card.ability.extra.xmult_base + (card.ability.extra.xmult_gain * highest_count)

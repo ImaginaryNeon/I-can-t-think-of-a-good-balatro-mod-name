@@ -152,6 +152,15 @@ return {
                     'when scored'
                 }
             },
+            j_neonmod_fraudsecondalt = {
+                name = 'Through the Mirror',
+                text = {
+                    'If {C:attention}first hand{} of round',
+                    'is a single {C:attention}8{} or {C:attention}2{},',
+                    'create a copy of it',
+                    'when scored'
+                }
+            },
             j_neonmod_fraudthird = {
                 name = 'Disintegration Loop',
                 text = {
@@ -163,12 +172,10 @@ return {
             j_neonmod_fraudclimax = {
                 name = 'Final Flight',
                 text = {
-                    'Played {C:attention}8{}s and {C:attention}4{}s',
-                    'give {X:mult,C:white}X#1#{} Mult, which',
-                    'increases by {X:mult,C:white}X#2#{} when',
-                    'an {C:attention}8{} or {C:attention}4{} scores',
-                    'Played {C:attention}8{}s and {C:attention}4{}s have a',
-                    '{C:green}#3# in #4#{} chance to break after scoring.',
+                    'Played {C:attention}8{}s and {C:attention}4{}s give {X:mult,C:white}X#1#{} Mult,',
+                    'Gains {X:mult,C:white}X#2#{} when an {C:attention}8{} or {C:attention}4{} scores',
+                    '{C:attention}8{}s and {C:attention}4{}s have a {C:green}#3# in #4#{}',
+                    'chance to break after scoring.',
                 }
             },
             j_neonmod_redbaron = {
@@ -265,7 +272,7 @@ return {
             j_neonmod_secret = {
                 name = 'Petrus Putridus',
                 text = {
-                    "Gains {C:attention}one-twentieth{} of",
+                    "Gains {C:attention}one-fiftieth{} of",
                     "the {C:attention}rank{} of every second",
                     "card held in hand as {X:dark_edition,C:white}^#3#{}",
                     "{C:inactive}(Currently {X:dark_edition,C:white}^#2#{C:inactive} #3#)",
@@ -287,11 +294,10 @@ return {
             j_neonmod_sampletext = {
                 name = 'Sample Text',
                 text = {
-                    'This Joker is used when',
-                    'I need to test if something',
-                    'works without messing with',
-                    'another Joker',
-                    '{C:inactive}(Currently Hurtbreak Wonderland){}'
+                    'This Joker is for testing.',
+                    '{C:attention}Glass{} cards also count',
+                    'as the opposite rank',
+                    '{C:inactive}(2/A, 3/K, 4/Q, etc.){}'
                 }
             }
         },
@@ -301,6 +307,20 @@ return {
                 text = {
                     'Jokers each give',
                     'x0.9 Mult when triggered'
+                }
+            },
+            bl_neonmod_personalizedblind = {
+                name = 'The Personality',
+                text = {
+                    'Your most played hand',
+                    'of all time is debuffed'
+                }
+            },
+            bl_neonmod_metablind = {
+                name = 'The Individual',
+                text = {
+                    'Your 15 most used Jokers',
+                    'of all time are debuffed'
                 }
             }
         },

@@ -28,6 +28,15 @@ SMODS.Atlas { -- Sleeve
     py = 95
 }
 
+SMODS.Atlas { -- Mannpower Blinds
+    key = 'personalized',
+    path = 'personalized.png',
+    atlas_table = 'ANIMATION_ATLAS',
+    frames = 21,
+    px = 34,
+    py = 34
+}
+
 --#endregion
 
 --#region File Loading

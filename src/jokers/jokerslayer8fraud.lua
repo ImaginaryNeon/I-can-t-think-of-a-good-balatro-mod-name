@@ -136,23 +136,18 @@ SMODS.Joker {
         info_queue[#info_queue + 1] = G.P_CENTERS.m_gold
     end,
     calculate = function(self, card, context)
-        if context.before and not context.blueprint then
-            for i, scored_card in ipairs(context.scoring_hand) do
-                if (scored_card:get_id() == 14 or scored_card:get_id() == 8) and scored_card.edition == nil then
-                    --valid_id = true
-                    G.E_MANAGER:add_event(Event({
-                        trigger = 'after',
-                        delay = 0.4,
-                        func = function()
-                            local edition = SMODS.poll_edition { key = "hurtbreak_wonderland", guaranteed = true, no_negative = true } --, options = { 'e_polychrome', 'e_holo', 'e_foil' }
-                            scored_card:set_edition(edition, true)
-                            scored_card:juice_up(0.3, 0.5)
-                            return true
-                        end
-                    }))
-                end
-            end
-        end
     end
 }
+
+local smods_smeared_check_ref = SMODS.smeared_check
+function SMODS.smeared_check(card, suit, ...)
+    if next(SMODS.find_card("j_vremade_smeared")) then
+        if ((card.base.suit == 'Hearts' or card.base.suit == 'Diamonds') and (suit == 'Hearts' or suit == 'Diamonds')) then
+            return true
+        elseif (card.base.suit == 'Spades' or card.base.suit == 'Clubs') and (suit == 'Spades' or suit == 'Clubs') then
+            return true
+        end
+    end
+    return smods_smeared_check_ref(card, suit, ...)
+end
 --]]
