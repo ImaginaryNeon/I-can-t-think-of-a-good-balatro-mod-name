@@ -52,8 +52,13 @@ SMODS.Joker {
         if context.ante_change and context.ante_end and not context.blueprint then
             if G.GAME.dollars >= 2 * card.ability.extra.fee then
                 local numberofredbaronpizzastopurchase = math.floor(G.GAME.dollars / (2 * card.ability.extra.fee))
-                card.ability.extra.xmult = card.ability.extra.xmult +
-                    numberofredbaronpizzastopurchase * card.ability.extra.xmult_gain
+                for i = 1, numberofredbaronpizzastopurchase do
+                    SMODS.scale_card(card, {
+                        ref_table = card.ability.extra,
+                        ref_value = 'xmult',
+                        scalar_value = 'xmult_gain',
+                    })
+                end
                 card.ability.extra.total_spent = card.ability.extra.total_spent +
                     numberofredbaronpizzastopurchase * card.ability.extra.fee
                 return {
