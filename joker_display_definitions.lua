@@ -66,7 +66,7 @@ jd_def["j_neonmod_redbaron"] = { -- Red Baron Pizza
         { text = " (Ante)", },
     },
     calc_function = function(card)
-        card.joker_display_values.dollars = math.floor(G.GAME.dollars / (2 * card.ability.extra.fee)) *
+        card.joker_display_values.dollars = math.floor(math.min(G.GAME.dollars / (2 * card.ability.extra.fee), 250)) *
             card.ability.extra.fee
         card.joker_display_values.localized_text = "(" .. localize("k_round") .. ")"
     end
@@ -463,7 +463,7 @@ jd_def["j_neonmod_fraudclimax"] = { -- Final Flight
     end
 }
 
-jd_def["j_neonmod_legendary_mii"] = { -- The Idol
+jd_def["j_neonmod_legendary_mii"] = { -- Aw man
     text = {
         {
             border_nodes = {

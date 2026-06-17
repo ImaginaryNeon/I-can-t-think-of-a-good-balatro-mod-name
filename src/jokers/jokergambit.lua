@@ -41,6 +41,7 @@ SMODS.Joker {
     cost = 5,
     blueprint_compat = true,
     pos = { x = 2, y = 2 },
+    pools = { ["Food"] = true, },
     pixel_size = { w = 71, h = 71 },
     display_size = { w = 71 * 1.2, h = 71 * 1.2 },
     attributes = { 'xmult', 'scaling', 'economy', 'food' },
@@ -51,14 +52,18 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.ante_change and context.ante_end and not context.blueprint then
             if G.GAME.dollars >= 2 * card.ability.extra.fee then
-                local numberofredbaronpizzastopurchase = math.floor(G.GAME.dollars / (2 * card.ability.extra.fee))
+                local numberofredbaronpizzastopurchase = to_number(math.min(math.floor(G.GAME.dollars /
+                    (2 * card.ability.extra.fee)), 250))
                 for i = 1, numberofredbaronpizzastopurchase do
                     SMODS.scale_card(card, {
                         ref_table = card.ability.extra,
                         ref_value = 'xmult',
                         scalar_value = 'xmult_gain',
+                        no_message = true
                     })
                 end
+                --print(numberofredbaronpizzastopurchase)
+                --print(type(numberofredbaronpizzastopurchase))
                 card.ability.extra.total_spent = card.ability.extra.total_spent +
                     numberofredbaronpizzastopurchase * card.ability.extra.fee
                 return {
