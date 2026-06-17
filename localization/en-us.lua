@@ -178,6 +178,15 @@ return {
                     'chance to break after scoring.',
                 }
             },
+            j_neonmod_fraudclimax_alt = {
+                name = 'Final Flight',
+                text = {
+                    '{X:mult,C:white}X#1#{} Mult',
+                    'Gains {X:mult,C:white}X#2#{} when an {C:attention}8{} or {C:attention}4{} scores',
+                    '{C:attention}8{}s and {C:attention}4{}s have a {C:green}#3# in #4#{}',
+                    'chance to break after scoring',
+                }
+            },
             j_neonmod_redbaron = {
                 name = 'Red Baron Pizza',
                 text = {
@@ -286,9 +295,18 @@ return {
                 text = {
                     "Gives {C:mult}+#1#{} Mult per character in",
                     "the Joker to the right's {C:attention}name{},",
-                    "amd {C:chips}+#3#{} Chips per character",
+                    "and {C:chips}+#3#{} Chips per character",
                     "in that Joker's {C:attention}description{}",
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult and {C:chips}+#4#{C:inactive} Chips)"
+                }
+            },
+            j_neonmod_scope = {
+                name = 'Scope Lens',
+                text = {
+                    "{C:green}#2# in #3#{} chance",
+                    "for {X:mult,C:white} X#1# {} Mult",
+                    "{C:attention}Odds{} are based on",
+                    "number of {C:attention}hands remaining{}",
                 }
             },
             j_neonmod_sampletext = {

@@ -63,7 +63,7 @@ SMODS.Joker {
     config = {
         extra = {
             mult = 0,
-            change = 3,
+            change = 2,
             odds = 50,
         }
     },

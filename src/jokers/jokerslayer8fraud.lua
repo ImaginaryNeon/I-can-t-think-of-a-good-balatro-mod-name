@@ -94,36 +94,71 @@ SMODS.Joker {
         end
     end
 }
-SMODS.Joker {
-    key = "fraudclimax",
-    blueprint_compat = true,
-    rarity = 3,
-    cost = 8,
-    atlas = "jonklers",
-    pos = { x = 0, y = 3 },
-    config = { extra = { xmult = 1, xmult_mod = 0.2, odds = 4 } },
-    loc_vars = function(self, info_queue, card)
-        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'finalflight')
-        return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod, numerator, denominator } }
-    end,
-    calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play and (context.other_card:get_id() == 8 or context.other_card:get_id() == 4) and not context.blueprint then
-            SMODS.scale_card(card, {
-                ref_table = card.ability.extra,
-                ref_value = 'xmult',
-                scalar_value = 'xmult_mod',
-            })
-            return {
-                xmult = card.ability.extra.xmult
-            }
-        end
-        if context.destroy_card then
-            if context.cardarea == G.play and (context.destroy_card:get_id() == 8 or context.destroy_card:get_id() == 4) and SMODS.pseudorandom_probability(card, 'finalflight', 1, card.ability.extra.odds) then
-                return { remove = true }
+if Cryptid then
+    SMODS.Joker {
+        key = "fraudclimax",
+        blueprint_compat = true,
+        rarity = 3,
+        cost = 8,
+        atlas = "jonklers",
+        pos = { x = 0, y = 3 },
+        config = { extra = { xmult = 1, xmult_mod = 0.2, odds = 4 } },
+        loc_vars = function(self, info_queue, card)
+            local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'finalflight')
+            return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod, numerator, denominator } }
+        end,
+        calculate = function(self, card, context)
+            if context.individual and context.cardarea == G.play and (context.other_card:get_id() == 8 or context.other_card:get_id() == 4) and not context.blueprint then
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = 'xmult',
+                    scalar_value = 'xmult_mod',
+                })
+                return {
+                    xmult = card.ability.extra.xmult
+                }
+            end
+            if context.destroy_card then
+                if context.cardarea == G.play and (context.destroy_card:get_id() == 8 or context.destroy_card:get_id() == 4) and SMODS.pseudorandom_probability(card, 'finalflight', 1, card.ability.extra.odds) then
+                    return { remove = true }
+                end
             end
         end
-    end
-}
+    }
+else
+    SMODS.Joker {
+        key = "fraudclimax_alt",
+        blueprint_compat = true,
+        rarity = 3,
+        cost = 8,
+        atlas = "jonklers",
+        pos = { x = 0, y = 3 },
+        config = { extra = { xmult = 1, xmult_mod = 0.2, odds = 4 } },
+        loc_vars = function(self, info_queue, card)
+            local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'finalflight')
+            return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod, numerator, denominator } }
+        end,
+        calculate = function(self, card, context)
+            if context.individual and context.cardarea == G.play and (context.other_card:get_id() == 8 or context.other_card:get_id() == 4) and not context.blueprint then
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = 'xmult',
+                    scalar_value = 'xmult_mod',
+                })
+            end
+            if context.destroy_card then
+                if context.cardarea == G.play and (context.destroy_card:get_id() == 8 or context.destroy_card:get_id() == 4) and SMODS.pseudorandom_probability(card, 'finalflight', 1, card.ability.extra.odds) then
+                    return { remove = true }
+                end
+            end
+            if context.joker_main then
+                return {
+                    xmult = card.ability.extra.xmult
+                }
+            end
+        end
+    }
+end
 --[[SMODS.Joker {
     key = "sampletext",
     blueprint_compat = false,

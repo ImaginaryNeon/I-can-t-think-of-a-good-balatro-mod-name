@@ -177,3 +177,35 @@ SMODS.Joker {
         end
     end,
 }
+SMODS.Joker {
+    key = 'scope',
+    atlas = 'jonklers',
+    pos = {
+        x = 0,
+        y = 5
+    },
+    rarity = 2,
+    cost = 6,
+    config = {
+        extra = {
+            xmult = 3,
+        }
+    },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, math.max(G.GAME.current_round.hands_left, 1),
+            'neonmod_joyconr')
+        return { vars = { card.ability.extra.xmult, numerator, denominator } }
+    end,
+    collection_loc_vars = function(self)
+        return { vars = { card.ability.extra.xmult, 1, "[hands remaining]", "" } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            if SMODS.pseudorandom_probability(card, 'neonmod_scopelens', 1, math.max((G.GAME.current_round.hands_left + 1), 1)) then
+                return {
+                    xmult = card.ability.extra.xmult
+                }
+            end
+        end
+    end
+}

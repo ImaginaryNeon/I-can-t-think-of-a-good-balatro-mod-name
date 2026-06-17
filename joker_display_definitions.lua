@@ -523,3 +523,27 @@ jd_def["j_neonmod_secret"] = { -- We Are Number One!
         border_colour = G.C.DARK_EDITION
     }
 }
+
+jd_def["j_neonmod_scope"] = { -- Scope Lens
+    text = {
+        {
+            border_nodes = {
+                { text = "X" },
+                { ref_table = "card.ability.extra", ref_value = "xmult" }
+            }
+        }
+    },
+    extra = {
+        {
+            { text = "(" },
+            { ref_table = "card.joker_display_values", ref_value = "odds" },
+            { text = ")" },
+        }
+    },
+    extra_config = { colour = G.C.GREEN, scale = 0.3 },
+    calc_function = function(card)
+        local numerator, denominator = (G.GAME.probabilities.normal or 1), math.max(G.GAME.current_round.hands_left, 1)
+        if SMODS then numerator, denominator = SMODS.get_probability_vars(card, 1, denominator, 'neonmod_scopelens') end
+        card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
+    end
+}
