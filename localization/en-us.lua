@@ -193,7 +193,7 @@ return {
                     'At the end of each Ante, {C:attention}spends{} {C:money}$#1#{}',
                     'as many times as possible using',
                     '{C:attention}half{} of your money.',
-                    '{s:0.8,C:inactive}(Maximum of 25 times)',
+                    '{s:0.8,C:inactive}(Maximum of 50 times)',
                     'Gains {X:mult,C:white}X#2#{} Mult per {C:money}$#1#{} spent',
                     'in this way.',
                     '{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)',

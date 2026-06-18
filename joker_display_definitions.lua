@@ -66,7 +66,7 @@ jd_def["j_neonmod_redbaron"] = { -- Red Baron Pizza
         { text = " (Ante)", },
     },
     calc_function = function(card)
-        card.joker_display_values.dollars = math.floor(math.min(G.GAME.dollars / (2 * card.ability.extra.fee), 250)) *
+        card.joker_display_values.dollars = math.floor(math.min(G.GAME.dollars / (2 * card.ability.extra.fee), 50)) *
             card.ability.extra.fee
         card.joker_display_values.localized_text = "(" .. localize("k_round") .. ")"
     end
@@ -263,12 +263,8 @@ jd_def["j_neonmod_Wiimote"] = { -- Wiimote
     text_config = { colour = G.C.CHIPS },
     calc_function = function(card)
         card.joker_display_values.chips = card.ability.extra.mult * card.ability.extra.max_speed
-        if not card.joker_display_values.chips then
+        if not (card.joker_display_values.chips > 0) then
             card.joker_display_values.chips = 0
-        else
-            if not (card.joker_display_values.chips > 0) then
-                card.joker_display_values.chips = 0
-            end
         end
     end
 }

@@ -45,7 +45,7 @@ SMODS.Joker {
     pixel_size = { w = 71, h = 71 },
     display_size = { w = 71 * 1.2, h = 71 * 1.2 },
     attributes = { 'xmult', 'scaling', 'economy', 'food' },
-    config = { extra = { fee = 5, xmult_gain = 0.15, xmult = 1, total_spent = 0 } },
+    config = { extra = { fee = 5, xmult_gain = 0.25, xmult = 1, total_spent = 0 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.fee, card.ability.extra.xmult_gain, card.ability.extra.xmult, card.ability.extra.total_spent } }
     end,
@@ -53,7 +53,7 @@ SMODS.Joker {
         if context.ante_change and context.ante_end and not context.blueprint then
             if G.GAME.dollars >= 2 * card.ability.extra.fee then
                 local numberofredbaronpizzastopurchase = to_number(math.min(math.floor(G.GAME.dollars /
-                    (2 * card.ability.extra.fee)), 250))
+                    (2 * card.ability.extra.fee)), 50))
                 for i = 1, numberofredbaronpizzastopurchase do
                     SMODS.scale_card(card, {
                         ref_table = card.ability.extra,
