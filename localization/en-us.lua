@@ -187,6 +187,15 @@ return {
                     'chance to break after scoring',
                 }
             },
+            j_neonmod_mike = {
+                name = "'Fuck Radio in particular'",
+                text = {
+                    "{C:mult}+#1#{} Mult per connected",
+                    "{C:attention}audio input device{}",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+                    "{s:0.8,C:inactive}this goes against wolf agenda of 'fuck radio in particular'",
+                },
+            },
             j_neonmod_redbaron = {
                 name = 'Red Baron Pizza',
                 text = {

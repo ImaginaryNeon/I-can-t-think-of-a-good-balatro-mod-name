@@ -285,6 +285,17 @@ jd_def["j_neonmod_licensetomaim"] = { -- License to Maim
     end
 }
 
+jd_def["j_neonmod_mike"] = { -- why
+    text = {
+        { text = "+" },
+        { ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.MULT },
+    calc_function = function(card)
+        card.joker_display_values.mult = card.ability.extra.mult * (G.GAME.neonmod_devicecount or 0)
+    end
+}
+
 jd_def["j_neonmod_dangeresque"] = { -- Dangeresque, Too?
     text = {
         { text = "$" },

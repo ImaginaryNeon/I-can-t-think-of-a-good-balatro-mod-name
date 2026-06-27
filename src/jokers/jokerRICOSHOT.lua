@@ -95,3 +95,21 @@ SMODS.Joker {
         end
     end,
 }
+SMODS.Joker {
+    key = 'mike',
+    atlas = 'jonklers',
+    rarity = 1,
+    cost = 2,
+    pos = { x = 1, y = 5 },
+    config = { extra = { mult = 1 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult, card.ability.extra.mult * (#love.audio.getRecordingDevices() or 0) } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult * (G.GAME.neonmod_devicecount or 0)
+            }
+        end
+    end,
+}

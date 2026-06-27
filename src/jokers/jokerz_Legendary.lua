@@ -15,11 +15,6 @@ SMODS.Joker {
         },
     },
     loc_vars = function(self, info_queue, card)
-        local heart_count = 0
-        local diamond_count = 0
-        local club_count = 0
-        local spade_count = 0
-        local other_count = 0
         local highest_count = 0
         if G.playing_cards then
             local suits = {}
@@ -38,43 +33,6 @@ SMODS.Joker {
             end
             card.ability.extra.suit = suit
             highest_count = count
-            --[[for _, playing_card in ipairs(G.playing_cards) do
-                if playing_card:is_suit("Hearts") then
-                    heart_count = heart_count + 1
-                end
-                if playing_card:is_suit("Diamonds") then
-                    diamond_count = diamond_count + 1
-                end
-                if playing_card:is_suit("Clubs") then
-                    club_count = club_count + 1
-                end
-                if playing_card:is_suit("Spades") then
-                    spade_count = spade_count + 1
-                end
-                if not playing_card:is_suit("Hearts") and not playing_card:is_suit("Diamonds") and not
-                    playing_card:is_suit("Clubs") and not playing_card:is_suit("Spades") and not SMODS.has_no_suit(playing_card) then
-                    other_count = other_count + 1
-                end
-            end
-            if heart_count > diamond_count and heart_count > club_count and heart_count > spade_count and heart_count > other_count then
-                card.ability.extra.suit = "Hearts"
-                highest_count = heart_count
-            elseif diamond_count > heart_count and heart_count > club_count and heart_count > spade_count and heart_count > other_count then
-                card.ability.extra.suit = "Diamonds"
-                highest_count = diamond_count
-            elseif club_count > heart_count and club_count > diamond_count and club_count > spade_count and heart_count > other_count then
-                card.ability.extra.suit = "Clubs"
-                highest_count = club_count
-            elseif spade_count > heart_count and spade_count > diamond_count and spade_count > club_count and heart_count > other_count then
-                card.ability.extra.suit = "Spades"
-                highest_count = spade_count
-            elseif other_count > heart_count and other_count > diamond_count and other_count > club_count and other_count > spade_count then
-                card.ability.extra.suit = "Other"
-                highest_count = other_count
-            else
-                card.ability.extra.suit = "Spades"
-                highest_count = spade_count
-            end]]
         end
         --[[if card.ability.extra.suit == "Hearts" then
             card.ability.extra.color = G.C.SUITS.Hearts
@@ -132,3 +90,100 @@ SMODS.Joker {
         end
     end
 }
+
+SMODS.ObjectType({
+    key = "neonmod_Passive_Utility", -- The prefix is not added automatically so it's recommended to add it yourself
+    default = "j_smeared",
+    cards = {
+        j_four_fingers = true,
+        j_credit_card = true,
+        j_chaos = true,
+        j_pareidolia = true,
+        j_splash = true,
+        j_shortcut = true,
+        j_burglar = true,
+        -- j_diet_cola = true, -- unsure if this one should count
+        -- j_midas_mask = true,
+        j_to_the_moon = true,
+        j_juggler = true,
+        j_drunkard = true,
+        -- j_ticket = true,
+        -- j_certificate = true,
+        j_smeared = true,
+        j_ring_master = true,
+        j_merry_andy = true,
+        j_oops = true,
+        -- j_invisible = true,
+        j_astronomer = true,
+        j_chicot = true,
+        -- j_joker = true,
+        --- Cryptid shit
+        -- j_cry_astral_bottle = true,
+        j_cry_rotten_egg = true,
+        j_cry_blurred = true,
+        j_cry_booster = true,
+        -- j_cry_broken_sync_catalyst = true,
+        j_cry_buttercup = true,
+        j_cry_caeruleum = true,
+        j_cry_candy_buttons = true,
+        j_cry_candy_sticks = true,
+        j_cry_cat_owl = true,
+        -- j_cry_copypaste = true,
+        j_cry_crustulum = true,        -- very edge of counting, but does just have the free reroll passive, so fine
+        j_cry_curse_sob = true,
+        ["j_cry_Double Scale"] = true, -- idk man that's how it is in the localization
+        j_cry_effarcire = true,
+        -- j_cry_equilib = true,
+        j_cry_error = true,
+        j_cry_fractal = true,
+        -- j_cry_eyeofhagane = true, -- the fuck is this???
+        -- j_cry_flip_side = true,
+        -- j_cry_huntingseason = true,
+        -- j_cry_kittyprinter = true,
+        -- j_cry_macabre = true,
+        j_cry_maximized = true,
+        j_cry_maze = true,
+        -- j_cry_mellowcreme = true,
+        -- j_cry_monopoly_money = true,
+        -- j_cry_necromancer = true,
+        j_cry_negative = true,
+        -- j_cry_oldcandy = true,
+        j_cry_panopticon = true,
+        -- j_cry_pot_of_jokes = true,
+        -- j_cry_carved_pumpkin = true,
+        j_cry_redeo = true,
+        j_cry_Scalae = true,
+        -- j_cry_seal_the_deal = true,
+        j_cry_soccer = true,
+        j_cry_yarnball = true,
+        j_cry_paved_joker = true,
+        -- j_cry_sync_catalyst = true,
+        j_cry_tenebris = true,
+        j_cry_universum = true, -- why are half of cryptid's passive jokers just the fucking exotics man
+        -- j_cry_huntingseason = true,
+    },
+})
+--[[
+SMODS.Joker {
+    key = "mii_fighter",
+    atlas = 'jonklers',
+    rarity = 4,
+    cost = 20,
+    pos = { x = 3, y = 3 },
+    soul_pos = { x = 5, y = 3 },
+    config = {
+        extra = {
+            xmult_base = 1,
+            xmult = 1,
+            xmult_gain = 0.05,
+            suit = "None",
+            color = G.C.UI.TEXT_DARK
+        },
+    },
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play then
+            return { xmult = card.ability.extra.xmult_base + (card.ability.extra.xmult_gain) }
+        end
+    end
+}
+]]
