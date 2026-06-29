@@ -315,8 +315,8 @@ return {
                 text = {
                     "{C:green}#2# in #3#{} chance",
                     "for {X:mult,C:white} X#1# {} Mult",
-                    "{C:attention}Odds{} are based on",
-                    "number of {C:attention}hands remaining{}",
+                    "{C:green}Odds{} based on",
+                    "{C:attention}hands remaining{}",
                 }
             },
             j_neonmod_sampletext = {
