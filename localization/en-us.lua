@@ -187,6 +187,15 @@ return {
                     'chance to break after scoring',
                 }
             },
+            j_neonmod_violencesecret = {
+                name = 'Hell Bath No Fury',
+                text = {
+                    'Played {C:attention}7{}s have a',
+                    '{C:green}#1# in #2#{} chance',
+                    'to create a random',
+                    '{C:spectral}Spectral{} card',
+                }
+            },
             j_neonmod_mike = {
                 name = "'Fuck Radio in particular'",
                 text = {
