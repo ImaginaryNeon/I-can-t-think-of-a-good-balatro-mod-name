@@ -259,6 +259,14 @@ return {
                     '{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult for {V:1}#4#{C:inactive})'
                 }
             },
+            j_neonmod_jester_mii = {
+                name = 'Hugh Morris',
+                text = {
+                    'Held copies of {C:tarot}The Lovers{}',
+                    'have a {C:green}#1# in #2#{} chance to',
+                    'create a {C:dark_edition}Negative{} Joker',
+                }
+            },
             j_neonmod_dark_fountain = {
                 name = 'Dark Fountain',
                 text = {

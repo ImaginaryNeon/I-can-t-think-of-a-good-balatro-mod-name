@@ -163,27 +163,40 @@ SMODS.ObjectType({
         -- j_cry_huntingseason = true,
     },
 })
---[[
 SMODS.Joker {
-    key = "mii_fighter",
+    key = "jester_mii",
     atlas = 'jonklers',
     rarity = 4,
     cost = 20,
-    pos = { x = 3, y = 3 },
-    soul_pos = { x = 5, y = 3 },
+    attributes = { 'joker' },
+    pos = { x = 3, y = 5 },
+    soul_pos = { x = 4, y = 5 },
     config = {
         extra = {
-            xmult_base = 1,
-            xmult = 1,
-            xmult_gain = 0.05,
-            suit = "None",
-            color = G.C.UI.TEXT_DARK
+            odds = 4
         },
     },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds,
+            'neonmod_jester_mii')
+        --info_queue[#info_queue + 1] = { key = 'c_lovers', set = 'Tarot', config = { max_highlighted = 1, mod_conv = 'm_wild' } }
+        info_queue[#info_queue + 1] = G.P_CENTERS.c_lovers
+        if not self.edition or (self.edition and not self.edition.negative) then
+            info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+        end
+        return { vars = { numerator, denominator } }
+    end,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play then
-            return { xmult = card.ability.extra.xmult_base + (card.ability.extra.xmult_gain) }
+        if context.joker_main then
+            for _, lovers in ipairs(SMODS.find_card("c_lovers")) do
+                if SMODS.pseudorandom_probability(card, 'neonmod_jester_mii', 1, card.ability.extra.odds) then
+                    SMODS.add_card {
+                        set = 'Joker',
+                        edition = 'e_negative',
+                        key_append = 'neonmod_jester_mii' -- Optional, useful for manipulating the random seed and checking the source of the creation in `in_pool`.
+                    }
+                end
+            end
         end
     end
 }
-]]

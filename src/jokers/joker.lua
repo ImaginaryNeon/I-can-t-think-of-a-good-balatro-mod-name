@@ -82,7 +82,8 @@ SMODS.Joker {
         multper = 1,
         mult = 0,
         chipsper = 0.75,
-        chips = 0, }
+        chips = 0,
+        other_key = nil }
     },
     attributes = { 'chips', 'mult', 'joker' },
     blueprint_compat = true,
@@ -97,6 +98,7 @@ SMODS.Joker {
                 if G.jokers.cards[i] == card then
                     if i < #G.jokers.cards then
                         other_joker = G.jokers.cards[i + 1]
+                        card.ability.extra.other_key = other_joker.config.center.key
                         local obj_key = other_joker.config.center.key
                         local obj_set = other_joker.ability.set
                         tarname = localize { type = 'name_text', set = obj_set, key = obj_key }
@@ -121,13 +123,16 @@ SMODS.Joker {
                     if G.jokers.cards[i] == card then
                         if (i + 1) <= #G.jokers.cards then
                             other_joker = G.jokers.cards[i + 1]
-                            local obj_key = other_joker.config.center.key
-                            local obj_set = other_joker.ability.set
-                            tarname = localize { type = 'name_text', set = obj_set, key = obj_key }
-                            tardesc = table.concat(
-                                localize({ type = 'raw_descriptions', key = obj_key, set = obj_set, vars = {} }), ' ')
-                            card.ability.extra.mult = (string.len(tarname) or 0) * card.ability.extra.multper
-                            card.ability.extra.chips = (string.len(tardesc) or 0) * card.ability.extra.chipsper
+                            if not (other_joker.config.center.key == card.ability.extra.other_key) then
+                                local obj_key = other_joker.config.center.key
+                                card.ability.extra.other_key = other_joker.config.center.key
+                                local obj_set = other_joker.ability.set
+                                tarname = localize { type = 'name_text', set = obj_set, key = obj_key }
+                                tardesc = table.concat(
+                                    localize({ type = 'raw_descriptions', key = obj_key, set = obj_set, vars = {} }), ' ')
+                                card.ability.extra.mult = (string.len(tarname) or 0) * card.ability.extra.multper
+                                card.ability.extra.chips = (string.len(tardesc) or 0) * card.ability.extra.chipsper
+                            end
                         else
                             card.ability.extra.mult = 0
                             card.ability.extra.chips = 0
