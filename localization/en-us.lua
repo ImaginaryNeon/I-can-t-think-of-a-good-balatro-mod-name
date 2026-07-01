@@ -250,7 +250,7 @@ return {
                 },
             },
             j_neonmod_legendary_mii = {
-                name = 'Aw man',
+                name = 'Aw Man',
                 text = {
                     'Played cards of the most {C:attention}prevalent{} suit',
                     'in the {C:attention}full deck{} give {X:mult,C:white}X#1#{} Mult',

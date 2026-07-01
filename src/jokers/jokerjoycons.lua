@@ -112,57 +112,6 @@ SMODS.Joker {
     end
 }
 
-SMODS.Joker {
-    key = 'cheatcode',
-    atlas = 'jonklers',
-    pos = {
-        x = 5,
-        y = 4
-    },
-    rarity = 1,
-    cost = 4,
-    config = {
-        extra = {
-            chips = 0,
-            chipgain = 30,
-            suits = {}, instruments = true
-        }, immutable = { length = 4 }
-    },
-    blueprint_compat = true,
-    loc_vars = function(self, info_queue, card)
-        local suits = G.GAME.current_round.neonmod_cheatcode_cards and
-            table.concat(G.GAME.current_round.neonmod_cheatcode_cards, ', ', 1, card.ability.immutable.length) or
-            "Lamp, Oil, Rope, Bombs"
-        card.ability.extra.suits = suits
-        return {
-            vars = { card.ability.extra.chipgain, card.ability.extra.chips, card.ability.immutable.length, suits },
-        }
-    end,
-    calculate = function(self, card, context)
-        if context.before and not context.blueprint and not (#G.hand.cards < card.ability.immutable.length) then
-            local instrument = true
-            for i = 1, math.floor(math.min(#G.hand.cards, card.ability.immutable.length)) do
-                if G.hand.cards[i]:is_suit(G.GAME.current_round.neonmod_cheatcode_cards[i]) then
-                else
-                    instrument = false
-                end
-            end
-            if instrument == true then
-                SMODS.scale_card(card, {
-                    ref_table = card.ability.extra,
-                    ref_value = 'chips',
-                    scalar_value = 'chipgain',
-                })
-            end
-        end
-        if context.joker_main then
-            return {
-                chips = card.ability.extra.chips
-            }
-        end
-    end
-}
-
 local function reset_neonmod_cheatcode()
     G.GAME.current_round.neonmod_cheatcode_cards = G.GAME.current_round.neonmod_cheatcode_cards or
         { 'Hearts', 'Diamonds', 'Spades', 'Clubs', 'Hearts', 'Diamonds', 'Spades', 'Clubs', 'Hearts', 'Spades' }
