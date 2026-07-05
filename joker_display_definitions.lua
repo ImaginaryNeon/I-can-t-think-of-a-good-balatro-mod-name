@@ -211,8 +211,11 @@ jd_def["j_neonmod_marksman"] = { -- Marksman Gun
     retrigger_function = function(playing_card, scoring_hand, held_in_hand, joker_card)
         if held_in_hand then return 0 end
         if Cryptid then
-            return JokerDisplay.in_scoring(playing_card, scoring_hand) and
-                JokerDisplay.calculate_joker_triggers(joker_card)
+            local final_card = scoring_hand and JokerDisplay.calculate_rightmost_card(scoring_hand)
+            return final_card and playing_card == final_card and
+                ((joker_card.ability.extra.repetitions *
+                        math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / joker_card.ability.extra.dollars)) *
+                    JokerDisplay.calculate_joker_triggers(joker_card)) or 0
         else
             local first_card = scoring_hand and JokerDisplay.calculate_leftmost_card(scoring_hand)
             return first_card and playing_card == first_card and
@@ -225,9 +228,15 @@ jd_def["j_neonmod_marksman"] = { -- Marksman Gun
         { ref_table = "card.joker_display_values", ref_value = "retriggercount", retrigger_type = "mult" }
     },
     text_config = { colour = G.C.FILTER },
+    reminder_text = {
+        { text = "-$",                             colour = G.C.GOLD },
+        { ref_table = "card.joker_display_values", ref_value = "cost", colour = G.C.GOLD, retrigger_type = "mult" },
+    },
     calc_function = function(card)
         card.joker_display_values.retriggercount = to_number(card.ability.extra.repetitions *
             math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))
+        card.joker_display_values.cost = to_number(card.ability.extra.fee * (card.ability.extra.repetitions *
+            math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars)))
     end
 }
 
@@ -469,6 +478,58 @@ jd_def["j_neonmod_fraudclimax"] = { -- Final Flight
         card.joker_display_values.localized_text = "(8,4)"
     end
 }
+jd_def["j_neonmod_fraudclimax_alt"] = { -- Final Flight
+    text = {
+        {
+            border_nodes = {
+                { text = "X" },
+                { ref_table = "card.joker_display_values", ref_value = "xmult" }
+            }
+        }
+    },
+    reminder_text = {
+        { ref_table = "card.joker_display_values", ref_value = "localized_text" },
+    },
+    calc_function = function(card)
+        local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+        local count = 0
+        if text ~= 'Unknown' then
+            for _, scoring_card in pairs(scoring_hand) do
+                if scoring_card:get_id() and scoring_card:get_id() == 8 or scoring_card:get_id() == 4 then
+                    count = count +
+                        JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
+                end
+            end
+        end
+        card.joker_display_values.count = count
+        card.joker_display_values.xmult = card.ability.extra.xmult + (count * card.ability.extra.xmult_mod)
+        card.joker_display_values.localized_text = "(8,4)"
+    end
+}
+
+jd_def["j_neonmod_violencesecret"] = { -- Hell Bath No Fury
+    text = {
+        { text = "+" },
+        { ref_table = "card.joker_display_values", ref_value = "count", retrigger_type = "mult" },
+    },
+    text_config = { colour = G.C.SECONDARY_SET.Spectral },
+    reminder_text = {
+        { ref_table = "card.joker_display_values", ref_value = "localized_text" },
+    },
+    calc_function = function(card)
+        local count = 0
+        local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+        if text ~= 'Unknown' then
+            for _, scoring_card in pairs(scoring_hand) do
+                if scoring_card:get_id() and (scoring_card:get_id() == 7) and next(SMODS.get_enhancements(scoring_card)) then
+                    count = count + 1
+                end
+            end
+        end
+        card.joker_display_values.count = count
+        card.joker_display_values.localized_text = "(Enhanced 7s)"
+    end
+}
 
 jd_def["j_neonmod_legendary_mii"] = { -- Aw man
     text = {
@@ -519,6 +580,33 @@ jd_def["j_neonmod_legendary_mii"] = { -- Aw man
         end
     end
 }
+
+jd_def["j_neonmod_jester_mii"] = { -- Hugh Morris
+    text = {
+        { text = "+" },
+        { ref_table = "card.joker_display_values", ref_value = "count", retrigger_type = "mult" },
+    },
+    text_config = { colour = G.C.FILTER },
+    extra = {
+        {
+            { text = "(" },
+            { ref_table = "card.joker_display_values", ref_value = "odds" },
+            { text = ")" },
+        }
+    },
+    extra_config = { colour = G.C.GREEN, scale = 0.3 },
+    calc_function = function(card)
+        local count = 0
+        for _, lovers in ipairs(SMODS.find_card("c_lovers")) do
+            count = count + 1
+        end
+        card.joker_display_values.count = count
+        local numerator, denominator = (G.GAME.probabilities.normal or 1), card.ability.extra.odds
+        if SMODS then numerator, denominator = SMODS.get_probability_vars(card, 1, denominator, 'neonmod_jester_mii') end
+        card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
+    end
+}
+
 jd_def["j_neonmod_secret"] = { -- We Are Number One!
     text = {
         {

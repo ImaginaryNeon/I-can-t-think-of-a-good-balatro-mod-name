@@ -165,6 +165,7 @@ end
 SMODS.Joker {
     key = "passport",
     blueprint_compat = true,
+    perishable_compat = false,
     rarity = 1,
     cost = 5,
     atlas = "jonklers",

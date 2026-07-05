@@ -5,6 +5,7 @@ SMODS.Joker {
     cost = 8,
     pos = { x = 1, y = 3 },
     blueprint_compat = true,
+    perishable_compat = false,
     config = {
         extra = {
             chips = 0,
@@ -35,12 +36,18 @@ SMODS.Joker {
     end
 }
 
+SMODS.Rarity {
+    key = "unbound",
+    badge_colour = HEX('e03c9b'),
+    default_weight = 0,
+}
+
 SMODS.Joker {
     key = "redtapeunbound",
     atlas = 'jonklers',
     no_collection = true,
     blueprint_compat = true,
-    rarity = 2,
+    rarity = "neonmod_unbound",
     cost = 6,
     weight = 0,
     pos = { x = 1, y = 3 },
@@ -51,7 +58,7 @@ SMODS.Joker {
         }
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.chips, card.ability.extra.mult } }
+        return { vars = { card.ability.extra.chips, card.ability.extra.mult, colours = { HEX("e03c9b") } } }
     end,
     calculate = function(self, card, context)
         if context.pre_discard and not context.hook and not context.blueprint then
@@ -76,9 +83,13 @@ SMODS.Challenge {
     key = "rewound",
     restrictions = {
         banned_cards = {
-
+            { id = 'j_burglar' },
+            { id = 'j_neonmod_redtape' },
         },
-        banned_other = {},
+        banned_other = {
+            --{ id = 'bl_hook', type = 'blind' },
+            { id = 'bl_water', type = 'blind' },
+        },
     },
     jokers = {
         { id = 'j_neonmod_redtapeunbound', eternal = true }

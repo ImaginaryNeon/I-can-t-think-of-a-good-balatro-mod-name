@@ -10,7 +10,7 @@ if Cryptid then
                 "set_cry_epic",
             },
         },
-        config = { extra = { repetitions = 1, dollars = 15 } },
+        config = { extra = { repetitions = 1, dollars = 15, fee = 1.5 } },
         rarity = "cry_epic",
         cost = 10,
         loc_vars = function(self, info_queue, card)
@@ -19,16 +19,30 @@ if Cryptid then
                     card.ability.extra.repetitions,
                     card.ability.extra.dollars,
                     card.ability.extra.repetitions *
-                    math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars)
+                    math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars),
+                    card.ability.extra.fee,
+                    "last"
                 }
             }
         end,
         calculate = function(self, card, context)
-            if context.repetition and context.cardarea == G.play and (to_number(card.ability.extra.repetitions *
+            if context.repetition and context.cardarea == G.play and context.other_card == context.scoring_hand[#context.scoring_hand] and (to_number(card.ability.extra.repetitions *
                     math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))) > 0 then
+                G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) -
+                    (to_number(card.ability.extra.fee * (card.ability.extra.repetitions *
+                        math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))))
                 return {
+                    dollars = -card.ability.extra.fee,
+                    func = function() -- This is for timing purposes, this goes after the dollar modification
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                G.GAME.dollar_buffer = 0
+                                return true
+                            end
+                        }))
+                    end,
                     repetitions = to_number(card.ability.extra.repetitions *
-                        math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))
+                        math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars)),
                 }
             end
         end,
@@ -40,7 +54,7 @@ else
         pos = { x = 4, y = 1 },
         pixel_size = { w = 52, h = 95 },
         to_number = to_number or function(x) return x end,
-        config = { extra = { repetitions = 1, dollars = 20 } },
+        config = { extra = { repetitions = 1, dollars = 15, fee = 2 } },
         rarity = 3,
         cost = 10,
         loc_vars = function(self, info_queue, card)
@@ -49,16 +63,31 @@ else
                     card.ability.extra.repetitions,
                     card.ability.extra.dollars,
                     card.ability.extra.repetitions *
-                    math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars)
+                    math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars),
+                    card.ability.extra.fee,
+                    "the first scored card"
                 }
             }
         end,
         calculate = function(self, card, context)
             if context.repetition and context.cardarea == G.play and context.other_card == context.scoring_hand[1] and (to_number(card.ability.extra.repetitions *
                     math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))) > 0 then
+                G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) -
+                    (to_number(card.ability.extra.fee * (card.ability.extra.repetitions *
+                        math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))))
                 return {
+                    dollars = -(to_number(card.ability.extra.fee * (card.ability.extra.repetitions *
+                        math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars)))),
+                    func = function() -- This is for timing purposes, this goes after the dollar modification
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                G.GAME.dollar_buffer = 0
+                                return true
+                            end
+                        }))
+                    end,
                     repetitions = to_number(card.ability.extra.repetitions *
-                        math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))
+                        math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars)),
                 }
             end
         end,
@@ -72,6 +101,7 @@ SMODS.Joker {
     config = { extra = { repetitions = 1, dollars = 10, odds = 3, } },
     rarity = 2,
     cost = 8,
+    eternal_compat = false,
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds,
             'neonmod_marksmancoin')

@@ -72,8 +72,9 @@ return {
             j_neonmod_marksman = {
                 name = 'Marksman Revolver',
                 text = {
-                    'Retriggers scored cards {C:attention}#1#{} time',
-                    'for every {C:money}$#2#{} you have',
+                    'Retriggers the #5# scored card',
+                    '{C:attention}#1#{} time per {C:money}$#2#{} owned,',
+                    'Lose {C:money}$#4#{} per retrigger',
                     '{C:inactive}(Currently {C:attention}#3#{}{C:inactive} retriggers)'
                 }
             },
@@ -120,8 +121,8 @@ return {
                 text = {
                     'Played {C:attention}face cards{} give {X:mult,C:white}X#1#{} Mult',
                     'at the cost of 1 {C:attention}ammo{}.',
-                    'Sold Jokers give their {C:attention}sell value{}',
-                    'as ammo',
+                    'Sold Jokers give their',
+                    '{C:attention}sell value{} as ammo',
                     '{C:inactive}(Ammo remaining: {C:attention}#2#{C:inactive}){}'
                 }
             },
@@ -190,10 +191,10 @@ return {
             j_neonmod_violencesecret = {
                 name = 'Hell Bath No Fury',
                 text = {
-                    'Played {C:attention}7{}s have a',
-                    '{C:green}#1# in #2#{} chance',
-                    'to create a random',
-                    '{C:spectral}Spectral{} card',
+                    '{C:attention}Enhanced 7{}s lose their',
+                    'Enhancements and create a',
+                    'random {C:spectral}Spectral{} card',
+                    'after scoring'
                 }
             },
             j_neonmod_mike = {
@@ -221,18 +222,17 @@ return {
             j_neonmod_redtape = {
                 name = 'Red-Tape Recorder',
                 text = {
-                    "Decrease the level of the",
-                    "first {C:attention}discarded{} poker hand",
+                    "{C:red}Decrease{} the level of the",
+                    "{C:attention}first discarded{} poker hand",
                     "each round and add its",
-                    "Chips and Mult to this",
-                    "Joker's Chips and Mult",
+                    "Chips and Mult to this Joker",
                     "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#2#{C:inactive} Mult){}"
                 }
             },
             j_neonmod_redtapeunbound = {
-                name = 'Unbound Red-Tape Recorder',
+                name = '{V:1}Unbound{} Red-Tape Recorder',
                 text = {
-                    "Decrease the level of each",
+                    "{C:red}Decrease{} the level of {C:attention}each{}",
                     "{C:attention}discarded{} poker hand and",
                     "add its Chips and Mult to",
                     "this Joker's Chips and Mult",
@@ -411,6 +411,12 @@ return {
     misc = {
         challenge_names = {
             c_neonmod_rewound = "Rewound"
+        },
+        dictionary = {
+            k_neonmod_unbound = "Unbound",
+        },
+        labels = {
+            k_neonmod_unbound = "Unbound",
         }
     }
 

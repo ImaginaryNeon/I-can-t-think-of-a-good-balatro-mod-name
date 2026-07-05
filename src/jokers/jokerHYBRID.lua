@@ -14,6 +14,7 @@ SMODS.Joker {
         }
     },
     blueprint_compat = true,
+    perishable_compat = false,
     pools = { ["Meme"] = true, },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult_gain, card.ability.extra.xmult, '#' } }
@@ -49,7 +50,7 @@ SMODS.Joker {
     key = "tcfna",
     atlas = 'jonklers',
     rarity = isepic,
-    cost = 10,
+    cost = 12,
     pos = { x = 0, y = 1 },
     config = {
         extra = {

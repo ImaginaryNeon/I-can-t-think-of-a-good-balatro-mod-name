@@ -192,6 +192,7 @@ SMODS.Joker {
         }, immutable = { length = 4 }
     },
     blueprint_compat = true,
+    perishable_compat = false,
     loc_vars = function(self, info_queue, card)
         local suits = G.GAME.current_round.neonmod_cheatcode_cards and
             table.concat(G.GAME.current_round.neonmod_cheatcode_cards, ', ', 1, card.ability.immutable.length) or
@@ -238,6 +239,7 @@ SMODS.Joker {
     rarity = 1,
     cost = 4,
     blueprint_compat = true,
+    perishable_compat = false,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chips, card.ability.extra.chip_gain } }
     end,

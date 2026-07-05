@@ -1,4 +1,49 @@
 SMODS.Joker {
+    key = "violencesecret",
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 7,
+    atlas = "jonklers",
+    pos = { x = 2, y = 5 },
+    calculate = function(self, card, context)
+        if context.final_scoring_step and not context.blueprint then
+            local enhanced = {}
+            for i = 1, #context.scoring_hand do
+                if next(SMODS.get_enhancements(context.scoring_hand[i])) and not context.scoring_hand[i].debuff and not context.scoring_hand[i].vampired and context.scoring_hand[i]:get_id() == 7 then
+                    enhanced[#enhanced + 1] = context.scoring_hand[i]
+                    context.scoring_hand[i].vampired = true
+                    context.scoring_hand[i]:set_ability('c_base', nil, true)
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            context.scoring_hand[i]:juice_up()
+                            context.scoring_hand[i].vampired = nil
+                            return true
+                        end
+                    }))
+                end
+            end
+            if #enhanced > 0 and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+                local spectrals_to_create = math.min(#enhanced,
+                    G.consumeables.config.card_limit - (#G.consumeables.cards + G.GAME.consumeable_buffer))
+                G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + spectrals_to_create
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        for _ = 1, spectrals_to_create do
+                            SMODS.add_card {
+                                set = 'Spectral',
+                                key_append = 'hellbathnofury' -- Optional, useful for manipulating the random seed and checking the source of the creation in `in_pool`.
+                            }
+                            G.GAME.consumeable_buffer = 0
+                        end
+                        return true
+                    end
+                }))
+            end
+        end
+    end,
+}
+
+SMODS.Joker {
     key = "fraudfirst",
     blueprint_compat = true,
     rarity = 2,
@@ -129,6 +174,7 @@ else
     SMODS.Joker {
         key = "fraudclimax_alt",
         blueprint_compat = true,
+        perishable_compat = false,
         rarity = 3,
         cost = 8,
         atlas = "jonklers",
