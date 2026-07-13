@@ -642,3 +642,14 @@ jd_def["j_neonmod_scope"] = { -- Scope Lens
         card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
     end
 }
+
+jd_def["j_neonmod_still_alive"] = { -- Still Alive
+    text = {
+        {
+            border_nodes = {
+                { text = "X" },
+                { ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp" }
+            }
+        }
+    }
+}

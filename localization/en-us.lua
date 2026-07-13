@@ -336,6 +336,17 @@ return {
                     "{C:attention}hands remaining{}",
                 }
             },
+            j_neonmod_still_alive = {
+                name = "Still Alive",
+                text = {
+                    "{C:neonmod_unbound}This{} Joker gains {X:mult,C:white}X#1#{} Mult",
+                    "per playing card {C:attention}destroyed{}, resets",
+                    "when {C:attention}Boss Blind{} is defeated",
+                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+                    "{C:inactive,s:0.8}And believe me I am",
+                    "{C:inactive,s:0.8}still alive.",
+                }
+            },
             j_neonmod_sampletext = {
                 name = 'Sample Text',
                 text = {
@@ -345,6 +356,19 @@ return {
                     '{C:inactive}(2/A, 3/K, 4/Q, etc.){}'
                 }
             }
+        },
+        SongInfo = {
+            still_alive = {
+                name = "Song Info",
+                text = {
+                    "{C:attention}Title:",
+                    "Still Alive",
+                    "{C:attention}Producer:",
+                    "Jonathan Coulton",
+                    "{C:attention}Voice:",
+                    "Ellen McLain"
+                }
+            },
         },
         Blind = {
             bl_neonmod_fleshprison = {
@@ -383,6 +407,16 @@ return {
                     "{C:attention}spawning{} enemies here"
                 }
             }
+        },
+        synthb_Character = {
+            char_neonmod_portalradio1 = {
+                name = "Portal Radio",
+                text = {
+                    "Played or held {C:attention}8{}s, {C:attention}5{}s, and {C:attention}2{}s",
+                    "have a {C:green}#3# in {X:green,C:white}#1#{} chance",
+                    "to retrigger {C:attention}#2#{} time(s)"
+                }
+            },
         },
         Sleeve = {
             sleeve_neonmod_moodysleve = {

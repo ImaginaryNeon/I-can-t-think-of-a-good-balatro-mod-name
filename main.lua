@@ -1,3 +1,6 @@
+Neonmod = Neonmod or {}
+Neonmod.mod = SMODS.current_mod
+
 --#region Atlases
 
 SMODS.Atlas { -- Jokers
@@ -37,6 +40,47 @@ SMODS.Atlas { -- Mannpower Blinds
     py = 34
 }
 
+SMODS.Atlas { -- Still Alive
+    key = 'stillalive',
+    path = 'Still Alive.png',
+    px = 302,
+    py = 302
+}
+
+SMODS.Atlas { -- Still Alive
+    key = 'synth',
+    path = 'synth.png',
+    px = 71,
+    py = 71
+}
+
+SMODS.Atlas { -- shh
+    key = "secret",
+    path = "boring_stuff.png",
+    px = 71,
+    py = 95
+}
+
+SMODS.Atlas {
+    key = "banners",
+    path = "banners.png",
+    px = 252,
+    py = 402
+}
+
+Neonmod.custom_colors = {
+    FLOWERMAN = HEX("fee601"),
+    banners = {
+        neon = {
+            BACKGROUND = HEX("ee5d7d"),
+            BACKGROUND2 = HEX("a34775"),
+            UI = HEX("ff454c"),
+            PARTICLES_1 = HEX("c94f79"),
+            PARTICLES_2 = HEX("ab5ba9")
+        },
+    }
+}
+
 --#endregion
 
 --#region File Loading
@@ -72,8 +116,8 @@ SMODS.current_mod.optional_features = function()
     }
 end
 --#endregion
-Neonmod = SMODS.current_mod
 
+--[[
 Neonmod.joker_value_exclusions = {
     x_mult = 1,
     x_chips = 1,
@@ -106,15 +150,9 @@ function Neonmod.perform_operations(val1, op, val2)
         end
         return final
     end
-end
+end]]
 
-SMODS.Atlas { -- shh
-    key = "secret",
-    path = "boring_stuff.png",
-    px = 71,
-    py = 95
-}
-
+--[[
 function Neonmod.modify_joker_values(card, modifytbl, exclusions, ignoreimmutable, nodeckeffects)
     if not card or not modifytbl or (card.config.center.immutable and not ignoreimmutable) then return end
     -- local cardwasindeck = card.added_to_deck
@@ -147,5 +185,5 @@ function Neonmod.modify_joker_values(card, modifytbl, exclusions, ignoreimmutabl
         end
     end
     card.ability.soe_probability_modifier = probmod--]] -- no clue what this does
-    -- if not nodeckeffects and cardwasindeck then card:add_to_deck(true) end
-end
+-- if not nodeckeffects and cardwasindeck then card:add_to_deck(true) end
+--end

@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = "kingambit",
     rarity = 3,
-    cost = 8,
+    cost = 9,
     atlas = 'jonklers',
     blueprint_compat = true,
     pos = { x = 3, y = 1 },
