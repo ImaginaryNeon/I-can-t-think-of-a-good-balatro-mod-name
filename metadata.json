@@ -8,9 +8,9 @@
     "prefix": "neonmod",
     "main_file": "main.lua",
     "icon_path": "Logo.png",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "priority": 1,
-    "badge_colour": "2b3969",
+    "badge_colour": "2B3969",
     "badge_text_colour": "ffff00",
     "dependencies": [
         "Steamodded (>=1.*~)",

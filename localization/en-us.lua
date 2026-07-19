@@ -230,7 +230,7 @@ return {
                 }
             },
             j_neonmod_redtapeunbound = {
-                name = '{V:1}Unbound{} Red-Tape Recorder',
+                name = '{C:neonmod_unbound}Unbound{} Red-Tape Recorder',
                 text = {
                     "{C:red}Decrease{} the level of {C:attention}each{}",
                     "{C:attention}discarded{} poker hand and",
@@ -336,15 +336,57 @@ return {
                     "{C:attention}hands remaining{}",
                 }
             },
+            j_neonmod_akari = {
+                name = 'Akari No. 457',
+                text = {
+                    "{C:chips}+#1#{} Chips if all",
+                    "cards held in hand",
+                    "are {C:hearts}Hearts{} or {C:diamonds}Diamonds{}",
+                    --[["{C:chips}+#1#{} Chips",
+                    "if the listed rules",
+                    "are followed for all",
+                    "cards {C:attention}held in hand{}",]]
+                }
+            },
             j_neonmod_still_alive = {
                 name = "Still Alive",
                 text = {
-                    "{C:neonmod_unbound}This{} Joker gains {X:mult,C:white}X#1#{} Mult",
+                    "This Joker gains {X:mult,C:white}X#1#{} Mult",
                     "per playing card {C:attention}destroyed{}, resets",
                     "when {C:attention}Boss Blind{} is defeated",
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
                     "{C:inactive,s:0.8}And believe me I am",
                     "{C:inactive,s:0.8}still alive.",
+                }
+            },
+            j_neonmod_want_you_gone = {
+                name = 'Want You Gone',
+                text = {
+                    "This Joker gains {X:mult,C:white} X#1# {} Mult",
+                    "per {C:attention}Enhanced number card{} played,",
+                    "{C:attention}destroys{} card after scoring",
+                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+                    "{C:inactive,s:0.8}You're someone else's problem",
+                    "{C:inactive,s:0.8}Now I only want you gone",
+                }
+            },
+            j_neonmod_you_wouldnt_know = {
+                name = "You Wouldn't Know",
+                text = {
+                    "Earn {C:gold}$#1#{} for each",
+                    "{C:attention}debuffed{} card played",
+                    "{C:inactive,s:0.8}I {C:inactive,s:0.7}DON'T MEAN FOR THIS TO STING",
+                    "{C:inactive,s:0.8}I {C:inactive,s:0.7}FORGIVE YOU EVERYTHING",
+                    "{C:inactive,s:0.8}(REDACTED)",
+                }
+            },
+            j_neonmod_dont_say_goodbye = {
+                name = { "GLaDOS' Song", "{s:0.7}Don't Say Goodbye" },
+                text = {
+                    "Adds a random playing card to deck",
+                    "when a playing card is destroyed",
+                    "{C:inactive,s:0.8}You won't say goodbye",
+                    "{C:inactive,s:0.8}Never say goodbye",
                 }
             },
             j_neonmod_sampletext = {
@@ -366,7 +408,68 @@ return {
                     "{C:attention}Producer:",
                     "Jonathan Coulton",
                     "{C:attention}Voice:",
-                    "Ellen McLain"
+                    "GLaDOS",
+                    "{C:inactive,s:0.8}Ellen McLain"
+                }
+            },
+            want_you_gone = {
+                name = "Song Info",
+                text = {
+                    "{C:attention}Title:",
+                    "Want You Gone",
+                    "{C:attention}Producer:",
+                    "Jonathan Coulton",
+                    "{C:attention}Voice:",
+                    "GLaDOS",
+                    "{C:inactive,s:0.8}Ellen McLain"
+                }
+            },
+            you_wouldnt_know = {
+                name = "Song Info",
+                text = {
+                    "{C:attention}Title:",
+                    "You Wouldn't Know",
+                    "{C:attention}Producer:",
+                    "Jonathan Coulton",
+                    "{C:attention}Voice:",
+                    "GLaDOS",
+                    "{C:inactive,s:0.8}Ellen McLain"
+                }
+            },
+            dont_say_goodbye = {
+                name = "Song Info",
+                text = {
+                    "{C:attention}Title:",
+                    "GLaDOS' Song",
+                    "{C:attention}Producer:",
+                    "Ellen McLain",
+                    "{C:attention}Voice:",
+                    "GLaDOS",
+                    "{C:inactive,s:0.8}Ellen McLain"
+                }
+            },
+            cara_mia_addio = {
+                name = "Song Info",
+                text = {
+                    "{C:attention}Title:",
+                    "Cara Mia Addio",
+                    "{C:attention}Producer:",
+                    "Mike Morasky",
+                    "{C:attention}Voice:",
+                    "Turret Opera",
+                    "{C:inactive,s:0.8}Ellen McLain"
+                }
+            },
+            potatos_lament = {
+                name = "Song Info",
+                text = {
+                    "{C:attention}Title:",
+                    "PotatOS Lament",
+                    "{C:attention}Producer:",
+                    "Mike Morasky",
+                    "{C:attention}Voice:",
+                    "Turret Opera",
+                    "{C:inactive,s:0.8}Ellen McLain"
                 }
             },
         },
@@ -417,6 +520,14 @@ return {
                     "to retrigger {C:attention}#2#{} time(s)"
                 }
             },
+            char_neonmod_morshu1 = {
+                name = "Morshu",
+                text = {
+                    "Played or held {C:attention}8{}s, {C:attention}5{}s, and {C:attention}2{}s",
+                    "have a {C:green}#3# in {X:green,C:white}#1#{} chance",
+                    "to retrigger {C:attention}#2#{} time(s)"
+                }
+            },
         },
         Sleeve = {
             sleeve_neonmod_moodysleve = {
@@ -437,10 +548,28 @@ return {
                     "{C:inactive}(Can decrease hand levels below 1){}"
                 },
             },
-        } --,
-        --Other = {
-
-        --}
+        },
+        Other = {
+            neonmod_akarilore = {
+                name = 'Effects',
+                text = {
+                    "{C:attention}Aces{} act as {C:diamonds}lights{}",
+                    "Ranks {C:attention}10{} through {C:attention}King{}",
+                    "act as {C:attention}blocks{}",
+                    "All other cards act as",
+                    "{C:attention}Blank cells{}",
+                    "Lights shine on empty cells",
+                    "Blocks block lights from shining further",
+                    "Queens and Kings need 1 and 2 {C:attention}adjacent",
+                    "lights to be satiated, respectively",
+                    "Jacks may not have {C:attention}any{}",
+                    "adjacent {C:diamonds}lights{}",
+                    "All blank cells must be {C:diamonds}lit{}",
+                    "No two {C:diamonds}lights{} may be in range",
+                    "of each other",
+                }
+            },
+        }
     },
     misc = {
         challenge_names = {

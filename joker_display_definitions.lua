@@ -643,6 +643,29 @@ jd_def["j_neonmod_scope"] = { -- Scope Lens
     end
 }
 
+jd_def["j_neonmod_akari"] = { -- Akari
+    text = {
+        { text = "+" },
+        { ref_table = "card.joker_display_values", ref_value = "chips", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.CHIPS },
+    calc_function = function(card)
+        local playing_hand = next(G.play.cards)
+        local light_suits, all_cards = 0, 0
+        local is_all_light_suits = false
+        for _, playing_card in ipairs(G.hand.cards) do
+            if playing_hand or not playing_card.highlighted then
+                all_cards = all_cards + 1
+                if playing_card.facing and not (playing_card.facing == 'back') and (playing_card:is_suit('Hearts', nil, true) or playing_card:is_suit('Diamonds', nil, true)) then
+                    light_suits = light_suits + 1
+                end
+            end
+        end
+        is_all_light_suits = light_suits == all_cards
+        card.joker_display_values.chips = is_all_light_suits and card.ability.extra.chips or 0
+    end
+}
+
 jd_def["j_neonmod_still_alive"] = { -- Still Alive
     text = {
         {

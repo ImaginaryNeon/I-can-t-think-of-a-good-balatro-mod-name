@@ -58,7 +58,7 @@ SMODS.Joker {
         }
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.chips, card.ability.extra.mult, colours = { HEX("e03c9b") } } }
+        return { vars = { card.ability.extra.chips, card.ability.extra.mult } }
     end,
     calculate = function(self, card, context)
         if context.pre_discard and not context.hook and not context.blueprint then
