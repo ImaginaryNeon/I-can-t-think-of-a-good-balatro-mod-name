@@ -84,8 +84,8 @@ return {
             j_neonmod_marksmancoin = {
                 name = 'Marksman Coin',
                 text = {
-                    'Retriggers the {C:attention}first{} scoring card {C:attention}#1#{} time',
-                    'for every {C:money}$#2#{} you have',
+                    'Retriggers the {C:attention}first{} scoring card',
+                    '{C:attention}#1#{} time for every {C:money}$#2#{} you have',
                     '{C:green}#4# in #5#{} chance to break at end of round',
                     '{C:inactive}(Currently {C:attention}#3#{}{C:inactive} retriggers)'
                 }
