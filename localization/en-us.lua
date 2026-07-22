@@ -47,15 +47,18 @@ return {
             j_neonmod_joyconl = {
                 name = 'JoyCon (L)',
                 text = {
-                    'This Joker gains {C:chips}+#2#{} Chips when the Joker to the right is triggered',
+                    'This Joker gains {C:chips}+#2#{} Chips when',
+                    'the Joker to the {C:attention}right{} triggers',
                     '{C:inactive}(Currently{} {C:chips}+#1#{}{C:inactive} Chips){}'
                 }
             },
             j_neonmod_joyconr = {
                 name = 'JoyCon (R)',
                 text = {
-                    'This Joker gains {C:mult}+#2#{} Mult when the Joker to the left is triggered',
-                    '{C:green}#3# in #4#{} chance to break at end of round',
+                    'This Joker gains {C:mult}+#2#{} Mult when',
+                    'the Joker to the {C:attention}left{} triggers',
+                    '{C:green}#3# in #4#{} chance to break',
+                    'at end of round',
                     '{C:inactive}(Currently{} {C:mult}+#1#{}{C:inactive} Mult){}'
                 }
             },
@@ -72,8 +75,8 @@ return {
             j_neonmod_marksman = {
                 name = 'Marksman Revolver',
                 text = {
-                    'Retriggers the #5# scored card',
-                    '{C:attention}#1#{} time per {C:money}$#2#{} owned,',
+                    'Retriggers the {C:attention}#5#{} scoring card',
+                    '{C:attention}#1#{} time for each {C:money}$#2#{} you have,',
                     'Lose {C:money}$#4#{} per retrigger',
                     '{C:inactive}(Currently {C:attention}#3#{}{C:inactive} retriggers)'
                 }
@@ -81,9 +84,9 @@ return {
             j_neonmod_marksmancoin = {
                 name = 'Marksman Coin',
                 text = {
-                    'Retriggers the first scoring card {C:attention}#1#{} time',
+                    'Retriggers the {C:attention}first{} scoring card {C:attention}#1#{} time',
                     'for every {C:money}$#2#{} you have',
-                    'Has a {C:green}#4# in #5#{} chance to break at end of round',
+                    '{C:green}#4# in #5#{} chance to break at end of round',
                     '{C:inactive}(Currently {C:attention}#3#{}{C:inactive} retriggers)'
                 }
             },

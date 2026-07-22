@@ -10,7 +10,7 @@ if Cryptid then
                 "set_cry_epic",
             },
         },
-        config = { extra = { repetitions = 1, dollars = 15, fee = 1.5 } },
+        config = { extra = { repetitions = 1, dollars = 12, fee = 1.5 } },
         rarity = "cry_epic",
         cost = 10,
         loc_vars = function(self, info_queue, card)
@@ -54,7 +54,7 @@ else
         pos = { x = 4, y = 1 },
         pixel_size = { w = 52, h = 95 },
         to_number = to_number or function(x) return x end,
-        config = { extra = { repetitions = 1, dollars = 15, fee = 2 } },
+        config = { extra = { repetitions = 1, dollars = 12, fee = 2 } },
         rarity = 3,
         cost = 10,
         loc_vars = function(self, info_queue, card)
@@ -65,19 +65,16 @@ else
                     card.ability.extra.repetitions *
                     math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars),
                     card.ability.extra.fee,
-                    "the first scored card"
+                    "first"
                 }
             }
         end,
         calculate = function(self, card, context)
             if context.repetition and context.cardarea == G.play and context.other_card == context.scoring_hand[1] and (to_number(card.ability.extra.repetitions *
                     math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))) > 0 then
-                G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) -
-                    (to_number(card.ability.extra.fee * (card.ability.extra.repetitions *
-                        math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))))
+                G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) - (to_number(card.ability.extra.fee))
                 return {
-                    dollars = -(to_number(card.ability.extra.fee * (card.ability.extra.repetitions *
-                        math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars)))),
+                    dollars = -card.ability.extra.fee,
                     func = function() -- This is for timing purposes, this goes after the dollar modification
                         G.E_MANAGER:add_event(Event({
                             func = function()
