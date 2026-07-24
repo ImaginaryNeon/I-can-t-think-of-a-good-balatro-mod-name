@@ -392,6 +392,24 @@ return {
                     "{C:inactive,s:0.8}Never say goodbye",
                 }
             },
+            j_neonmod_cancerous = {
+                name = 'Cancerous Rodent',
+                text = {
+                    "{C:mult}X#1#{} {C:attention}Boss Blind{} size",
+                    "When {C:attention}Boss Blind{} is defeated,",
+                    "creates a {C:planet}Pluto{} card",
+                    "and {C:red}self-destructs?{}",
+                }
+            },
+            j_neonmod_verycancerous = {
+                name = 'Very Cancerous Rodent',
+                text = {
+                    "{C:mult}X#1#{} {C:attention}Boss Blind{} size",
+                    "When {C:attention}Boss Blind{} is defeated,",
+                    "creates a {C:planet}Pluto{} card",
+                    "and {C:red}self-destructs{}",
+                }
+            },
             j_neonmod_sampletext = {
                 name = 'Sample Text',
                 text = {
