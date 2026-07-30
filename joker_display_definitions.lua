@@ -666,6 +666,22 @@ jd_def["j_neonmod_akari"] = { -- Akari
     end
 }
 
+jd_def["j_neonmod_cancerous"] = { -- Cancerous Rodent
+    text = {
+        { text = "X",                       scale = 0.35,            colour = G.C.RED },
+        { ref_table = "card.ability.extra", ref_value = "blindmult", retrigger_type = "exp", colour = G.C.RED, scale = 0.35 },
+        { text = " Boss Blind size",        scale = 0.35 },
+    },
+}
+
+jd_def["j_neonmod_verycancerous"] = { -- Very Cancerous Rodent
+    text = {
+        { text = "X",                       scale = 0.35,            colour = G.C.RED },
+        { ref_table = "card.ability.extra", ref_value = "blindmult", retrigger_type = "exp", colour = G.C.RED, scale = 0.35 },
+        { text = " Boss Blind size",        scale = 0.35 },
+    },
+}
+
 jd_def["j_neonmod_still_alive"] = { -- Still Alive
     text = {
         {
@@ -675,4 +691,39 @@ jd_def["j_neonmod_still_alive"] = { -- Still Alive
             }
         }
     }
+}
+
+jd_def["j_neonmod_want_you_gone"] = { -- Want You Gone
+    text = {
+        {
+            border_nodes = {
+                { text = "X" },
+                { ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp" }
+            }
+        }
+    }
+}
+
+jd_def["j_neonmod_you_wouldnt_know"] = { -- You Wouldn't Know
+    text = {
+        { text = "+$" },
+        { ref_table = "card.joker_display_values", ref_value = "dollars", retrigger_type = "mult" },
+    },
+    text_config = { colour = G.C.GOLD },
+    reminder_text = {
+        { text = "(Debuffed)" }
+    },
+    calc_function = function(card)
+        local dollars = 0
+        local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+        if text ~= 'Unknown' then
+            for i = 1, #G.play.cards do
+                if G.play.cards[i].debuff then
+                    dollars = dollars +
+                        card.ability.extra.dollars
+                end
+            end
+        end
+        card.joker_display_values.dollars = dollars
+    end,
 }

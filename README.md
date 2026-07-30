@@ -1,4 +1,4 @@
-This is a Balatro mod made by a guy with a bunch of dumb ideas and a vague idea of how to execute them.
+This is a Balatro mod made by a guy with a bunch of dumb ideas and a vague idea of how to execute them, with help from the Balatro Discord.
 
 Requires [Lovely](https://github.com/ethangreen-dev/lovely-injector), [Steammodded](https://github.com/Steamodded/smods), and [Amulet](https://github.com/frostice482/amulet), for good measure.
 

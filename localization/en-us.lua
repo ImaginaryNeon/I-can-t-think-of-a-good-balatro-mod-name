@@ -397,7 +397,7 @@ return {
                 text = {
                     "{C:mult}X#1#{} {C:attention}Boss Blind{} size",
                     "When {C:attention}Boss Blind{} is defeated,",
-                    "creates a {C:planet}Pluto{} card",
+                    "creates a {C:dark_edition}Negative {C:planet}Pluto{} card",
                     "and {C:red}self-destructs?{}",
                 }
             },
@@ -406,7 +406,7 @@ return {
                 text = {
                     "{C:mult}X#1#{} {C:attention}Boss Blind{} size",
                     "When {C:attention}Boss Blind{} is defeated,",
-                    "creates a {C:planet}Pluto{} card",
+                    "creates a {C:dark_edition}Polychrome Tag{}",
                     "and {C:red}self-destructs{}",
                 }
             },
