@@ -174,7 +174,6 @@ SMODS.Joker {
     end
 }
 
-
 SMODS.Joker {
     key = 'cheatcode',
     atlas = 'jonklers',

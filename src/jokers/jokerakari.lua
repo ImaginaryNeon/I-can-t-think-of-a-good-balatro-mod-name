@@ -41,15 +41,15 @@ SMODS.Joker {
     eternal_compat = false,
     pos = { x = 4, y = 6 },
     pools = { ["Meme"] = true, },
-    attributes = { 'xblindsize', 'generation', 'planet', 'joker' },
-    config = { extra = { blindmult = 1.01 } },
+    attributes = { 'blindsize', 'generation', 'planet', 'joker' },
+    config = { extra = { blindmult = 1 } },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.c_pluto
         return { vars = { card.ability.extra.blindmult } }
     end,
     calculate = function(self, card, context)
         if context.setting_blind and not context.blueprint and context.blind.boss and not card.getting_sliced then
-            G.GAME.blind.chips = G.GAME.blind.chips * card.ability.extra.blindmult
+            G.GAME.blind.chips = G.GAME.blind.chips + card.ability.extra.blindmult
             G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
             G.HUD_blind:recalculate()
             G.E_MANAGER:add_event(Event({

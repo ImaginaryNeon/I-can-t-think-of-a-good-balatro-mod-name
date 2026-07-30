@@ -323,11 +323,11 @@ return {
             j_neonmod_loremipsum = {
                 name = 'Lorem Ipsum',
                 text = {
-                    "Gives {C:mult}+#1#{} Mult per character in",
-                    "the Joker to the right's {C:attention}name{},",
-                    "and {C:chips}+#3#{} Chips per character",
-                    "in that Joker's {C:attention}description{}",
-                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult and {C:chips}+#4#{C:inactive} Chips)"
+                    "{C:mult}+#1#{} Mult per character in the",
+                    "Joker to the right's {C:attention}name{},",
+                    "{C:chips}+#3#{} Chips per character in",
+                    "that Joker's {C:attention}description{}",
+                    "{C:inactive}(Currently {C:chips}+#4#{C:inactive} Chips and {C:mult}+#2#{C:inactive} Mult)"
                 }
             },
             j_neonmod_scope = {
@@ -395,7 +395,7 @@ return {
             j_neonmod_cancerous = {
                 name = 'Cancerous Rodent',
                 text = {
-                    "{C:mult}X#1#{} {C:attention}Boss Blind{} size",
+                    "{C:mult}+#1#{} {C:attention}Boss Blind{} size",
                     "When {C:attention}Boss Blind{} is defeated,",
                     "creates a {C:dark_edition}Negative {C:planet}Pluto{} card",
                     "and {C:red}self-destructs?{}",

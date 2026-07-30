@@ -668,8 +668,8 @@ jd_def["j_neonmod_akari"] = { -- Akari
 
 jd_def["j_neonmod_cancerous"] = { -- Cancerous Rodent
     text = {
-        { text = "X",                       scale = 0.35,            colour = G.C.RED },
-        { ref_table = "card.ability.extra", ref_value = "blindmult", retrigger_type = "exp", colour = G.C.RED, scale = 0.35 },
+        { text = "+",                       scale = 0.35,            colour = G.C.RED },
+        { ref_table = "card.ability.extra", ref_value = "blindmult", retrigger_type = "mult", colour = G.C.RED, scale = 0.35 },
         { text = " Boss Blind size",        scale = 0.35 },
     },
 }
@@ -717,8 +717,8 @@ jd_def["j_neonmod_you_wouldnt_know"] = { -- You Wouldn't Know
         local dollars = 0
         local text, _, scoring_hand = JokerDisplay.evaluate_hand()
         if text ~= 'Unknown' then
-            for i = 1, #G.play.cards do
-                if G.play.cards[i].debuff then
+            for i = 1, #JokerDisplay.current_hand do
+                if JokerDisplay.current_hand[i].debuff then
                     dollars = dollars +
                         card.ability.extra.dollars
                 end
