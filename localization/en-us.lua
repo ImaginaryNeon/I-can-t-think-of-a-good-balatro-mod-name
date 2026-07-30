@@ -301,7 +301,7 @@ return {
                 text = {
                     "This Joker gains {C:chips}+#1#{} Chips",
                     "if the first {C:attention}#3#{} cards held in hand",
-                    "follow the pattern listed below.",
+                    "follow the pattern listed below",
                     "{C:inactive}(#4#){}",
                     "{C:inactive}(Pattern changes at end of round){}",
                     "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
