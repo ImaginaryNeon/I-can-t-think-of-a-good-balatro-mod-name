@@ -274,7 +274,7 @@ return {
                 name = 'Dark Fountain',
                 text = {
                     "{C:red}X#2#{} Boss Blind size",
-                    "When Boss Blind defeated,",
+                    "When Boss Blind is defeated,",
                     "creates a random {C:dark_edition}Negative{} Joker",
                     "from every {C:attention}mod{} containing unowned",
                     "Jokers and {C:red}self-destructs{}",
