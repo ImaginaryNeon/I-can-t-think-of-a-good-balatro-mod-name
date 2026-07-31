@@ -212,12 +212,12 @@ return {
             j_neonmod_redbaron = {
                 name = 'Red Baron Pizza',
                 text = {
-                    'At the end of each Ante, {C:attention}spends{} {C:money}$#1#{}',
-                    'as many times as possible using',
-                    '{C:attention}half{} of your money.',
-                    '{s:0.8,C:inactive}(Maximum of 50 times)',
-                    'Gains {X:mult,C:white}X#2#{} Mult per {C:money}$#1#{} spent',
-                    'in this way.',
+                    'After each Ante, {C:attention}spends{} {C:money}$#1#{}',
+                    'as many times as possible',
+                    'using {C:attention}half{} of your money',
+                    '{s:0.8,C:inactive}(Up to 50 times)',
+                    'Gains {X:mult,C:white}X#2#{} Mult per {C:money}$#1#{}',
+                    'spent in this way',
                     '{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)',
                     '{s:0.8,C:inactive}(Has spent {{s:0.8,C:money}$#4#{{s:0.8,C:inactive})'
                 }
@@ -288,8 +288,8 @@ return {
                     "when a playing card",
                     "or Joker is destroyed",
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
-                    "{C:inactive, s=0.7}A shard of what appears to be an old blade of some sort.",
-                    "{C:inactive, s=0.7}It is held only by Bisharp that head up a group of Pawniard."
+                    "{C:inactive, s=0.6}A shard of what appears to be an old blade of some sort.",
+                    "{C:inactive, s=0.6}It is held only by Bisharp that head up a group of Pawniard."
                 },
                 --[[                unlock = {
                     "{E:1,s:1.3}?????",
@@ -355,8 +355,8 @@ return {
                 name = "Still Alive",
                 text = {
                     "This Joker gains {X:mult,C:white}X#1#{} Mult",
-                    "per playing card {C:attention}destroyed{}, resets",
-                    "when {C:attention}Boss Blind{} is defeated",
+                    "per playing card {C:attention}destroyed{},",
+                    "Resets when {C:attention}Boss Blind{} defeated",
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
                     "{C:inactive,s:0.8}And believe me I am",
                     "{C:inactive,s:0.8}still alive.",

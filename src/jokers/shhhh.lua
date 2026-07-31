@@ -19,7 +19,7 @@ if Cryptid then
         end,
         calculate = function(self, card, context)
             if context.individual and context.cardarea == G.play and context.other_card == context.scoring_hand[1] and card.ability.extra.position <= 0 then
-                card.ability.extra.position = 1
+                card.ability.extra.position = 0
                 return {
                     message = "Are you, uh, a real villain?",
                     colour = G.C.SUITS.Spades,
@@ -71,7 +71,7 @@ if Cryptid then
                 }
             end
             if context.individual and context.cardarea == G.play and context.other_card == context.scoring_hand[1] and card.ability.extra.position >= 37 then
-                card.ability.extra.position = 1
+                card.ability.extra.position = 0
                 return {
                     message = "Alright! Let's go over it, once more!",
                     colour = G.C.SUITS.Spades,
@@ -127,6 +127,7 @@ if Cryptid then
                     return {
                         message = card.ability.extra.lines[card.ability.extra.position],
                         colour = G.C.SUITS.Spades,
+                        message_card = card,
                         emult = card.ability.extra.emult
                     }
                 end
