@@ -50,7 +50,7 @@ SMODS.Joker {
     pos = { x = 2, y = 1 },
     config = { extra = { odds = 3, dollars = 100 } },
     rarity = 2,
-    cost = 4,
+    cost = 5,
     blueprint_compat = false,
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'neonmod_dangeresque')
@@ -79,7 +79,7 @@ SMODS.Joker {
     config = { extra = { xmult = 1.4, ammo = 20 } },
     blueprint_compat = true,
     rarity = 2,
-    cost = 7,
+    cost = 8,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult, card.ability.extra.ammo } }
     end,

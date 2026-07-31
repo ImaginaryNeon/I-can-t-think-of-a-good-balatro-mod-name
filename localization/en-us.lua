@@ -176,10 +176,10 @@ return {
             j_neonmod_fraudclimax = {
                 name = 'Final Flight',
                 text = {
-                    'Played {C:attention}8{}s and {C:attention}4{}s give {X:mult,C:white}X#1#{} Mult,',
+                    'Scored {C:attention}8{}s and {C:attention}4{}s give {X:mult,C:white}X#1#{} Mult',
                     'Gains {X:mult,C:white}X#2#{} when an {C:attention}8{} or {C:attention}4{} scores',
                     '{C:attention}8{}s and {C:attention}4{}s have a {C:green}#3# in #4#{}',
-                    'chance to break after scoring.',
+                    'chance to break after scoring',
                 }
             },
             j_neonmod_fraudclimax_alt = {
