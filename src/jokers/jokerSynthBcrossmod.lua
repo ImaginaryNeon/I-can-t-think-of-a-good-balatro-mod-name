@@ -270,20 +270,26 @@ if isSynth then
                 max_odds = 1,
                 min_repeats = 1,
                 max_repeats = 2,
+                minor_boost = 1.5,
+                major_boost = 2,
             }
         },
         loc_vars = function(self, info_queue, card)
-            local odds = SynthB.get_character_boosted_value(card, "odds") or 2
+            local odds = SynthB.get_character_value(card, "odds") or 2
             local numerator, denominator = SMODS.get_probability_vars(card, 1, odds,
                 'portalradio_synth')
-            return { vars = { SynthB.get_character_loc_vars(card, "odds"), SynthB.get_character_loc_vars(card, "repeats"), numerator } }
+            if (card.area and card.area.config.collection) then
+                return { vars = { SynthB.get_character_loc_vars(card, "odds"), SynthB.get_character_loc_vars(card, "repeats"), numerator } }
+            else
+                return { vars = { denominator, SynthB.get_character_loc_vars(card, "repeats"), numerator } }
+            end
         end,
         calculate = function(self, card, context)
             if context.repetition and (context.cardarea == G.play or context.cardarea == G.hand) then
                 if context.other_card:get_id() == 8 or
                     context.other_card:get_id() == 5 or
                     context.other_card:get_id() == 2 then
-                    if SMODS.pseudorandom_probability(card, 'portalradio_synth', 1, math.max(SynthB.get_character_boosted_value(card, "odds"), 1)) then
+                    if SMODS.pseudorandom_probability(card, 'portalradio_synth', 1, math.max(SynthB.get_character_value(card, "odds"), 1)) then
                         return {
                             repetitions = SynthB.get_character_boosted_value(card, "repeats")
                         }
