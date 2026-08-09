@@ -1,6 +1,7 @@
 SMODS.Joker {
     key = "violencesecret",
     blueprint_compat = false,
+    demicoloncompat = false,
     rarity = 2,
     cost = 7,
     atlas = "jonklers",
@@ -45,7 +46,8 @@ SMODS.Joker {
 
 SMODS.Joker {
     key = "fraudfirst",
-    blueprint_compat = true,
+    blueprint_compat = false,
+    demicoloncompat = false,
     rarity = 2,
     cost = 8,
     atlas = "jonklers",
@@ -62,6 +64,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "fraudsecond",
     blueprint_compat = true,
+    demicoloncompat = false,
     rarity = 2,
     cost = 6,
     atlas = "jonklers",
@@ -103,6 +106,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "fraudthird",
     blueprint_compat = true,
+    demicoloncompat = true,
     rarity = 3,
     cost = 8,
     atlas = "jonklers",
@@ -137,6 +141,24 @@ SMODS.Joker {
                 }
             end
         end
+        if context.forcetrigger then
+            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+            return {
+                extra = {
+                    message = '+1 Planet',
+                    message_card = card,
+                    func = function()
+                        SMODS.add_card {
+                            set = 'Planet',
+                            edition = 'e_negative',
+                            key_append = 'fraudthird'
+                        }
+                        G.GAME.consumeable_buffer = 0
+                        return true
+                    end
+                },
+            }
+        end
     end
 }
 if Cryptid then
@@ -147,6 +169,7 @@ if Cryptid then
         cost = 8,
         atlas = "jonklers",
         pos = { x = 0, y = 3 },
+        demicoloncompat = true,
         config = { extra = { xmult = 1, xmult_mod = 0.2, odds = 4 } },
         loc_vars = function(self, info_queue, card)
             local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'finalflight')
@@ -163,6 +186,11 @@ if Cryptid then
                     xmult = card.ability.extra.xmult
                 }
             end
+            if context.forcetrigger then
+                return {
+                    xmult = card.ability.extra.xmult
+                }
+            end
             if context.destroy_card then
                 if context.cardarea == G.play and (context.destroy_card:get_id() == 8 or context.destroy_card:get_id() == 4) and SMODS.pseudorandom_probability(card, 'finalflight', 1, card.ability.extra.odds) then
                     return { remove = true }
@@ -175,6 +203,7 @@ else
         key = "fraudclimax_alt",
         blueprint_compat = true,
         perishable_compat = false,
+        demicoloncompat = true,
         rarity = 3,
         cost = 8,
         atlas = "jonklers",
@@ -197,7 +226,7 @@ else
                     return { remove = true }
                 end
             end
-            if context.joker_main then
+            if context.joker_main or context.forcetrigger then
                 return {
                     xmult = card.ability.extra.xmult
                 }
@@ -232,3 +261,106 @@ function SMODS.smeared_check(card, suit, ...)
     return smods_smeared_check_ref(card, suit, ...)
 end
 --]]
+function Neonmod.is_boss_blind(blind) -- stolen from cryptid bc
+    blind = blind or (G.GAME and G.GAME.blind)
+    if not blind then
+        return false
+    end
+    return not not (blind.boss or (blind.config and blind.config.blind and blind.config.blind.boss))
+end
+
+SMODS.Joker {
+    key = "lasguini",
+    blueprint_compat = true,
+    demicoloncompat = true,
+    rarity = 2,
+    cost = 8,
+    atlas = "jonklers",
+    pos = { x = 2, y = 7 },
+    config = { extra = { xblind = 1.5, odds = 8 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'lasagna')
+        return { vars = { card.ability.extra.xblind, numerator, denominator } }
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and Neonmod.is_boss_blind(G.GAME.blind) and not context.blueprint and SMODS.pseudorandom_probability(card, 'lasagna', 1, card.ability.extra.odds) then
+            local card_copied = copy_card(context.other_card, nil, nil, G.playing_card)
+            card_copied:add_to_deck()
+            G.deck.config.card_limit = G.deck.config.card_limit + 1
+            table.insert(G.playing_cards, card_copied)
+            G.hand:emplace(card_copied)
+            card_copied.states.visible = nil
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    card_copied:start_materialize()
+                    return true
+                end
+            }))
+            return {
+                message = localize('k_copied_ex'),
+                colour = G.C.CHIPS,
+                func = function()
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            SMODS.calculate_context({ playing_card_added = true, cards = { card_copied } })
+                            return true
+                        end
+                    }))
+                end
+            }
+        end
+        --[[
+        if context.setting_blind and not context.blueprint and not card.getting_sliced then
+            G.GAME.blind.chips = G.GAME.blind.chips * card.ability.extra.blindmult
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+            G.HUD_blind:recalculate()
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            play_sound("timpani")
+                            delay(0.4)
+                            return true
+                        end,
+                    }))
+                    return true
+                end,
+            }))
+        end]]
+    end
+}
+--[[
+SMODS.Joker {
+    key = "lasguini2",
+    blueprint_compat = true,
+    demicoloncompat = true,
+    rarity = 3,
+    cost = 8,
+    atlas = "jonklers",
+    pos = { x = 2, y = 7 },
+    config = { extra = { xmult = 1, xmult_mod = 0.5, } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod } }
+    end,
+    calculate = function(self, card, context)
+        if context.first_hand_drawn and not context.blueprint then
+            local eval = function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end
+            juice_card_until(card, eval, true)
+        end
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+            if G.GAME.current_round.hands_played <= 1 then
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = 'xmult',
+                    scalar_value = 'xmult_mod',
+                })
+            end
+        end
+    end
+}
+]]

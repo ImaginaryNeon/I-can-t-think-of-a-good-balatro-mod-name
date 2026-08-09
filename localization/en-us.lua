@@ -273,7 +273,7 @@ return {
             j_neonmod_dark_fountain = {
                 name = 'Dark Fountain',
                 text = {
-                    "{C:red}X#2#{} Boss Blind size",
+                    "{X:blind,C:white}X#2#{} Boss Blind size",
                     "When Boss Blind is defeated,",
                     "creates a random {C:dark_edition}Negative{} Joker",
                     "from every {C:attention}mod{} containing unowned",
@@ -395,7 +395,7 @@ return {
             j_neonmod_cancerous = {
                 name = 'Cancerous Rodent',
                 text = {
-                    "{C:mult}+#1#{} {C:attention}Boss Blind{} size",
+                    "{C:blind}+#1#{} {C:attention}Boss Blind{} size",
                     "When {C:attention}Boss Blind{} is defeated,",
                     "creates a {C:dark_edition}Negative {C:planet}Pluto{} card",
                     "and {C:red}self-destructs?{}",
@@ -404,10 +404,34 @@ return {
             j_neonmod_verycancerous = {
                 name = 'Very Cancerous Rodent',
                 text = {
-                    "{C:mult}X#1#{} {C:attention}Boss Blind{} size",
+                    "{X:blind,C:white}X#1#{} {C:attention}Boss Blind{} size",
                     "When {C:attention}Boss Blind{} is defeated,",
                     "creates a {C:dark_edition}Polychrome Tag{}",
                     "and {C:red}self-destructs{}",
+                }
+            },
+            j_neonmod_lasguini = {
+                name = 'Linguini & Lasagna',
+                text = {
+                    --'{X:blind,C:white}X#1#{} Blind size',
+                    --[['Gains {X:mult,C:white} X#2# {} Mult per',
+                    '{C:attention}consecutive{} Blind beaten in',
+                    '{C:attention}1{} hand or less',
+                    '{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult){}',]]
+                    '{C:green}#2# in #3#{} chance for played cards',
+                    'to be copied to hand when scored',
+                    'during a {C:attention}Boss Blind{}',
+                    "{s=0.8}{C:inactive}\"Fraud has no bugs\""
+                }
+            },
+            j_neonmod_lasguini2test = {
+                name = 'idk what to name this',
+                text = {
+                    'Gains {X:mult,C:white} X#2# {} Mult per',
+                    '{C:attention}consecutive{} Blind beaten in',
+                    '{C:attention}1{} hand or less',
+                    '{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult){}',
+                    "{s=0.8}{C:inactive}\"Fraud has no bugs\""
                 }
             },
             j_neonmod_sampletext = {
