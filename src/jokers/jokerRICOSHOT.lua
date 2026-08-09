@@ -13,6 +13,8 @@ if Cryptid then
         config = { extra = { repetitions = 1, dollars = 12, fee = 1.5 } },
         rarity = "cry_epic",
         cost = 12,
+        blueprint_compat = true,
+        demicoloncompat = false,
         loc_vars = function(self, info_queue, card)
             return {
                 vars = {
@@ -54,6 +56,8 @@ else
         pos = { x = 4, y = 1 },
         pixel_size = { w = 52, h = 95 },
         to_number = to_number or function(x) return x end,
+        blueprint_compat = true,
+        demicoloncompat = false,
         config = { extra = { repetitions = 1, dollars = 12, fee = 2 } },
         rarity = 3,
         cost = 10,
@@ -99,6 +103,8 @@ SMODS.Joker {
     rarity = 2,
     cost = 7,
     eternal_compat = false,
+    blueprint_compat = true,
+    demicoloncompat = false,
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds,
             'neonmod_marksmancoin')
@@ -127,13 +133,14 @@ SMODS.Joker {
     atlas = 'jonklers',
     rarity = 1,
     cost = 1,
+    demicoloncompat = true,
     pos = { x = 1, y = 5 },
     config = { extra = { mult = 1 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult, card.ability.extra.mult * (#love.audio.getRecordingDevices() or 0) } }
     end,
     calculate = function(self, card, context)
-        if context.joker_main then
+        if context.joker_main or context.forcetrigger then
             return {
                 mult = card.ability.extra.mult * (G.GAME.neonmod_devicecount or 0)
             }

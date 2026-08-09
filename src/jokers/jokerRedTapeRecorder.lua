@@ -6,6 +6,7 @@ SMODS.Joker {
     pos = { x = 1, y = 3 },
     blueprint_compat = true,
     perishable_compat = false,
+    demicoloncompat = true,
     config = {
         extra = {
             chips = 0,
@@ -24,6 +25,17 @@ SMODS.Joker {
                 return {
                     level_up = -1,
                     level_up_hand = text
+                }
+            end
+        end
+        if context.forcetrigger then
+            local text, _ = G.FUNCS.get_poker_hand_info(context.full_hand)
+            if G.GAME.hands[text].level > 1 then
+                card.ability.extra.chips = card.ability.extra.chips + G.GAME.hands[text].chips -- or l_chips,
+                card.ability.extra.mult = card.ability.extra.mult + G.GAME.hands[text].mult    -- or l_mult,
+                return {
+                    level_up = -1,
+                    level_up_hand = text,
                 }
             end
         end
@@ -47,6 +59,7 @@ SMODS.Joker {
     atlas = 'jonklers',
     no_collection = true,
     blueprint_compat = true,
+    demicoloncompat = true,
     rarity = "neonmod_unbound",
     cost = 6,
     weight = 0,
@@ -68,6 +81,15 @@ SMODS.Joker {
             return {
                 level_up = -1,
                 level_up_hand = text
+            }
+        end
+        if context.forcetrigger then
+            local text, _ = G.FUNCS.get_poker_hand_info(context.full_hand)
+            card.ability.extra.chips = card.ability.extra.chips + G.GAME.hands[text].chips -- or l_chips,
+            card.ability.extra.mult = card.ability.extra.mult + G.GAME.hands[text].mult    -- or l_mult,
+            return {
+                level_up = -1,
+                level_up_hand = text,
             }
         end
         if context.joker_main then
