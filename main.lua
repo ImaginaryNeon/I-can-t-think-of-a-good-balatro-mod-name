@@ -39,6 +39,14 @@ SMODS.Atlas { -- Mannpower Blinds
     px = 34,
     py = 34
 }
+SMODS.Atlas { -- Mannpower Blinds
+    key = 'animblinds',
+    path = 'blinds.png',
+    atlas_table = 'ANIMATION_ATLAS',
+    frames = 21,
+    px = 34,
+    py = 34
+}
 
 SMODS.Atlas { -- Still Alive
     key = 'stillalive',

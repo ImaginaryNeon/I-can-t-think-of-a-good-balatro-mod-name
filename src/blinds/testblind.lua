@@ -129,7 +129,7 @@ SMODS.Blind {
             end
         end]]
         if context.debuff_card and context.debuff_card.area == G.jokers then
-            if G.PROFILES[G.SETTINGS.profile].joker_usage[context.debuff_card.config.center.key].count >= (G.GAME.current_round.neonmod_min_uses or 0) then
+            if (G.PROFILES[G.SETTINGS.profile].joker_usage[context.debuff_card.config.center.key].count or 0) >= (G.GAME.current_round.neonmod_min_uses or 1) then
                 return {
                     debuff = true
                 }
@@ -137,3 +137,25 @@ SMODS.Blind {
         end
     end,
 }
+--[[SMODS.Blind {
+    key = 'earthmover',
+    atlas = 'animblinds',
+    pos = {
+        y = 0
+    },
+    dollars = 5,
+    mult = 2,
+    boss = { min = 7 },
+    boss_colour = HEX("2e73bf"),
+    calculate = function(self, blind, context)
+        if blind.disabled then return end
+        if context.modify_hand then
+            blind.triggered = true -- This won't trigger Matador in this context due to a Vanilla bug (a workaround is setting it in context.debuff_hand)
+            local flush_chips = G.GAME.hands["Flush"].chips
+            local flush_mult = G.GAME.hands["Flush"].mult
+            mult = mod_mult(math.max(math.floor(mult - flush_mult), 0))
+            hand_chips = mod_chips(math.max(math.floor(hand_chips - flush_chips), 0))
+            update_hand_text({ sound = 'chips2', modded = true }, { chips = hand_chips, mult = mult })
+        end
+    end
+}]]

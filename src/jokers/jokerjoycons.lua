@@ -133,7 +133,7 @@ local function get_jokers_sorted_by_usage() -- thanks srockw
     table.sort(jokers, function(a, b)
         return a.count > b.count
     end)
-    G.GAME.current_round.neonmod_min_uses = jokers[15].count
+    G.GAME.current_round.neonmod_min_uses = jokers[15].count or 0
     return jokers
 end
 

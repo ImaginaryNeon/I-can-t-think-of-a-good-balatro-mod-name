@@ -539,6 +539,13 @@ return {
                     'Your 15 most used Jokers',
                     'of all time are debuffed'
                 }
+            },
+            bl_neonmod_earthmover = {
+                name = 'The Earthmover',
+                text = {
+                    'Base Chips and Mult are',
+                    'decreased by that of a Flush'
+                }
             }
         },
         Back = {
