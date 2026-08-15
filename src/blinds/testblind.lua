@@ -137,7 +137,7 @@ SMODS.Blind {
         end
     end,
 }
---[[SMODS.Blind {
+SMODS.Blind {
     key = 'earthmover',
     atlas = 'animblinds',
     pos = {
@@ -146,7 +146,7 @@ SMODS.Blind {
     dollars = 5,
     mult = 2,
     boss = { min = 7 },
-    boss_colour = HEX("2e73bf"),
+    boss_colour = HEX("4e586b"),
     calculate = function(self, blind, context)
         if blind.disabled then return end
         if context.modify_hand then
@@ -158,4 +158,4 @@ SMODS.Blind {
             update_hand_text({ sound = 'chips2', modded = true }, { chips = hand_chips, mult = mult })
         end
     end
-}]]
+} --]]
