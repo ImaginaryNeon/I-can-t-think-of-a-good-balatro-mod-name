@@ -24,6 +24,13 @@ SMODS.Atlas { -- Deck
     py = 95
 }
 
+SMODS.Atlas { -- Speck
+    key = 'spectral',
+    path = 'Spectral.png',
+    px = 71,
+    py = 95
+}
+
 SMODS.Atlas { -- Sleeve
     key = "sleeveatlas",
     path = "Sleeve.png",
@@ -31,7 +38,7 @@ SMODS.Atlas { -- Sleeve
     py = 95
 }
 
-SMODS.Atlas { -- Mannpower Blinds
+SMODS.Atlas { -- Personalized Blinds
     key = 'personalized',
     path = 'personalized.png',
     atlas_table = 'ANIMATION_ATLAS',
@@ -39,7 +46,8 @@ SMODS.Atlas { -- Mannpower Blinds
     px = 34,
     py = 34
 }
-SMODS.Atlas { -- Mannpower Blinds
+
+SMODS.Atlas { -- Animated Blinds
     key = 'animblinds',
     path = 'blinds.png',
     atlas_table = 'ANIMATION_ATLAS',
@@ -55,9 +63,15 @@ SMODS.Atlas { -- Still Alive
     py = 302
 }
 
-SMODS.Atlas { -- Still Alive
+SMODS.Atlas { -- Characters
     key = 'synth',
     path = 'synth.png',
+    px = 71,
+    py = 71
+}
+SMODS.Atlas { -- Characters (2)
+    key = 'morshu',
+    path = 'Sorry, Link.png',
     px = 71,
     py = 71
 }
@@ -74,6 +88,15 @@ SMODS.Atlas {
     path = "banners.png",
     px = 252,
     py = 402
+}
+
+SMODS.Atlas { -- LEND ME YOUR POWER!
+    key = 'omega',
+    path = 'OMEGA FLOWERY.png',
+    atlas_table = 'ANIMATION_ATLAS',
+    frames = 14,
+    px = 71,
+    py = 95
 }
 
 Neonmod.custom_colors = {

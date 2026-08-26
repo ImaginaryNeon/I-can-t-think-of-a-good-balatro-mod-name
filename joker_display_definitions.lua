@@ -727,3 +727,18 @@ jd_def["j_neonmod_you_wouldnt_know"] = { -- You Wouldn't Know
         card.joker_display_values.dollars = dollars
     end,
 }
+
+jd_def["j_neonmod_marksmanundbound"] = { -- Unbound Marksman
+    retrigger_function = function(playing_card, scoring_hand, held_in_hand, joker_card)
+        if held_in_hand then return 0 end
+        return JokerDisplay.in_scoring(playing_card, scoring_hand) and JokerDisplay.calculate_joker_triggers(joker_card)
+    end,
+    text = {
+        { ref_table = "card.joker_display_values", ref_value = "retriggercount", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.FILTER },
+    calc_function = function(card)
+        card.joker_display_values.retriggercount = to_number(card.ability.extra.repetitions *
+            math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))
+    end
+}

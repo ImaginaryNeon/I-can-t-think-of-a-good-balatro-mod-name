@@ -10,7 +10,7 @@ SMODS.Joker {
     config = {
         extra = {
             chips = 0,
-            mult = 0,
+            mult = 0, unbound = "j_neonmod_redtapeunbound",
         }
     },
     loc_vars = function(self, info_queue, card)

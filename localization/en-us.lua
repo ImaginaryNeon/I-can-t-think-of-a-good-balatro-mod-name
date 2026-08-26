@@ -81,6 +81,14 @@ return {
                     '{C:inactive}(Currently {C:attention}#3#{}{C:inactive} retriggers)'
                 }
             },
+            j_neonmod_marksmanunbound = {
+                name = '{C:neonmod_unbound}Unbound{} Marksman Revolver',
+                text = {
+                    'Retriggers scored cards {C:attention}#1#{} time',
+                    'for every {C:money}$#2#{} you have',
+                    '{C:inactive}(Currently {C:attention}#3#{}{C:inactive} retriggers)'
+                }
+            },
             j_neonmod_marksmancoin = {
                 name = 'Marksman Coin',
                 text = {
@@ -307,7 +315,6 @@ return {
                     "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
                 }
             },
-
             j_neonmod_secret = {
                 name = 'Petrus Putridus',
                 text = {
@@ -432,6 +439,40 @@ return {
                     '{C:attention}1{} hand or less',
                     '{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult){}',
                     "{s=0.8}{C:inactive}\"Fraud has no bugs\""
+                }
+            },
+            j_neonmod_flowery = {
+                name = 'Flowery',
+                text = {
+                    'Base {C:chips}Chips{} and {C:mult}Mult{} are',
+                    '{C:attention}increased{} to {C:chips}#1#{} and {C:mult}#2#{}'
+                }
+            },
+            j_neonmod_omegaflowery = {
+                name = 'Omega Flowery',
+                text = {
+                    'Hands below level {C:attention}#1#{}',
+                    'become level {C:attention}#1#{},',
+                    'All Poker Hands are considered',
+                    'to contain {C:attention}all{} Poker Hands',
+                }
+            },
+            j_neonmod_pkmnshowdown = {
+                name = 'Pokemon Showdown News Tab',
+                text = {
+                    'Hands below level {C:attention}#1#{}',
+                    'become level {C:attention}#1#{},',
+                    'All Poker Hands are considered',
+                    'to contain {C:attention}all{} Poker Hands',
+                }
+            },
+            j_neonmod_grin = {
+                name = 'Video Grin and Bear It!',
+                text = {
+                    'Face cards give {X:blind,C:white}=#1#{} Mult',
+                    '{C:red}Lose{} after #2# face cards',
+                    'have been played',
+                    '{C:red}Self-destructs{} after playing #3# cards',
                 }
             },
             j_neonmod_sampletext = {
@@ -562,6 +603,24 @@ return {
                     "{C:attention}spawning{} enemies here"
                 }
             }
+        },
+        Spectral = {
+            c_neonmod_increment = {
+                name = 'Influx',
+                text = {
+                    "Increase the weight of {C:spectral}Spectral{}",
+                    "cards in the {C:attention}shop{} by {C:attention}#1#{}",
+                    "{C:inactive}(Current Weight: {C:attention}#2#{C:inactive})"
+                }
+            },
+            c_neonmod_vault = {
+                name = 'Overrule',
+                text = {
+                    "Transform an eligible {C:attention}Joker{}",
+                    "into its {C:neonmod_unbound}Unbound{} variant",
+                    "{C:inactive}(Scaling resets)"
+                }
+            },
         },
         synthb_Character = {
             char_neonmod_portalradio1 = {

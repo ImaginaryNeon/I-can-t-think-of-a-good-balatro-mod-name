@@ -200,3 +200,82 @@ SMODS.Joker {
         end
     end
 }
+
+SMODS.Joker { -- Hands start with 999 Chips and 99 Mult, unless current Chips/Mult is greater
+    key = "flowery",
+    atlas = 'jonklers',
+    rarity = 4,
+    cost = 20,
+    blueprint_compat = false,
+    attributes = { 'joker' },
+    pos = { x = 3, y = 7 },
+    soul_pos = { x = 4, y = 7 },
+    config = {
+        extra = {
+            chips = 999,
+            mult = 99,
+            unbound = "j_neonmod_omegaflowery",
+        },
+    },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chips, card.ability.extra.mult } }
+    end,
+    calculate = function(self, card, context)
+        if context.modify_hand and not context.blueprint then
+            mult = mod_mult(math.max(mult, card.ability.extra.mult))
+            hand_chips = mod_chips(math.max(hand_chips, card.ability.extra.chips))
+            update_hand_text({ sound = 'chips2', modded = true }, { chips = hand_chips, mult = mult })
+        end
+        if context.joker_main then
+            local list = { "Sorry to keep you waiting!", "Leaf it to me!", "All according to plant!",
+                "Sorry to keep a lady in waiting.", "All according to plant!", "Jarona!", "Mysterious wind...", "Glue!",
+                "I'm sorry once again I kept a lady in waiting!", "I'm only trying to help you!",
+                "Hey guys, I think I found a glue!", "Here I come, San Frandisco!", "Heh, it's my Jarona!",
+                "Grown like a turnip!", "Give to you!", "Flowers blooms in your heart.", "All according to plant!",
+                "Sustingus!", "They're eating my flesh!", "Blingo Blizzard!" }
+            local random_element = pseudorandom_element(list, "neonmod_jarona" .. G.GAME.round_resets.ante)
+            return { message = random_element, colour = G.C.GOLD, }
+        end
+    end
+}
+
+SMODS.Joker { -- All hands below level 99 are considered level 99, all hands are considered to contain all hands.
+    key = "omegaflowery",
+    atlas = 'jonklers',
+    rarity = "neonmod_unbound",
+    cost = 20,
+    blueprint_compat = false,
+    attributes = { 'joker' },
+    pos = { x = 5, y = 7 },
+    soul_atlas = 'omega',
+    soul_pos = { y = 0 },
+    config = {
+        extra = {
+            level = 99,
+        },
+    },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { math.floor(card.ability.extra.level) } }
+    end,
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+            if G.GAME.hands[context.scoring_name].level < math.floor(card.ability.extra.level) then
+                local list = { "LEND ME YOUR POWER!", "WITH YOUR POWERS COMBINED!", "TAKE THAT!", "OMEGA FLOWERY!" }
+                local random_element = pseudorandom_element(list, "neonmod_omegajarona" .. G.GAME.round_resets.ante)
+                return {
+                    level_up = to_number(math.max(
+                        (math.floor(card.ability.extra.level) - G.GAME.hands[context.scoring_name].level), 0)),
+                    message = random_element,
+                    colour = G.C.GOLD,
+                }
+            end
+        end
+        if context.evaluate_poker_hand and not context.blueprint then
+            for key, hands in pairs(context.poker_hands) do
+                if not next(hands) then
+                    hands[1] = SMODS.shallow_copy(context.full_hand)
+                end
+            end
+        end
+    end
+}
