@@ -75,7 +75,7 @@ return {
             j_neonmod_marksman = {
                 name = 'Marksman Revolver',
                 text = {
-                    'Retriggers the {C:attention}#5#{} scoring card',
+                    'Retrigger the {C:attention}#5#{} scoring card',
                     '{C:attention}#1#{} time for each {C:money}$#2#{} you have,',
                     'Lose {C:money}$#4#{} per retrigger',
                     '{C:inactive}(Currently {C:attention}#3#{}{C:inactive} retriggers)'
@@ -84,15 +84,15 @@ return {
             j_neonmod_marksmanunbound = {
                 name = '{C:neonmod_unbound}Unbound{} Marksman Revolver',
                 text = {
-                    'Retriggers scored cards {C:attention}#1#{} time',
-                    'for every {C:money}$#2#{} you have',
+                    'Retrigger {C:neonmod_unbound}each{} scoring card',
+                    '{C:attention}#1#{} time per {C:money}$#2#{} you have',
                     '{C:inactive}(Currently {C:attention}#3#{}{C:inactive} retriggers)'
                 }
             },
             j_neonmod_marksmancoin = {
                 name = 'Marksman Coin',
                 text = {
-                    'Retriggers the {C:attention}first{} scoring card',
+                    'Retrigger the {C:attention}first{} scoring card',
                     '{C:attention}#1#{} time for every {C:money}$#2#{} you have',
                     '{C:green}#4# in #5#{} chance to break at end of round',
                     '{C:inactive}(Currently {C:attention}#3#{}{C:inactive} retriggers)'
@@ -243,7 +243,7 @@ return {
             j_neonmod_redtapeunbound = {
                 name = '{C:neonmod_unbound}Unbound{} Red-Tape Recorder',
                 text = {
-                    "{C:red}Decrease{} the level of {C:attention}each{}",
+                    "{C:red}Decrease{} the level of {C:neonmod_unbound}each{}",
                     "{C:attention}discarded{} poker hand and",
                     "add its Chips and Mult to",
                     "this Joker's Chips and Mult",
