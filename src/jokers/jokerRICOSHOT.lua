@@ -118,7 +118,8 @@ SMODS.Joker {
         }
     end,
     calculate = function(self, card, context)
-        if context.repetition and context.cardarea == G.play then
+        if context.repetition and context.cardarea == G.play and (to_number(card.ability.extra.repetitions *
+                math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))) > 0 then
             return {
                 repetitions = to_number(card.ability.extra.repetitions *
                     math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))
