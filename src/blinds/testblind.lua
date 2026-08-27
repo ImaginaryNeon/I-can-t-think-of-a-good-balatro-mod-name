@@ -1,8 +1,7 @@
 SMODS.Blind {
     key = 'fleshprison',
-    atlas = 'bossbattle',
+    atlas = 'animblinds',
     pos = {
-        x = 0,
         y = 0
     },
     config = {
@@ -141,7 +140,7 @@ SMODS.Blind {
     key = 'earthmover',
     atlas = 'animblinds',
     pos = {
-        y = 0
+        y = 1
     },
     dollars = 5,
     mult = 2,
