@@ -8,7 +8,8 @@ if isSynth then
     SMODS.Attribute { key = "GLaDOS" }
     SMODS.Joker {
         key = "still_alive",
-        blueprint_compat = false,
+        blueprint_compat = true,
+        perishable_compat = false,
         rarity = 3,
         cost = 7,
         atlas = "jonklers",
@@ -71,7 +72,8 @@ if isSynth then
 
     SMODS.Joker {
         key = "want_you_gone",
-        blueprint_compat = false,
+        blueprint_compat = true,
+        perishable_compat = false,
         rarity = 3,
         cost = 8,
         atlas = "jonklers",
@@ -105,11 +107,11 @@ if isSynth then
                         remove = true
                     }
                 end
-                if context.joker_main then
-                    return {
-                        xmult = card.ability.extra.xmult
-                    }
-                end
+            end
+            if context.joker_main then
+                return {
+                    xmult = card.ability.extra.xmult
+                }
             end
         end
     }

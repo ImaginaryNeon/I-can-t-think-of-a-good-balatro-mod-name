@@ -4,6 +4,7 @@ SMODS.Joker {
     cost = 5,
     atlas = 'jonklers',
     blueprint_compat = true,
+    demicoloncompat = true,
     pos = { x = 3, y = 6 },
     attributes = { 'chips', 'suit', 'diamonds', 'hearts' },
     pixel_size = { w = 66, h = 90 },
@@ -28,6 +29,11 @@ SMODS.Joker {
                 }
             end
         end
+        if context.forcetrigger then
+            return {
+                chips = card.ability.extra.chips
+            }
+        end
     end,
 }
 
@@ -39,6 +45,7 @@ SMODS.Joker {
     cost = 7,
     blueprint_compat = false,
     eternal_compat = false,
+    demicoloncompat = true,
     pos = { x = 4, y = 6 },
     pools = { ["Meme"] = true, },
     attributes = { 'blindsize', 'generation', 'planet', 'joker' },
@@ -70,7 +77,7 @@ SMODS.Joker {
                 message_card = card,
             }
         end
-        if context.ante_change and context.ante_end and not context.blueprint then
+        if (context.ante_change and context.ante_end and not context.blueprint) or context.forcetrigger then
             local editionname = "e_base"
             if card.edition then
                 editionname = card.edition.key
@@ -89,6 +96,7 @@ SMODS.Joker {
     cost = 8,
     blueprint_compat = false,
     eternal_compat = false,
+    demicoloncompat = true,
     pos = { x = 4, y = 6 },
     soul_pos = { x = 5, y = 6 },
     pools = { ["Meme"] = true, },
@@ -122,7 +130,7 @@ SMODS.Joker {
                 message_card = card,
             }
         end
-        if context.ante_change and context.ante_end and (card.ability.extra.real == true) and not context.blueprint then
+        if (context.ante_change and context.ante_end and (card.ability.extra.real == true) and not context.blueprint) or context.forcetrigger then
             add_tag({ key = 'tag_polychrome' })
             SMODS.destroy_cards(card, nil, nil, true)
         end

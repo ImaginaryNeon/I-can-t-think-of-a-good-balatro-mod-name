@@ -6,6 +6,7 @@ SMODS.Joker {
     rarity = 2,
     cost = 6,
     blueprint_compat = false,
+    demicoloncompat = false,
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds,
             'neonmod_licensetomaim')
@@ -52,6 +53,7 @@ SMODS.Joker {
     rarity = 2,
     cost = 5,
     blueprint_compat = false,
+    demicoloncompat = false,
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'neonmod_dangeresque')
         return { vars = { card.ability.extra.dollars, numerator, denominator } }
@@ -78,6 +80,7 @@ SMODS.Joker {
     soul_pos = { x = 3, y = 4 },
     config = { extra = { xmult = 1.4, ammo = 20 } },
     blueprint_compat = true,
+    demicoloncompat = true,
     rarity = 2,
     cost = 8,
     loc_vars = function(self, info_queue, card)
@@ -90,15 +93,19 @@ SMODS.Joker {
                 message = localize('k_upgrade_ex')
             }
         end
-        if context.individual and context.cardarea == G.play and context.other_card:is_face() then
-            card.ability.extra.ammo = card.ability.extra.ammo - 1
+        if (context.individual and context.cardarea == G.play and context.other_card:is_face()) or context.forcetrigger then
+            if not context.blueprint then
+                card.ability.extra.ammo = card.ability.extra.ammo - 1
+            end
             if card.ability.extra.ammo >= 0 then
                 return { xmult = card.ability.extra.xmult }
             else
-                SMODS.destroy_cards(card, nil, nil, true)
-                return {
-                    message = 'Out of ammo!'
-                }
+                if not context.blueprint then
+                    SMODS.destroy_cards(card, nil, nil, true)
+                    return {
+                        message = 'Out of ammo!'
+                    }
+                end
             end
         end
         if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
@@ -118,6 +125,7 @@ SMODS.Joker {
     cost = 6,
     atlas = 'jonklers',
     blueprint_compat = true,
+    demicoloncompat = true,
     pos = { x = 0, y = 4 },
     config = { extra = { xmult = 2.5, xmult_loss = 0.01, xmult_reset = 2.5, timer = 0 } },
     loc_vars = function(self, info_queue, card)
@@ -137,11 +145,11 @@ SMODS.Joker {
         end
     end,
     calculate = function(self, card, context)
-        if context.ante_change and context.ante_end then
+        if context.ante_change and context.ante_end and not context.blueprint then
             -- reset timer value
             card.ability.extra.xmult = card.ability.extra.xmult_reset
         end
-        if context.joker_main then
+        if context.joker_main or context.forcetrigger then
             return {
                 xmult = card.ability.extra.xmult
             }

@@ -18,7 +18,7 @@ if Cryptid then
             return { vars = { card.ability.extra.position, card.ability.extra.emult, type, colours = { color } } }
         end,
         calculate = function(self, card, context)
-            if context.individual and context.cardarea == G.play and context.other_card == context.scoring_hand[1] and card.ability.extra.position <= 0 then
+            if context.individual and context.cardarea == G.play and context.other_card == context.scoring_hand[1] and card.ability.extra.position <= 0 and not context.blueprint then
                 card.ability.extra.position = 0
                 return {
                     message = "Are you, uh, a real villain?",

@@ -5,6 +5,8 @@ SMODS.Joker {
         x = 4,
         y = 0
     },
+    perishable_compat = false,
+    demicoloncompat = true,
     rarity = 2,
     cost = 6,
     config = {
@@ -43,7 +45,7 @@ SMODS.Joker {
                 message_colour = G.C.ATTENTION
             })
         end
-        if context.joker_main then
+        if context.joker_main or context.forcetrigger then
             return {
                 chips = card.ability.extra.chips
             }
@@ -60,6 +62,8 @@ SMODS.Joker {
     pixel_size = { w = 24, h = 47 },
     rarity = 2,
     cost = 6,
+    perishable_compat = false,
+    demicoloncompat = true,
     config = {
         extra = {
             mult = 0,
@@ -95,7 +99,7 @@ SMODS.Joker {
                 message_colour = G.C.ATTENTION
             })
         end
-        if context.joker_main then
+        if context.joker_main or context.forcetrigger then
             return {
                 mult = card.ability.extra.mult
 
@@ -166,6 +170,7 @@ SMODS.Joker {
     key = "passport",
     blueprint_compat = true,
     perishable_compat = false,
+    demicoloncompat = true,
     rarity = 1,
     cost = 5,
     atlas = "jonklers",
@@ -192,7 +197,7 @@ SMODS.Joker {
                 })
             end
         end
-        if context.joker_main then
+        if context.joker_main or context.forcetrigger then
             return {
                 chips = card.ability.extra.chips
             }
@@ -207,6 +212,7 @@ SMODS.Joker { -- To-do: fix chip message
         y = 0
     },
     blueprint_compat = true,
+    demicoloncompat = false,
     rarity = 1,
     cost = 5,
     config = { extra = { timer = 0, positions_x = {}, positions_y = {}, speeds = {}, speed = 0, max_speed = 0, speed_scoring = 0, mult = 75 } },

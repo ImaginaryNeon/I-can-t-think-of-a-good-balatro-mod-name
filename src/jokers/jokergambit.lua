@@ -4,6 +4,7 @@ SMODS.Joker {
     cost = 9,
     atlas = 'jonklers',
     blueprint_compat = true,
+    perishable_compat = false,
     pos = { x = 3, y = 1 },
     config = { extra = { xmult_gain = 0.25, xmult = 1 } },
     loc_vars = function(self, info_queue, card)
@@ -40,6 +41,7 @@ SMODS.Joker {
     rarity = 3,
     cost = 5,
     blueprint_compat = true,
+    perishable_compat = false,
     pos = { x = 2, y = 2 },
     pools = { ["Food"] = true, },
     pixel_size = { w = 71, h = 71 },
@@ -87,6 +89,7 @@ SMODS.Joker {
     cost = 20,
     pos = { x = 1, y = 4 },
     blueprint_compat = false,
+    eternal_compat = false,
     config = { extra = { test = 2, total_mods = 1 } },
     attributes = { 'xblindsize', 'generation', 'joker' },
     loc_vars = function(self, info_queue, card)

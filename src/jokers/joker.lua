@@ -24,7 +24,7 @@ SMODS.Joker {
         }
     end,
     calculate = function(self, card, context)
-        if context.joker_main then
+        if context.joker_main or context.forcetrigger then
             return {
                 chips = card.ability.extra.chips,
                 mult = card.ability.extra.mult,
@@ -46,6 +46,7 @@ SMODS.Joker {
         }
     },
     blueprint_compat = true,
+    demicoloncompat = false,
     attributes = { 'retrigger', 'rank', 'two', 'five', 'eight' },
     rarity = 2,
     cost = 8,
@@ -87,6 +88,7 @@ SMODS.Joker {
     },
     attributes = { 'chips', 'mult', 'joker' },
     blueprint_compat = true,
+    demicoloncompat = true,
     rarity = 1,
     cost = 6,
     loc_vars = function(self, info_queue, card)
@@ -143,24 +145,26 @@ SMODS.Joker {
         end
     end,
     calculate = function(self, card, context)
-        if context.joker_main then
-            local other_joker = nil
-            local tarname = nil
-            local tardesc = nil
-            for i = 1, #G.jokers.cards do
-                if G.jokers.cards[i] == card then
-                    if (i + 1) <= #G.jokers.cards then
-                        other_joker = G.jokers.cards[i + 1]
-                        local obj_key = other_joker.config.center.key
-                        local obj_set = other_joker.ability.set
-                        tarname = localize { type = 'name_text', set = obj_set, key = obj_key }
-                        tardesc = table.concat(
-                            localize({ type = 'raw_descriptions', key = obj_key, set = obj_set, vars = {} }), ' ')
-                        card.ability.extra.mult = (string.len(tarname) or 0) * card.ability.extra.multper
-                        card.ability.extra.chips = (string.len(tardesc) or 0) * card.ability.extra.chipsper
-                    else
-                        card.ability.extra.mult = 0
-                        card.ability.extra.chips = 0
+        if context.joker_main or context.forcetrigger then
+            if not context.blueprint then
+                local other_joker = nil
+                local tarname = nil
+                local tardesc = nil
+                for i = 1, #G.jokers.cards do
+                    if G.jokers.cards[i] == card then
+                        if (i + 1) <= #G.jokers.cards then
+                            other_joker = G.jokers.cards[i + 1]
+                            local obj_key = other_joker.config.center.key
+                            local obj_set = other_joker.ability.set
+                            tarname = localize { type = 'name_text', set = obj_set, key = obj_key }
+                            tardesc = table.concat(
+                                localize({ type = 'raw_descriptions', key = obj_key, set = obj_set, vars = {} }), ' ')
+                            card.ability.extra.mult = (string.len(tarname) or 0) * card.ability.extra.multper
+                            card.ability.extra.chips = (string.len(tardesc) or 0) * card.ability.extra.chipsper
+                        else
+                            card.ability.extra.mult = 0
+                            card.ability.extra.chips = 0
+                        end
                     end
                 end
             end
@@ -192,6 +196,7 @@ SMODS.Joker {
     },
     blueprint_compat = true,
     perishable_compat = false,
+    demicoloncompat = true,
     loc_vars = function(self, info_queue, card)
         local suits = G.GAME.current_round.neonmod_cheatcode_cards and
             table.concat(G.GAME.current_round.neonmod_cheatcode_cards, ', ', 1, card.ability.immutable.length) or
@@ -218,7 +223,7 @@ SMODS.Joker {
                 })
             end
         end
-        if context.joker_main then
+        if context.joker_main or context.forcetrigger then
             return {
                 chips = card.ability.extra.chips
             }
@@ -239,6 +244,7 @@ SMODS.Joker {
     cost = 4,
     blueprint_compat = true,
     perishable_compat = false,
+    demicoloncompat = true,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chips, card.ability.extra.chip_gain } }
     end,
@@ -250,7 +256,7 @@ SMODS.Joker {
                 scalar_value = 'chip_gain',
             })
         end
-        if context.joker_main then
+        if context.joker_main or context.forcetrigger then
             return {
                 chips = card.ability.extra.chips
             }

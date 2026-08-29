@@ -34,24 +34,11 @@ SMODS.Joker {
             card.ability.extra.suit = suit
             highest_count = count
         end
-        --[[if card.ability.extra.suit == "Hearts" then
-            card.ability.extra.color = G.C.SUITS.Hearts
-        elseif card.ability.extra.suit == "Diamonds" then
-            card.ability.extra.color = G.C.SUITS.Diamonds
-        elseif card.ability.extra.suit == "Clubs" then
-            card.ability.extra.color = G.C.SUITS.Clubs
-        elseif card.ability.extra.suit == "Spades" then
-            card.ability.extra.color = G.C.SUITS.Spades
-        elseif card.ability.extra.suit == "Other" then
-            card.ability.extra.color = HEX('cc38f3')
-        elseif card.ability.extra.suit == "None" then
-            card.ability.extra.color = G.C.UI.TEXT_DARK
-        end]]
         if not (card.ability.extra.suit == "None") then
             if G.C.SUITS[card.ability.extra.suit] then
                 card.ability.extra.color = G.C.SUITS[card.ability.extra.suit]
             else
-                card.ability.extra.color = HEX('1b2e53')
+                card.ability.extra.color = HEX('cc38f3')
             end
         else
             card.ability.extra.color = G.C.UI.TEXT_DARK
@@ -163,6 +150,7 @@ SMODS.ObjectType({
         -- j_cry_huntingseason = true,
     },
 })
+
 SMODS.Joker {
     key = "jester_mii",
     atlas = 'jonklers',
@@ -225,8 +213,6 @@ SMODS.Joker { -- Hands start with 999 Chips and 99 Mult, unless current Chips/Mu
             mult = mod_mult(math.max(mult, card.ability.extra.mult))
             hand_chips = mod_chips(math.max(hand_chips, card.ability.extra.chips))
             update_hand_text({ sound = 'chips2', modded = true }, { chips = hand_chips, mult = mult })
-        end
-        if context.joker_main then
             local list = { "Sorry to keep you waiting!", "Leaf it to me!", "All according to plant!",
                 "Sorry to keep a lady in waiting.", "All according to plant!", "Jarona!", "Mysterious wind...", "Glue!",
                 "I'm sorry once again I kept a lady in waiting!", "I'm only trying to help you!",

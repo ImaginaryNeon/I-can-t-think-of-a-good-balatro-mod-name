@@ -165,11 +165,12 @@ if Cryptid then
     SMODS.Joker {
         key = "fraudclimax",
         blueprint_compat = true,
+        perishable_compat = false,
+        demicoloncompat = true,
         rarity = 3,
         cost = 8,
         atlas = "jonklers",
         pos = { x = 0, y = 3 },
-        demicoloncompat = true,
         config = { extra = { xmult = 1, xmult_mod = 0.2, odds = 4 } },
         loc_vars = function(self, info_queue, card)
             local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'finalflight')
@@ -203,7 +204,6 @@ else
         key = "fraudclimax_alt",
         blueprint_compat = true,
         perishable_compat = false,
-        demicoloncompat = true,
         rarity = 3,
         cost = 8,
         atlas = "jonklers",
@@ -226,7 +226,7 @@ else
                     return { remove = true }
                 end
             end
-            if context.joker_main or context.forcetrigger then
+            if context.joker_main then
                 return {
                     xmult = card.ability.extra.xmult
                 }
@@ -271,8 +271,8 @@ end
 
 SMODS.Joker {
     key = "lasguini",
-    blueprint_compat = true,
-    demicoloncompat = true,
+    blueprint_compat = false,
+    demicoloncompat = false,
     rarity = 2,
     cost = 8,
     atlas = "jonklers",
