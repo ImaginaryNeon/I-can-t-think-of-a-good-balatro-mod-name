@@ -122,7 +122,7 @@ if isSynth then
     }
     SMODS.Joker {
         key = "you_wouldnt_know",
-        blueprint_compat = false,
+        blueprint_compat = true,
         rarity = 2,
         cost = 6,
         atlas = "jonklers",
