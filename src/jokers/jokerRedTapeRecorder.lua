@@ -10,7 +10,8 @@ SMODS.Joker {
     config = {
         extra = {
             chips = 0,
-            mult = 0, unbound = "j_neonmod_redtapeunbound",
+            mult = 0,
+            unbound = "j_neonmod_redtapeunbound",
         }
     },
     loc_vars = function(self, info_queue, card)
@@ -59,6 +60,7 @@ SMODS.Joker {
     atlas = 'jonklers',
     no_collection = true,
     blueprint_compat = true,
+    perishable_compat = false,
     demicoloncompat = true,
     rarity = "neonmod_unbound",
     cost = 6,
