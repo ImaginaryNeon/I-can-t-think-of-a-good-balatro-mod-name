@@ -33,8 +33,8 @@ SMODS.Consumable {
     set = 'Spectral',
     atlas = 'spectral',
     pos = { x = 1, y = 0 },
-    --[[    soul_set = 'Spectral',
-    soul_rate = 0.03, -- 10X more likely than The Soul]]
+    soul_set = 'Spectral',
+    soul_rate = 0.05,
     use = function(self, card, area, copier)
         local cards = SMODS.get_highlighted_cards({ G.jokers }, card, 1, 1, function(card)
             return card.ability.set == "Joker"
@@ -67,12 +67,16 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         local cards = SMODS.get_highlighted_cards({ G.jokers }, card, 1, 1, function(card)
-            return (card.ability.set == "Joker") and
-                ((card.config.center.key == "j_neonmod_redtape") or (card.config.center.key == "j_neonmod_marksman") or (card.config.center.key == "j_neonmod_flowery"))
+            return (card.ability.set == "Joker" and card.ability.extra.unbound)
         end)
         return #cards == 1
     end,
     in_pool = function(self, card)
+        --[[for i = 1, #G.jokers.cards do
+            if G.jokers.cards[i].ability.extra.unbound then
+                return true
+            end
+        end--]]
         if next(SMODS.find_card("j_neonmod_flowery")) or next(SMODS.find_card("j_neonmod_marksman")) or next(SMODS.find_card("j_neonmod_redtape")) then
             return true
         end

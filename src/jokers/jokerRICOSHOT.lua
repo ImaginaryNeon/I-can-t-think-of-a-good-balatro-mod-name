@@ -10,7 +10,7 @@ if Cryptid then
                 "set_cry_epic",
             },
         },
-        config = { extra = { repetitions = 1, dollars = 12, fee = 1.5 } },
+        config = { extra = { repetitions = 1, dollars = 12, fee = 1.5, unbound = "j_neonmod_marksmanunbound", } },
         rarity = "cry_epic",
         cost = 12,
         blueprint_compat = true,

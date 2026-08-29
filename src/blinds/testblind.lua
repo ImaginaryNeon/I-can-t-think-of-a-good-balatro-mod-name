@@ -16,19 +16,19 @@ SMODS.Blind {
     end,
     calculate = function(self, blind, context)
         if not blind.disabled then
-            if context.post_trigger then
+            if context.post_trigger and context.other_card.ability.set == "Joker" then
                 return {
                     xmult = blind.effect.extra.xmult,
                     message = 'Decayed!',
                     card = context.blueprint_card or context.other_card or blind,
                 }
             end
-            if context.cardarea == G.play and context.main_scoring then
+            --[[if context.cardarea == G.play and context.main_scoring then
                 return {
                     xmult = blind.effect.extra.xmult,
                     message = 'Decayed!',
                 }
-            end
+            end--]]
         end
     end
 }
