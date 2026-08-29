@@ -24,7 +24,7 @@ if isSynth then
             }
         },
         loc_vars = function(self, info_queue, card)
-            SynthB.song_info(info_queue, "still_alive")
+            SynthB.song_info(info_queue, card, "still_alive")
             return { vars = { card.ability.extra.xmult_gain, card.ability.extra.xmult } }
         end,
         calculate = function(self, card, context)
@@ -87,7 +87,7 @@ if isSynth then
             }
         },
         loc_vars = function(self, info_queue, card)
-            SynthB.song_info(info_queue, "want_you_gone")
+            SynthB.song_info(info_queue, card, "want_you_gone")
             return { vars = { card.ability.extra.xmult_gain, card.ability.extra.xmult } }
         end,
         calculate = function(self, card, context)
@@ -138,7 +138,7 @@ if isSynth then
             }
         },
         loc_vars = function(self, info_queue, card)
-            SynthB.song_info(info_queue, "you_wouldnt_know")
+            SynthB.song_info(info_queue, card, "you_wouldnt_know")
             return { vars = { card.ability.extra.dollars } }
         end,
         calculate = function(self, card, context)
@@ -207,7 +207,7 @@ if isSynth then
             }
         },
         loc_vars = function(self, info_queue, card)
-            SynthB.song_info(info_queue, "dont_say_goodbye")
+            SynthB.song_info(info_queue, card, "dont_say_goodbye")
             return { vars = { card.ability.extra.xmult_gain, card.ability.extra.xmult } }
         end,
         calculate = function(self, card, context)
@@ -247,7 +247,7 @@ if isSynth then
     --[[SynthB.Joker {
         key = "still_alive",
         loc_vars = function(self, info_queue, card)
-            SynthB.song_info(info_queue, "still_alive")
+            SynthB.song_info(info_queue, card, "still_alive")
         end,
         attributes = { "song", "Portal", "Jonathan Coulton", "Ellen McClain", "GLaDOS" }
     }]]
