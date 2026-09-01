@@ -485,6 +485,15 @@ return {
                     "{C:inactive}(Chips = ELO - 1000){}"
                 }
             },
+            j_neonmod_amiibo = {
+                name = 'Steve Amiibo',
+                text = {
+                    'Played {C:attention}Stone{} cards are',
+                    "{C:red}destroyed{} after scoring",
+                    "and give this Joker {C:mult}+#2#{} Mult",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult){}"
+                }
+            },
             j_neonmod_sampletext = {
                 name = 'Sample Text',
                 text = {

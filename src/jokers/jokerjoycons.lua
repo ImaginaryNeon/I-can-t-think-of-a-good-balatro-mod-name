@@ -285,7 +285,6 @@ local https = require "SMODS.https"
 SMODS.Joker {
     key = "teambuilder",
     blueprint_compat = true,
-    perishable_compat = false,
     demicoloncompat = true,
     rarity = 2,
     cost = 9,
@@ -293,16 +292,20 @@ SMODS.Joker {
     pos = { x = 2, y = 8 },
     config = { immutable = { elo = 1000, fallbackchips = 294 } },
     loc_vars = function(self, info_queue, card)
-        local statuscode, body = https.request("https://pokemonshowdown.com/users/ImaginaryNeon")
-        if statuscode == 200 then
-            --print("yeah, we good")
-            local i, j = string.find(tostring(body), "gen9ou<") --<tr><td>gen9ou</td><td style="text-align:center"><strong>1294</strong>
-            --print(j) -- j+42?
-            --print(string.sub(tostring(body), j + 43, j + 46))
-            card.ability.immutable.elo = tonumber(string.sub(tostring(body), j + 43, j + 46))
-            return { vars = { card.ability.immutable.elo, card.ability.immutable.fallbackchips } }
+        if card.ability.immutable.elo == 1000 or card.ability.immutable.elo == (1000 + card.ability.immutable.fallbackchips) then
+            local statuscode, body = https.request("https://pokemonshowdown.com/users/ImaginaryNeon")
+            if statuscode == 200 then
+                --print("yeah, we good")
+                local i, j = string.find(tostring(body), "gen9ou<") --<tr><td>gen9ou</td><td style="text-align:center"><strong>1294</strong>
+                --print(j) -- j+42?
+                --print(string.sub(tostring(body), j + 43, j + 46))
+                card.ability.immutable.elo = tonumber(string.sub(tostring(body), j + 43, j + 46))
+                return { vars = { card.ability.immutable.elo, card.ability.immutable.fallbackchips } }
+            else
+                return { vars = { "Connect to wifi, dumbass" } }
+            end
         else
-            return { vars = { "Connect to wifi, dumbass" } }
+            return { vars = { card.ability.immutable.elo, card.ability.immutable.fallbackchips } }
         end
     end,
     add_to_deck = function(self, card, from_debuff)
@@ -349,4 +352,37 @@ SMODS.Joker {
         end
     end
 }
---end
+
+SMODS.Joker {
+    key = "amiibo",
+    blueprint_compat = true,
+    perishable_compat = false,
+    demicoloncompat = true,
+    rarity = 1,
+    cost = 5,
+    atlas = "jonklers",
+    pos = { x = 3, y = 8 },
+    pixel_size = { w = 51, h = 76 },
+    config = { extra = { mult = 0, mult_gain = 8 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult, card.ability.extra.mult_gain } }
+    end,
+    calculate = function(self, card, context)
+        if context.destroy_card then
+            if context.cardarea == G.play and SMODS.has_enhancement(context.destroy_card, "m_stone") then
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = 'mult',
+                    scalar_value = 'mult_gain',
+                    message_colour = G.C.ATTENTION
+                })
+                return { remove = true }
+            end
+        end
+        if context.joker_main or context.forcetrigger then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end
+}

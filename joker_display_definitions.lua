@@ -754,3 +754,11 @@ jd_def["j_neonmod_teambuilder"] = { -- Teambuilder
             card.ability.immutable.fallbackchipsm
     end
 }
+
+jd_def["j_neonmod_amiibo"] = { -- Steve Amiibo
+    text = {
+        { text = "+" },
+        { ref_table = "card.ability.extra", ref_value = "mult", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.MULT },
+}
