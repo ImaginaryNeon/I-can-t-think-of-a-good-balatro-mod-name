@@ -204,6 +204,7 @@ SMODS.Joker {
         end
     end
 }
+
 SMODS.Joker { -- To-do: fix chip message
     key = 'Wiimote',
     atlas = 'jonklers',
@@ -278,3 +279,74 @@ SMODS.Joker { -- To-do: fix chip message
         end
     end
 }
+
+local https = require "SMODS.https"
+--if https then
+SMODS.Joker {
+    key = "teambuilder",
+    blueprint_compat = true,
+    perishable_compat = false,
+    demicoloncompat = true,
+    rarity = 2,
+    cost = 9,
+    atlas = "jonklers",
+    pos = { x = 2, y = 8 },
+    config = { immutable = { elo = 1000, fallbackchips = 294 } },
+    loc_vars = function(self, info_queue, card)
+        local statuscode, body = https.request("https://pokemonshowdown.com/users/ImaginaryNeon")
+        if statuscode == 200 then
+            --print("yeah, we good")
+            local i, j = string.find(tostring(body), "gen9ou<") --<tr><td>gen9ou</td><td style="text-align:center"><strong>1294</strong>
+            --print(j) -- j+42?
+            --print(string.sub(tostring(body), j + 43, j + 46))
+            card.ability.immutable.elo = tonumber(string.sub(tostring(body), j + 43, j + 46))
+            return { vars = { card.ability.immutable.elo, card.ability.immutable.fallbackchips } }
+        else
+            return { vars = { "Connect to wifi, dumbass" } }
+        end
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        local statuscode, body = https.request("https://pokemonshowdown.com/users/ImaginaryNeon")
+        if statuscode == 200 then
+            --print("yeah, we good")
+            local i, j = string.find(tostring(body), "gen9ou<") --<tr><td>gen9ou</td><td style="text-align:center"><strong>1294</strong>
+            --print(j) -- j+42?
+            --print(string.sub(tostring(body), j + 43, j + 46))
+            card.ability.immutable.elo = tonumber(string.sub(tostring(body), j + 43, j + 46))
+        else
+            card.ability.immutable.elo = card.ability.immutable.fallbackchips + 1000
+        end
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main or context.forcetrigger then
+            --[[string.find("2", "hello")--]]
+            --print(https.request("https://pokemonshowdown.com/users/ImaginaryNeon", "GET /html/body/div[3]/div/div/table/tbody/tr[19]/td[2]/strong"))
+            --print(https.request("https://pokemonshowdown.com/users/ImaginaryNeon"))
+            --print("help")
+            local statuscode, body = https.request("https://pokemonshowdown.com/users/ImaginaryNeon")
+            if statuscode == 200 then
+                --print("yeah, we good")
+                local i, j = string.find(tostring(body), "gen9ou<") --<tr><td>gen9ou</td><td style="text-align:center"><strong>1294</strong>
+                --print(j) -- j+42?
+                --print(string.sub(tostring(body), j + 43, j + 46))
+                card.ability.immutable.elo = tonumber(string.sub(tostring(body), j + 43, j + 46))
+                if card.ability.immutable.elo >= 1000 then
+                    return {
+                        chips = card.ability.immutable.elo - 1000
+                    }
+                else
+                    print("something fucked up on the concept of a number's end")
+                    return {
+                        chips = card.ability.immutable.fallbackchips
+                    }
+                end
+            else
+                print("something fucked up on the site's end")
+                return {
+                    chips = card.ability.immutable.fallbackchips
+                }
+            end
+        end
+    end
+}
+--end

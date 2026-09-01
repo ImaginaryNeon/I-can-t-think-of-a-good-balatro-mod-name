@@ -742,3 +742,15 @@ jd_def["j_neonmod_marksmanunbound"] = { -- Unbound Marksman
             math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))
     end
 }
+
+jd_def["j_neonmod_teambuilder"] = { -- Teambuilder
+    text = {
+        { text = "+" },
+        { ref_table = "card.joker_display_values", ref_value = "chips", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.CHIPS },
+    calc_function = function(card)
+        card.joker_display_values.chips = (card.ability.immutable.elo - 1000) or
+            card.ability.immutable.fallbackchipsm
+    end
+}

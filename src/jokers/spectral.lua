@@ -5,7 +5,7 @@ SMODS.Consumable {
     pos = { x = 0, y = 0 },
     config = {
         extra = {
-            rate = 1,
+            rate = 0.5,
         }
     },
     loc_vars = function(self, info_queue, card)

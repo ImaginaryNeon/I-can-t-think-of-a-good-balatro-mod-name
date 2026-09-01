@@ -475,6 +475,16 @@ return {
                     '{C:red}Self-destructs{} after playing #3# cards',
                 }
             },
+            j_neonmod_teambuilder = {
+                name = 'Pokemon Showdown Teambuilder',
+                text = {
+                    'Gives {C:chips}Chips{} based on',
+                    "{C:attention}ImaginaryNeon{}'s current",
+                    'ELO in {C:attention}Gen 9 OU{}',
+                    "Current ELO: {C:attention}#1#{}",
+                    "{C:inactive}(Chips = ELO - 1000){}"
+                }
+            },
             j_neonmod_sampletext = {
                 name = 'Sample Text',
                 text = {
