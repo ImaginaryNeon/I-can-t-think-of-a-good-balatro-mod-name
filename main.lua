@@ -143,7 +143,6 @@ SMODS.current_mod.optional_features = function()
             discard = true,
             deck = true
         },
-        object_weights = true
     }
 end
 --#endregion

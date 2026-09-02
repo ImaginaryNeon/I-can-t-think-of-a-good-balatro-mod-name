@@ -102,7 +102,6 @@ SMODS.Joker {
     demicoloncompat = false,
     rarity = "neonmod_unbound",
     cost = 10,
-    weight = 0,
     pos = { x = 4, y = 1 },
     pixel_size = { w = 52, h = 95 },
     to_number = to_number or function(x) return x end,

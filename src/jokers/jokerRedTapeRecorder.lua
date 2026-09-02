@@ -64,7 +64,6 @@ SMODS.Joker {
     demicoloncompat = true,
     rarity = "neonmod_unbound",
     cost = 6,
-    weight = 0,
     pos = { x = 1, y = 3 },
     config = {
         extra = {
