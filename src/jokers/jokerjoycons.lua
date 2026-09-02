@@ -368,7 +368,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.mult, card.ability.extra.mult_gain } }
     end,
     calculate = function(self, card, context)
-        if context.destroy_card then
+        if context.destroy_card and not context.blueprint then
             if context.cardarea == G.play and SMODS.has_enhancement(context.destroy_card, "m_stone") then
                 SMODS.scale_card(card, {
                     ref_table = card.ability.extra,
