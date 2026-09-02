@@ -49,7 +49,7 @@ SMODS.Joker {
     key = 'dangeresque',
     atlas = 'jonklers',
     pos = { x = 2, y = 1 },
-    config = { extra = { odds = 3, dollars = 100 } },
+    config = { extra = { odds = 3, dollars = 50 } },
     rarity = 2,
     cost = 5,
     blueprint_compat = false,
