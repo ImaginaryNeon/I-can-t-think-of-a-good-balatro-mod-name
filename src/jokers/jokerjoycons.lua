@@ -380,9 +380,11 @@ SMODS.Joker {
             end
         end
         if context.joker_main or context.forcetrigger then
-            return {
-                mult = card.ability.extra.mult
-            }
+            if card.ability.extra.mult > 0 then
+                return {
+                    mult = card.ability.extra.mult
+                }
+            end
         end
     end
 }
