@@ -54,6 +54,7 @@ SMODS.Joker {
     cost = 5,
     blueprint_compat = false,
     demicoloncompat = false,
+    eternal_compat = false,
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'neonmod_dangeresque')
         return { vars = { card.ability.extra.dollars, numerator, denominator } }
@@ -81,6 +82,7 @@ SMODS.Joker {
     config = { extra = { xmult = 1.4, ammo = 20 } },
     blueprint_compat = true,
     demicoloncompat = true,
+    eternal_compat = false,
     rarity = 2,
     cost = 8,
     loc_vars = function(self, info_queue, card)
@@ -126,6 +128,7 @@ SMODS.Joker {
     atlas = 'jonklers',
     blueprint_compat = true,
     demicoloncompat = true,
+    eternal_compat = false,
     pos = { x = 0, y = 4 },
     config = { extra = { xmult = 2.5, xmult_loss = 0.01, xmult_reset = 2.5, timer = 0 } },
     loc_vars = function(self, info_queue, card)
