@@ -488,9 +488,9 @@ return {
             j_neonmod_amiibo = {
                 name = 'Steve Amiibo',
                 text = {
-                    'Played {C:attention}Stone{} cards are',
-                    "{C:red}destroyed{} after scoring",
-                    "and give this Joker {C:mult}+#2#{} Mult",
+                    'Played and scoring {C:attention}Stone{} cards',
+                    "are {C:red}destroyed{} after scoring and",
+                    "give this Joker {C:mult}+#2#{} Mult",
                     "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult){}"
                 }
             },
