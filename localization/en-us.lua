@@ -498,11 +498,10 @@ return {
                 name = 'Sample Text',
                 text = {
                     'This Joker is for testing.',
-                    '{C:attention}Glass{} cards also count',
-                    'as the opposite rank',
-                    '{C:inactive}(2/A, 3/K, 4/Q, etc.){}'
+                    "{X:attention,C:white}X#1#{} hand size,",
+                    "{X:default,C:attention}=#2#{} discard select size",
                 }
-            }
+            },
         },
         SongInfo = {
             still_alive = {
