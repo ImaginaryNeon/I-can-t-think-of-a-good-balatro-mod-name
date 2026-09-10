@@ -81,11 +81,11 @@ SMODS.Joker {
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'neonmod_joyconr')
         return { vars = { card.ability.extra.mult, card.ability.extra.change, numerator, denominator } }
     end,
-    block_overrides = {
+    --[[block_overrides = {
         value = true,  -- blocks modifications to the ref_value
         scalar = true, -- blocks modifications to the scalar_value
         message = true -- blocks modifications to the scaling_message
-    },
+    },--]]
     calculate = function(self, card, context)
         local other_joker = nil
         for i = 1, #G.jokers.cards do
@@ -208,10 +208,7 @@ SMODS.Joker {
 SMODS.Joker { -- To-do: fix chip message
     key = 'Wiimote',
     atlas = 'jonklers',
-    pos = {
-        x = 3,
-        y = 0
-    },
+    pos = { x = 3, y = 0 },
     blueprint_compat = true,
     demicoloncompat = false,
     rarity = 1,
@@ -365,6 +362,7 @@ SMODS.Joker {
     pixel_size = { w = 51, h = 76 },
     config = { extra = { mult = 0, mult_gain = 8 } },
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
         return { vars = { card.ability.extra.mult, card.ability.extra.mult_gain } }
     end,
     calculate = function(self, card, context)
@@ -386,5 +384,13 @@ SMODS.Joker {
                 }
             end
         end
+    end,
+    in_pool = function(self, args) --equivalent to `enhancement_gate = 'm_stone'`
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_stone') then
+                return true
+            end
+        end
+        return false
     end
 }

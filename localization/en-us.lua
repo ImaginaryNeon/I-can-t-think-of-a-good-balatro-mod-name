@@ -428,7 +428,7 @@ return {
                     '{C:green}#2# in #3#{} chance for played cards',
                     'to be copied to hand when scored',
                     'during a {C:attention}Boss Blind{}',
-                    "{s=0.8}{C:inactive}\"Fraud has no bugs\""
+                    "{s:0.8,C:inactive}\"Fraud has no bugs\""
                 }
             },
             j_neonmod_lasguini2test = {
@@ -438,7 +438,7 @@ return {
                     '{C:attention}consecutive{} Blind beaten in',
                     '{C:attention}1{} hand or less',
                     '{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult){}',
-                    "{s=0.8}{C:inactive}\"Fraud has no bugs\""
+                    "{s:0.8,C:inactive}\"Fraud has no bugs\""
                 }
             },
             j_neonmod_flowery = {
@@ -500,6 +500,56 @@ return {
                     'This Joker is for testing.',
                     "{X:attention,C:white}X#1#{} hand size,",
                     "{X:default,C:attention}=#2#{} discard select size",
+                }
+            },
+            -- abandonia shit, don't mind it
+            j_neonmod_triskaidekaphobia = {
+                name = 'Triskaidekaphobia',
+                text = {
+                    {
+                        "When a {C:attention}Lucky card{} scores,",
+                        "scoring non-Lucky cards permenantly",
+                        "have their base {C:chips}Chips{} doubled"
+                    },
+                    {
+                        "When a {C:attention}13{} scores,",
+                        "gain {C:attention}+#3#{} Joker slot at the cost",
+                        "of {X:blind,C:white}X#2#{} Blind size and",
+                        "{X:blind,C:white}+X#4#{} starting Blind size",
+                        "{C:inactive}(Currently {X:blind,C:white}X#5#{C:inactive} Blind size){}"
+                    }
+                },
+            },
+            j_neonmod_rorrim = {
+                name = 'Rorrim Joker',
+                text = {
+                    {
+                        "When a {C:attention}Glass card{} scores,",
+                        "scoring non-Glass cards gain",
+                        "{C:chips}+#2#{} Chips and {C:mult}+#1#{} Mult",
+                        "per scoring card played"
+                    },
+                    {
+                        "When a {C:attention}Glass card{} breaks",
+                        "other scoring cards have their",
+                        "base Chips {C:attention}doubled{}"
+                    }
+                },
+            },
+            j_neonmod_chips_to_mult = {
+                name = 'Mult Matthew',
+                text = {
+                    "Whenever another Joker gives {C:chips}Chips{},",
+                    "this Joker gives those Chips as {C:mult}Mult{}",
+                    --"{s:0.7,C:inactive}(Does not affect Jokers that give Chips after another Joker triggers){}"
+                }
+            },
+            j_neonmod_mult_to_chips = {
+                name = 'Bonus Bradly',
+                text = {
+                    "Whenever another Joker gives {C:mult}Mult{},",
+                    "this Joker gives that Mult as {C:chips}Chips{}",
+                    --"{s:0.7,C:inactive}(Does not affect Jokers that give Mult after another Joker triggers){}"
                 }
             },
         },

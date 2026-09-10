@@ -10,7 +10,7 @@ if Cryptid then
                 "set_cry_epic",
             },
         },
-        config = { extra = { repetitions = 1, dollars = 12, fee = 1.5, unbound = "j_neonmod_marksmanunbound", } },
+        config = { extra = { repetitions = 1, dollars = 12, fee = 1, unbound = "j_neonmod_marksmanunbound", } },
         rarity = "cry_epic",
         cost = 12,
         blueprint_compat = true,
@@ -105,7 +105,7 @@ SMODS.Joker {
     pos = { x = 4, y = 1 },
     pixel_size = { w = 52, h = 95 },
     to_number = to_number or function(x) return x end,
-    config = { extra = { repetitions = 1, dollars = 15 } },
+    config = { extra = { repetitions = 1, dollars = 12 } },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {

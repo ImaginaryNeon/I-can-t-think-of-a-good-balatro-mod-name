@@ -206,7 +206,7 @@ SMODS.Joker {
     },
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, math.max(G.GAME.current_round.hands_left, 1),
-            'neonmod_joyconr')
+            'neonmod_scopelens')
         return { vars = { card.ability.extra.xmult, numerator, denominator } }
     end,
     collection_loc_vars = function(self)

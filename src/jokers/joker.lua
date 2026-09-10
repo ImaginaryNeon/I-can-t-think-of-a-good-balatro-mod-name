@@ -238,7 +238,34 @@ SMODS.Joker {
         x = 2,
         y = 3
     },
-    config = { extra = { chips = 0, chip_gain = 1 } },
+    config = { extra = { chips = 0, chip_gain = 1 },
+        immutable = { lyrics = { "Life is a drag, life is a chore", "Frightfully sad, so mindless a bore", "Mice in a bag, you fight and you gnaw",
+            "For the rights just to brag in the line for the door", "And the higher your score, the louder you bicker", "Life gave you lemons?", "Good heavens, you're bitter",
+            "And whatever you get to collect", "Well, that head interjects", "With incessant effect", "\"Could be bigger!\"", "Here comes the next utter wreck",
+            "What the heck? Cut the deck", "Unsuspectingly betting their dinner", "When left unchecked, cuts a check", "Bust, the rest rubberneck",
+            "But expect still to end up a winner", "If you're ever in the dumps or feeling stuck in a rut", "You simply haven't had the fun", "Of watching number go up",
+            "You know it's wonderful stuff", "Let the hundreds runneth over your cup", "It's such a buzz to watch the number go up", "You must be pretty dumb",
+            "For thinking some is enough", "When you can add another one", "And make the number go up", "Until you run out of luck", "And find your funds are down to nothing but fluff",
+            "No runners-up in making number go up.", "That day-to-day is unbearably dry", "Makes sense to chase that numerical high", "Be it a salary, calories, boxes on ballot sheets", "Whoops, don't forget to subscribe!", "Are you feeling alive?", "With catharsis or pride?", "Maybe father has cried?",
+            "Have you asked yourself why?", "To blast through a ceiling might pass for appealing", "But chance is you're leaving with plaster in eyes",
+            "And the faster the rise, the harder the fall", "Infinite jesters still get curtain calls", "My god, it's historic, meteoric!",
+            "Alas, my poor Yorick", "He held his head high through it all", "If you're ever in the dumps", "Or feeling stuck in a rut", "You simply haven't had the fun",
+            "Of watching number go up", "If your budget is bust", "You gotta trust the funds are gonna erupt", "You've gotta lust for making numbers go up",
+            "(Haha, sing, you fools!)", "You must be pretty dumb", "For thinking some is enough", "When you can add another one", "And make the number go up",
+            "But all the luster can rust", "Sweep your dreams into a dustpan and brush", "Another shmuck to make the numbers go up",
+            "Shoot like a star or fold like a quitter", "Somebody once told me about all that glitters", "Now you might dream of Queens", "Straight Flush with the green",
+            "But get Jack when you're sold down the river", "You might find you're an Ace", "Or just bluff from the start", "Have diamonds in spades",
+            "Or get clubbed in the heart", "When the pot's at an end", "And the flop doesn't send", "You a hand full of lovely cards", "The world's at the table, it's prudent to play",
+            "To err, says the fable, is human, but hey", "Watch your stack", "For the fact is that affluence turning to crap",
+            "Is one little vowel movement away", "Those rags to riches you got from that tip-off", "Just tacking stitches to viciously rip off",
+            "Bet on a dream and it seems", "It might tear at the seams", "Why'd you think so much poker is strip-off?", "Now let's see who's next in line to proclaim",
+            "They can be king just by making it reign", "A million monarchs competing", "For dwindling court seating", "All blind to how fleeting their fame",
+            "The ante is up, and the cards are face-down", "Sadly, it can't be the other way 'round", "But the biggest of figuress won't impress the digger",
+            "When picking your hole in the ground", "(Oh, now you're in the hole!)", "If you're ever in the dumps or feeling stuck in a rut", "You simply haven't had the fun",
+            "Of watching number go up", "Oh, it's a punch in the nuts", "Stuck in a puddle with the wrong kind of flush", "Get off your butt and make the number go up",
+            "(Hahaha, yes!)", "You must be pretty dumb", "For thinking some is enough", "When you can add another one", "And make the number go up",
+            "(So I can hear you in the bluffing tables!)", "Until it crumbles to dust", "Another puppet for the vultures to pluck", "Outta luck, making number go up.",
+            "Yeah, we'd really like to make another couple of bucks", "So, won't you play the song again", "And make the number go up?" }, position = 0 } },
     attributes = { 'chips', 'scaling' },
     rarity = 1,
     cost = 4,
@@ -254,11 +281,20 @@ SMODS.Joker {
                 ref_table = card.ability.extra,
                 ref_value = 'chips',
                 scalar_value = 'chip_gain',
+                scaling_message = {
+                    message = card.ability.immutable.lyrics
+                        [(card.ability.immutable.position % #card.ability.immutable.lyrics) + 1],
+                    colour = G.C.BLUE
+                }
             })
+            card.ability.immutable.position = (card.ability.immutable.position or 0) + 1
         end
         if context.joker_main or context.forcetrigger then
+            --local pos = (card.ability.immutable.position % #card.ability.immutable.lyrics) + 1
+            --card.ability.immutable.position = (card.ability.immutable.position or 0) + 1
             return {
-                chips = card.ability.extra.chips
+                chips = card.ability.extra.chips,
+                --message = card.ability.immutable.lyrics[pos],
             }
         end
     end,
