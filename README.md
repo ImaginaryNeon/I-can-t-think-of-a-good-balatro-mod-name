@@ -4,7 +4,7 @@ Requires [Lovely](https://github.com/ethangreen-dev/lovely-injector), [Steammodd
 
 Contains:
 - A bunch of new Jokers
-- 3 new Boss Blinds, 2 of which are personalized.
+- 4 new Boss Blinds, 2 of which are personalized.
 - 1 Deck, plus an accompanying Sleeve, if CardSleeves is enabled.
 
 To-do:
