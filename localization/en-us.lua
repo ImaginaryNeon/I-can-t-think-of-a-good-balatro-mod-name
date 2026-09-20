@@ -502,6 +502,58 @@ return {
                     "{X:default,C:attention}=#2#{} discard select size",
                 }
             },
+            j_neonmod_randomjoker1 = {
+                name = 'Chaotic Joker',
+                text = {
+                    "{C:mult}+#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}#2#{},",
+                    "Poker hand changes",
+                    "at end of round",
+                }
+            },
+            j_neonmod_randomjoker2 = {
+                name = 'Unrelated Joker', --Real-Tuned
+                text = {
+                    "{C:chips}+#1#{} Chips if played",
+                    "hand contains",
+                    "a {C:attention}#2#{},",
+                    "Poker hand changes",
+                    "at end of round",
+                    --"{s:0.7,C:inactive}(Does not affect Jokers that give Mult after another Joker triggers){}"
+                }
+            },
+            j_neonmod_tomodachipaper = {
+                name = 'Toilet Paper',
+                text = {
+                    "Earn {C:gold}$#1#{} whenever",
+                    "a {C:green}probability{} fails",
+                    "{s:0.7,C:inactive}Hey, you can't win 'em all. But you{}",
+                    "{s:0.7,C:inactive}can get THIS as a consolation prize!{}",
+                }
+            },
+            j_neonmod_wishiwashi = {
+                name = 'Joki-Joshi (Solo Form)',
+                text = {
+                    "Played {C:attention}Aces{} have a",
+                    "{C:green}#1# in #2#{} chance to",
+                    "create a {C:attention}Tag{} when scored",
+                    "{s:0.9,C:inactive}Enters Circus Form after scoring",
+                    "{s:0.9,C:attention}25% {}{s:0.9,C:inactive}of Blind requirements",
+                }
+            },
+            j_neonmod_schoolform = {
+                name = 'Joki-Joshi (Circus Form)',
+                text = {
+                    "Played {C:attention}Aces{} have a",
+                    "{C:green}#1# in #2#{} chance to",
+                    "create an editioned",
+                    "{C:attention}Joker{} when scored",
+                    "{C:inactive}(Must have room)",
+                    "{s:0.9,C:inactive}Returns to Solo Form",
+                    "{s:0.9,C:inactive}when Blind is defeated",
+                }
+            },
             -- abandonia shit, don't mind it
             j_neonmod_triskaidekaphobia = {
                 name = 'Triskaidekaphobia',

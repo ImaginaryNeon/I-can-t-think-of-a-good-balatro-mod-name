@@ -299,3 +299,111 @@ SMODS.Joker {
         end
     end,
 }
+
+SMODS.Joker {
+    key = 'randomjoker1',
+    atlas = 'jonklers',
+    pos = {
+        x = 1,
+        y = 9
+    },
+    config = {
+        extra = {
+            mult = 20,
+            type = 'High Card'
+        }
+    },
+    blueprint_compat = true,
+    attributes = { 'mult', },
+    rarity = 1,
+    cost = 4,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.mult, localize(card.ability.extra.type, 'poker_hands')
+            }
+        }
+    end,
+    calculate = function(self, card, context)
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+            local _poker_hands = {}
+            for handname, _ in pairs(G.GAME.hands) do
+                if SMODS.is_poker_hand_visible(handname) and handname ~= card.ability.extra.type then
+                    _poker_hands[#_poker_hands + 1] = handname
+                end
+            end
+            card.ability.extra.type = pseudorandom_element(_poker_hands, 'vremade_to_do')
+            return {
+                message = localize('k_reset')
+            }
+        end
+        if (context.joker_main and next(context.poker_hands[card.ability.extra.type])) or context.forcetrigger then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end,
+    set_ability = function(self, card, initial, delay_sprites)
+        local _poker_hands = {}
+        for handname, _ in pairs(G.GAME.hands) do
+            if SMODS.is_poker_hand_visible(handname) and handname ~= card.ability.extra.type then
+                _poker_hands[#_poker_hands + 1] = handname
+            end
+        end
+        card.ability.extra.type = pseudorandom_element(_poker_hands, 'neonmod_gamble1')
+    end
+}
+SMODS.Joker {
+    key = 'randomjoker2',
+    atlas = 'jonklers',
+    pos = {
+        x = 2,
+        y = 9
+    },
+    config = {
+        extra = {
+            chips = 150,
+            type = 'High Card'
+        }
+    },
+    blueprint_compat = true,
+    attributes = { 'chips', },
+    rarity = 1,
+    cost = 4,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.chips, localize(card.ability.extra.type, 'poker_hands')
+            }
+        }
+    end,
+    calculate = function(self, card, context)
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+            local _poker_hands = {}
+            for handname, _ in pairs(G.GAME.hands) do
+                if SMODS.is_poker_hand_visible(handname) and handname ~= card.ability.extra.type then
+                    _poker_hands[#_poker_hands + 1] = handname
+                end
+            end
+            card.ability.extra.type = pseudorandom_element(_poker_hands, 'vremade_to_do')
+            return {
+                message = localize('k_reset')
+            }
+        end
+        if (context.joker_main and next(context.poker_hands[card.ability.extra.type])) or context.forcetrigger then
+            return {
+                chips = card.ability.extra.chips
+            }
+        end
+    end,
+    set_ability = function(self, card, initial, delay_sprites)
+        local _poker_hands = {}
+        for handname, _ in pairs(G.GAME.hands) do
+            if SMODS.is_poker_hand_visible(handname) and handname ~= card.ability.extra.type then
+                _poker_hands[#_poker_hands + 1] = handname
+            end
+        end
+        card.ability.extra.type = pseudorandom_element(_poker_hands, 'neonmod_gamble2')
+    end
+}
+--]]
