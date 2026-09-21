@@ -533,7 +533,7 @@ return {
                 }
             },
             j_neonmod_wishiwashi = {
-                name = 'Joki-Joshi (Solo Form)',
+                name = 'Joki-Joshi',
                 text = {
                     "Played {C:attention}Aces{} have a",
                     "{C:green}#1# in #2#{} chance to",
