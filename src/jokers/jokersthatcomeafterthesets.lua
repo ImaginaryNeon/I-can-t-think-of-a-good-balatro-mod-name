@@ -84,7 +84,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "schoolform",
     atlas = 'jonklers',
-    rarity = 3,
+    rarity = 2,
     cost = 6,
     pos = { x = 0, y = 9 },
     pixel_size = { w = 49, h = 70 },
