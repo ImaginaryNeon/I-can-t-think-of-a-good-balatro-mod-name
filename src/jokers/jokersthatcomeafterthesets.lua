@@ -91,6 +91,7 @@ SMODS.Joker {
     display_size = { w = 49 * 1.2, h = 70 * 1.2 },
     blueprint_compat = true,
     demicoloncompat = true,
+    hidden = true,
     config = { extra = { odds = 4, } },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.j_joker
