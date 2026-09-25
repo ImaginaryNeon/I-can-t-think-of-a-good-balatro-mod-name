@@ -91,7 +91,7 @@ SMODS.Joker {
     display_size = { w = 49 * 1.2, h = 70 * 1.2 },
     blueprint_compat = true,
     demicoloncompat = true,
-    hidden = true,
+    no_collection = true,
     config = { extra = { odds = 4, } },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.j_joker
@@ -109,7 +109,7 @@ SMODS.Joker {
                         func = function()
                             G.E_MANAGER:add_event(Event({
                                 func = (function()
-                                    local random_edition = SMODS.poll_edition { key = "jokijoshi", guaranteed = true, no_negative = true }
+                                    local random_edition = SMODS.poll_edition { key = "jokijoshi", guaranteed = true, } --no_negative = true }
                                     SMODS.add_card { set = "Joker", key = 'j_joker', edition = random_edition }
                                     G.GAME.joker_buffer = 0
                                     return true
