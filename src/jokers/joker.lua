@@ -332,7 +332,7 @@ SMODS.Joker {
                     _poker_hands[#_poker_hands + 1] = handname
                 end
             end
-            card.ability.extra.type = pseudorandom_element(_poker_hands, 'vremade_to_do')
+            card.ability.extra.type = pseudorandom_element(_poker_hands, 'neonmod_gamble1')
             return {
                 message = localize('k_reset')
             }
@@ -385,7 +385,7 @@ SMODS.Joker {
                     _poker_hands[#_poker_hands + 1] = handname
                 end
             end
-            card.ability.extra.type = pseudorandom_element(_poker_hands, 'vremade_to_do')
+            card.ability.extra.type = pseudorandom_element(_poker_hands, 'neonmod_gamble2')
             return {
                 message = localize('k_reset')
             }

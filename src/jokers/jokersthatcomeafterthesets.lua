@@ -38,7 +38,7 @@ SMODS.Joker {
     pos = { x = 3, y = 9 },
     pixel_size = { w = 20, h = 26 },
     --display_size = { w = 14 * 1.5, h = 18 * 1.5 },
-    blueprint_compat = false,
+    blueprint_compat = true,
     demicoloncompat = true,
     config = { extra = { odds = 4, } },
     loc_vars = function(self, info_queue, card)
@@ -47,7 +47,7 @@ SMODS.Joker {
         return { vars = { numerator, denominator, --[[localize { type = 'name_text', set = 'Tag', key = 'tag_double' }--]] } }
     end,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play and not context.blueprint then
+        if context.individual and context.cardarea == G.play --[[and not context.blueprint--]] then
             if (context.other_card:get_id() == 14) and SMODS.pseudorandom_probability(card, 'neonmod_wishiwashi', 1, card.ability.extra.odds) then
                 local tag_pool = get_current_pool('Tag')
                 local selected_tag = pseudorandom_element(tag_pool, 'neonmod_tag_get')

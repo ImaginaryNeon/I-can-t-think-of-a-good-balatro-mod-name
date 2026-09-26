@@ -762,3 +762,115 @@ jd_def["j_neonmod_amiibo"] = { -- Steve Amiibo
     },
     text_config = { colour = G.C.MULT },
 }
+
+jd_def["j_neonmod_randomjoker1"] = { -- Chaotic Joker
+    text = {
+        { text = "+" },
+        { ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.MULT },
+    reminder_text = {
+        { text = "(" },
+        { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = G.C.ORANGE },
+        { text = ")" },
+    },
+    calc_function = function(card)
+        local mult = 0
+        local _, poker_hands, _ = JokerDisplay.evaluate_hand()
+        if poker_hands[card.ability.extra.type] and next(poker_hands[card.ability.extra.type]) then
+            mult = card.ability.extra.mult
+        end
+        card.joker_display_values.mult = mult
+        card.joker_display_values.localized_text = localize(card.ability.extra.type, 'poker_hands')
+    end
+}
+
+jd_def["j_neonmod_randomjoker2"] = { -- Unrelated Joker
+    text = {
+        { text = "+" },
+        { ref_table = "card.joker_display_values", ref_value = "chips", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.CHIPS },
+    reminder_text = {
+        { text = "(" },
+        { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = G.C.ORANGE },
+        { text = ")" },
+    },
+    calc_function = function(card)
+        local chips = 0
+        local _, poker_hands, _ = JokerDisplay.evaluate_hand()
+        if poker_hands[card.ability.extra.type] and next(poker_hands[card.ability.extra.type]) then
+            chips = card.ability.extra.chips
+        end
+        card.joker_display_values.chips = chips
+        card.joker_display_values.localized_text = localize(card.ability.extra.type, 'poker_hands')
+    end
+}
+
+jd_def["j_neonmod_wishiwashi"] = { -- Joki-Joshi (Base Form)
+    text = {
+        { text = "+" },
+        { ref_table = "card.joker_display_values", ref_value = "count", retrigger_type = "mult" },
+    },
+    text_config = { colour = G.C.FILTER },
+    extra = {
+        {
+            { text = "(" },
+            { ref_table = "card.joker_display_values", ref_value = "odds" },
+            { text = ")" },
+        }
+    },
+    extra_config = { colour = G.C.GREEN, scale = 0.3 },
+    calc_function = function(card)
+        local count = 0
+        local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+        if text ~= 'Unknown' then
+            for _, scoring_card in pairs(scoring_hand) do
+                if scoring_card:get_id() and scoring_card:get_id() == 14 then
+                    count = count + JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
+                end
+            end
+        end
+        card.joker_display_values.count = count
+        local numerator, denominator = (G.GAME.probabilities.normal or 1), card.ability.extra.odds
+        if SMODS then
+            numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds,
+                'neonmod_wishiwashi')
+        end
+        card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
+    end
+}
+
+jd_def["j_neonmod_schoolform"] = { -- Joki-Joshi (Circus Form)
+    text = {
+        { text = "+" },
+        { ref_table = "card.joker_display_values", ref_value = "count", retrigger_type = "mult" },
+    },
+    text_config = { colour = G.C.FILTER },
+    extra = {
+        {
+            { text = "(" },
+            { ref_table = "card.joker_display_values", ref_value = "odds" },
+            { text = ")" },
+        }
+    },
+    extra_config = { colour = G.C.GREEN, scale = 0.3 },
+    calc_function = function(card)
+        local count = 0
+        local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+        if text ~= 'Unknown' then
+            for _, scoring_card in pairs(scoring_hand) do
+                if scoring_card:get_id() and scoring_card:get_id() == 14 then
+                    count = count + JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
+                end
+            end
+        end
+        card.joker_display_values.count = count
+        local numerator, denominator = (G.GAME.probabilities.normal or 1), card.ability.extra.odds
+        if SMODS then
+            numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds,
+                'neonmod_wishiwashi')
+        end
+        card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
+    end
+}
