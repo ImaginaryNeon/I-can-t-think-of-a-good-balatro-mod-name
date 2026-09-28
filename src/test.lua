@@ -157,23 +157,10 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.fix_probability and context.trigger_obj == G.play then
-            if SMODS.has_enhancement(context.other_card, "m_glass") then
-                local count = 0
-                for _, scored_card in ipairs(context.scoring_hand) do
-                    if not SMODS.has_enhancement(scored_card, "m_glass") then
-                        count = count + 1
-                        scored_card.ability.perma_bonus = (scored_card.ability.perma_bonus or 0) +
-                            (card.ability.extra.chips_per * #context.scoring_hand)
-                        scored_card.ability.perma_mult = (scored_card.ability.perma_mult or 0) +
-                            (card.ability.extra.mult_per * #context.scoring_hand)
-                    end
-                end
-                if count > 0 then
-                    return {
-                        message = localize('k_upgrade_ex'),
-                        colour = G.C.RED
-                    }
-                end
+            if context.identifier == '' then
+                return {
+                    numerator = context.denominator
+                }
             end
         end
         if context.remove_playing_cards and not context.blueprint then
