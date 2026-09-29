@@ -555,21 +555,15 @@ return {
                 }
             },
             -- abandonia shit, don't mind it
-            j_neonmod_triskaidekaphobia = {
-                name = 'Triskaidekaphobia',
+            j_neonmod_spellcheck = {
+                name = 'Spell Check',
                 text = {
-                    {
-                        "When a {C:attention}Lucky card{} scores,",
-                        "scoring non-Lucky cards permenantly",
-                        "have their base {C:chips}Chips{} doubled"
-                    },
-                    {
-                        "When a {C:attention}13{} scores,",
-                        "gain {C:attention}+#3#{} Joker slot at the cost",
-                        "of {X:blind,C:white}X#2#{} Blind size and",
-                        "{X:blind,C:white}+X#4#{} starting Blind size",
-                        "{C:inactive}(Currently {X:blind,C:white}X#5#{C:inactive} Blind size){}"
-                    }
+                    "This Joker gains {C:chips}+#3#{} Chips",
+                    "when a Joker with '{C:attention}Joker{}'",
+                    "in its name triggers, and gains",
+                    "{C:mult}+#4#{} Mult when a Joker",
+                    "with '{C:attention}Jester{}' in its name triggers",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#2#{C:inactive} Mult){}"
                 },
             },
             j_neonmod_rorrim = {
