@@ -111,7 +111,7 @@ Neonmod.custom_colors = {
         },
     }
 }
-
+--G.ARGS.LOC_COLOURS.key = Neonmod.custom_colors.key
 --#endregion
 
 --#region File Loading

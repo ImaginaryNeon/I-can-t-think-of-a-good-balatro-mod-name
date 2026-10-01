@@ -47,7 +47,7 @@ SMODS.Joker {
     pixel_size = { w = 71, h = 71 },
     display_size = { w = 71 * 1.2, h = 71 * 1.2 },
     attributes = { 'xmult', 'scaling', 'economy', 'food' },
-    config = { extra = { fee = 5, xmult_gain = 0.25, xmult = 1, total_spent = 0 } },
+    config = { extra = { fee = 5, xmult_gain = 0.5, xmult = 1, total_spent = 0 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.fee, card.ability.extra.xmult_gain, card.ability.extra.xmult, card.ability.extra.total_spent } }
     end,
