@@ -33,8 +33,8 @@ SMODS.Joker {
 SMODS.Joker {
     key = "wishiwashi",
     atlas = 'jonklers',
-    rarity = 1,
-    cost = 6,
+    rarity = 2,
+    cost = 8,
     pos = { x = 3, y = 9 },
     pixel_size = { w = 20, h = 26 },
     --display_size = { w = 14 * 1.5, h = 18 * 1.5 },
@@ -84,8 +84,8 @@ SMODS.Joker {
 SMODS.Joker {
     key = "schoolform",
     atlas = 'jonklers',
-    rarity = 2,
-    cost = 6,
+    rarity = 3,
+    cost = 8,
     pos = { x = 0, y = 9 },
     pixel_size = { w = 49, h = 70 },
     display_size = { w = 49 * 1.2, h = 70 * 1.2 },
@@ -95,11 +95,14 @@ SMODS.Joker {
     config = { extra = { odds = 4, } },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.j_joker
+        if not self.edition or (self.edition and not self.edition.negative) then
+            info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+        end
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'neonmod_schoolform')
         return { vars = { numerator, denominator } }
     end,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+        if context.individual and context.cardarea == G.play then --[[and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then--]]
             if context.other_card:get_id() == 14 and SMODS.pseudorandom_probability(card, 'neonmod_wishiwashi', 1, card.ability.extra.odds) then
                 G.GAME.joker_buffer = G.GAME.joker_buffer + 1
                 return {
@@ -109,8 +112,8 @@ SMODS.Joker {
                         func = function()
                             G.E_MANAGER:add_event(Event({
                                 func = (function()
-                                    local random_edition = SMODS.poll_edition { key = "jokijoshi", guaranteed = true, } --no_negative = true }
-                                    SMODS.add_card { set = "Joker", key = 'j_joker', edition = random_edition }
+                                    --local random_edition = SMODS.poll_edition { key = "jokijoshi", guaranteed = true, } --no_negative = true }
+                                    SMODS.add_card { set = "Joker", key = 'j_joker', edition = "e_negative"--[[random_edition]] }
                                     G.GAME.joker_buffer = 0
                                     return true
                                 end)

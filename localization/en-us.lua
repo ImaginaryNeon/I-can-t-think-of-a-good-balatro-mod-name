@@ -547,7 +547,7 @@ return {
                 text = {
                     "Played {C:attention}Aces{} have a",
                     "{C:green}#1# in #2#{} chance to",
-                    "create an editioned",
+                    "create a {C:dark_edition}Negative",
                     "{C:attention}Joker{} when scored",
                     "{C:inactive}(Must have room)",
                     "{s:0.9,C:inactive}Returns to Solo Form",
