@@ -68,7 +68,7 @@ SMODS.Joker {
         extra = {
             mult = 0,
             change = 2,
-            odds = 50,
+            odds = 20,
         }
     },
     loc_vars = function(self, info_queue, card)
@@ -283,7 +283,7 @@ SMODS.Joker {
     key = "teambuilder",
     blueprint_compat = true,
     demicoloncompat = true,
-    rarity = 2,
+    rarity = 3,
     cost = 9,
     atlas = "jonklers",
     pos = { x = 2, y = 8 },

@@ -566,20 +566,11 @@ return {
                     "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips, {C:mult}+#2#{C:inactive} Mult){}"
                 },
             },
-            j_neonmod_rorrim = {
-                name = 'Rorrim Joker',
+            j_neonmod_blue_jewel = {
+                name = 'Blue Jewel',
                 text = {
-                    {
-                        "When a {C:attention}Glass card{} scores,",
-                        "scoring non-Glass cards gain",
-                        "{C:chips}+#2#{} Chips and {C:mult}+#1#{} Mult",
-                        "per scoring card played"
-                    },
-                    {
-                        "When a {C:attention}Glass card{} breaks",
-                        "other scoring cards have their",
-                        "base Chips {C:attention}doubled{}"
-                    }
+                    "{C:attention}Vanilla{} poker hands",
+                    "give {X:chips,C:white}#1#X{} the Chips",
                 },
             },
             j_neonmod_chips_to_mult = {

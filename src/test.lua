@@ -127,6 +127,39 @@ SMODS.Joker {
     }
 }
 
+SMODS.Joker { -- Hands start with 999 Chips and 99 Mult, unless current Chips/Mult is greater
+    key = "blue_jewel",
+    rarity = 3,
+    abn_coder = "ImaginaryNeon",
+    --atlas = 'ABNJokerSheet27',
+    --pos = { x = 5, y = 1 },
+    atlas = 'jonklers',     -- test sprites from my own mod
+    pos = { x = 0, y = 2 }, -- Hideous Mass
+    cost = 6,
+    discovered = false,
+    blueprint_compat = true,
+    demicoloncompat = false,
+    attributes = { 'joker' },
+    config = {
+        extra = {
+            xchips = 2,
+        },
+    },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xchips } }
+    end,
+    calculate = function(self, card, context)
+        if context.modify_hand and not context.blueprint then
+            --mult = mod_mult(mult)
+            hand_chips = mod_chips(hand_chips * card.ability.extra.xchips)
+            update_hand_text({ sound = 'chips2', modded = true }, { chips = hand_chips, --[[mult = mult--]] })
+        end
+    end,
+    abn_artist_credits = {
+        artist = "Technotoad64",
+    }
+}
+
 --[[SMODS.Joker {
     key = 'cracked', -- Cracked Joker
     rarity = 3,
