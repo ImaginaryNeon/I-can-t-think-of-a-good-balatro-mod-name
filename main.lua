@@ -99,6 +99,23 @@ SMODS.Atlas { -- LEND ME YOUR POWER!
     py = 95
 }
 
+SMODS.Atlas { -- Stake
+    key = 'stakery',
+    path = 'OMEGA BLINDERY.png',
+    atlas_table = 'ANIMATION_ATLAS',
+    frames = 14,
+    px = 29,
+    py = 29
+}
+SMODS.Atlas { -- LEND ME YOUR POWER!
+    key = 'stickerpot',
+    path = 'Stickery.png',
+    atlas_table = 'ANIMATION_ATLAS',
+    frames = 14,
+    px = 71,
+    py = 95
+}
+
 Neonmod.custom_colors = {
     FLOWERMAN = HEX("fee601"),
     banners = {

@@ -765,6 +765,15 @@ return {
                 },
             },
         },
+        Stake = {
+            stake_neonmod_omega = {
+                name = "Omega Stakery",
+                text = {
+                    "Start the run with a Pinned, Eternal {C:attention}Flower Pot{} Joker",
+                    "{s:0.8}Applies all previous Stakes",
+                },
+            },
+        },
         Other = {
             neonmod_akarilore = {
                 name = 'Effects',

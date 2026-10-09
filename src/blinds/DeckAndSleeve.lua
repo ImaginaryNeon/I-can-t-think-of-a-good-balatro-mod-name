@@ -29,6 +29,15 @@ SMODS.Back {
 		end
 	end,
 }
+--[[SMODS.Back {
+	key = 'flowerydeck',
+	atlas = 'deck',
+	pos = { x = 1, y = 0 },
+	--	unlocked = false,
+	apply = function(self, back)
+		SMODS.add_card{ key = "j_flower_pot" }
+	end,
+}--]]
 if CardSleeves then
 	CardSleeves.Sleeve {
 		key = "moodysleve",
@@ -47,7 +56,7 @@ if CardSleeves then
 		end,
 		calculate = function(self, sleeve, context)
 			if self.get_current_deck_key() == "b_neonmod_moodydeck" then
-				if context.modify_hand or context.pre_discard then
+				if --[[context.modify_hand or]] context.pre_discard then
 					local handlist1 = {}
 					--print(table.concat(G.handlist, ", "))
 					for hand, index in pairs(G.GAME.hands) do

@@ -166,6 +166,7 @@ SMODS.Joker {
     rarity = 1,
     cost = 1,
     demicoloncompat = true,
+    pools = { ["Meme"] = true, },
     pos = { x = 1, y = 5 },
     config = { extra = { mult = 1 } },
     loc_vars = function(self, info_queue, card)
