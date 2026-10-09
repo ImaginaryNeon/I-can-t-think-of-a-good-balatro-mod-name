@@ -72,13 +72,15 @@ SMODS.Consumable {
         return #cards == 1
     end,
     in_pool = function(self, card)
-        --[[for i = 1, #G.jokers.cards do
-            if G.jokers.cards[i].ability.extra.unbound then
-                return true
+        for _, joker in ipairs(G.jokers.cards or {}) do
+            if joker.ability.set == "Joker" and joker.ability.extra then
+                if joker.ability.extra.unbound then
+                    return true
+                end
             end
         end--]]
-        if next(SMODS.find_card("j_neonmod_flowery")) or next(SMODS.find_card("j_neonmod_marksman")) or next(SMODS.find_card("j_neonmod_redtape")) then
+        --[[if next(SMODS.find_card("j_neonmod_flowery")) or next(SMODS.find_card("j_neonmod_marksman")) or next(SMODS.find_card("j_neonmod_redtape")) then
             return true
-        end
+        end--]]
     end,
 }

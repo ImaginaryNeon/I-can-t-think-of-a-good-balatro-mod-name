@@ -74,8 +74,8 @@ if isSynth then
         key = "want_you_gone",
         blueprint_compat = true,
         perishable_compat = false,
-        rarity = 3,
-        cost = 8,
+        rarity = 2,
+        cost = 7,
         atlas = "jonklers",
         pos = { x = 1, y = 6 },
         synthb_credits = {

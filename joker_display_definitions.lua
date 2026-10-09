@@ -195,9 +195,9 @@ jd_def["j_neonmod_marksmancoin"] = { -- Marksman Coin
         }
     },
     extra_config = { colour = G.C.GREEN, scale = 0.3 },
-    reminder_text = {
+    --[[reminder_text = {
         { text = "(First card)", },
-    },
+    },--]]
     calc_function = function(card)
         local numerator, denominator = (G.GAME.probabilities.normal or 1), card.ability.extra.odds
         if SMODS then numerator, denominator = SMODS.get_probability_vars(card, 1, denominator, 'neonmod_marksmancoin') end
@@ -502,7 +502,7 @@ jd_def["j_neonmod_fraudclimax_alt"] = { -- Final Flight
             end
         end
         card.joker_display_values.count = count
-        card.joker_display_values.xmult = card.ability.extra.xmult + (count * card.ability.extra.xmult_mod)
+        card.joker_display_values.xmult = card.ability.extra.xmult
         card.joker_display_values.localized_text = "(8,4)"
     end
 }

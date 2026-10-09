@@ -758,7 +758,7 @@ return {
             sleeve_neonmod_moodysleve_alt = {
                 name = "Moody Sleeve",
                 text = {
-                    "When playing or discarding a hand,",
+                    "When discarding a hand,",
                     "{C:attention}increase{} the level of a random hand by {C:attention}2{},",
                     "and {C:red}decrease{} the level of a random hand by {C:attention}1{}",
                     "{C:inactive}(Can decrease hand levels below 1){}"

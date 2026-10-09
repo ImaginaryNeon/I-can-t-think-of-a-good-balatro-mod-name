@@ -58,7 +58,7 @@ else
         to_number = to_number or function(x) return x end,
         blueprint_compat = true,
         demicoloncompat = false,
-        config = { extra = { repetitions = 1, dollars = 12, fee = 2, unbound = "j_neonmod_marksmanunbound", } },
+        config = { extra = { repetitions = 1, dollars = 15, fee = 2, unbound = "j_neonmod_marksmanunbound", } },
         rarity = 3,
         cost = 10,
         loc_vars = function(self, info_queue, card)
@@ -105,7 +105,7 @@ SMODS.Joker {
     pos = { x = 4, y = 1 },
     pixel_size = { w = 52, h = 95 },
     to_number = to_number or function(x) return x end,
-    config = { extra = { repetitions = 1, dollars = 12 } },
+    config = { extra = { repetitions = 1, dollars = 15 } },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -131,7 +131,7 @@ SMODS.Joker {
     atlas = 'jonklers',
     pos = { x = 1, y = 1 },
     to_number = to_number or function(x) return x end,
-    config = { extra = { repetitions = 1, dollars = 10, odds = 5, } },
+    config = { extra = { repetitions = 1, dollars = 15, odds = 5, } },
     rarity = 2,
     cost = 7,
     eternal_compat = false,
