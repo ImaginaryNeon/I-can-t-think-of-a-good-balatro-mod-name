@@ -4,8 +4,8 @@ local abovestake = (isCryptid and "cry_ascendant") or "gold"
 SMODS.Stake {
     name = "Omega Stakery",
     key = "omega",
-    pos = { y = 0 },
-    atlas = "stakery",
+    pos = { x = 1, y = 0 },
+    atlas = "stakerystatic",
     applied_stakes = { abovestake },
     above_stake = abovestake,
     colour = HEX("aedaf0"),
@@ -16,11 +16,17 @@ SMODS.Stake {
     end,--]]
     prefix_config = { applied_stakes = { mod = false }, above_stake = { mod = false } },
     modifiers = function()
-        local card = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_flower_pot")
+        --[[local card = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_flower_pot")
 		--card:set_edition("e_negative", true, nil, true)
 		card.ability.pinned = true
         card.ability.eternal = true
 		card:add_to_deck()
-		G.jokers:emplace(card)
+		G.jokers:emplace(card)]]
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                SMODS.add_card{ key = "j_flower_pot", force_stickers = --[[true, stickers =]] {'eternal', 'pinned'} }
+                return true
+            end
+        }))
     end,
 }

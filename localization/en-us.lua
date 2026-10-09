@@ -769,7 +769,7 @@ return {
             stake_neonmod_omega = {
                 name = "Omega Stakery",
                 text = {
-                    "Start the run with a Pinned, Eternal {C:attention}Flower Pot{} Joker",
+                    "Start the run with a Pinned, Eternal {C:attention}Flower Pot{}",
                     "{s:0.8}Applies all previous Stakes",
                 },
             },
@@ -793,6 +793,14 @@ return {
                     "No two {C:diamonds}lights{} may be in range",
                     "of each other",
                 }
+            },
+            neonmod_omega_sticker = {
+                name = "Omega Sticker",
+                text = {
+                    "Used this Joker",
+                    "to win on {C:attention}Omega",
+                    "{C:attention}Stakery{} difficulty",
+                },
             },
         }
     },

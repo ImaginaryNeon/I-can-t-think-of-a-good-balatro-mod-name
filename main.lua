@@ -107,6 +107,14 @@ SMODS.Atlas { -- Stake
     px = 29,
     py = 29
 }
+
+SMODS.Atlas { -- Stake
+    key = 'stakerystatic',
+    path = 'OMEGA BLINDERY.png',
+    px = 29,
+    py = 29
+}
+
 SMODS.Atlas { -- LEND ME YOUR POWER!
     key = 'stickerpot',
     path = 'Stickery.png',
