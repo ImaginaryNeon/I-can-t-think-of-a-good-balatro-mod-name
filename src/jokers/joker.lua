@@ -190,7 +190,7 @@ SMODS.Joker {
     config = {
         extra = {
             chips = 0,
-            chipgain = 30,
+            chipgain = 27,
             suits = {}, instruments = true
         }, immutable = { length = 4 }
     },

@@ -73,7 +73,7 @@ SMODS.Consumable {
     end,
     in_pool = function(self, card)
         for _, joker in ipairs(G.jokers.cards or {}) do
-            if joker.ability.set == "Joker" and joker.ability.extra then
+            if joker.ability.set == "Joker" and type(joker.ability.extra) == "table" then
                 if joker.ability.extra.unbound then
                     return true
                 end
