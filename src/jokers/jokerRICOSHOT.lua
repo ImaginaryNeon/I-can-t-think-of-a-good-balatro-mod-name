@@ -96,7 +96,7 @@ else
 end
 SMODS.Joker {
     key = "marksmanunbound",
-    atlas = 'jonklers',
+    atlas = 'jonklers2',
     no_collection = true,
     blueprint_compat = true,
     demicoloncompat = false,

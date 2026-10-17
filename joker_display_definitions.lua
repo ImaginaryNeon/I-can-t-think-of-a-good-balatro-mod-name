@@ -820,7 +820,7 @@ jd_def["j_neonmod_wishiwashi"] = { -- Joki-Joshi (Base Form)
             { text = ")" },
         }
     },
-    extra_config = { colour = G.C.GREEN, scale = 0.3 },
+    extra_config = { colour = G.C.GREEN },
     calc_function = function(card)
         local count = 0
         local text, _, scoring_hand = JokerDisplay.evaluate_hand()
@@ -872,5 +872,36 @@ jd_def["j_neonmod_schoolform"] = { -- Joki-Joshi (Circus Form)
                 'neonmod_wishiwashi')
         end
         card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
+    end
+}
+
+
+jd_def["j_neonmod_emesis"] = { -- It's longer than you think.
+    extra = {
+        {
+            --{ text = "(",                       colour = G.C.TEXT_INACTIVE },
+            { ref_table = "card.ability.extra", ref_value = "storedchips", colour = G.C.CHIPS },
+            --{ text = ")",                       colour = G.C.TEXT_INACTIVE },
+        }
+    },
+    --extra_config = { colour = G.C.CHIPS, scale = 0.3 },
+    reminder_text = {
+        { text = "(" },
+        { ref_table = "card.joker_display_values", ref_value = "active_text" },
+        { text = ")" },
+    },
+    calc_function = function(card)
+        -- Talisman compatibility
+        local is_active = false
+        local blind_gap = to_big(((G.GAME.blind or {}).chips - (G.GAME.chips or 0) or 0))
+        is_active = blind_gap and blind_gap ~= to_big(0) and blind_gap <= to_big(card.ability.extra.storedchips) or false
+        card.joker_display_values.is_active = is_active
+        card.joker_display_values.active_text = is_active and localize("jdis_active") or localize("jdis_inactive")
+    end,
+    style_function = function(card, text, reminder_text, extra)
+        if reminder_text and reminder_text.children and reminder_text.children[2] then
+            reminder_text.children[2].config.colour = card.joker_display_values.is_active and G.C.GREEN or
+                G.C.UI.TEXT_INACTIVE
+        end
     end
 }

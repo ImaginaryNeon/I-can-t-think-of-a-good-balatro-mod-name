@@ -554,6 +554,24 @@ return {
                     "{s:0.9,C:inactive}when Blind is defeated",
                 }
             },
+            j_neonmod_emesis = {
+                name = 'Emesis Diazepam',
+                text = {
+                    {
+                        "If {C:attention}first hand{} of round scores",
+                        "{C:attention}more{} than blind requirements,",
+                        "this Joker {C:red}siphons {C:attention}half{} of",
+                        "the hand's {C:attention}scored chips{}",
+                    },
+                    {
+                        "Prevents Death if chips scored",
+                        "and this Joker's {C:attention}siphoned{} chips",
+                        "meet blind requirements, then",
+                        "{C:red}resets{} stored chips",
+                        "{C:inactive}(Currently {C:attention}#1#{C:inactive} chips stored)",
+                    }
+                }
+            },
             -- abandonia shit, don't mind it
             j_neonmod_spellcheck = {
                 name = 'Spell Check',
@@ -707,7 +725,18 @@ return {
                     "why are you even",
                     "{C:attention}spawning{} enemies here"
                 }
-            }
+            },
+            b_neonmod_hoopadeck = {
+                name = 'Prison Deck',
+                text = {
+                    "{C:neonmod_unbound}Unbound{} Jokers can appear",
+                    "in the {C:attention}shop{}"
+                },
+                unlock = {
+                    "Turn a Joker into its",
+                    "{C:neonmod_unbound}Unbound{} variant"
+                }
+            },
         },
         Spectral = {
             c_neonmod_increment = {
@@ -810,9 +839,95 @@ return {
         },
         dictionary = {
             k_neonmod_unbound = "Unbound",
+            ph_emesis_msg1 = "It's longer than you think.",
+            ph_emesis_msg2 = "It's eternity in there.",
+            ph_emesis_msg3 = "My eyes hurt.",
+            ph_emesis_msg4 = "You look lost, stranger.",
+            ph_emesis_msg5 = "You ever get the feeling like you're being watched?",
+            ph_emesis_msg6 = "Longer than you think.",
         },
         labels = {
             k_neonmod_unbound = "Unbound",
+        },
+        quips = {
+            neonmod_radio_1_win = { "Success predestined?", "We've yet to find." }, -- Adequate Wordsmith
+            neonmod_radio_1_loss = { "But those who wager", "aren't so clever." },  -- The House Always Wins
+            neonmod_radio_2_win = {
+                "Negotious, verbosity velocious.",
+                "In quality? Ambrosious.",
+                "Thesaurus adiposis.",
+            },                                                                                 -- Adequate Wordsmith
+            neonmod_radio_2_loss = { "The best of the", "best still die", "like the rest.", }, -- I Expect You to Die
+
+            neonmod_radio_3_win = {
+                "And you'll be on",
+                "the walls of the",
+                "Hall of Fame.",
+            }, -- Hall of Fame
+            neonmod_radio_3_loss = {
+                "I'm not even angry.",
+                "I'm being so sincere",
+                "right now.",
+            }, -- Still Alive
+
+            neonmod_radio_4_win = {
+                "Let's raise the",
+                "bar, and our cups",
+                "to the stars!",
+            }, -- Get Lucky
+            neonmod_radio_4_loss = {
+                "We've come too",
+                "far to give up",
+                "who we are.",
+            }, -- Get Lucky
+
+            neonmod_radio_5_win = {
+                "Instead of screams", "I swear, I can hear", "music in the air!" },                    -- What's This?
+            neonmod_radio_5_loss = { "My coffin's all", "I see, lately.", },                           -- Robot Stop
+
+            neonmod_radio_6_win = { "It's almost over,", "it's just begun.", },                        -- All Eyes On Me
+            neonmod_radio_6_loss = { "The record shows,", "I took the blows,", "and did it my way!" }, -- My Way
+
+            neonmod_radio_7_win = { "But those who wager", "aren't so clever.", },                     -- Piss
+            neonmod_radio_7_loss = { "Maybe I should just", "shut the fuck up!", },                    -- Comedy
+
+            neonmod_radio_8_win = { "Who needs a remote?", "Let's keep this", "going FOR DAYS!" },     -- Show's Never Over
+            neonmod_radio_8_loss = { "You'll be back,", "soon, you'll see." },                         -- You'll Be Back
+
+            neonmod_radio_9_win = { "Who needs a remote?", "Let's keep this", "going FOR DAYS!" },     -- Show's Never Over
+            neonmod_radio_9_loss = { "Are my tastes just", "bad? Am I the one", "to blame?" },         -- Why Don't You Play Them?
+
+            neonmod_radio_10_win = { "Who needs a remote?", "Let's keep this", "going FOR DAYS!" },    -- Show's Never Over
+            neonmod_radio_10_loss = { "You'll be back,", "soon, you'll see." },                        -- You'll Be Back
+
+
+            neonmod_unbound_radio_1_win = { "Guys like me,", "it ain't easy", "to be played", "for fools." },       -- Stronger than You (Sans)
+            neonmod_unbound_radio_1_loss = { "No need to look", "for your god,", "Only one up", "there is ME!" },   -- Bloodshed Sanctuary
+            neonmod_unbound_radio_2_win = { "Aww yeah, I still", "fuckin' got it." },                               -- Today is Payday, Too
+            neonmod_unbound_radio_2_loss = { "It was over in a", "moment, and the folks", "had gathered 'round." }, -- Big Iron
+
+            neonmod_unbound_radio_3_win = {
+                "Through the fire",
+                "and the flames,",
+                "we carry on!" }, -- Through The Fire And Flames
+            neonmod_unbound_radio_3_loss = {
+                "And that was when",
+                "I ruled the world.", },    -- Viva la Vida
+
+            neonmod_unbound_radio_4_win = { -- The Spy and the Liar
+                "The credits are more",
+                "than just the end!", },
+            neonmod_unbound_radio_4_loss = { -- Fallen Kingdom
+                "They all cried for",
+                "my help, but I",
+                "stood there numb."
+            },
+            neonmod_unbound_radio_5_win = { "Stay braced for the pace,", "get a taste for the race.",
+                "There's grace to embrace,", "when space is your playlist." },                                                      -- Impossible Geometry
+            neonmod_unbound_radio_5_loss = { "Wanna take me?", "Haven't got", "the skill." },                                       -- Impossible Geometry
+
+            neonmod_unbound_radio_6_win = { "Now I'm finally free,", "in divine melody." },                                         -- Impossible Geometry
+            neonmod_unbound_radio_6_loss = { "Like a deer in headlights,", "I'm trapped here in the", "flare of the red lights." }, -- Impossible Geometry
         }
     }
 

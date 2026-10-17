@@ -3,14 +3,25 @@ version = "1.0.0"
 priority = 0
 
 # I have no clue how this works bro
+#[[patches]]
+#[patches.pattern]
+#target = 'game.lua'
+#pattern = '''
+#create_shop_card_ui(card, 'Booster', G.shop_booster)
+#'''
+#position = 'before'
+#payload = '''
+#SMODS.calculate_context({create_shop_booster = true, booster = card})
+#'''
+match_indent = true
+# Add context when a card retriggers
+# Credit: Somethingcom515
 [[patches]]
 [patches.pattern]
-target = 'game.lua'
-pattern = '''
-create_shop_card_ui(card, 'Booster', G.shop_booster)
-'''
-position = 'before'
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = '''effect.message = effect.message or (not effect.remove_default_message and localize('k_again_ex'))'''
+position = "after"
 payload = '''
-SMODS.calculate_context({create_shop_booster = true, booster = card})
+effect.extra = {func = function() SMODS.calculate_context({neonmod_card_retriggered = true}) end}
 '''
 match_indent = true

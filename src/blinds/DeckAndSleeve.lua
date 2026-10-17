@@ -38,6 +38,22 @@ SMODS.Back {
 		SMODS.add_card{ key = "j_flower_pot" }
 	end,
 }--]]
+SMODS.Back {
+	key = 'hoopadeck',
+	atlas = 'deck',
+	pos = { x = 2, y = 0 },
+	config = { unbound_rate = 2, }, -- set to 0.025 later
+	unlocked = false,
+	apply = function(self, back)
+		-- Apply the spectral rate
+		--G.GAME.neonmod_unbound_mod = self.config.unbound_rate
+	end,
+	check_for_unlock = function(self, args)
+		if args.type == "overrule_used" then
+			return true
+		end
+	end
+}
 if CardSleeves then
 	CardSleeves.Sleeve {
 		key = "moodysleve",

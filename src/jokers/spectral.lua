@@ -50,6 +50,7 @@ SMODS.Consumable {
                         jkr:set_ability(jkr.ability.extra.unbound)
                     end
                     play_sound("card1", percent)
+                    check_for_unlock { type = 'overrule_used' }
                     jkr:juice_up(0.3, 0.3)
                     return true
                 end,
@@ -78,7 +79,7 @@ SMODS.Consumable {
                     return true
                 end
             end
-        end--]]
+        end --]]
         --[[if next(SMODS.find_card("j_neonmod_flowery")) or next(SMODS.find_card("j_neonmod_marksman")) or next(SMODS.find_card("j_neonmod_redtape")) then
             return true
         end--]]

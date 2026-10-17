@@ -70,6 +70,42 @@ SMODS.Joker {
     end
 }
 
+SMODS.Joker {
+    key = 'unboundradio',
+    atlas = 'jonklers2',
+    pos = {
+        x = 1,
+        y = 0
+    },
+    config = {
+        extra = {
+            repetitions = 1,
+        }
+    },
+    blueprint_compat = true,
+    demicoloncompat = false,
+    attributes = { 'retrigger', 'rank', 'two', 'five', 'eight' },
+    rarity = 2,
+    cost = 8,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.repetitions
+            }
+        }
+    end,
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.play then
+            if context.other_card:get_id() == 8 or
+                context.other_card:get_id() == 5 or
+                context.other_card:get_id() == 2 then
+                return {
+                    repetitions = card.ability.extra.repetitions
+                }
+            end
+        end
+    end
+} --]]
 
 -- loosely based off of Hot Potato's "Yapper"
 SMODS.Joker {

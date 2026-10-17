@@ -30,6 +30,65 @@ SMODS.Joker {
     end
 }
 
+SMODS.Joker { -- Hands start with 999 Chips and 99 Mult, unless current Chips/Mult is greater
+    key = "emesis",
+    rarity = 3,
+    atlas = 'jonklers2',
+    pos = { x = 2, y = 0 },
+    pixel_size = { w = 51, h = 82 },
+    cost = 9,
+    --discovered = false,
+    blueprint_compat = false,
+    demicoloncompat = false,
+    --attributes = { 'joker' },
+    config = {
+        extra = {
+            storedchips = 0,
+        },
+    },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.storedchips } }
+    end,
+    calculate = function(self, card, context)
+        if context.first_hand_drawn and not context.blueprint then
+            local eval = function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end
+            juice_card_until(card, eval, true)
+        end
+        --if context.before and G.GAME.current_round.hands_played == 0 then
+        if context.final_scoring_step and not context.blueprint and G.GAME.current_round.hands_played <= 0 then
+            if SMODS.calculate_round_score() > G.GAME.blind.chips then
+                card.ability.extra.storedchips = (card.ability.extra.storedchips or 0) +
+                    (SMODS.calculate_round_score() / 2)
+                return {
+                    score = -(SMODS.calculate_round_score() / 2),
+                    no_message = true
+                }
+            end
+        end
+        if context.end_of_round and context.game_over and context.main_eval then
+            if (G.GAME.blind.chips - G.GAME.chips) <= card.ability.extra.storedchips then -- See note about Talisman compatibility on the wiki
+                local list = { "ph_emesis_msg1", "ph_emesis_msg2", "ph_emesis_msg3", "ph_emesis_msg4", "ph_emesis_msg5",
+                    "ph_emesis_msg6" }
+                local random_element = pseudorandom_element(list, "emesis_blue" .. G.GAME.round_resets.ante)
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        G.hand_text_area.blind_chips:juice_up()
+                        G.hand_text_area.game_chips:juice_up()
+                        play_sound('tarot1')
+                        card.ability.extra.storedchips = 0
+                        return true
+                    end
+                }))
+                return {
+                    message = localize('k_reset'),
+                    saved = random_element,
+                    colour = G.C.RED
+                }
+            end
+        end
+    end,
+}
+
 SMODS.Joker {
     key = "wishiwashi",
     atlas = 'jonklers',
@@ -113,7 +172,7 @@ SMODS.Joker {
                             G.E_MANAGER:add_event(Event({
                                 func = (function()
                                     --local random_edition = SMODS.poll_edition { key = "jokijoshi", guaranteed = true, } --no_negative = true }
-                                    SMODS.add_card { set = "Joker", key = 'j_joker', edition = "e_negative"--[[random_edition]] }
+                                    SMODS.add_card { set = "Joker", key = 'j_joker', edition = "e_negative" --[[random_edition]] }
                                     G.GAME.joker_buffer = 0
                                     return true
                                 end)

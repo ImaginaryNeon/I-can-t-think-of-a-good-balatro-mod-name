@@ -10,6 +10,13 @@ SMODS.Atlas { -- Jokers
     py = 95
 }
 
+SMODS.Atlas { -- Jokers 2
+    key = 'jonklers2',
+    path = 'piss.png',
+    px = 71,
+    py = 95
+}
+
 SMODS.Atlas { -- Blinds
     key = 'bossbattle',
     path = 'blinding.png',
