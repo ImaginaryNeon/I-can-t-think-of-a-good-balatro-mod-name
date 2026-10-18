@@ -857,34 +857,30 @@ return {
             k_neonmod_unbound = "Unbound",
         },
         quips = {
-            neonmod_radio_1_win = { "Success predestined?", "We've yet to find." },                          -- Adequate Wordsmith
-            neonmod_radio_1_loss = { "But those who wager", "aren't so clever." },                           -- The House Always Wins
-            neonmod_radio_2_win = {
-                "Negotious, verbosity velocious.", "In quality? Ambrosious.", "Thesaurus adiposis.", },      -- Adequate Wordsmith
-            neonmod_radio_2_loss = { "The best of the", "best still die", "like the rest.", },               -- I Expect You to Die
-            neonmod_radio_3_win = { "And you'll be on", "the walls of the", "Hall of Fame.", },              -- Hall of Fame
-            neonmod_radio_3_loss = { "I'm not even angry.", "I'm being so sincere", "right now.", },         -- Still Alive
-
-            neonmod_radio_4_win = { "Let's raise the", "bar, and our cups", "to the stars!", },              -- Get Lucky
-            neonmod_radio_4_loss = { "We've come too", "far to give up", "who we are.", },                   -- Get Lucky
-            neonmod_radio_5_win = { "Instead of screams", "I swear, I can hear", "music in the air!" },      -- What's This?
-            neonmod_radio_5_loss = { "My coffin's all", "I see, lately.", },                                 -- Robot Stop
-            neonmod_radio_6_win = { "It's almost over,", "it's just begun.", },                              -- All Eyes On Me
-            neonmod_radio_6_loss = { "The record shows,", "I took the blows,", "and did it my way!" },       -- My Way
-            neonmod_radio_7_win = { "This is going", "down in history.", },                                  -- WANO
-            neonmod_radio_7_loss = { "Maybe I should just", "shut the fuck up!", },                          -- Comedy
-            neonmod_radio_8_win = { "Who needs a remote?", "Let's keep this", "going FOR DAYS!" },           -- Show's Never Over
-            neonmod_radio_8_loss = { "You'll be back,", "soon, you'll see." },                               -- You'll Be Back
-            neonmod_radio_9_win = { "Your fever dream,", "can't you see it", "gettin' closer?" },            -- The Greatest Show
-            neonmod_radio_9_loss = { "Are my tastes just", "bad? Am I the one", "to blame?" },               -- Why Don't You Play Them?
-            neonmod_radio_10_win = { "Ain't it nice?" },                                                     -- Fireflies
-            neonmod_radio_10_loss = { "Wishing you skipped", "the track?" },                                 -- Ameteur Wordsmith
-            neonmod_radio_11_win = { "Don't forget,", "I'm with you", "in the dark." },                      -- Don't Forget
-            neonmod_radio_11_loss = { "Fallen to pieces,", "still without a plan." },                        -- Flower Man
-            --neonmod_radio_12_win = { "Don't forget,", "I'm with you", "in the dark." },                    -- ???
-            neonmod_radio_12_loss = { "You shoulda read", "the fine print,", "my friend." },                 -- The Fine Print
-            neonmod_radio_13_loss = { "What have you done?", "There must have been", "other solutions..." }, -- A Queso Peculiar
-
+            neonmod_radio_1_win = { "Success predestined?", "We've yet to find." },                                                 -- Adequate Wordsmith
+            neonmod_radio_1_loss = { "But those who wager", "aren't so clever." },                                                  -- The House Always Wins
+            neonmod_radio_2_win = { "Negotious, verbosity velocious.", "In quality? Ambrosious.", "Thesaurus adiposis." },          -- Adequate Wordsmith
+            neonmod_radio_2_loss = { "The best of the", "best still die", "like the rest.", },                                      -- I Expect You to Die
+            neonmod_radio_3_win = { "And you'll be on", "the walls of the", "Hall of Fame.", },                                     -- Hall of Fame
+            neonmod_radio_3_loss = { "I'm not even angry.", "I'm being so sincere", "right now...", },                              -- Still Alive
+            neonmod_radio_4_win = { "Let's raise the", "bar, and our cups", "to the stars!", },                                     -- Get Lucky
+            neonmod_radio_4_loss = { "We've come too", "far to give up", "who we are.", },                                          -- Get Lucky
+            neonmod_radio_5_win = { "Instead of screams", "I swear, I can hear", "music in the air!" },                             -- What's This?
+            neonmod_radio_5_loss = { "My coffin's all", "I see, lately.", },                                                        -- Robot Stop
+            neonmod_radio_6_win = { "It's almost over,", "it's just begun.", },                                                     -- All Eyes On Me
+            neonmod_radio_6_loss = { "The record shows,", "I took the blows,", "and did it my way!" },                              -- My Way
+            neonmod_radio_7_win = { "This is going", "down in history.", },                                                         -- WANO
+            neonmod_radio_7_loss = { "Maybe I should just", "shut the fuck up!", },                                                 -- Comedy
+            neonmod_radio_8_win = { "Who needs a remote?", "Let's keep this", "going FOR DAYS!" },                                  -- Show's Never Over
+            neonmod_radio_8_loss = { "You'll be back,", "soon, you'll see." },                                                      -- You'll Be Back
+            neonmod_radio_9_win = { "Your fever dream,", "can't you see it", "gettin' closer?" },                                   -- The Greatest Show
+            neonmod_radio_9_loss = { "Are my tastes just", "bad? Am I the one", "to blame?" },                                      -- Why Don't You Play Them?
+            neonmod_radio_10_win = { "Ain't it nice?" },                                                                            -- Fireflies
+            neonmod_radio_10_loss = { "Wishing you skipped", "the track?" },                                                        -- Ameteur Wordsmith
+            neonmod_radio_11_win = { "Don't forget,", "I'm with you", "in the dark." },                                             -- Don't Forget
+            neonmod_radio_11_loss = { "Fallen to pieces,", "still without a plan." },                                               -- Flower Man
+            --neonmod_radio_12_win = { "Don't forget,", "I'm with you", "in the dark." },                                           -- ???
+            neonmod_radio_12_loss = { "You shoulda read", "the fine print,", "my friend." },                                        -- The Fine Print
 
             neonmod_unbound_radio_1_win = { "Guys like me,", "it ain't easy", "to be played", "for fools." },                       -- Stronger than You (Sans)
             neonmod_unbound_radio_1_loss = { "No need to look", "for your god,", "Only one up", "there is ME!" },                   -- Bloodshed Sanctuary
@@ -899,6 +895,27 @@ return {
             neonmod_unbound_radio_5_loss = { "Wanna take me?", "Haven't got", "the skill." },                                       -- Impossible Geometry
             neonmod_unbound_radio_6_win = { "Now I'm finally free,", "in divine melody." },                                         -- Impossible Geometry
             neonmod_unbound_radio_6_loss = { "Like a deer in headlights,", "I'm trapped here in the", "flare of the red lights." }, -- Impossible Geometry
+
+            neonmod_stupendium_1_win = { "Are you feeling alive?", "With catharsis or pride?" },                                    -- Number Go Up
+            neonmod_stupendium_1_loss = { "Here comes the", "next utter wreck,", "what the heck?" },                                -- Number Go Up
+            neonmod_stupendium_2_win = { "My god, it's", "historic, meteoric!" },                                                   -- Number Go Up
+            neonmod_stupendium_2_loss = { "Oh, it's a punch in",
+                "the nuts, stuck in", "a puddle with the", "wrong kind of flush." },                                                -- Number Go Up
+            neonmod_stupendium_3_win = { "You know, it's wonderful", "stuff, let the hundreds", "runneth over your cup." },         -- Number Go Up
+            neonmod_stupendium_3_loss = { "Sweep your dreams into",
+                "a dustpan and brush,", "another shmuck to make", "the numbers go up..." },                                         -- Number Go Up
+            neonmod_stupendium_rodent_1_loss = { "What have you done?", "There must have been", "other solutions..." },             -- A Queso Peculiar
+            neonmod_stupendium_rodent_2_loss = { "Got a tale full of holes?", "Is your alibi Swiss?" },                             -- A Queso Peculiar
+            neonmod_stupendium_rodent_loss = { "Have you comté your senses?", "From your Grevé-ous offenses?" },                    -- A Queso Peculiar
+            neonmod_stupendium_rodent_gun_loss = { "And if you give a",
+                "mouse a gun, you", "better run before", "he figures how to", "shoot one..." },                                     -- A Queso Peculiar
+            neonmod_stupendium_fraud_1_win = { "Between the seams", "of what you know", "and what it seems,", "find me." },         -- The Sky Below
+            neonmod_stupendium_fraud_2_win = { "I feel the patterns", "collide, resonant." },                                       -- The Sky Below
+            neonmod_stupendium_fraud_3_win = { "My cognition's", "watchin' the block", "as the plot thickens." },                   -- The Sky Below
+            neonmod_stupendium_fraud_1_loss = { "Load another slide", "into the void..." },                                         -- Slide Into the Void
+            neonmod_stupendium_fraud_2_loss = { "Check your logic at", "the desk, you won't", "need it to progress." },             -- Slide Into the Void
+            neonmod_stupendium_fraud_3_loss = { "If you can't place the", "pin, where patterns end",
+                "and you begin, follow the", "Director, else you're", "gonna slide into the void." },                               -- Slide Into the Void
         }
     }
 
