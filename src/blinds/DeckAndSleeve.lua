@@ -37,7 +37,7 @@ SMODS.Back {
 	apply = function(self, back)
 		SMODS.add_card{ key = "j_flower_pot" }
 	end,
-}--]]
+}
 SMODS.Back {
 	key = 'hoopadeck',
 	atlas = 'deck',
@@ -53,7 +53,7 @@ SMODS.Back {
 			return true
 		end
 	end
-}
+}--]]
 if CardSleeves then
 	CardSleeves.Sleeve {
 		key = "moodysleve",
