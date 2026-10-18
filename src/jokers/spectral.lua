@@ -68,7 +68,9 @@ SMODS.Consumable {
     end,
     can_use = function(self, card)
         local cards = SMODS.get_highlighted_cards({ G.jokers }, card, 1, 1, function(card)
-            return (card.ability.set == "Joker" and card.ability.extra.unbound)
+            if card.ability.set == "Joker" and type(card.ability.extra) == "table" then
+                return (card.ability.set == "Joker" and card.ability.extra.unbound)
+            end
         end)
         return #cards == 1
     end,

@@ -20,10 +20,10 @@ SMODS.JimboQuip({
         if next(SMODS.find_card('j_neonmod_portalradio')) then --or next(SMODS.find_card('j_neonmod_unboundradio')) then
             if type == 'win' then
                 self.extra.text_key = self.key .. random_element .. '_win'
-                return true, { weight = 10 }
+                return true, { weight = 20 }
             elseif type == 'loss' then
                 self.extra.text_key = self.key .. random_element .. '_loss'
-                return true, { weight = 10 }
+                return true, { weight = 20 }
             end
         end
     end
@@ -50,10 +50,10 @@ SMODS.JimboQuip({
             local winitem = pseudorandom_element(winlist, "neonmod_radio_quips" .. G.GAME.round_resets.ante)
             if type == 'win' then
                 self.extra.text_key = self.key .. winitem .. '_win'
-                return true, { weight = 10 }
+                return true, { weight = 20 }
             elseif type == 'loss' then
                 self.extra.text_key = self.key .. winitem .. '_loss'
-                return true, { weight = 10 }
+                return true, { weight = 20 }
             end
         end
     end

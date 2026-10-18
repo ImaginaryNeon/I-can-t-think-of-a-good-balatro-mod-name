@@ -54,6 +54,7 @@ SMODS.Rarity {
     badge_colour = HEX('e03c9b'),
     default_weight = 0,
     get_weight = function(self, weight, object_type)
+        print(G.GAME.selected_back.name)
         if G.GAME.selected_back.name == "b_neonmod_hoopadeck" then
             return 2
         else
