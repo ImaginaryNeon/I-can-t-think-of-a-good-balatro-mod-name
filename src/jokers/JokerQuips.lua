@@ -14,7 +14,7 @@ SMODS.JimboQuip({
         }
     },
     filter = function(self, type)
-        local list = { "_1", "_2", "_3", "_4", "_5", "_6", "_7", "_8", "_9" }
+        local list = { "_1", "_2", "_3", "_4", "_5", "_6", "_7", "_8", "_9", "_11" }
         local random_element, index_in_the_list = pseudorandom_element(list,
             "neonmod_radio_quips" .. G.GAME.round_resets.ante)
         if next(SMODS.find_card('j_neonmod_portalradio')) then --or next(SMODS.find_card('j_neonmod_unboundradio')) then
@@ -46,7 +46,7 @@ SMODS.JimboQuip({
     },
     filter = function(self, type)
         if next(SMODS.find_card('j_neonmod_unboundradio')) then
-            local winlist = { "_1", "_2", "_3", "_4", "_5", }
+            local winlist = { "_1", "_2", "_3", "_4", "_5", "_6" }
             local winitem = pseudorandom_element(winlist, "neonmod_radio_quips" .. G.GAME.round_resets.ante)
             if type == 'win' then
                 self.extra.text_key = self.key .. winitem .. '_win'
