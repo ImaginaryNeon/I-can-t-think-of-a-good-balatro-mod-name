@@ -254,4 +254,44 @@ if Cryptid then
         end,
         --        in_pool = function(self, args) return false end
     }
+    SMODS.Joker:take_ownership('jolly', -- object key (class prefix not required)
+        {                               -- table of properties to change from the existing object
+            config = { t_mult = 8, type = 'Pair', extra = { unbound = "j_neonmod_unboundjolly", }, },
+            loc_vars = function(self, info_queue, card)
+                return { vars = { card.ability.t_mult, localize(card.ability.type, 'poker_hands') } }
+            end,
+            calculate = function(self, card, context)
+                if (context.joker_main and next(context.poker_hands[card.ability.type])) or context.forcetrigger then
+                    return {
+                        mult = card.ability.t_mult
+                    }
+                end
+            end
+        },
+        true -- silent | suppresses mod badge
+    )
+    SMODS.Joker {
+        key = 'unboundjolly',
+        atlas = 'jonklers2',
+        pos = { x = 0, y = 1 },
+        soul_pos = { x = 5, y = 0 },
+        config = { extra = { xmult = 8, type = 'Pair' }, },
+        pools = { ["M"] = true },
+        blueprint_compat = true,
+        demicoloncompat = true,
+        no_collection = true,
+        attributes = { 'xmult', 'hand_type' },
+        rarity = "neonmod_unbound",
+        cost = 8,
+        loc_vars = function(self, info_queue, card)
+            return { vars = { card.ability.extra.xmult, localize(card.ability.extra.type, 'poker_hands') } }
+        end,
+        calculate = function(self, card, context)
+            if (context.joker_main and context.scoring_name == card.ability.extra.type) or context.forcetrigger then
+                return {
+                    xmult = card.ability.extra.xmult
+                }
+            end
+        end
+    }
 end

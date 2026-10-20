@@ -229,7 +229,7 @@ SMODS.Joker { -- All hands below level 99 are considered level 99, all hands are
     key = "omegaflowery",
     atlas = 'jonklers',
     rarity = "neonmod_unbound",
-    cost = 20,
+    cost = 40,
     blueprint_compat = false,
     attributes = { 'joker' },
     pos = { x = 5, y = 7 },

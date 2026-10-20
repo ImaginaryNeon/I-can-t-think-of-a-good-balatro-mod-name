@@ -30,6 +30,34 @@ SMODS.Joker {
     end
 }
 
+
+SMODS.Joker { -- Hands start with 999 Chips and 99 Mult, unless current Chips/Mult is greater
+    key = "emesis",
+    rarity = 3,
+    atlas = 'jonklers2',
+    pos = { x = 2, y = 0 },
+    pixel_size = { w = 51, h = 82 },
+    cost = 9,
+    --discovered = false,
+    blueprint_compat = false,
+    demicoloncompat = false,
+    --attributes = { 'joker' },
+    config = {
+        extra = {
+            storedchips = 0,
+        },
+    },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.storedchips } }
+    end,
+    calculate = function(self, card, context)
+        if context.first_hand_drawn and not context.blueprint then
+            local eval = function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end
+            juice_card_until(card, eval, true)
+        end
+    end,
+}
+
 SMODS.Joker { -- Hands start with 999 Chips and 99 Mult, unless current Chips/Mult is greater
     key = "emesis",
     rarity = 3,

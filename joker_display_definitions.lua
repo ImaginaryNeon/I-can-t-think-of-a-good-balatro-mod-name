@@ -22,6 +22,18 @@ jd_def["j_neonmod_portalradio"] = {
             joker_card.ability.extra.repetitions * JokerDisplay.calculate_joker_triggers(joker_card) or 0 -- this line?
     end
 }
+jd_def["j_neonmod_unboundradio"] = {
+    reminder_text = {
+        { text = "(8,5,2)" },
+    },
+    retrigger_function = function(playing_card, scoring_hand, held_in_hand, joker_card)
+        if held_in_hand then return 0 end
+        return JokerDisplay.in_scoring(playing_card, scoring_hand) and
+            (playing_card:get_id() == 8 or playing_card:get_id() == 5 or
+                playing_card:get_id() == 2) and
+            joker_card.ability.extra.repetitions * JokerDisplay.calculate_joker_triggers(joker_card) or 0 -- this line?
+    end
+}
 jd_def["j_neonmod_loremipsum"] = { -- Lorem Ipsum
     text = {
         { text = "+",                       colour = G.C.CHIPS },
@@ -903,5 +915,32 @@ jd_def["j_neonmod_emesis"] = { -- It's longer than you think.
             reminder_text.children[2].config.colour = card.joker_display_values.is_active and G.C.GREEN or
                 G.C.UI.TEXT_INACTIVE
         end
+    end
+}
+
+jd_def["j_neonmod_unboundjolly"] = { -- M!
+    text = {
+        {
+            border_nodes = {
+                { text = "X" },
+                { ref_table = "card.joker_display_values", ref_value = "x_mult", retrigger_type = "exp" }
+            }
+        }
+    },
+    reminder_text = {
+        { text = "(" },
+        { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = G.C.ORANGE },
+        { text = ")" },
+    },
+    calc_function = function(card)
+        --local x_mult = 1
+        local text, _, _ = JokerDisplay.evaluate_hand()
+        local is_pair = text == card.ability.extra.type
+        --[[local _, poker_hands, _ = JokerDisplay.evaluate_hand()
+        if poker_hands[card.ability.type] and next(poker_hands[card.ability.extra.type]) then
+            x_mult = card.ability.extra.xmult
+        end--]]
+        card.joker_display_values.x_mult = is_pair and card.ability.extra.xmult or 1
+        card.joker_display_values.localized_text = localize(card.ability.extra.type, 'poker_hands')
     end
 }

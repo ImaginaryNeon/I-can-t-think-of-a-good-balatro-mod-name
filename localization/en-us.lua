@@ -24,6 +24,13 @@ return {
                     '{s=0.8}{C:inactive,E:1}You\'re listening to the missive of an adequate wordsmith.{}'
                 }
             },
+            j_neonmod_unboundjolly = {
+                name = '{C:neonmod_unbound}Unbound{} Jolly Joker',
+                text = {
+                    "{X:red,C:white}X#1#{} Mult if played",
+                    "hand is a {C:attention}#2#",
+                }
+            },
             j_neonmod_Wiimote = {
                 name = 'Wii Remote',
                 text = {
@@ -734,7 +741,7 @@ return {
                 }
             },
             b_neonmod_hoopadeck = {
-                name = 'Prison Deck',
+                name = 'Unbound Deck',
                 text = {
                     "{C:neonmod_unbound}Unbound{} Jokers can appear",
                     "in the {C:attention}shop{}"

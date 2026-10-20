@@ -52,11 +52,14 @@ SMODS.Joker {
 SMODS.Rarity {
     key = "unbound",
     badge_colour = HEX('e03c9b'),
-    default_weight = 0,
+    default_weight = 1,
+    pools = {
+        ["Joker"] = true, --uses self.default_weight when polled
+    },
     get_weight = function(self, weight, object_type)
         --print(G.GAME.selected_back.name)
         if G.GAME.selected_back.effect.center.key == "b_neonmod_hoopadeck" then
-            return 2
+            return 999
         else
             return 0
         end
