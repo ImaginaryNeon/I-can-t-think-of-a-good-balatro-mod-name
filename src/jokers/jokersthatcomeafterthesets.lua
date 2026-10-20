@@ -30,7 +30,7 @@ SMODS.Joker {
     end
 }
 
-
+--[[
 SMODS.Joker { -- Hands start with 999 Chips and 99 Mult, unless current Chips/Mult is greater
     key = "emesis",
     rarity = 3,
@@ -56,7 +56,7 @@ SMODS.Joker { -- Hands start with 999 Chips and 99 Mult, unless current Chips/Mu
             juice_card_until(card, eval, true)
         end
     end,
-}
+}--]]
 
 SMODS.Joker { -- Hands start with 999 Chips and 99 Mult, unless current Chips/Mult is greater
     key = "emesis",
