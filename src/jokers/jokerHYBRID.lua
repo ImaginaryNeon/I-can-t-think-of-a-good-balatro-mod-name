@@ -61,6 +61,7 @@ SMODS.Joker {
     },
     blueprint_compat = true,
     pools = { ["Meme"] = true, },
+    attributes = { 'scaling', 'enhancements', 'seals', 'editions', 'full_deck' },
     loc_vars = function(self, info_queue, card)
         local enhanced_count = 0
         local min_count = 0
