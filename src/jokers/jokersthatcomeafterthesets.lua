@@ -31,44 +31,6 @@ SMODS.Joker {
 }
 
 SMODS.Joker { -- Hands start with 999 Chips and 99 Mult, unless current Chips/Mult is greater
-    key = "photochad",
-    rarity = 3,
-    atlas = 'jonklers2',
-    pos = { x = 4, y = 0 },
-    cost = 9,
-    --discovered = false,
-    blueprint_compat = true,
-    demicoloncompat = true,
-    attributes = { 'xmult' },
-    config = { extra = { xmult = 2, }, },
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.xmult } }
-    end,
-    calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play then
-            -- add a triggered flag (unique to your mod)
-            context.other_card.ability.neonmod_playingcard_triggered = (context.other_card.ability.neonmod_playingcard_triggered or false)
-            if context.other_card.ability.neonmod_playingcard_triggered == true then
-                return {
-                    xmult = card.ability.extra.xmult
-                }
-            end
-            context.other_card.ability.neonmod_playingcard_triggered = true
-        end
-        if context.joker_main and not context.blueprint then
-            for i = 1, #G.play.cards do
-                G.play.cards[i].ability.neonmod_playingcard_triggered = false
-            end
-        end
-        if context.forcetrigger then
-            return {
-                xmult = card.ability.extra.xmult
-            }
-        end
-    end,
-}
-
-SMODS.Joker { -- Hands start with 999 Chips and 99 Mult, unless current Chips/Mult is greater
     key = "emesis",
     rarity = 3,
     atlas = 'jonklers2',
@@ -123,6 +85,44 @@ SMODS.Joker { -- Hands start with 999 Chips and 99 Mult, unless current Chips/Mu
                     colour = G.C.RED
                 }
             end
+        end
+    end,
+}
+
+SMODS.Joker { -- Hands start with 999 Chips and 99 Mult, unless current Chips/Mult is greater
+    key = "photochad",
+    rarity = 3,
+    atlas = 'jonklers2',
+    pos = { x = 4, y = 0 },
+    cost = 9,
+    --discovered = false,
+    blueprint_compat = true,
+    demicoloncompat = true,
+    attributes = { 'xmult' },
+    config = { extra = { xmult = 2, }, },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult } }
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play then
+            -- add a triggered flag (unique to your mod)
+            context.other_card.ability.neonmod_playingcard_triggered = (context.other_card.ability.neonmod_playingcard_triggered or false)
+            if context.other_card.ability.neonmod_playingcard_triggered == true then
+                return {
+                    xmult = card.ability.extra.xmult
+                }
+            end
+            context.other_card.ability.neonmod_playingcard_triggered = true
+        end
+        if context.joker_main and not context.blueprint then
+            for i = 1, #G.play.cards do
+                G.play.cards[i].ability.neonmod_playingcard_triggered = false
+            end
+        end
+        if context.forcetrigger then
+            return {
+                xmult = card.ability.extra.xmult
+            }
         end
     end,
 }
