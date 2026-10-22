@@ -10,6 +10,7 @@ if Cryptid then
                 "set_cry_epic",
             },
         },
+        attributes = { 'retrigger', 'position', 'lose_economy' },
         config = { extra = { repetitions = 1, dollars = 12, fee = 1, unbound = "j_neonmod_marksmanunbound", } },
         rarity = "cry_epic",
         cost = 12,
@@ -61,6 +62,7 @@ else
         config = { extra = { repetitions = 1, dollars = 15, fee = 2, unbound = "j_neonmod_marksmanunbound", } },
         rarity = 3,
         cost = 10,
+        attributes = { 'retrigger', 'position', 'lose_economy' },
         loc_vars = function(self, info_queue, card)
             return {
                 vars = {
@@ -102,6 +104,7 @@ SMODS.Joker {
     demicoloncompat = false,
     rarity = "neonmod_unbound",
     cost = 10,
+    attributes = { 'retrigger' },
     pos = { x = 4, y = 1 },
     pixel_size = { w = 52, h = 95 },
     to_number = to_number or function(x) return x end,
@@ -137,6 +140,7 @@ SMODS.Joker {
     eternal_compat = false,
     blueprint_compat = true,
     demicoloncompat = false,
+    attributes = { 'retrigger', 'position', 'chance' },
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds,
             'neonmod_marksmancoin')
@@ -169,6 +173,7 @@ SMODS.Joker {
     pools = { ["Meme"] = true, },
     pos = { x = 1, y = 5 },
     config = { extra = { mult = 1 } },
+    attributes = { 'mult' },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult, card.ability.extra.mult * (#love.audio.getRecordingDevices() or 0) } }
     end,

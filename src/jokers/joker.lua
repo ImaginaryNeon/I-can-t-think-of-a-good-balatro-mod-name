@@ -118,7 +118,7 @@ SMODS.Joker {
         chips = 0,
         other_key = nil }
     },
-    attributes = { 'chips', 'mult', 'joker' },
+    attributes = { 'chips', 'mult', 'joker', 'position' },
     blueprint_compat = true,
     demicoloncompat = true,
     rarity = 1,
@@ -229,6 +229,7 @@ SMODS.Joker {
     blueprint_compat = true,
     perishable_compat = false,
     demicoloncompat = true,
+    attributes = { 'chips', 'scaling', 'suit' },
     loc_vars = function(self, info_queue, card)
         local suits = G.GAME.current_round.neonmod_cheatcode_cards and
             table.concat(G.GAME.current_round.neonmod_cheatcode_cards, ', ', 1, card.ability.immutable.length) or
@@ -299,6 +300,7 @@ SMODS.Joker {
             "(So I can hear you in the bluffing tables!)", "Until it crumbles to dust", "Another puppet for the vultures to pluck", "Outta luck, making number go up.",
             "Yeah, we'd really like to make another couple of bucks", "So, won't you play the song again", "And make the number go up?" }, position = 0 } },
     attributes = { 'chips', 'scaling' },
+    pronouns = "they_them",
     rarity = 1,
     cost = 4,
     blueprint_compat = true,
@@ -346,7 +348,7 @@ SMODS.Joker {
         }
     },
     blueprint_compat = true,
-    attributes = { 'mult', },
+    attributes = { 'mult', 'hand_type' },
     rarity = 1,
     cost = 4,
     loc_vars = function(self, info_queue, card)
@@ -399,7 +401,7 @@ SMODS.Joker {
         }
     },
     blueprint_compat = true,
-    attributes = { 'chips', },
+    attributes = { 'chips', 'hand_type' },
     rarity = 1,
     cost = 4,
     loc_vars = function(self, info_queue, card)

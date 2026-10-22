@@ -52,6 +52,7 @@ SMODS.Joker {
     cost = 6,
     atlas = "jonklers",
     pos = { x = 4, y = 2 },
+    attributes = { 'edition', 'modify_card', 'playing_card', 'eight', 'four', 'rank' },
     calculate = function(self, card, context)
         if context.before and #context.full_hand == 1 and (context.scoring_hand[1]:get_id() == 14 or context.scoring_hand[1]:get_id() == 8) and (context.scoring_hand[1].edition == nil) and not context.blueprint then -- maybe Gradient isn't affecting it because it's in context.before?
             local edition = SMODS.poll_edition { key = "hurtbreak_wonderland", guaranteed = true, no_negative = true }
@@ -69,6 +70,7 @@ SMODS.Joker {
     cost = 6,
     atlas = "jonklers",
     pos = { x = 5, y = 2 },
+    attributes = { 'generation', 'hands', 'playing_card', 'eight', 'four', 'rank' },
     calculate = function(self, card, context)
         if context.first_hand_drawn and not context.blueprint then
             local eval = function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end
@@ -112,6 +114,7 @@ SMODS.Joker {
     atlas = "jonklers",
     pos = { x = 3, y = 2 },
     config = { extra = { odds = 3 } },
+    attributes = { 'planet', 'generation', 'chance', 'consumable', 'eight', 'three', 'rank' },
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'fraudthird')
         return { vars = { numerator, denominator } }
@@ -172,6 +175,7 @@ if Cryptid then
         atlas = "jonklers",
         pos = { x = 0, y = 3 },
         config = { extra = { xmult = 1, xmult_mod = 0.2, odds = 4 } },
+        attributes = { 'xmult', 'chance', 'eight', 'four', 'rank' },
         loc_vars = function(self, info_queue, card)
             local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'finalflight')
             return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod, numerator, denominator } }
@@ -209,6 +213,7 @@ else
         atlas = "jonklers",
         pos = { x = 0, y = 3 },
         config = { extra = { xmult = 1, xmult_mod = 0.2, odds = 4 } },
+        attributes = { 'xmult', 'chance', 'eight', 'four', 'rank' },
         loc_vars = function(self, info_queue, card)
             local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'finalflight')
             return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod, numerator, denominator } }
@@ -278,6 +283,7 @@ SMODS.Joker {
     atlas = "jonklers",
     pos = { x = 2, y = 7 },
     config = { extra = { xblind = 1.5, odds = 8 } },
+    attributes = { 'chance', 'generation', 'playing_card', 'boss_blind' },
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'lasagna')
         return { vars = { card.ability.extra.xblind, numerator, denominator } }

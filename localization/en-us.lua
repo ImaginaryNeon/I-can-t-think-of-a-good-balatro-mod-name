@@ -586,6 +586,14 @@ return {
                     }
                 }
             },
+            j_neonmod_photochad = {
+                name = 'Hanging Graph',
+                text = {
+                    'Played cards give',
+                    '{X:mult,C:white}X#1#{} Mult when',
+                    '{C:attention}retriggered{}'
+                }
+            },
             -- abandonia shit, don't mind it
             j_neonmod_spellcheck = {
                 name = 'Spell Check',

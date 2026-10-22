@@ -15,6 +15,7 @@ SMODS.Joker {
             change = 5
         }
     },
+    attributes = { 'chips', 'scaling', 'position', },
     pixel_size = { w = 23, h = 47 },
     loc_vars = function(self, info_queue, card)
         do
@@ -60,6 +61,7 @@ SMODS.Joker {
         y = 0
     },
     pixel_size = { w = 24, h = 47 },
+    attributes = { 'mult', 'scaling', 'position', 'chance' },
     rarity = 2,
     cost = 6,
     perishable_compat = false,
@@ -177,6 +179,7 @@ SMODS.Joker {
     pos = { x = 1, y = 2 },
     pixel_size = { w = 71, h = 65 },
     config = { extra = { chips = 0, chip_mod = 6 } },
+    attributes = { 'chips', 'scaling', 'position', 'face' },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chips, card.ability.extra.chip_mod } }
     end,

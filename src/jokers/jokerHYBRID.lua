@@ -16,6 +16,7 @@ SMODS.Joker {
     blueprint_compat = true,
     perishable_compat = false,
     pools = { ["Meme"] = true, },
+    attributes = { 'xmult', 'joker', 'scaling' },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult_gain, card.ability.extra.xmult, '#' } }
     end,

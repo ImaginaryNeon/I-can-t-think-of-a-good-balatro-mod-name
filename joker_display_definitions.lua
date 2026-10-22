@@ -944,3 +944,32 @@ jd_def["j_neonmod_unboundjolly"] = { -- M!
         card.joker_display_values.localized_text = localize(card.ability.extra.type, 'poker_hands')
     end
 }
+
+jd_def["j_neonmod_photochad"] = { -- Hanging Graph
+    text = {
+        {
+            border_nodes = {
+                { text = "X" },
+                { ref_table = "card.joker_display_values", ref_value = "x_mult", retrigger_type = "exp" }
+            }
+        }
+    },
+    extra = {
+        {
+            { text = "(" },
+            { ref_table = "card.joker_display_values", ref_value = "odds" },
+            { text = ")" },
+        }
+    },
+    extra_config = { colour = G.C.GREEN, scale = 0.3 },
+    calc_function = function(card)
+        local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+        local count = 0
+        if text ~= 'Unknown' then
+            for _, scoring_card in pairs(scoring_hand) do
+                count = count + JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand) - 1
+            end
+        end
+        card.joker_display_values.x_mult = card.ability.extra.xmult ^ count
+    end
+}

@@ -7,6 +7,7 @@ SMODS.Joker {
     cost = 6,
     blueprint_compat = false,
     demicoloncompat = false,
+    attributes = { 'boss_blind', 'chance' },
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds,
             'neonmod_licensetomaim')
@@ -55,6 +56,7 @@ SMODS.Joker {
     blueprint_compat = false,
     demicoloncompat = false,
     eternal_compat = false,
+    attributes = { 'boss_blind', 'chance', 'economy', 'on_sell' },
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'neonmod_dangeresque')
         return { vars = { card.ability.extra.dollars, numerator, denominator } }
@@ -80,11 +82,13 @@ SMODS.Joker {
     pos = { x = 2, y = 4 },
     soul_pos = { x = 3, y = 4 },
     config = { extra = { xmult = 1.4, ammo = 20 } },
+    pronouns = "she_her",
     blueprint_compat = true,
     demicoloncompat = true,
     eternal_compat = false,
     rarity = 2,
     cost = 8,
+    attributes = { 'face', 'rank', 'xmult' },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult, card.ability.extra.ammo } }
     end,
@@ -130,6 +134,7 @@ SMODS.Joker {
     demicoloncompat = true,
     eternal_compat = false,
     pos = { x = 0, y = 4 },
+    attributes = { 'shop', 'xmult', 'scaling', 'reset' },
     config = { extra = { xmult = 2.5, xmult_loss = 0.01, xmult_reset = 2.5, timer = 0 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_loss, card.ability.extra.xmult_reset } }

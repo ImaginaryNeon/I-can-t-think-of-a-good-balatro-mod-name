@@ -7,6 +7,7 @@ SMODS.Joker {
     perishable_compat = false,
     pos = { x = 3, y = 1 },
     config = { extra = { xmult_gain = 0.25, xmult = 1 } },
+    attributes = { 'xmult', 'scaling', 'joker' },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult_gain, card.ability.extra.xmult } }
     end,
@@ -46,7 +47,7 @@ SMODS.Joker {
     pools = { ["Food"] = true, },
     pixel_size = { w = 71, h = 71 },
     display_size = { w = 71 * 1.2, h = 71 * 1.2 },
-    attributes = { 'xmult', 'scaling', 'economy', 'food' },
+    attributes = { 'xmult', 'scaling', 'lose_economy', 'food' },
     config = { extra = { fee = 5, xmult_gain = 0.5, xmult = 1, total_spent = 0 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.fee, card.ability.extra.xmult_gain, card.ability.extra.xmult, card.ability.extra.total_spent } }
@@ -91,7 +92,7 @@ SMODS.Joker {
     blueprint_compat = false,
     eternal_compat = false,
     config = { extra = { test = 2, total_mods = 1 } },
-    attributes = { 'xblindsize', 'generation', 'joker' },
+    attributes = { 'xblindsize', 'generation', 'joker', 'boss_blind', 'large_blind', },
     loc_vars = function(self, info_queue, card)
         local modspool = {}
         local validmodcount = 0
@@ -199,11 +200,8 @@ SMODS.Joker {
     },
     rarity = 2,
     cost = 6,
-    config = {
-        extra = {
-            xmult = 3,
-        }
-    },
+    config = { extra = { xmult = 3, } },
+    attributes = { 'xmult', 'chance', 'hands' },
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, math.max(G.GAME.current_round.hands_left, 1),
             'neonmod_scopelens')

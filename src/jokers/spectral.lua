@@ -8,6 +8,7 @@ SMODS.Consumable {
             rate = 0.5,
         }
     },
+    attributes = { 'shop', 'consumable', 'spectral' },
     loc_vars = function(self, info_queue, card)
         return {
             vars = {

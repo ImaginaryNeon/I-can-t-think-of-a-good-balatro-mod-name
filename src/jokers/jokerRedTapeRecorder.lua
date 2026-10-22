@@ -14,6 +14,7 @@ SMODS.Joker {
             unbound = "j_neonmod_redtapeunbound",
         }
     },
+    attributes = { 'chips', 'mult', 'scaling', 'hand_level', 'discard', 'hand_type' },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chips, card.ability.extra.mult } }
     end,
@@ -82,6 +83,7 @@ SMODS.Joker {
             mult = 0,
         }
     },
+    attributes = { 'chips', 'mult', 'scaling', 'hand_level', 'discard', 'hand_type' },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chips, card.ability.extra.mult } }
     end,

@@ -17,7 +17,7 @@ if isSynth then
         synthb_credits = {
             Artist = "ImaginaryNeon"
         },
-        attributes = { "mult", "scaling", "reset", "Portal", "song", "Jonathan Coulton", "Ellen McClain", "GLaDOS" },
+        attributes = { "xmult", "scaling", "reset", "Portal", "song", "Jonathan Coulton", "Ellen McClain", "GLaDOS" },
         config = {
             extra = {
                 xmult = 1,
@@ -81,7 +81,7 @@ if isSynth then
         synthb_credits = {
             Artist = "ImaginaryNeon"
         },
-        attributes = { "xmult", "scaling", "rank", "face", "destroy_card", "enhancements", "Portal", "song", "Jonathan Coulton", "Ellen McClain", "GLaDOS" },
+        attributes = { "xmult", "scaling", "rank", "face", "destroy_card", "enhancements", "Portal", "song", "Jonathan Coulton", "Ellen McClain", "GLaDOS", "space" },
         config = {
             extra = {
                 xmult = 1,
