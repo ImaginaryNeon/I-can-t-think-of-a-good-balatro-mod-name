@@ -217,6 +217,7 @@ SMODS.Joker { -- To-do: fix chip message
     rarity = 1,
     cost = 5,
     config = { extra = { timer = 0, positions_x = {}, positions_y = {}, speeds = {}, speed = 0, max_speed = 0, speed_scoring = 0, mult = 75 } },
+    attributes = { 'chips' },
     loc_vars = function(self, info_queue, card)
         local chips = card.ability.extra.mult * card.ability.extra.max_speed
         local fastness = math.floor(card.ability.extra.max_speed * 100) / 100
@@ -291,6 +292,7 @@ SMODS.Joker {
     atlas = "jonklers",
     pos = { x = 2, y = 8 },
     config = { immutable = { elo = 1000, fallbackchips = 294 } },
+    attributes = { 'chips' },
     loc_vars = function(self, info_queue, card)
         if card.ability.immutable.elo == 1000 or card.ability.immutable.elo == (1000 + card.ability.immutable.fallbackchips) then
             local statuscode, body = https.request("https://pokemonshowdown.com/users/ImaginaryNeon")
@@ -363,6 +365,7 @@ SMODS.Joker {
     atlas = "jonklers",
     pos = { x = 3, y = 8 },
     pixel_size = { w = 51, h = 76 },
+    attributes = { 'mult', 'scaling', 'destroy_card', 'enhancements' },
     config = { extra = { mult = 0, mult_gain = 8 } },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
