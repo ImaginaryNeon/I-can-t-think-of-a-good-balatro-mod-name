@@ -249,3 +249,7 @@ function Neonmod.modify_joker_values(card, modifytbl, exclusions, ignoreimmutabl
     card.ability.soe_probability_modifier = probmod--]] -- no clue what this does
 -- if not nodeckeffects and cardwasindeck then card:add_to_deck(true) end
 --end
+if Finity and Finity.register_rarity then
+    --Finity.register_rarity("mymod_shiny", "Rare")              --treated as Rare, never created by the effects of the Jokers above
+    Finity.register_rarity("neonmod_unbound", "Legendary", true) --same tier as Exotic and can be created
+end

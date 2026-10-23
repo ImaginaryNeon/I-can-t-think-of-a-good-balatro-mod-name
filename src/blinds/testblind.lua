@@ -194,14 +194,14 @@ SMODS.Blind {
     dollars = 5,
     mult = 2,
     boss = { min = 3 },
-    boss_colour = HEX("4e586b"),
+    boss_colour = HEX("202020"),
     calculate = function(self, blind, context)
         if blind.disabled then return end
-        if context.blind_defeated then
+        if context.end_of_round and context.game_over == false and context.main_eval then
             for i = 1, #G.hand.cards do
-                if SMODS.pseudorandom_probability(card, 'cherrybomb_odds', 1, card.ability.extra.odds) then
-                    SMODS.destroy_cards(G.hand.cards[i])
-                end
+                --if SMODS.pseudorandom_probability(card, 'cherrybomb_odds', 1, card.ability.extra.odds) then
+                SMODS.destroy_cards(G.hand.cards[i])
+                --end
             end
         end
     end
@@ -214,24 +214,24 @@ SMODS.Blind {
         y = 3
     },
     config = {
-        extra = { odds = 4 }
+        extra = { odds = 3 }
     },
     dollars = 5,
     mult = 1.5,
     loc_vars = function(self)
-        local numerator, denominator = SMODS.get_probability_vars(self, 1, 4, 'neonmod_pichu')
+        local numerator, denominator = SMODS.get_probability_vars(self, 1, 3, 'neonmod_pichu')
         return { vars = { numerator, denominator } }
     end,
     collection_loc_vars = function(self)
-        return { vars = { '1', '4' } }
+        return { vars = { '1', '3' } }
     end,
     boss = { min = 2 },
-    boss_colour = HEX('ED712B'),
+    boss_colour = HEX('ffef5c'),
     calculate = function(self, blind, context)
         if not blind.disabled then
             if context.post_trigger and not (context.other_card.ability == nil) then
                 if context.other_card.ability.set == "Joker" then
-                    if SMODS.pseudorandom_probability(blind, 'mannpower_plague', 1, 4) then
+                    if SMODS.pseudorandom_probability(blind, 'neonmod_pichu', 1, 3) then
                         return {
                             dollars = -1,
                             card = context.blueprint_card or context.other_card or blind,
