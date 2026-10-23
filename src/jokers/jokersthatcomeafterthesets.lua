@@ -9,6 +9,7 @@ SMODS.Joker {
     blueprint_compat = true,
     demicoloncompat = true,
     config = { extra = { dollars = 1, } },
+    attributes = { 'economy', 'chance', 'joker', 'videogame' },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.dollars } }
     end,
@@ -40,7 +41,7 @@ SMODS.Joker { -- Hands start with 999 Chips and 99 Mult, unless current Chips/Mu
     --discovered = false,
     blueprint_compat = false,
     demicoloncompat = false,
-    --attributes = { 'joker' },
+    attributes = { 'prevents_death', 'score', 'reset' },
     config = {
         extra = {
             storedchips = 0,
@@ -138,6 +139,7 @@ SMODS.Joker {
     blueprint_compat = true,
     demicoloncompat = true,
     config = { extra = { odds = 4, } },
+    attributes = { 'tag', 'generation', 'chance', 'rank', 'ace' },
     loc_vars = function(self, info_queue, card)
         --info_queue[#info_queue + 1] = { key = 'tag_double', set = 'Tag' }
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'neonmod_wishiwashi')
@@ -191,6 +193,7 @@ SMODS.Joker {
     demicoloncompat = true,
     no_collection = true,
     config = { extra = { odds = 4, } },
+    attributes = { 'joker', 'edition', 'generation', 'chance', 'rank', 'ace' },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.j_joker
         if not self.edition or (self.edition and not self.edition.negative) then

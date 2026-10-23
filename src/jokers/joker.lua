@@ -12,7 +12,7 @@ SMODS.Joker {
         }
     },
     blueprint_compat = true,
-    attributes = { 'chips', },
+    attributes = { 'chips' },
     rarity = 1,
     cost = 4,
     loc_vars = function(self, info_queue, card)
@@ -43,7 +43,7 @@ SMODS.Joker {
     config = { extra = { repetitions = 1, unbound = "j_neonmod_unboundradio" } },
     blueprint_compat = true,
     demicoloncompat = false,
-    attributes = { 'retrigger', 'rank', 'two', 'five', 'eight' },
+    attributes = { 'retrigger', 'rank', 'two', 'five', 'eight', 'overrule_compat', 'videogame' },
     rarity = 2,
     cost = 8,
     loc_vars = function(self, info_queue, card)
@@ -79,7 +79,7 @@ SMODS.Joker {
     blueprint_compat = true,
     demicoloncompat = false,
     no_collection = true,
-    attributes = { 'retrigger', 'rank', 'two', 'five', 'eight' },
+    attributes = { 'retrigger', 'rank', 'two', 'five', 'eight', 'unbound', 'videogame' },
     rarity = "neonmod_unbound",
     cost = 8,
     loc_vars = function(self, info_queue, card)

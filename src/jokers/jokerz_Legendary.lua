@@ -15,7 +15,7 @@ SMODS.Joker {
             color = G.C.UI.TEXT_DARK
         },
     },
-    attributes = { 'scaling', 'xmult', 'suit', 'full_deck' },
+    attributes = { 'scaling', 'xmult', 'suit', 'full_deck', 'videogame' },
     loc_vars = function(self, info_queue, card)
         local highest_count = 0
         if G.playing_cards then
@@ -158,7 +158,7 @@ SMODS.Joker {
     atlas = 'jonklers',
     rarity = 4,
     cost = 20,
-    attributes = { 'joker', 'generation', 'tarot', 'consumable' },
+    attributes = { 'joker', 'generation', 'tarot', 'consumable', 'videogame' },
     pos = { x = 3, y = 5 },
     soul_pos = { x = 4, y = 5 },
     config = {
@@ -198,7 +198,7 @@ SMODS.Joker { -- Hands start with 999 Chips and 99 Mult, unless current Chips/Mu
     rarity = 4,
     cost = 20,
     blueprint_compat = false,
-    attributes = { 'chips', 'mult' },
+    attributes = { 'chips', 'mult', 'videogame' },
     pos = { x = 3, y = 7 },
     soul_pos = { x = 4, y = 7 },
     pronouns = "he_him",
@@ -235,7 +235,7 @@ SMODS.Joker { -- All hands below level 99 are considered level 99, all hands are
     rarity = "neonmod_unbound",
     cost = 40,
     blueprint_compat = false,
-    attributes = { 'hand_type', 'passive', 'hand_level' },
+    attributes = { 'hand_type', 'passive', 'hand_level', 'videogame' },
     pronouns = "he_him",
     pos = { x = 5, y = 7 },
     soul_atlas = 'omega',

@@ -14,7 +14,7 @@ SMODS.Joker {
             unbound = "j_neonmod_redtapeunbound",
         }
     },
-    attributes = { 'chips', 'mult', 'scaling', 'hand_level', 'discard', 'hand_type' },
+    attributes = { 'chips', 'mult', 'scaling', 'hand_level', 'discard', 'hand_type', 'overrule_compat', 'videogame' },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chips, card.ability.extra.mult } }
     end,
@@ -53,7 +53,7 @@ SMODS.Joker {
 SMODS.Rarity {
     key = "unbound",
     badge_colour = HEX('e03c9b'),
-    default_weight = 1,
+    default_weight = 0,
     pools = {
         ["Joker"] = true, --uses self.default_weight when polled
     },
@@ -83,7 +83,7 @@ SMODS.Joker {
             mult = 0,
         }
     },
-    attributes = { 'chips', 'mult', 'scaling', 'hand_level', 'discard', 'hand_type' },
+    attributes = { 'chips', 'mult', 'scaling', 'hand_level', 'discard', 'hand_type', 'unbound', 'videogame' },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chips, card.ability.extra.mult } }
     end,

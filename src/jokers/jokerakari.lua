@@ -48,7 +48,7 @@ SMODS.Joker {
     demicoloncompat = true,
     pos = { x = 4, y = 6 },
     pools = { ["Meme"] = true, },
-    attributes = { 'blindsize', 'generation', 'planet', 'joker', 'large_blind', 'boss_blind' },
+    attributes = { 'blindsize', 'generation', 'planet', 'joker', 'large_blind', 'boss_blind', 'videogame' },
     config = { extra = { blindmult = 1 } },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.c_pluto
@@ -100,7 +100,7 @@ SMODS.Joker {
     pos = { x = 4, y = 6 },
     soul_pos = { x = 5, y = 6 },
     pools = { ["Meme"] = true, },
-    attributes = { 'xblindsize', 'generation', 'tag', 'large_blind', 'boss_blind' },
+    attributes = { 'xblindsize', 'generation', 'tag', 'large_blind', 'boss_blind', 'videogame' },
     config = { extra = { blindmult = 3, real = false } },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = { key = 'tag_polychrome', set = 'Tag' }

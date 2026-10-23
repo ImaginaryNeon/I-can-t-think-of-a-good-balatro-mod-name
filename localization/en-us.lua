@@ -732,7 +732,21 @@ return {
                     'Base Chips and Mult are',
                     'decreased by that of a Flush'
                 }
-            }
+            },
+            bl_neonmod_rorynyte = {
+                name = 'The Knight',
+                text = {
+                    'Destroys all held',
+                    'cards when defeated'
+                }
+            },
+            bl_neonmod_whenthe = {
+                name = 'The Mouse',
+                text = {
+                    '#1# in #2# chance to lose',
+                    '$1 when a Joker triggers'
+                }
+            },
         },
         Back = {
             b_neonmod_moodydeck = {

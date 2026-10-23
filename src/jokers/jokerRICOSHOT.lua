@@ -10,7 +10,7 @@ if Cryptid then
                 "set_cry_epic",
             },
         },
-        attributes = { 'retrigger', 'position', 'lose_economy' },
+        attributes = { 'retrigger', 'position', 'lose_economy', 'overrule_compat', 'videogame' },
         config = { extra = { repetitions = 1, dollars = 12, fee = 1, unbound = "j_neonmod_marksmanunbound", } },
         rarity = "cry_epic",
         cost = 12,
@@ -62,7 +62,7 @@ else
         config = { extra = { repetitions = 1, dollars = 15, fee = 2, unbound = "j_neonmod_marksmanunbound", } },
         rarity = 3,
         cost = 10,
-        attributes = { 'retrigger', 'position', 'lose_economy' },
+        attributes = { 'retrigger', 'position', 'lose_economy', 'videogame', 'overrule_compat' },
         loc_vars = function(self, info_queue, card)
             return {
                 vars = {
@@ -104,7 +104,7 @@ SMODS.Joker {
     demicoloncompat = false,
     rarity = "neonmod_unbound",
     cost = 10,
-    attributes = { 'retrigger' },
+    attributes = { 'retrigger', 'videogame' },
     pos = { x = 4, y = 1 },
     pixel_size = { w = 52, h = 95 },
     to_number = to_number or function(x) return x end,
@@ -140,7 +140,7 @@ SMODS.Joker {
     eternal_compat = false,
     blueprint_compat = true,
     demicoloncompat = false,
-    attributes = { 'retrigger', 'position', 'chance' },
+    attributes = { 'retrigger', 'position', 'chance', 'videogame' },
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds,
             'neonmod_marksmancoin')

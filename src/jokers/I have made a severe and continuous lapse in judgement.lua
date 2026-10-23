@@ -13,3 +13,11 @@ SMODS.current_mod.calculate = function(self, context)
         table.remove(G.GAME.neonmod_recentvolumes, 1)
     end]]
 end -- doesn't do much rn because there's seemingly no way to get the actual volume
+
+SMODS.Attribute {
+    key = 'overrule_compat',
+    keys = { 'j_jolly' }
+}
+SMODS.Attribute { key = 'nintendo' }
+SMODS.Attribute { key = 'videogame' }
+SMODS.Attribute { key = 'unbound' }

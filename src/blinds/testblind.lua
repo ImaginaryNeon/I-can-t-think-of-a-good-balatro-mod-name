@@ -160,3 +160,85 @@ SMODS.Blind {
         end
     end
 } --]]
+
+SMODS.Blind {
+    key = 'earthmover',
+    atlas = 'animblinds',
+    pos = {
+        y = 1
+    },
+    dollars = 5,
+    mult = 2,
+    boss = { min = 7 },
+    boss_colour = HEX("4e586b"),
+    calculate = function(self, blind, context)
+        if blind.disabled then return end
+        if context.modify_hand then
+            blind.triggered = true -- This won't trigger Matador in this context due to a Vanilla bug (a workaround is setting it in context.debuff_hand)
+            local flush_chips = G.GAME.hands["Flush"].chips
+            local flush_mult = G.GAME.hands["Flush"].mult
+            mult = mod_mult(math.max(math.floor(mult - flush_mult), 0))
+            hand_chips = mod_chips(math.max(math.floor(hand_chips - flush_chips), 0))
+            update_hand_text({ sound = 'chips2', modded = true }, { chips = hand_chips, mult = mult })
+        end
+    end
+} --]]
+
+
+SMODS.Blind {
+    key = 'rorynyte',
+    atlas = 'animblinds',
+    pos = {
+        y = 2
+    },
+    dollars = 5,
+    mult = 2,
+    boss = { min = 3 },
+    boss_colour = HEX("4e586b"),
+    calculate = function(self, blind, context)
+        if blind.disabled then return end
+        if context.blind_defeated then
+            for i = 1, #G.hand.cards do
+                if SMODS.pseudorandom_probability(card, 'cherrybomb_odds', 1, card.ability.extra.odds) then
+                    SMODS.destroy_cards(G.hand.cards[i])
+                end
+            end
+        end
+    end
+} --]]
+
+SMODS.Blind {
+    key = 'whenthe',
+    atlas = 'animblinds',
+    pos = {
+        y = 3
+    },
+    config = {
+        extra = { odds = 4 }
+    },
+    dollars = 5,
+    mult = 1.5,
+    loc_vars = function(self)
+        local numerator, denominator = SMODS.get_probability_vars(self, 1, 4, 'neonmod_pichu')
+        return { vars = { numerator, denominator } }
+    end,
+    collection_loc_vars = function(self)
+        return { vars = { '1', '4' } }
+    end,
+    boss = { min = 2 },
+    boss_colour = HEX('ED712B'),
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.post_trigger and not (context.other_card.ability == nil) then
+                if context.other_card.ability.set == "Joker" then
+                    if SMODS.pseudorandom_probability(blind, 'mannpower_plague', 1, 4) then
+                        return {
+                            dollars = -1,
+                            card = context.blueprint_card or context.other_card or blind,
+                        }
+                    end
+                end
+            end
+        end
+    end
+}
