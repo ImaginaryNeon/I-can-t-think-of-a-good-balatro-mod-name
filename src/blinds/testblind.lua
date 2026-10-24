@@ -194,7 +194,7 @@ SMODS.Blind {
     dollars = 5,
     mult = 2,
     boss = { min = 3 },
-    boss_colour = HEX("304050"),
+    boss_colour = HEX("303840"),
     calculate = function(self, blind, context)
         if blind.disabled then return end
         if context.end_of_round and context.game_over == false and context.main_eval then
