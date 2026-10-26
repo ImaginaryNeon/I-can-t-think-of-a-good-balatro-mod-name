@@ -954,14 +954,6 @@ jd_def["j_neonmod_photochad"] = { -- Hanging Graph
             }
         }
     },
-    extra = {
-        {
-            { text = "(" },
-            { ref_table = "card.joker_display_values", ref_value = "odds" },
-            { text = ")" },
-        }
-    },
-    extra_config = { colour = G.C.GREEN, scale = 0.3 },
     calc_function = function(card)
         local text, _, scoring_hand = JokerDisplay.evaluate_hand()
         local count = 0
