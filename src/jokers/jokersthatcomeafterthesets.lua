@@ -100,7 +100,7 @@ SMODS.Joker { -- Hands start with 999 Chips and 99 Mult, unless current Chips/Mu
     blueprint_compat = true,
     demicoloncompat = true,
     attributes = { 'xmult' },
-    config = { extra = { xmult = 2, }, },
+    config = { extra = { xmult = 1.5, }, },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult } }
     end,

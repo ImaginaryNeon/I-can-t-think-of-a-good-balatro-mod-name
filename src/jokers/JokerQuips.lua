@@ -14,7 +14,7 @@ SMODS.JimboQuip({
         }
     },
     filter = function(self, type)
-        local list = { "_1", "_2", "_3", "_4", "_5", "_6", "_7", "_8", "_9", "_11" }
+        local list = { "_1", "_2", "_3", "_4", "_5", "_6", "_7", "_8", "_9", "_10", "_11", "_12" }
         local random_element = pseudorandom_element(list,
             "neonmod_radio_quips" .. G.GAME.round_resets.ante)
         if next(SMODS.find_card('j_neonmod_portalradio')) then --or next(SMODS.find_card('j_neonmod_unboundradio')) then

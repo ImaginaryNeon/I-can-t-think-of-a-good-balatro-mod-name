@@ -871,7 +871,11 @@ return {
     },
     misc = {
         challenge_names = {
-            c_neonmod_rewound = "Rewound"
+            c_neonmod_rewound = "Rewound",
+            c_neonmod_partikeo = "Particle Accelerator",
+        },
+        v_text = {
+            ch_c_neonmod_test = "Testing, testing, 1 2 3 4.",
         },
         dictionary = {
             k_neonmod_unbound = "Unbound",
@@ -904,11 +908,11 @@ return {
             neonmod_radio_8_loss = { "You'll be back,", "soon, you'll see." },                                                      -- You'll Be Back
             neonmod_radio_9_win = { "Your fever dream,", "can't you see it", "gettin' closer?" },                                   -- The Greatest Show
             neonmod_radio_9_loss = { "Are my tastes just", "bad? Am I the one", "to blame?" },                                      -- Why Don't You Play Them?
-            neonmod_radio_10_win = { "Ain't it nice?" },                                                                            -- Fireflies
+            neonmod_radio_10_win = { "It's hard to say", "that I'd rather stay", "awake when I'm asleep." },                        -- Fireflies
             neonmod_radio_10_loss = { "Wishing you skipped", "the track?" },                                                        -- Ameteur Wordsmith
-            neonmod_radio_11_win = { "Don't forget,", "I'm with you", "in the dark." },                                             -- Don't Forget
+            neonmod_radio_11_win = { "Way up high, in the sky,", "With the sun in your eyes!", "Ain't it nice?" },                  -- Flower Man
             neonmod_radio_11_loss = { "Fallen to pieces,", "still without a plan." },                                               -- Flower Man
-            --neonmod_radio_12_win = { "Don't forget,", "I'm with you", "in the dark." },                                           -- ???
+            neonmod_radio_12_win = { "Don't forget,", "I'm with you", "in the dark." },                                             -- Don't Forget
             neonmod_radio_12_loss = { "You shoulda read", "the fine print,", "my friend." },                                        -- The Fine Print
 
             neonmod_unbound_radio_1_win = { "Guys like me,", "it ain't easy", "to be played", "for fools." },                       -- Stronger than You (Sans)
