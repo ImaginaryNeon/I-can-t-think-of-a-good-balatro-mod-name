@@ -875,7 +875,7 @@ return {
             c_neonmod_partikeo = "Particle Accelerator",
         },
         v_text = {
-            ch_c_neonmod_test = "Testing, testing, 1 2 3 4.",
+            ch_c_neonmod_test = { "Testing, testing,", "one two three four.", },
         },
         dictionary = {
             k_neonmod_unbound = "Unbound",
@@ -949,6 +949,13 @@ return {
             neonmod_stupendium_fraud_2_loss = { "Check your logic at", "the desk, you won't", "need it to progress." },             -- Slide Into the Void
             neonmod_stupendium_fraud_3_loss = { "If you can't place the", "pin, where patterns end",
                 "and you begin, follow the", "Director, else you're", "gonna slide into the void." },                               -- Slide Into the Void
+
+            neonmod_hugh_morris_win = { "I feel a bit", "more like myself." },
+            neonmod_hugh_morris_loss = {
+                "You think that's impressive?",
+                "Why won't you air the stories",
+                "I've been submitting?!",
+                "You cowards!", },
         }
     }
 

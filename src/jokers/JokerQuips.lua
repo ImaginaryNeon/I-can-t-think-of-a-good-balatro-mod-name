@@ -118,12 +118,12 @@ SMODS.JimboQuip({
         end
     end
 })
---[[
+
 SMODS.JimboQuip({
-    key = 'radio_2',
+    key = 'hugh_morris',
     extra = {
-        center              = 'j_neonmod_portalradio',
-        particle_colours    = {
+        center = 'j_neonmod_jester_mii',
+        --[[particle_colours    = {
             G.C.BLUE,
             G.C.WHITE,        --darken(G.ARGS.LOC_COLOURS.Ortalab, 0.5),
             G.C.UI.TEXT_DARK, --lighten(G.ARGS.LOC_COLOURS.Ortalab, 0.5)
@@ -132,17 +132,17 @@ SMODS.JimboQuip({
             G.C.BLUE,
             G.C.WHITE,        --darken(G.ARGS.LOC_COLOURS.Ortalab, 0.5),
             G.C.UI.TEXT_DARK, --lighten(G.ARGS.LOC_COLOURS.Ortalab, 0.5)
-        }
+        }--]]
     },
     filter = function(self, type)
-        if next(SMODS.find_card('j_neonmod_portalradio')) then --or next(SMODS.find_card('j_neonmod_unboundradio')) then
+        if next(SMODS.find_card('j_neonmod_jester_mii')) then
             if type == 'win' then
                 self.extra.text_key = self.key .. '_win'
-                return true, { weight = 10 }
+                return true, { weight = 20 }
             elseif type == 'loss' then
                 self.extra.text_key = self.key .. '_loss'
-                return true, { weight = 10 }
+                return true, { weight = 20 }
             end
         end
     end
-})--]]
+})
