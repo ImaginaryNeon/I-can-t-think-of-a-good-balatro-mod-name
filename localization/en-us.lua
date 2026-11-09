@@ -747,6 +747,21 @@ return {
                     '$1 when a Joker triggers'
                 }
             },
+            bl_neonmod_radio = {
+                name = 'The Music',
+                text = {
+                    '8s, 5s, and 2s',
+                    'are debuffed'
+                }
+            },
+            bl_neonmod_ytp = {
+                name = 'The Splice',
+                text = {
+                    'Copies a random Vanilla',
+                    'Boss Blind each hand.',
+                    'Current Blind: The #1#',
+                }
+            },
         },
         Back = {
             b_neonmod_moodydeck = {
