@@ -259,7 +259,7 @@ SMODS.Blind {
     dollars = 5,
     mult = 2,
     boss = { min = 4 },
-    boss_colour = HEX('3bcced'),
+    boss_colour = HEX('3753da'),
     modifies_draw = true,
     loc_vars = function(self)
         local config = G.GAME.blind.effect.extra or self.config.extra
