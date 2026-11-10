@@ -253,7 +253,7 @@ SMODS.Blind {
     config = {
         extra = {
             list = { "Hook", "Ox", "Wheel", "Arm", "Club", "Fish", "Psychic", "Goad", "Water", "Window", "Manacle", "Eye", "Plant", "Serpent", "Pillar", "Head", "Tooth", "Flint", "Mark" },
-            selection = "none", discards_sub = 0, size_sub = 0, hands = {},
+            selection = "None", discards_sub = 0, size_sub = 0, hands = {},
         }
     },
     dollars = 5,
