@@ -132,6 +132,7 @@ SMODS.Back {
     config = { ante_scaling = 2 },
 	unlocked = false,
 	apply = function(self, back)
+		G.GAME.joker_buffer = G.GAME.joker_buffer + 1
 		G.E_MANAGER:add_event(Event({
             func = function()
                 SMODS.add_card {
