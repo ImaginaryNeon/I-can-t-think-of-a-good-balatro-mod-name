@@ -202,7 +202,7 @@ SMODS.Joker {
     soul_pos = { x = 5, y = 3 },
     config = {
         extra = {
-            xmult_gain = 0.5, needed_slots = 1, xmult = 1
+            xmult_gain = 0.2, needed_slots = 1, xmult = 1
         },
     },
     pronouns = "he_him",
