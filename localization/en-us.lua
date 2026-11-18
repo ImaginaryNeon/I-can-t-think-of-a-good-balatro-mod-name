@@ -594,6 +594,15 @@ return {
                     '{C:attention}retriggered{}'
                 }
             },
+            j_neonmod_gene = {
+                name = 'Gene',
+                text = {
+                    "This Joker gains {X:mult,C:white}X#1#{} Mult",
+                    "when a hand is played with",
+                    "at least {C:attention}#3#{} empty {C:attention}Joker{} slot",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+                }
+            },
             -- abandonia shit, don't mind it
             j_neonmod_spellcheck = {
                 name = 'Spell Check',

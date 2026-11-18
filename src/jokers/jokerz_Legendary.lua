@@ -192,6 +192,48 @@ SMODS.Joker {
     end
 }
 
+SMODS.Joker {
+    key = "gene",
+    atlas = 'jonklers2',
+    rarity = 4,
+    cost = 20,
+    attributes = { 'joker', 'videogame' },
+    pos = { x = 4, y = 3 },
+    soul_pos = { x = 5, y = 3 },
+    config = {
+        extra = {
+            xmult_gain = 0.5, needed_slots = 1, xmult = 1
+        },
+    },
+    pronouns = "he_him",
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult_gain, card.ability.extra.xmult, card.ability.extra.needed_slots } }
+    end,
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+            if (G.jokers.config.card_limit - #G.jokers.cards) > card.ability.extra.needed_slots then
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = 'xmult',
+                    scalar_value = 'xmult_gain',
+                    no_message = true
+                })
+                return {
+                    message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } },
+                    colour = G.C.RED,
+                    delay = 0.2
+                }
+            end
+        end
+        if context.joker_main then
+            return {
+                xmult = math.max(1,
+                    (G.jokers.config.card_limit - #G.jokers.cards) + #SMODS.find_card("j_vremade_stencil", true))
+            }
+        end
+    end
+}
+
 SMODS.Joker { -- Hands start with 999 Chips and 99 Mult, unless current Chips/Mult is greater
     key = "flowery",
     atlas = 'jonklers',

@@ -965,3 +965,14 @@ jd_def["j_neonmod_photochad"] = { -- Hanging Graph
         card.joker_display_values.x_mult = card.ability.extra.xmult ^ count
     end
 }
+
+jd_def["j_neonmod_gene"] = { -- Gene
+    text = {
+        {
+            border_nodes = {
+                { text = "X" },
+                { ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp" }
+            }
+        }
+    }
+}
