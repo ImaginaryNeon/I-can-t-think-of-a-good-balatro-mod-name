@@ -123,3 +123,27 @@ if CardSleeves then
 		end
 	}
 end
+
+--[[
+SMODS.Back {
+	key = 'primesoul',
+	atlas = 'deck',
+	pos = { x = 3, y = 0 },
+    config = { ante_scaling = 2 },
+	unlocked = false,
+	apply = function(self, back)
+		G.GAME.joker_buffer = G.GAME.joker_buffer + 1
+		G.E_MANAGER:add_event(Event({
+            func = function()
+                SMODS.add_card {
+                        set = 'Joker',
+                        rarity = 'neonmod_unbound',
+                        key_append = 'neonmod_primedeck' -- Optional, useful for manipulating the random seed and checking the source of the creation in `in_pool`.
+                    }
+                    G.GAME.joker_buffer = 0
+                end
+                return true
+            }))
+	end,
+}
+--]]
