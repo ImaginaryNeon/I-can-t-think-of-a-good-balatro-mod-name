@@ -52,6 +52,15 @@ SMODS.Consumable {
                     end
                     play_sound("card1", percent)
                     check_for_unlock { type = 'overrule_used' }
+                    local checkfulldeck = true
+                    for k, v in pairs(G.P_JOKER_RARITY_POOLS["neonmod_unbound"]) do
+                        if not v.discovered then
+                            checkfulldeck = false
+                        end
+                    end
+                    if checkfulldeck then
+                        check_for_unlock { type = 'all_unbound_discovered' }
+                    end
                     jkr:juice_up(0.3, 0.3)
                     return true
                 end,

@@ -124,26 +124,31 @@ if CardSleeves then
 	}
 end
 
---[[
 SMODS.Back {
 	key = 'primesoul',
 	atlas = 'deck',
 	pos = { x = 3, y = 0 },
-    config = { ante_scaling = 2 },
+	config = { ante_scaling = 2 },
 	unlocked = false,
+	loc_vars = function(self, info_queue, back)
+		return { vars = { self.config.ante_scaling } }
+	end,
 	apply = function(self, back)
 		G.GAME.joker_buffer = G.GAME.joker_buffer + 1
 		G.E_MANAGER:add_event(Event({
-            func = function()
-                SMODS.add_card {
-                        set = 'Joker',
-                        rarity = 'neonmod_unbound',
-                        key_append = 'neonmod_primedeck' -- Optional, useful for manipulating the random seed and checking the source of the creation in `in_pool`.
-                    }
-                    G.GAME.joker_buffer = 0
-                end
-                return true
-            }))
+			func = function()
+				SMODS.add_card {
+					set = 'Joker',
+					rarity = 'neonmod_unbound',
+					key_append = 'neonmod_primedeck' -- Optional, useful for manipulating the random seed and checking the source of the creation in `in_pool`.
+				}
+				G.GAME.joker_buffer = 0
+			end
+		}))
 	end,
+	check_for_unlock = function(self, args)
+		if args.type == "all_unbound_discovered" then
+			return true
+		end
+	end
 }
---]]

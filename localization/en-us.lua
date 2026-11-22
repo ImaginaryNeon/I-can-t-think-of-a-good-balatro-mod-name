@@ -797,6 +797,18 @@ return {
                     "{C:neonmod_unbound}Unbound{} variant"
                 }
             },
+            b_neonmod_primesoul = {
+                name = 'Prime Deck',
+                text = {
+                    "Start run with",
+                    "an {C:neonmod_unbound}Unbound{} Joker",
+                    "{C:red}X#1#{} base Blind size",
+                },
+                unlock = {
+                    "Discover every",
+                    "{C:neonmod_unbound}Unbound{} Joker",
+                }
+            },
         },
         Spectral = {
             c_neonmod_increment = {

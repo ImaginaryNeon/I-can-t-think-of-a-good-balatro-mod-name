@@ -5,7 +5,7 @@ Requires [Lovely](https://github.com/ethangreen-dev/lovely-injector), [Steammodd
 Contains:
 - A bunch of new Jokers
 - A new Rarity, Unbound, which is obtained by using the Overrule Spectral card on an elligible Joker.
-- 4 new Boss Blinds, 2 of which are personalized.
+- 7 new Boss Blinds, 2 of which are personalized.
 - 1 Deck, plus an accompanying Sleeve, if CardSleeves is enabled.
 
 To-do:
