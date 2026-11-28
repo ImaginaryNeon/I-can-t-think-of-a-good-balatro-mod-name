@@ -143,6 +143,7 @@ SMODS.Back {
 					key_append = 'neonmod_primedeck' -- Optional, useful for manipulating the random seed and checking the source of the creation in `in_pool`.
 				}
 				G.GAME.joker_buffer = 0
+				return true
 			end
 		}))
 	end,

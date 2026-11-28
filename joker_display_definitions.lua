@@ -976,3 +976,15 @@ jd_def["j_neonmod_gene"] = { -- Gene
         }
     }
 }
+
+
+jd_def["j_neonmod_jokerunbound"] = { -- Unbound Joker
+    text = {
+        {
+            border_nodes = {
+                { text = "X" },
+                { ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp" }
+            }
+        }
+    }
+}

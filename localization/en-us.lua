@@ -603,6 +603,12 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 }
             },
+            j_neonmod_jokerunbound = {
+                name = '{C:neonmod_unbound}Unbound{} Joker',
+                text = {
+                    "{X:red,C:white}X#1#{} Mult",
+                }
+            },
             -- abandonia shit, don't mind it
             j_neonmod_spellcheck = {
                 name = 'Spell Check',

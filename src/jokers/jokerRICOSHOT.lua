@@ -97,39 +97,6 @@ else
     }
 end
 SMODS.Joker {
-    key = "marksmanunbound",
-    atlas = 'jonklers2',
-    no_collection = true,
-    blueprint_compat = true,
-    demicoloncompat = false,
-    rarity = "neonmod_unbound",
-    cost = 10,
-    attributes = { 'retrigger', 'videogame' },
-    pos = { x = 4, y = 1 },
-    pixel_size = { w = 52, h = 95 },
-    to_number = to_number or function(x) return x end,
-    config = { extra = { repetitions = 1, dollars = 15 } },
-    loc_vars = function(self, info_queue, card)
-        return {
-            vars = {
-                card.ability.extra.repetitions,
-                card.ability.extra.dollars,
-                card.ability.extra.repetitions *
-                math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars)
-            }
-        }
-    end,
-    calculate = function(self, card, context)
-        if context.repetition and context.cardarea == G.play and (to_number(card.ability.extra.repetitions *
-                math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))) > 0 then
-            return {
-                repetitions = to_number(card.ability.extra.repetitions *
-                    math.floor(((G.GAME.dollars or 0) + (G.GAME.dollar_buffer or 0)) / card.ability.extra.dollars))
-            }
-        end
-    end,
-}
-SMODS.Joker {
     key = 'marksmancoin',
     atlas = 'jonklers',
     pos = { x = 1, y = 1 },

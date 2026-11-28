@@ -37,7 +37,7 @@ SMODS.Consumable {
     soul_set = 'Spectral',
     soul_rate = 0.05,
     use = function(self, card, area, copier)
-        local cards = SMODS.get_highlighted_cards({ G.jokers }, card, 1, 1, function(card)
+        local cards = Neonmod.get_highlighted_cards({ G.jokers }, card, 1, 1, function(card)
             return card.ability.set == "Joker"
         end)
         local jkr = cards[1]
@@ -77,7 +77,7 @@ SMODS.Consumable {
         end
     end,
     can_use = function(self, card)
-        local cards = SMODS.get_highlighted_cards({ G.jokers }, card, 1, 1, function(card)
+        local cards = Neonmod.get_highlighted_cards({ G.jokers }, card, 1, 1, function(card)
             if card.ability.set == "Joker" and type(card.ability.extra) == "table" then
                 return (card.ability.set == "Joker" and card.ability.extra.unbound)
             end
